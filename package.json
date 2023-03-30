@@ -1,0 +1,9 @@
+{
+  "name": "search-api",
+  "private": true,
+  "version": "0.0.1",
+  "description": "EPFL Search Engine API",
+  "repository": "epfl-si/search-api",
+  "author": "William Belle <william.belle@gmail.com>",
+  "homepage": "https://github.com/epfl-si/search-api#readme"
+}
