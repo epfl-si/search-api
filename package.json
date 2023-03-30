@@ -5,5 +5,15 @@
   "description": "EPFL Search Engine API",
   "repository": "epfl-si/search-api",
   "author": "William Belle <william.belle@gmail.com>",
-  "homepage": "https://github.com/epfl-si/search-api#readme"
+  "homepage": "https://github.com/epfl-si/search-api#readme",
+  "engines": {
+    "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
+  },
+  "scripts": {
+    "test": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^8.37.0",
+    "eslint-config-standard": "^17.0.0"
+  }
 }
