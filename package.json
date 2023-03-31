@@ -7,13 +7,14 @@
   "author": "William Belle <william.belle@gmail.com>",
   "homepage": "https://github.com/epfl-si/search-api#readme",
   "engines": {
-    "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
+    "node": "^14.17.0 || >=16.0.0"
   },
   "scripts": {
     "test": "eslint ."
   },
   "devDependencies": {
     "eslint": "^8.37.0",
-    "eslint-config-standard": "^17.0.0"
+    "eslint-config-standard": "^17.0.0",
+    "prettier": "^2.8.7"
   }
 }
