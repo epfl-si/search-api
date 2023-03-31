@@ -10,8 +10,12 @@
     "node": "^14.17.0 || >=16.0.0"
   },
   "scripts": {
+    "lint": "eslint src --ext=js",
+    "lint:fix": "npm run lint -- --fix",
     "start": "node src/server.js",
-    "test": "eslint . && jest"
+    "test": "npm run lint && jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
     "eslint": "^8.37.0",
