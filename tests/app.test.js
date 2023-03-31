@@ -5,6 +5,6 @@ describe('Test root ("/")', () => {
   test('It should response the GET method', async () => {
     const response = await request(app).get('/');
     expect(response.statusCode).toBe(200);
-    expect(response.text).toMatch('Toto');
+    expect(response.text).toMatch('Hello World!');
   });
 });
