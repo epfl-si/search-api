@@ -1,11 +1,9 @@
-const env = process.env;
-
 const cse = {
-  key: env.SEARCH_API_CSE_API_KEY,
-  cx: env.SEARCH_API_CSE_CX
+  apiKey: process.env.SEARCH_API_CSE_API_KEY,
+  cx: process.env.SEARCH_API_CSE_CX
 };
 
-if (!cse.key) {
+if (!cse.apiKey) {
   console.error(
     '[error] The "SEARCH_API_CSE_API_KEY" environment variable is required'
   );
