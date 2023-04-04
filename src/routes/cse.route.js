@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const cseService = require('../services/cse.service');
+const cseController = require('../controllers/cse.controller');
 
-router.get('/', cseService.get);
+router.get('/', cseController.get);
 
 module.exports = router;

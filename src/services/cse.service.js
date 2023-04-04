@@ -2,16 +2,16 @@ const cseConfig = require('../configs/cse.config');
 const { google } = require('googleapis');
 const customsearch = google.customsearch('v1');
 
-async function get (req, res, next) {
-  const { q, start, hl } = req.query;
-  const results = await customsearch.cse.list({
+async function get (params) {
+  return customsearch.cse.list({
     cx: cseConfig.cx,
-    auth: cseConfig.key,
-    q,
-    start,
-    hl
+    auth: cseConfig.apiKey,
+    q: params.q,
+    start: params.start,
+    hl: params.hl,
+    siteSearch: params.siteSearch,
+    siteSearchFilter: 'i'
   });
-  return res.json(results.data);
 }
 
 module.exports = {
