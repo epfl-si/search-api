@@ -12,6 +12,8 @@
   "scripts": {
     "lint": "eslint src --ext=js",
     "lint:fix": "npm run lint -- --fix",
+    "prettier": "prettier --check --ignore-unknown '**' '!**/*.js'",
+    "prettier:fix": "prettier --write --ignore-unknown '**' '!**/*.js'",
     "start": "nodemon src/server.js",
     "test": "npm run lint && jest",
     "test:coverage": "jest --coverage",

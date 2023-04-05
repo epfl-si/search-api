@@ -11,7 +11,12 @@ npm i
 ## Lint
 
 ```bash
+# Prettier and ESlint
+npm run prettier
 npm run lint
+
+# Options
+npm run prettier:fix
 npm run lint:fix
 ```
 
