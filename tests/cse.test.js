@@ -18,7 +18,7 @@ describe('Test API CSE ("/api/cse")', () => {
     console.error = originalConsoleError;
   });
 
-  test('It should response the GET method', async () => {
+  test('It should get an error without argument', async () => {
     const response = await request(app).get('/api/cse');
     expect(response.statusCode).toBe(400);
     expect(response.text).toMatch('Oops, something went wrong');
@@ -26,7 +26,7 @@ describe('Test API CSE ("/api/cse")', () => {
     expect(testOutput[0]).toMatch('error');
   });
 
-  test('It should response the GET method', async () => {
+  test('It should get CSE results', async () => {
     const searchResult = require('./resources/cse/epfl.json');
     const mockCseService = jest.spyOn(cseService, 'get');
     mockCseService.mockResolvedValue({ data: searchResult });
