@@ -21,17 +21,19 @@ describe('Test API CSE ("/api/cse")', () => {
   test('It should response the GET method', async () => {
     const response = await request(app).get('/api/cse');
     expect(response.statusCode).toBe(400);
-    expect(response.text).toMatch('Request contains an invalid argument.');
+    expect(response.text).toMatch('Oops, something went wrong');
     expect(testOutput.length).toBe(1);
     expect(testOutput[0]).toMatch('error');
   });
 
   test('It should response the GET method', async () => {
-    const data = require('./resources/cse/epfl.json');
-    cseService.get = jest.fn().mockReturnValue(data);
+    const searchResult = require('./resources/cse/epfl.json');
+    const mockCseService = jest.spyOn(cseService, 'get');
+    mockCseService.mockResolvedValue({ data: searchResult });
 
     const response = await request(app).get('/api/cse?q=epfl');
+    expect(mockCseService).toHaveBeenCalled();
     expect(response.statusCode).toBe(200);
-    // console.log(response);
+    expect(response.text).toMatch('EPFL is a university whose three missions');
   });
 });
