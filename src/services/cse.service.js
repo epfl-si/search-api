@@ -10,7 +10,7 @@ async function get (params) {
     start: params.start,
     hl: params.hl,
     siteSearch: params.siteSearch,
-    siteSearchFilter: 'i'
+    searchType: params.searchType
   });
 }
 
