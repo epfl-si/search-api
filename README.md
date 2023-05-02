@@ -19,12 +19,13 @@
 | `siteSearch` | `String` | Specifies a given site which should be included.                                       |
 | `searchType` | `String` | Specifies the search type: `image`. If unspecified, results are limited to webpages.   |
 | `start`      | `Number` | The index of the first result to return. The default number of results per page is 10. |
+| `sort`       | `String` | The sort expression to apply to the results.                                           |
 
 ### Examples
 
 - [/api/cse?q=math][cse-1]
 - [/api/cse?q=math&hl=fr&searchSite=actu.epfl.ch][cse-2]
-- [/api/cse?q=math&hl=en&searchType=image][cse-3]
+- [/api/cse?q=math&hl=en&sort=date&searchType=image][cse-3]
 
 ## Documentation
 
@@ -42,4 +43,4 @@ See [Contributing](CONTRIBUTING.md).
 [node18-url]: https://nodejs.org/en/blog/announcements/v18-release-announce
 [cse-1]: http://127.0.0.1:5555/api/cse?q=math
 [cse-2]: http://127.0.0.1:5555/api/cse?q=math&hl=fr&searchSite=actu.epfl.ch
-[cse-3]: http://127.0.0.1:5555/api/cse?q=math&hl=en&searchType=image
+[cse-3]: http://localhost:5555/api/cse?q=math&hl=en&sort=date&searchType=image

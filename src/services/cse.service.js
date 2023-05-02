@@ -10,7 +10,8 @@ async function get (params) {
     start: params.start,
     hl: params.hl,
     siteSearch: params.siteSearch,
-    searchType: params.searchType
+    searchType: params.searchType,
+    sort: params.sort
   });
 }
 
