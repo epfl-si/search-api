@@ -17,7 +17,7 @@
     "start": "nodemon src/server.js",
     "test": "npm run lint && jest",
     "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watchAll"
   },
   "devDependencies": {
     "eslint": "^8.37.0",
