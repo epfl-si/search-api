@@ -43,4 +43,4 @@ See [Contributing](CONTRIBUTING.md).
 [node18-url]: https://nodejs.org/en/blog/announcements/v18-release-announce
 [cse-1]: http://127.0.0.1:5555/api/cse?q=math
 [cse-2]: http://127.0.0.1:5555/api/cse?q=math&hl=fr&searchSite=actu.epfl.ch
-[cse-3]: http://localhost:5555/api/cse?q=math&hl=en&sort=date&searchType=image
+[cse-3]: http://127.0.0.1:5555/api/cse?q=math&hl=en&sort=date&searchType=image
