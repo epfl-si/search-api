@@ -6,6 +6,7 @@ docker/Dockerfile
 .gitignore
 
 node_modules
+ansible
 
 *.md
 .editorconfig
