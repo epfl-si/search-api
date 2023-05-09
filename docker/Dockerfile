@@ -1,11 +1,11 @@
 FROM node:18-alpine
 
-ENV TZ="Europe/Zurich" \
-    NODE_ENV="production"
-
 RUN \
   apk update && \
-  apk add --no-cache dumb-init
+  apk add --no-cache dumb-init tzdata
+
+ENV TZ="Europe/Zurich" \
+    NODE_ENV="production"
 
 WORKDIR /app
 
