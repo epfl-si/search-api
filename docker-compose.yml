@@ -8,7 +8,6 @@ services:
     image: search-api
     container_name: search-api
     environment:
-      - NODE_ENV=production
       - SEARCH_API_CSE_API_KEY=${SEARCH_API_CSE_API_KEY}
       - SEARCH_API_CSE_CX=${SEARCH_API_CSE_CX}
     ports:
