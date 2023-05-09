@@ -1,5 +1,9 @@
 # Contributing
 
+## Prerequisites
+
+- Access to our Keybase /keybase/team/epfl_search directory.
+
 ## Setup
 
 ```bash
@@ -31,5 +35,9 @@ npm run test:watch
 ## Start
 
 ```bash
-npm start
+# Development
+make start
+
+# Production
+make up
 ```
