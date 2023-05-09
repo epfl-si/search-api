@@ -1,0 +1,14 @@
+version: '3.2'
+
+services:
+  search-api:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    image: search-api
+    container_name: search-api
+    environment:
+      - SEARCH_API_CSE_API_KEY=${SEARCH_API_CSE_API_KEY}
+      - SEARCH_API_CSE_CX=${SEARCH_API_CSE_CX}
+    ports:
+      - '5555:5555'
