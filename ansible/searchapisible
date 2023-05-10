@@ -37,6 +37,27 @@ ensure_ansible () {
 }
 
 ensure_ansible
-[ "$1" == "--help" ] && help
 
-ansible-playbook -i inventory.yml playbook.yml "$@"
+declare -a ansible_args
+inventory_mode="test"
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --help)
+      help ;;
+    --prod)
+      inventory_mode="test-and-prod"
+      shift ;;
+    *)
+      ansible_args+=("$1")
+      shift ;;
+  esac
+done
+
+inventories () {
+  case "$inventory_mode" in
+    test)          echo "-i inventory/test.yml" ;;
+    test-and-prod) echo "-i inventory/test.yml -i inventory/prod.yml" ;;
+  esac
+}
+
+ansible-playbook $(inventories) playbook.yml "${ansible_args[@]}"

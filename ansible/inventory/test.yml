@@ -1,0 +1,8 @@
+all:
+  children:
+    openshift_namespaces:
+      hosts:
+        wwp-test: {}
+      vars:
+        ansible_connection: local
+        openshift_namespace: 'wwp-test'

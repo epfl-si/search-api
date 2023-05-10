@@ -1,0 +1,4 @@
+openshift_namespace: 'wwp-test'
+
+app_name: 'searchAPI'
+team: 'isas-fsd'
