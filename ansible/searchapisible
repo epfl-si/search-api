@@ -37,6 +37,7 @@ ensure_ansible () {
 }
 
 ensure_ansible
+ensure_oc_login
 
 declare -a ansible_args
 inventory_mode="test"

@@ -1,0 +1,6 @@
+- name: Route tasks
+  include_tasks:
+    file: 'route.yml'
+    apply:
+      tags: route
+  tags: route
