@@ -1,4 +1,8 @@
 openshift_namespace: 'wwp-test'
 
-app_name: 'searchAPI'
+app_name: 'searchapi'
 team: 'isas-fsd'
+
+searchapi_secrets: "{{ lookup('file', '/keybase/team/epfl_search/api/secrets.yml') | from_yaml }}"
+searchapi_key: '{{ searchapi_secrets.SEARCH_API_CSE_API_KEY }}'
+searchapi_cx: '{{ searchapi_secrets.SEARCH_API_CSE_CX }}'
