@@ -1,0 +1,12 @@
+docker/Dockerfile
+.dockerignore
+
+.git
+.github
+.gitignore
+
+node_modules
+ansible
+
+*.md
+.editorconfig

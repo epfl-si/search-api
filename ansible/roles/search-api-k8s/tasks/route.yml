@@ -1,0 +1,26 @@
+- name: SearchAPI - Route
+  openshift:
+    state: latest
+    apiVersion: route.openshift.io/v1
+    kind: Route
+    metadata:
+      name: search-api-test.epfl.ch
+      namespace: '{{ openshift_namespace }}'
+      labels:
+        app: '{{ app_name }}'
+        team: '{{ team }}'
+        epfl.ch/visibility: public
+      annotations:
+        haproxy.router.openshift.io/balance: roundrobin
+        haproxy.router.openshift.io/disable_cookies: 'true'
+    spec:
+      host: search-api-test.epfl.ch
+      wildcardPolicy: None
+      port:
+        targetPort: '80'
+      tls:
+        termination: edge
+      to:
+        kind: Service
+        name: '{{ app_name }}'
+        weight: 100

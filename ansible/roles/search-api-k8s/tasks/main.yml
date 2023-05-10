@@ -1,0 +1,14 @@
+- name: Route tasks
+  include_tasks:
+    file: 'route.yml'
+    apply:
+      tags: route
+  tags: route
+
+- name: Web tasks
+  include_tasks:
+    file: 'web.yml'
+    apply:
+      tags: web
+  tags:
+    - web

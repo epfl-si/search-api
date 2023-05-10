@@ -1,0 +1,78 @@
+- name: SearchAPI - Secrets
+  openshift:
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: search-api-secrets
+      namespace: '{{ openshift_namespace }}'
+    type: Opaque
+    data: >-
+      {{ _data | from_yaml }}
+  vars:
+    _data: |
+      SEARCH_API_CSE_API_KEY: "{{ searchapi_key | b64encode }}"
+      SEARCH_API_CSE_CX: "{{ searchapi_cx | b64encode }}"
+
+- name: SearchAPI - Deployment
+  openshift:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    metadata:
+      name: '{{ app_name }}'
+      namespace: '{{ openshift_namespace }}'
+      labels:
+        app: '{{ app_name }}'
+        team: '{{ team }}'
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: '{{ app_name }}'
+      template:
+        metadata:
+          labels:
+            app: '{{ app_name }}'
+            team: '{{ team }}'
+            role: webserver
+        spec:
+          containers:
+            - env:
+                - name: SEARCH_API_CSE_API_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: search-api-secrets
+                      key: SEARCH_API_CSE_API_KEY
+                - name: SEARCH_API_CSE_CX
+                  valueFrom:
+                    secretKeyRef:
+                      name: search-api-secrets
+                      key: SEARCH_API_CSE_CX
+              name: '{{ app_name }}'
+              image: 'docker-registry.default.svc:5000/{{ openshift_namespace }}/search-api:latest'
+              imagePullPolicy: Always
+          dnsPolicy: ClusterFirst
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          terminationGracePeriodSeconds: 30
+
+- name: SearchAPI - Service
+  openshift:
+    state: latest
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: '{{ app_name }}'
+      namespace: '{{ openshift_namespace }}'
+      labels:
+        app: '{{ app_name }}'
+        team: '{{ team }}'
+    spec:
+      type: ClusterIP
+      ports:
+        - name: '80'
+          port: 80
+          protocol: TCP
+          targetPort: 5555
+      selector:
+        app: '{{ app_name }}'
+        role: webserver

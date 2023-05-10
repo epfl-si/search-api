@@ -1,0 +1,64 @@
+#!/bin/bash
+#
+# This is a wrapper around ansible / ansible-playbook.
+#
+# Usage ("ansible-playbook" mode):
+#
+#   ./ansible/searchapisible
+#
+# If you are unfamiliar with Ansible, read up on it at
+# - https://www.ansible.com/overview/how-ansible-works
+# - https://github.com/jdauphant/awesome-ansible
+
+set -e
+cd "$(cd "$(dirname "$0")"; pwd)"
+
+help () {
+    fatal <<HELP_MSG
+Usage:
+
+  $0 [ -t sometag ] [ ... ]
+HELP_MSG
+}
+
+ensure_ansible () {
+  if ! test -f ansible-deps-cache/.versions 2>/dev/null; then
+      curl https://raw.githubusercontent.com/epfl-si/ansible.suitcase/master/install.sh | \
+          SUITCASE_DIR=$PWD/ansible-deps-cache \
+          SUITCASE_ANSIBLE_VERSION=6.3.0 \
+          SUITCASE_ANSIBLE_REQUIREMENTS=requirements.yml \
+          bash -x
+  fi
+  export PATH="$PWD/ansible-deps-cache/bin:$PATH"
+  export ANSIBLE_ROLES_PATH="$PWD/ansible-deps-cache/roles"
+  export ANSIBLE_COLLECTIONS_PATHS="$PWD/ansible-deps-cache"
+
+  . ansible-deps-cache/lib.sh
+}
+
+ensure_ansible
+ensure_oc_login
+
+declare -a ansible_args
+inventory_mode="test"
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --help)
+      help ;;
+    --prod)
+      inventory_mode="test-and-prod"
+      shift ;;
+    *)
+      ansible_args+=("$1")
+      shift ;;
+  esac
+done
+
+inventories () {
+  case "$inventory_mode" in
+    test)          echo "-i inventory/test.yml" ;;
+    test-and-prod) echo "-i inventory/test.yml -i inventory/prod.yml" ;;
+  esac
+}
+
+ansible-playbook $(inventories) playbook.yml "${ansible_args[@]}"
