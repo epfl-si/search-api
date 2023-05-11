@@ -1,2 +1,5 @@
 # Ignore artifacts:
 coverage
+
+# Ansible
+ansible/ansible-deps-cache
