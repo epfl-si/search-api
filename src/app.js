@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 app.use('/api/cse', cseRouter);
 
 // EPFL Graph
-app.use('/api/graph', semanticRouter);
+app.use('/api/graphsearch', semanticRouter);
 
 // 404
 app.use(function (req, res, next) {
