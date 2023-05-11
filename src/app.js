@@ -1,12 +1,17 @@
 const path = require('path');
+const helmet = require('helmet');
 const express = require('express');
-const app = express();
 
 const cseRouter = require('./routes/cse.route');
+
+const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('x-powered-by', false);
+
+// Security
+app.use(helmet.frameguard());
 
 // Google CSE
 app.use('/api/cse', cseRouter);
