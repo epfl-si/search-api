@@ -16,6 +16,7 @@ app.use(cors({ origin: '*' }));
 // Security
 app.use(helmet.frameguard());
 app.use(helmet.noSniff());
+app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 
 // Google CSE
 app.use('/api/cse', cseRouter);
