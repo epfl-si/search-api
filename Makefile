@@ -14,7 +14,7 @@ help:
 	@echo "  make help             — Display this help"
 	@echo "Utilities:"
 	@echo "  make print-env        — Print environment variables"
-	@echo "  make hadolint         — Lint Dockerfile hadolint"
+	@echo "  make hadolint         — Lint Dockerfile with hadolint"
 	@echo "Local development:"
 	@echo "  make start            — Launch search-api"
 	@echo "Local production Docker:"
