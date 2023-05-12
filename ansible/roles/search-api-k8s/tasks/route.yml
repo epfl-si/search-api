@@ -13,6 +13,7 @@
       annotations:
         haproxy.router.openshift.io/balance: roundrobin
         haproxy.router.openshift.io/disable_cookies: 'true'
+        haproxy.router.openshift.io/hsts_header: max-age=15552001
     spec:
       host: search-api-test.epfl.ch
       wildcardPolicy: None
