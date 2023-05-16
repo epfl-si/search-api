@@ -28,6 +28,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.10.0
         with:
           image-ref: 'search-api'
+          severity: 'CRITICAL,HIGH'
           format: 'sarif'
           output: 'trivy.sarif'
 
