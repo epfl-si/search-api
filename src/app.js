@@ -13,7 +13,9 @@ app.set('view engine', 'ejs');
 app.set('x-powered-by', false);
 
 // Log
-app.use(morgan('combined'));
+app.use(
+  morgan('combined', { skip: (req, res) => process.env.NODE_ENV === 'test' })
+);
 
 app.use(cors({ origin: '*' }));
 
