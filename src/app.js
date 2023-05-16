@@ -1,5 +1,6 @@
 const path = require('path');
 const cors = require('cors');
+const morgan = require('morgan');
 const helmet = require('helmet');
 const express = require('express');
 
@@ -11,6 +12,11 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('x-powered-by', false);
+
+// Log
+app.use(
+  morgan('combined', { skip: (req, res) => process.env.NODE_ENV === 'test' })
+);
 
 app.use(cors({ origin: '*' }));
 
