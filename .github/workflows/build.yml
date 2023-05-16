@@ -25,7 +25,7 @@ jobs:
             --tag search-api
 
       - name: Scan image
-        uses: aquasecurity/trivy-action@v0.10.0
+        uses: aquasecurity/trivy-action@0.10.0
         with:
           image-ref: 'search-api'
           format: 'sarif'
