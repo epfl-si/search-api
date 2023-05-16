@@ -1,0 +1,38 @@
+name: Build
+
+on:
+  workflow_run:
+    workflows:
+      - Test
+    types:
+      - completed
+
+jobs:
+  build:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    name: Build
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: Build image
+        run: |
+          docker build . \
+            --no-cache \
+            --file docker/Dockerfile \
+            --tag search-api
+
+      - name: Scan image
+        uses: aquasecurity/trivy-action@v0.10.0
+        with:
+          image-ref: 'search-api'
+          format: 'sarif'
+          output: 'trivy.sarif'
+
+      - name: Upload scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: 'trivy.sarif'
