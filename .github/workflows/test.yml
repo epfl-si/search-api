@@ -5,6 +5,7 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+    name: Test
 
     steps:
       - name: Clone repository
@@ -23,6 +24,9 @@ jobs:
 
       - name: Lint
         run: npm run lint
+
+      - name: Hadolint
+        run: make hadolint
 
       - name: Tests
         run: npm run test:coverage
