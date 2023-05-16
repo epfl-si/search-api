@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    if: github.event.workflow_run.conclusion == 'success'
+    if: github.event.workflow_run.event == 'push' && github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     name: Build
 
@@ -23,3 +23,16 @@ jobs:
             --no-cache \
             --file docker/Dockerfile \
             --tag search-api
+
+      - name: Scan image
+        uses: aquasecurity/trivy-action@v0.10.0
+        with:
+          image-ref: 'search-api'
+          format: 'sarif'
+          output: 'trivy.sarif'
+
+      - name: Upload scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: 'trivy.sarif'
