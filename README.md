@@ -27,6 +27,27 @@
 - [/api/cse?q=math&hl=fr&searchSite=actu.epfl.ch][cse-2]
 - [/api/cse?q=math&hl=en&sort=date&searchType=image][cse-3]
 
+## Unit
+
+### Endpoint
+
+`GET /api/unit`
+
+### Parameters
+
+| Name      | Type     | Comments                                                          |
+| --------- | -------- | ----------------------------------------------------------------- |
+| `hl`      | `String` | Sets the user interface language. The default language is french. |
+| `q`       | `String` | Query                                                             |
+| `acro`    | `String` | Specifies an exact unit acronym. If specified, `q` is ignored.    |
+| `showall` | `Number` | Should do somethings?                                             |
+
+### Examples
+
+- [/api/unit?q=vpo][unit-1 (Search and match several units, return short units details)]
+- [/api/unit?q=isas-fsd&hl=fr][unit-2 (Search and match a single unit, return full unit details)]
+- [/api/unit?acro=isas-fsd&hl=fr][unit-3 (Get a single unit with full unit details)]
+
 ## Documentation
 
 See [Confluence][confluence-url].
