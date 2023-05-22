@@ -28,6 +28,23 @@
 - [/api/cse?q=math&hl=fr&searchSite=actu.epfl.ch][cse-2]
 - [/api/cse?q=math&hl=en&sort=date&searchType=image][cse-3]
 
+## EPFL Graph
+
+### Endpoint
+
+`GET /api/graphsearch`
+
+### Parameters
+
+| Name | Type     | Comments |
+| ---- | -------- | -------- |
+| `q`  | `String` | Query    |
+
+### Examples
+
+- [/api/graphsearch?q=math][graphsearch-1]
+- [/api/graphsearch?q=vetterli][graphsearch-2]
+
 ## Documentation
 
 See [Confluence][confluence-url].
@@ -46,3 +63,5 @@ See [Contributing](CONTRIBUTING.md).
 [cse-1]: http://127.0.0.1:5555/api/cse?q=math
 [cse-2]: http://127.0.0.1:5555/api/cse?q=math&hl=fr&searchSite=actu.epfl.ch
 [cse-3]: http://127.0.0.1:5555/api/cse?q=math&hl=en&sort=date&searchType=image
+[graphsearch-1]: http://127.0.0.1:5555/api/graphsearch?q=math
+[graphsearch-2]: http://127.0.0.1:5555/api/graphsearch?q=vetterli

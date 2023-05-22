@@ -1,0 +1,133 @@
+{
+  "docs": [
+    {
+      "key": "52033",
+      "type": "concept",
+      "title": "Mathematical optimization",
+      "abstractAbbr": "<i>Mathematical optimization</i> (alternatively spelled <i>optimisation</i>) or <i>mathematical programming</i> is the selection of a best element, with regard to some criterion, from some set of available alternatives. Optimization problems of sorts arise in all quantitative disciplines from computer science and engineering to operations research and economics, and the development of solution"
+    },
+    {
+      "key": "20590",
+      "type": "concept",
+      "title": "Mathematical model",
+      "abstractAbbr": "A <i>mathematical model</i> is a description of a system using mathematical concepts and language. The process of developing a mathematical model is termed <i>mathematical modeling</i>. Mathematical models are used in the natural sciences (such as physics, biology, earth science, chemistry) and engineering disciplines (such as computer science, electrical engineering), as well as in non-physical"
+    },
+    {
+      "key": "18831",
+      "type": "concept",
+      "title": "Mathematics",
+      "abstractAbbr": "<i>Mathematics</i> is an area of knowledge that includes such topics as numbers (arithmetic, number theory), formulas and related structures (algebra), shapes and the spaces in which they are contained (geometry),"
+    },
+    {
+      "key": "MATH-265",
+      "type": "course",
+      "name": "Introduction to optimization and operations research",
+      "abstractAbbr": "Introduction to major operations research models and optimization algorithms"
+    },
+    {
+      "key": "CIVIL-557",
+      "type": "course",
+      "name": "Decision-aid methodologies in transportation",
+      "abstractAbbr": "Introduction to operations research, data mining and machine learning algorithms for decision support in transportation systems."
+    },
+    {
+      "key": "5a9a74a0lmB3OCV2oM",
+      "type": "lecture",
+      "course": {
+        "key": "MATH-265",
+        "type": "course",
+        "name": "Introduction to optimization and operations research"
+      },
+      "name": "Summary Week 10: Discrete Optimization (+ answers interactive Questions)",
+      "abstract": null
+    },
+    {
+      "key": "M-CONVERSION1",
+      "type": "mooc",
+      "platform": "edX",
+      "title": "Conversion electromécanique I",
+      "description": "Circuits magnétiques, aimants permanents, conversion électromécanique, actionneurs."
+    },
+    {
+      "key": "104596",
+      "type": "person",
+      "firstName": "Dominique",
+      "lastName": "Bonvin",
+      "abstractAbbr": "Dominique Bonvin is Professor and Director of the Automatic Control Laboratory of EPFL. He received his Diploma in Chemical Engineering from ETH Zürich, and his Ph.D. degree from the University of California, Santa Barbara. He worked in the field of process control for the Sandoz Corporation in Basel and with the Systems Engineering Group of ETH Zürich. He joined the EPFL in 1989, where his"
+    },
+    {
+      "key": "140973",
+      "type": "person",
+      "firstName": "François",
+      "lastName": "Maréchal",
+      "abstractAbbr": "Ph D. in engineering– Chemical process engineer Researcher and lecturer in the field of computer aided process and energy systems engineering. Lecturer in the mechanical engineering, electrical engineering and environmental sciences engineering in EPFL. I'm responsible for the Minor in Energy of EPFL and I'm involved in 3 projects of the Competence Center in Energy and Mobility (2nd generation"
+    },
+    {
+      "key": "289565",
+      "type": "publication",
+      "source": "Acs Infectious Diseases",
+      "title": "Design and Evaluation of New Quinazolin-4(3H)-one Derived PqsR Antagonists as Quorum Sensing Quenchers in Pseudomonas aeruginosa",
+      "year": 2021,
+      "authors": [
+        {
+          "key": "316998",
+          "type": "person",
+          "firstName": "Eduard",
+          "lastName": "Vico Oton"
+        }
+      ],
+      "abstractAbbr": "P. aeruginosa (PA) continues to pose a threat to global public health due to its high levels of antimicrobial resistance (AMR). The ongoing AMR crisis has led to an alarming shortage of effective treatments for resistant microbes, and hence there is a pressing demand for the development of novel antimicrobial interventions. The potential use of antivirulence therapeutics to tackle bacterial"
+    }
+  ],
+  "vars": {
+    "hits": [
+      { "index": "lite", "type": "concept", "key": "52033" },
+      { "index": "lite", "type": "concept", "key": "20590" },
+      { "index": "lite", "type": "concept", "key": "18831" },
+      { "index": "lite", "type": "concept", "key": "20556859" },
+      { "index": "lite", "type": "concept", "key": "8492" },
+      { "index": "lite", "type": "concept", "key": "48396" },
+      { "index": "lite", "type": "concept", "key": "19636" },
+      { "index": "lite", "type": "concept", "key": "185427" },
+      { "index": "lite", "type": "concept", "key": "82285" },
+      { "index": "lite", "type": "concept", "key": "325806" }
+    ],
+    "hitsInsertion": "prepend",
+    "indexId": "Index_T_StepScores/Nodes_N_Concept_52033",
+    "redistribute": false,
+    "size": 10,
+    "types": [
+      {
+        "name": "concept",
+        "key": "Concept",
+        "symbol": "Nodes_N_Concept",
+        "length": 3
+      },
+      {
+        "name": "course",
+        "key": "Course",
+        "symbol": "Nodes_N_Course",
+        "length": 2
+      },
+      {
+        "name": "lecture",
+        "key": "Lecture",
+        "symbol": "Nodes_N_Lecture",
+        "length": 1
+      },
+      { "name": "mooc", "key": "MOOC", "symbol": "Nodes_N_MOOC", "length": 1 },
+      {
+        "name": "person",
+        "key": "Person",
+        "symbol": "Nodes_N_Person",
+        "length": 2
+      },
+      {
+        "name": "publication",
+        "key": "Publication",
+        "symbol": "Nodes_N_Publication",
+        "length": 1
+      }
+    ]
+  }
+}
