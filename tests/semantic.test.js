@@ -26,7 +26,7 @@ describe('Test API Semantic Sarch ("/api/graphsearch")', () => {
     expect(testOutput[0]).toMatch('error');
   });
 
-  test('It should get Semantic Sarch results', async () => {
+  test('It should get Semantic Search results', async () => {
     const searchResult = require('./resources/semantic/math.json');
     const mockSemanticService = jest.spyOn(semanticService, 'post');
     mockSemanticService.mockResolvedValue({ data: searchResult });
@@ -37,7 +37,7 @@ describe('Test API Semantic Sarch ("/api/graphsearch")', () => {
     expect(response.text).toMatch('developing a mathematical model');
   });
 
-  test('It should get Semantic Sarch results from cache', async () => {
+  test('It should get Semantic Search results from cache', async () => {
     const searchResult = require('./resources/semantic/math.json');
     const mockSemanticService = jest.spyOn(semanticService, 'post');
     mockSemanticService.mockResolvedValue({ data: searchResult });
