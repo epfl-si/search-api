@@ -36,4 +36,17 @@ describe('Test API CSE ("/api/cse")', () => {
     expect(response.statusCode).toBe(200);
     expect(response.text).toMatch('EPFL is a university whose three missions');
   });
+
+  test('It should get CSE results from cache', async () => {
+    const searchResult = require('./resources/cse/epfl.json');
+    const mockCseService = jest.spyOn(cseService, 'get');
+    mockCseService.mockResolvedValue({ data: searchResult });
+
+    const response = await request(app).get('/api/cse?q=epfl');
+    expect(mockCseService).toHaveBeenCalled();
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toMatch(
+      'EPFL is Europe\'s most cosmopolitan technical university'
+    );
+  });
 });
