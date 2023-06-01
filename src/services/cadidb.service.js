@@ -14,7 +14,7 @@ async function sendQuery (query, values) {
         connection.release();
 
         if (err) {
-          console.error('Error executing MySQL query:', err);
+          console.error('Error executing MySQL query: ', err);
           return reject(err);
         }
 
