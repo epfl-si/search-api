@@ -36,6 +36,7 @@
     "googleapis": "^114.0.0",
     "helmet": "^7.0.0",
     "morgan": "^1.10.0",
+    "mysql2": "^3.3.3",
     "node-cache": "^5.1.2"
   }
 }
