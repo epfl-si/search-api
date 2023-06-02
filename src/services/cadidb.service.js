@@ -1,27 +1,20 @@
 const mysql = require('mysql2');
 const cadidbConfig = require('../configs/cadidb.config');
 
+// Create the pool
 const pool = mysql.createPool(cadidbConfig.db);
 
 async function sendQuery (query, values) {
-  return new Promise((resolve, reject) => {
-    pool.getConnection((err, connection) => {
-      if (err) {
-        console.error('Error acquiring MySQL connection: ', err);
-        return reject(err);
-      }
-      connection.query(query, values, (err, results) => {
-        connection.release();
-
-        if (err) {
-          console.error('Error executing MySQL query: ', err);
-          return reject(err);
-        }
-
-        resolve(results);
-      });
-    });
-  });
+  try {
+    // Get a Promise wrapped instance of the pool
+    const promisePool = pool.promise();
+    // Perform the database query
+    const [rows] = await promisePool.query(query, values);
+    return (rows);
+  } catch (err) {
+    console.error('Error executing query', err);
+    return (err);
+  }
 }
 
 module.exports = {
