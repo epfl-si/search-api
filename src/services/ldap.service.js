@@ -1,11 +1,8 @@
 const ldap = require('ldapjs');
+const ldapConfig = require('../configs/ldap.config');
 
 // http://ldapjs.org/client.html
-const client = ldap.createClient({
-  url: 'ldaps://ldap.epfl.ch',
-  timeout: 5000,
-  connectTimeout: 3000
-});
+const client = ldap.createClient(ldapConfig);
 
 function searchAll (base, options) {
   return new Promise((resolve, reject) => {
