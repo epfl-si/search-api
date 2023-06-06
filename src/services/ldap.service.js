@@ -1,7 +1,10 @@
 const ldap = require('ldapjs');
 
+// http://ldapjs.org/client.html
 const client = ldap.createClient({
-  url: 'ldaps://ldap.epfl.ch'
+  url: 'ldaps://ldap.epfl.ch',
+  timeout: 5000,
+  connectTimeout: 3000
 });
 
 function searchAll (base, options) {
