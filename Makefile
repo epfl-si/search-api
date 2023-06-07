@@ -45,6 +45,7 @@ endif
 print-env: check-env
 	@echo "SEARCH_API_CSE_API_KEY=${SEARCH_API_CSE_API_KEY}"
 	@echo "SEARCH_API_CSE_CX=${SEARCH_API_CSE_CX}"
+	@echo "SEARCH_API_LDAP_URL=${SEARCH_API_LDAP_URL}"
 
 .PHONY: hadolint
 hadolint:
