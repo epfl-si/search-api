@@ -1,3 +1,5 @@
 {
+  "globalSetup": "<rootDir>/.jest/setup.js",
+  "globalTeardown": "<rootDir>/.jest/teardown.js",
   "setupFiles": ["<rootDir>/.jest/setEnvVars.js"]
 }
