@@ -7,6 +7,15 @@ const server = ldap.createServer();
 
 server.search('o=epfl', searchHandler);
 
+/*
+  Examples queries:
+
+  > ldapsearch -H ldap://localhost:1389 -x \
+      -LLL -b "o=epfl" uniqueIdentifier=670001
+
+  > ldapsearch -H ldap://localhost:1389 -x \
+      -LLL -b "o=epfl" sn=Fett
+*/
 function searchHandler (req, res, next) {
   directory.forEach(function (user) {
     if (user.dn.indexOf(req.dn.toString()) === -1) {
