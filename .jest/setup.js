@@ -1,6 +1,6 @@
 const ldapServer = require('../tests/mock/ldap.server');
 
-module.exports = async () => {
-  await ldapServer.start();
+module.exports = () => {
+  ldapServer.start();
   global.__LDAPSERVER__ = ldapServer;
 };

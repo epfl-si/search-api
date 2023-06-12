@@ -1,0 +1,22 @@
+[
+  {
+    "dn": "cn=Boba Fett,ou=bespin,ou=ep-5,ou=ot,o=epfl,c=us",
+    "attributes": {
+      "cn": ["Boba Fett", "Fett"],
+      "sn": "Fett",
+      "givenName": "Boba",
+      "uniqueIdentifier": "670001",
+      "mail": "boba.fett@epfl.ch",
+      "objectClass": "Person",
+      "roomNumber": "Cloud City 016",
+      "telephoneNumber": "+41 21 0000000",
+      "EPFLAccredOrder": "1",
+      "title": "Chasseur de prime",
+      "description": "Chasseur de prime",
+      "ou": [
+        "Bespin",
+        "Bespin est une géante gazeuse du système stellaire du même nom."
+      ]
+    }
+  }
+]
