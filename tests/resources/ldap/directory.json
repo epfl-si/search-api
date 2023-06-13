@@ -1,6 +1,6 @@
 [
   {
-    "dn": "cn=Boba Fett,ou=bespin,ou=ep-5,ou=ot,o=epfl,c=us",
+    "dn": "cn=Boba Fett,ou=bespin,ou=ep-5,ou=ot,o=epfl,c=ch",
     "attributes": {
       "cn": ["Boba Fett", "Fett"],
       "sn": "Fett",

@@ -5,7 +5,7 @@ function getPersonBySciper (sciper) {
     filter: '(&(objectClass=Person)(uniqueIdentifier=' + sciper + '))',
     scope: 'sub'
   };
-  return ldapService.searchAll('o=epfl,c=ch', opts);
+  return ldapService.searchAll('c=ch', opts);
 };
 
 module.exports = {
