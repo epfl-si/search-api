@@ -16,7 +16,7 @@
     "prettier:fix": "prettier --write --ignore-unknown '**' '!**/*.js' '!**/ansible-deps-cache'",
     "start": "nodemon src/server.js",
     "test": "npm run lint && jest",
-    "test:coverage": "jest --coverage",
+    "test:coverage": "jest --coverage --forceExit",
     "test:watch": "jest --watchAll"
   },
   "devDependencies": {
