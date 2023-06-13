@@ -5,7 +5,7 @@ const directory = require('../resources/ldap/directory.json');
 const port = 1389;
 const server = ldap.createServer();
 
-server.search('o=epfl', searchHandler);
+server.search('c=ch', searchHandler);
 
 /*
   Examples queries:
