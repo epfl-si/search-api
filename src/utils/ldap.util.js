@@ -12,11 +12,39 @@ const ldapAccredMapper = {
   telephoneNumber: ['phoneList', (val) => val]
 };
 
+/**
+ * Transform dn to acronym (unit).
+ *
+ * @example
+ * const ldapUtil = require('../utils/ldap.util');
+ * ldapUtil.dn2acronym('');  // => ''
+ *
+ * @example
+ * const dn = 'cn=Boba Fett,ou=bespin,ou=ep-5,ou=ot,o=epfl,c=ch';
+ * ldapUtil.dn2acronym(dn);  // => 'BESPIN'
+ *
+ * @param {string} dn A string representing the dn from LDAP.
+ * @returns {string} Return the acronym (unit).
+ */
 function dn2acronym (dn) {
   const a = dn.split(/.?ou=/g);
   return a.length > 1 ? a[1].toUpperCase() : '';
 }
 
+/**
+ * Transform dn to path (unit).
+ *
+ * @example
+ * const ldapUtil = require('../utils/ldap.util');
+ * ldapUtil.dn2path('');  // => ''
+ *
+ * @example
+ * const dn = 'cn=Boba Fett,ou=bespin,ou=ep-5,ou=ot,o=epfl,c=ch';
+ * ldapUtil.dn2path('');  // => 'EPFL/OT/EP-5/BESPIN'
+ *
+ * @param {string} dn
+ * @returns {string} Return the path (unit).
+ */
 function dn2path (dn) {
   return dn
     .split(',')
