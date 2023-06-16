@@ -42,7 +42,7 @@ function dn2acronym (dn) {
  * const dn = 'cn=Boba Fett,ou=bespin,ou=ep-5,ou=ot,o=epfl,c=ch';
  * ldapUtil.dn2path('');  // => 'EPFL/OT/EP-5/BESPIN'
  *
- * @param {string} dn
+ * @param {string} dn A string representing the dn from LDAP.
  * @returns {string} Return the path (unit).
  */
 function dn2path (dn) {
