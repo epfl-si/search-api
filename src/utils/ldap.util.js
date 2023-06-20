@@ -1,3 +1,9 @@
+/**
+ * Utility functions for LDAP.
+ *
+ * @module utils/ldap
+ */
+
 const ldapUserMapper = {
   mail: ['email', (val) => val[0]],
   sn: ['name', (val) => val[0]],
@@ -40,7 +46,7 @@ function dn2acronym (dn) {
  *
  * @example
  * const dn = 'cn=Boba Fett,ou=bespin,ou=ep-5,ou=ot,o=epfl,c=ch';
- * ldapUtil.dn2path('');  // => 'EPFL/OT/EP-5/BESPIN'
+ * ldapUtil.dn2path(dn);  // => 'EPFL/OT/EP-5/BESPIN'
  *
  * @param {string} dn A string representing the dn from LDAP.
  * @returns {string} Return the path (unit).
@@ -55,6 +61,16 @@ function dn2path (dn) {
     .toUpperCase();
 }
 
+/**
+ * Convert LDAP search result into API result.
+ *
+ * @example
+ * const ldapUtil = require('../utils/ldap.util');
+ * const persons = ldapUtil.ldap2api(ldapResults);
+ *
+ * @param {object} ldapResults The result from the LDAP search.
+ * @returns {object} Return the result for the API.
+ */
 function ldap2api (ldapResults) {
   const list = [];
 
