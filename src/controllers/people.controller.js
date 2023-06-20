@@ -11,6 +11,8 @@ async function get (req, res) {
     let ldapResults = [];
     if (/^[0-9]{6}$/.test(q)) {
       ldapResults = await peopleService.getPersonBySciper(q);
+    } else if (/^\+?[0-9 ]+$/.test(q)) {
+      ldapResults = await peopleService.getPersonByPhone(q);
     } else if (/^[^@]+@[^@]+$/.test(q)) {
       ldapResults = await peopleService.getPersonByEmail(q);
     }

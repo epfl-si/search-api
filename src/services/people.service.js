@@ -17,7 +17,12 @@ function getPersonBySciper (sciper) {
   return getPersonByKey('uniqueIdentifier', sciper);
 };
 
+function getPersonByPhone (number) {
+  return getPersonByKey('telephoneNumber', `*${number}`);
+}
+
 module.exports = {
   getPersonByEmail,
+  getPersonByPhone,
   getPersonBySciper
 };
