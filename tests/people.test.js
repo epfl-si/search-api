@@ -37,6 +37,19 @@ describe('Test API People ("/api/ldap")', () => {
     expect(JSON.parse(response.text)).toMatchObject(jsonResult);
   });
 
+  test('It should find mail boba.fett@epfl.ch', async () => {
+    const jsonResult = require('./resources/people/json-sciper-670001.json');
+    const response = await request(app).get('/api/ldap?q=boba.fett@epfl.ch');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toMatchObject(jsonResult);
+  });
+
+  test('It should not find name boba', async () => {
+    const response = await request(app).get('/api/ldap?q=boba');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toMatch('[]');
+  });
+
   test('It should not find sciper 679999 without ldap server', async () => {
     const mockLdapService = jest.spyOn(ldapService, 'searchAll');
     mockLdapService.mockRejectedValue(new Error('LDAP is Gone'));
