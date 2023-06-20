@@ -1,0 +1,20 @@
+[
+  {
+    "sciper": "670001",
+    "rank": 0,
+    "name": "Fett",
+    "firstname": "Boba",
+    "email": "boba.fett@epfl.ch",
+    "accreds": [
+      {
+        "phoneList": ["+41 21 0000000"],
+        "officeList": ["Cloud City 016"],
+        "path": "EPFL/OT/EP-5/BESPIN",
+        "rank": "1",
+        "position": "Chasseur de prime",
+        "acronym": "BESPIN",
+        "name": "Bespin est une géante gazeuse du système stellaire du même nom."
+      }
+    ]
+  }
+]
