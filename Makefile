@@ -19,6 +19,7 @@ help:
 	@echo "Main:"
 	@echo "  make help             — Display this help"
 	@echo "Utilities:"
+	@echo "  make docs             — Build JSDoc documentation"
 	@echo "  make print-env        — Print environment variables"
 	@echo "  make hadolint         — Lint Dockerfile with hadolint"
 	@echo "  make scan             — Scan latest image"
@@ -50,6 +51,11 @@ print-env: check-env
 .PHONY: hadolint
 hadolint:
 	@${HADOLINT} sh -c "hadolint -c /host/.hadolint.yml /host/docker/Dockerfile"
+
+.PHONY: docs
+docs:
+	@npm run docs
+	@echo "Open file://${mkfile_dir}docs/index.html"
 
 .PHONY: scan
 scan:
