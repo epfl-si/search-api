@@ -44,6 +44,13 @@ describe('Test API People ("/api/ldap")', () => {
     expect(JSON.parse(response.text)).toMatchObject(jsonResult);
   });
 
+  test('It should find phone number 0321', async () => {
+    const jsonResult = require('./resources/people/json-sciper-670001.json');
+    const response = await request(app).get('/api/ldap?q=0321');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toMatchObject(jsonResult);
+  });
+
   test('It should not find name boba', async () => {
     const response = await request(app).get('/api/ldap?q=boba');
     expect(response.statusCode).toBe(200);
