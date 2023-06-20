@@ -8,7 +8,12 @@ async function get (req, res) {
   }
 
   try {
-    const ldapResults = await peopleService.getPersonBySciper(q);
+    let ldapResults = [];
+    if (/^[0-9]{6}$/.test(q)) {
+      ldapResults = await peopleService.getPersonBySciper(q);
+    } else if (/^[^@]+@[^@]+$/.test(q)) {
+      ldapResults = await peopleService.getPersonByEmail(q);
+    }
     return res.json(ldapUtil.ldap2api(ldapResults));
   } catch (err) {
     console.error('[error] ', err.message);
