@@ -34,21 +34,21 @@ describe('Test API People ("/api/ldap")', () => {
     const jsonResult = require('./resources/people/json-sciper-670001.json');
     const response = await request(app).get('/api/ldap?q=670001');
     expect(response.statusCode).toBe(200);
-    expect(JSON.parse(response.text)).toMatchObject(jsonResult);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
   test('It should find mail boba.fett@epfl.ch', async () => {
     const jsonResult = require('./resources/people/json-sciper-670001.json');
     const response = await request(app).get('/api/ldap?q=boba.fett@epfl.ch');
     expect(response.statusCode).toBe(200);
-    expect(JSON.parse(response.text)).toMatchObject(jsonResult);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
   test('It should find phone number 0321', async () => {
     const jsonResult = require('./resources/people/json-sciper-670001.json');
     const response = await request(app).get('/api/ldap?q=0321');
     expect(response.statusCode).toBe(200);
-    expect(JSON.parse(response.text)).toMatchObject(jsonResult);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
   test('It should not find name boba', async () => {
