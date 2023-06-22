@@ -18,6 +18,10 @@ const ldapAccredMapper = {
   telephoneNumber: ['phoneList', (val) => val]
 };
 
+function sortAccreds (obj) {
+  return obj.sort((a, b) => a.rank - b.rank);
+}
+
 /**
  * Transform dn to acronym (unit).
  *
@@ -116,7 +120,7 @@ function ldap2api (ldapResults) {
       }
       listAccreds.push(accred);
     }
-    person.accreds = listAccreds;
+    person.accreds = sortAccreds(listAccreds);
     person.profile = getProfile(person.email, sciper);
     list.push(person);
   }
