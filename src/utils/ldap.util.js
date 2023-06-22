@@ -62,6 +62,22 @@ function dn2path (dn) {
 }
 
 /**
+ * Build profile link to people.epfl.ch.
+ *
+ * @example
+ * const ldapUtil = require('../utils/ldap.util');
+ * ldapUtil.getProfile('boba.fett@star.ch', '670001');  // => '670001'
+ * ldapUtil.getProfile('boba.fett@epfl.ch', '670001');  // => 'boba.fett'
+ *
+ * @param {string} mail A valid email address.
+ * @param {string} sciper 6-digit unique EPFL identification number.
+ * @returns {string} firstname.name if person has epfl mail, sciper otherwise.
+ */
+function getProfile (mail, sciper) {
+  return /.+\..+@epfl\.ch/.test(mail) ? mail.replace('@epfl.ch', '') : sciper;
+}
+
+/**
  * Convert LDAP search result into API result.
  *
  * @example
@@ -101,6 +117,7 @@ function ldap2api (ldapResults) {
       listAccreds.push(accred);
     }
     person.accreds = listAccreds;
+    person.profile = getProfile(person.email, sciper);
     list.push(person);
   }
   return list;
@@ -109,5 +126,6 @@ function ldap2api (ldapResults) {
 module.exports = {
   dn2acronym,
   dn2path,
+  getProfile,
   ldap2api
 };

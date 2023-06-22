@@ -20,4 +20,12 @@ describe('Test LDAP utilities', () => {
     );
     expect(path).toEqual('EPFL/OT/EP-5/BESPIN');
   });
+
+  test('It should get the profile', () => {
+    let profile = ldapUtil.getProfile('boba.fett@sw.ch', '670001');
+    expect(profile).toEqual('670001');
+
+    profile = ldapUtil.getProfile('boba.fett@epfl.ch', '670001');
+    expect(profile).toEqual('boba.fett');
+  });
 });
