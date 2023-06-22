@@ -22,6 +22,12 @@ function sortAccreds (obj) {
   return obj.sort((a, b) => a.rank - b.rank);
 }
 
+function sortPersons (obj) {
+  return obj.sort((a, b) =>
+    a.name.localeCompare(b.name) || a.firstname.localeCompare(b.firstname)
+  );
+}
+
 /**
  * Transform dn to acronym (unit).
  *
@@ -124,7 +130,7 @@ function ldap2api (ldapResults) {
     person.profile = getProfile(person.email, sciper);
     list.push(person);
   }
-  return list;
+  return sortPersons(list);
 }
 
 module.exports = {

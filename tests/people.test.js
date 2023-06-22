@@ -44,10 +44,11 @@ describe('Test API People ("/api/ldap")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
-  test('It should find phone number 0321', async () => {
-    const jsonResult = require('./resources/people/json-sciper-670001.json');
-    const response = await request(app).get('/api/ldap?q=0321');
+  test('It should find phone number 321', async () => {
+    const jsonResult = require('./resources/people/json-phone-321.json');
+    const response = await request(app).get('/api/ldap?q=321');
     expect(response.statusCode).toBe(200);
+    console.log(response.text);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
