@@ -16,7 +16,7 @@ async function get (req, res) {
     } else if (/^[^@]+@[^@]+$/.test(q)) {
       ldapResults = await peopleService.getPersonByEmail(q);
     }
-    return res.json(ldapUtil.ldap2api(ldapResults));
+    return res.json(ldapUtil.ldap2api(ldapResults, req.query.hl));
   } catch (err) {
     console.error('[error] ', err.message);
     return res.status(400).json({
