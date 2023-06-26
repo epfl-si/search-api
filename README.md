@@ -36,14 +36,15 @@
 
 ### Parameters
 
-| Name | Type     | Comments |
-| ---- | -------- | -------- |
-| `q`  | `String` | Query    |
+| Name | Type     | Comments                          |
+| ---- | -------- | --------------------------------- |
+| `q`  | `String` | Query                             |
+| `hl` | `String` | Sets the user interface language. |
 
 ### Examples
 
 - [/api/ldap?q=278890][ldap-1]
-- [/api/ldap?q=nicolas.borboen@epfl.ch][ldap-2]
+- [/api/ldap?q=nicolas.borboen@epfl.ch&hl=en][ldap-2]
 
 ## EPFL Graph
 
@@ -81,6 +82,6 @@ See [Contributing](CONTRIBUTING.md).
 [cse-2]: http://127.0.0.1:5555/api/cse?q=math&hl=fr&searchSite=actu.epfl.ch
 [cse-3]: http://127.0.0.1:5555/api/cse?q=math&hl=en&sort=date&searchType=image
 [ldap-1]: http://127.0.0.1:5555/api/ldap?q=278890
-[ldap-2]: http://127.0.0.1:5555/api/ldap?q=nicolas.borboen@epfl.ch
+[ldap-2]: http://127.0.0.1:5555/api/ldap?q=nicolas.borboen@epfl.ch&hl=en
 [graphsearch-1]: http://127.0.0.1:5555/api/graphsearch?q=math
 [graphsearch-2]: http://127.0.0.1:5555/api/graphsearch?q=vetterli
