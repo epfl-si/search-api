@@ -10,13 +10,21 @@ const ldapUserMapper = {
   givenName: ['firstname', (val) => val[0]]
 };
 
-const ldapAccredMapper = {
-  ou: ['name', (val) => val[1]],
-  EPFLAccredOrder: ['rank', (val) => val[0]],
-  title: ['position', (val) => val[0]],
-  roomNumber: ['officeList', (val) => val],
-  telephoneNumber: ['phoneList', (val) => val]
-};
+function newLdapAccredMapper (lang) {
+  const ldapAccredMapper = {
+    EPFLAccredOrder: ['rank', (val) => val[0]],
+    roomNumber: ['officeList', (val) => val],
+    telephoneNumber: ['phoneList', (val) => val]
+  };
+  if (lang === 'en') {
+    ldapAccredMapper['description;lang-en'] = ['position', (val) => val[0]];
+    ldapAccredMapper['ou;lang-en'] = ['name', (val) => val[0]];
+  } else {
+    ldapAccredMapper.description = ['position', (val) => val[0]];
+    ldapAccredMapper.ou = ['name', (val) => val[1]];
+  }
+  return ldapAccredMapper;
+}
 
 function sortAccreds (obj) {
   return obj.sort((a, b) => a.rank - b.rank);
@@ -97,8 +105,9 @@ function getProfile (mail, sciper) {
  * @param {object} ldapResults The result from the LDAP search.
  * @returns {object} Return the result for the API.
  */
-function ldap2api (ldapResults) {
+function ldap2api (ldapResults, hl) {
   const list = [];
+  const ldapAccredMapper = newLdapAccredMapper(hl);
 
   for (const [sciper, entry] of Object.entries(ldapResults)) {
     const person = { sciper, rank: 0 };
