@@ -1,0 +1,30 @@
+[
+  {
+    "sciper": "670001",
+    "rank": 0,
+    "name": "Fett",
+    "firstname": "Boba",
+    "profile": "boba.fett",
+    "email": "boba.fett@epfl.ch",
+    "accreds": [
+      {
+        "phoneList": ["+41 21 0000321"],
+        "officeList": ["Cloud City 016"],
+        "path": "EPFL/OT/EP-5/BESPIN",
+        "rank": "1",
+        "position": "Bounty hunter",
+        "acronym": "BESPIN",
+        "name": "Bespin is a gas giant in the star system of the same name."
+      },
+      {
+        "phoneList": ["+41 21 0000321"],
+        "officeList": ["Dune Sea 001"],
+        "path": "EPFL/OT/EP-6/TATOOINE",
+        "rank": "2",
+        "position": "Bounty hunter",
+        "acronym": "TATOOINE",
+        "name": "Tatooine is a desert planet located in the Outer Rim territories of the galaxy."
+      }
+    ]
+  }
+]

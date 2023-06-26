@@ -11,12 +11,13 @@
       "roomNumber": "Base 1468",
       "telephoneNumber": "+41 21 0004321",
       "EPFLAccredOrder": "1",
-      "title": "Chasseur de prime",
       "description": "Chasseur de prime",
+      "description;lang-en": "Bounty hunter",
       "ou": [
         "Kamino",
         "Kamino est une planète aquatique située dans le secteur Abrion de la bordure extérieure de la galaxie."
-      ]
+      ],
+      "ou;lang-en": "Kamino is an aquatic planet located in the Abrion sector of the galaxy's Outer Rim."
     }
   },
   {
@@ -31,12 +32,13 @@
       "roomNumber": "Cloud City 016",
       "telephoneNumber": "+41 21 0000321",
       "EPFLAccredOrder": "1",
-      "title": "Chasseur de prime",
       "description": "Chasseur de prime",
+      "description;lang-en": "Bounty hunter",
       "ou": [
         "Bespin",
         "Bespin est une géante gazeuse du système stellaire du même nom."
-      ]
+      ],
+      "ou;lang-en": "Bespin is a gas giant in the star system of the same name."
     }
   },
   {
@@ -51,12 +53,13 @@
       "roomNumber": "Dune Sea 001",
       "telephoneNumber": "+41 21 0000321",
       "EPFLAccredOrder": "2",
-      "title": "Chasseur de prime",
       "description": "Chasseur de prime",
+      "description;lang-en": "Bounty hunter",
       "ou": [
         "Tatooine",
         "Tatooine est une planète désertique située dans les territoires de la bordure extérieure de la galaxie."
-      ]
+      ],
+      "ou;lang-en": "Tatooine is a desert planet located in the Outer Rim territories of the galaxy."
     }
   },
   {
@@ -71,12 +74,13 @@
       "roomNumber": "Sundari 231",
       "telephoneNumber": "+41 21 0054321",
       "EPFLAccredOrder": "1",
-      "title": "Chasseur de prime",
       "description": "Chasseur de prime",
+      "description;lang-en": "Bounty hunter",
       "ou": [
         "Mandalore",
         "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie."
-      ]
+      ],
+      "ou;lang-en": "Mandalore is a planet located in the Outer Rim territories of the galaxy."
     }
   },
   {
@@ -91,12 +95,13 @@
       "roomNumber": "Ronion 001",
       "telephoneNumber": "+41 21 0654321",
       "EPFLAccredOrder": "1",
-      "title": "Infanterie lourde",
       "description": "Infanterie lourde",
+      "description;lang-en": "Heavy infantry",
       "ou": [
         "Mandalore",
         "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie."
-      ]
+      ],
+      "ou;lang-en": "Mandalore is a planet located in the Outer Rim territories of the galaxy."
     }
   }
 ]
