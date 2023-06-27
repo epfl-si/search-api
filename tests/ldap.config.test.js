@@ -33,6 +33,6 @@ describe('Test LDAP Config requirements', () => {
 
   test('It should have correct config', () => {
     const ldapConfig = require('../src/configs/ldap.config');
-    expect(ldapConfig.url).toBe('ldap://0.0.0.0:1389');
+    expect(ldapConfig.client.url).toBe('ldap://0.0.0.0:1389');
   });
 });

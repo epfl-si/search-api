@@ -1,12 +1,15 @@
+const ldapConfig = require('../configs/ldap.config');
 const ldapService = require('../services/ldap.service');
 
+const rootsFilter = ldapConfig.filter.roots;
+
 function getPersonByKey (key, val) {
-  const baseFi = '&(objectClass=Person)(!(employeeType=Ignore))';
+  const baseFi = `&(objectClass=Person)${rootsFilter}(!(employeeType=Ignore))`;
   const opts = {
     filter: `(${baseFi}(${key}=${val}))`,
     scope: 'sub'
   };
-  return ldapService.searchAll('c=ch', opts);
+  return ldapService.searchAll(ldapConfig.filter.base, opts);
 }
 
 function getPersonByEmail (mail) {

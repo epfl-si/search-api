@@ -2,7 +2,7 @@ const ldap = require('ldapjs');
 const ldapConfig = require('../configs/ldap.config');
 
 // http://ldapjs.org/client.html
-const client = ldap.createClient(ldapConfig);
+const client = ldap.createClient(ldapConfig.client);
 
 function getSciper (entry) {
   const uids = entry.attributes.filter(
