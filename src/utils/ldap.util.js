@@ -113,9 +113,11 @@ function getProfile (mail, sciper) {
  *
  * @example
  * const ldapUtil = require('../utils/ldap.util');
- * const persons = ldapUtil.ldap2api(ldapResults);
+ * const persons = ldapUtil.ldap2api(ldapResults, 'Fett', 'en');
  *
  * @param {object} ldapResults The result from the LDAP search.
+ * @param {string} q The query.
+ * @param {string} hl The user interface language.
  * @returns {object} Return the result for the API.
  */
 function ldap2api (ldapResults, q, hl) {
