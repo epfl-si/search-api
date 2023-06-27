@@ -84,6 +84,27 @@
     }
   },
   {
+    "dn": "cn=Din Grogu,ou=mandalore,ou=tv-3,ou=so,o=epfl,c=ch",
+    "attributes": {
+      "cn": ["Din Grogu", "Grogu"],
+      "sn": "Grogu",
+      "givenName": "Din",
+      "uniqueIdentifier": "670005",
+      "mail": "din.grogu@epfl.ch",
+      "objectClass": "Person",
+      "roomNumber": "Jedi Temple",
+      "telephoneNumber": "+41 21 0054322",
+      "EPFLAccredOrder": "1",
+      "description": "Jedi",
+      "description;lang-en": "Jedi",
+      "ou": [
+        "Coruscant",
+        "Coruscant est une planète tellurique des Mondes du Noyau entièrement urbanisée et recouvertes d'infrastructures."
+      ],
+      "ou;lang-en": "Coruscant is an ecumenopolis, collectively known as Imperial City in the Core Worlds."
+    }
+  },
+  {
     "dn": "cn=Paz Vizsla,ou=mandalore,ou=tv-3,ou=so,o=epfl,c=ch",
     "attributes": {
       "cn": ["Paz Vizsla", "Vizsla"],

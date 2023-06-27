@@ -15,8 +15,10 @@ async function get (req, res) {
       ldapResults = await peopleService.getPersonByPhone(q);
     } else if (/^[^@]+@[^@]+$/.test(q)) {
       ldapResults = await peopleService.getPersonByEmail(q);
+    } else {
+      ldapResults = await peopleService.getPersonByName(q);
     }
-    return res.json(ldapUtil.ldap2api(ldapResults, req.query.hl));
+    return res.json(ldapUtil.ldap2api(ldapResults, q, req.query.hl));
   } catch (err) {
     console.error('[error] ', err.message);
     return res.status(400).json({
