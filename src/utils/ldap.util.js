@@ -30,9 +30,22 @@ function sortAccreds (obj) {
   return obj.sort((a, b) => a.rank - b.rank);
 }
 
-function sortPersons (obj) {
+function score (a, q) {
+  let points = 0;
+  if (a.name.toLowerCase() === q.toLowerCase()) {
+    points += 1;
+  }
+  if (a.firstname.toLowerCase() === q.toLowerCase()) {
+    points += 1;
+  }
+  return points;
+}
+
+function sortPersons (obj, q) {
   return obj.sort((a, b) =>
-    a.name.localeCompare(b.name) || a.firstname.localeCompare(b.firstname)
+    score(b, q) - score(a, q) ||
+    a.name.localeCompare(b.name) ||
+    a.firstname.localeCompare(b.firstname)
   );
 }
 
@@ -105,7 +118,7 @@ function getProfile (mail, sciper) {
  * @param {object} ldapResults The result from the LDAP search.
  * @returns {object} Return the result for the API.
  */
-function ldap2api (ldapResults, hl) {
+function ldap2api (ldapResults, q, hl) {
   const list = [];
   const ldapAccredMapper = newLdapAccredMapper(hl);
 
@@ -139,7 +152,7 @@ function ldap2api (ldapResults, hl) {
     person.profile = getProfile(person.email, sciper);
     list.push(person);
   }
-  return sortPersons(list);
+  return sortPersons(list, q);
 }
 
 module.exports = {
