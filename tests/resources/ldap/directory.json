@@ -1,0 +1,128 @@
+[
+  {
+    "dn": "cn=Jango Fett,ou=kamino,ou=ep-2,ou=pt,o=epfl,c=ch",
+    "attributes": {
+      "cn": ["Jango Fett", "Fett"],
+      "sn": "Fett",
+      "givenName": "Jango",
+      "uniqueIdentifier": "670002",
+      "mail": "jango.fett@epfl.ch",
+      "objectClass": "Person",
+      "roomNumber": "Base 1468",
+      "telephoneNumber": "+41 21 0004321",
+      "EPFLAccredOrder": "1",
+      "description": "Chasseur de prime",
+      "description;lang-en": "Bounty hunter",
+      "ou": [
+        "Kamino",
+        "Kamino est une planète aquatique située dans le secteur Abrion de la bordure extérieure de la galaxie."
+      ],
+      "ou;lang-en": "Kamino is an aquatic planet located in the Abrion sector of the galaxy's Outer Rim."
+    }
+  },
+  {
+    "dn": "cn=Boba Fett,ou=bespin,ou=ep-5,ou=ot,o=epfl,c=ch",
+    "attributes": {
+      "cn": ["Boba Fett", "Fett"],
+      "sn": "Fett",
+      "givenName": "Boba",
+      "uniqueIdentifier": "670001",
+      "mail": "boba.fett@epfl.ch",
+      "objectClass": "Person",
+      "roomNumber": "Cloud City 016",
+      "telephoneNumber": "+41 21 0000321",
+      "EPFLAccredOrder": "1",
+      "description": "Chasseur de prime",
+      "description;lang-en": "Bounty hunter",
+      "ou": [
+        "Bespin",
+        "Bespin est une géante gazeuse du système stellaire du même nom."
+      ],
+      "ou;lang-en": "Bespin is a gas giant in the star system of the same name."
+    }
+  },
+  {
+    "dn": "cn=Boba Fett,ou=tatooine,ou=ep-6,ou=ot,o=epfl,c=ch",
+    "attributes": {
+      "cn": ["Boba Fett", "Fett"],
+      "sn": "Fett",
+      "givenName": "Boba",
+      "uniqueIdentifier": "670001",
+      "mail": "boba.fett@epfl.ch",
+      "objectClass": "Person",
+      "roomNumber": "Dune Sea 001",
+      "telephoneNumber": "+41 21 0000321",
+      "EPFLAccredOrder": "2",
+      "description": "Chasseur de prime",
+      "description;lang-en": "Bounty hunter",
+      "ou": [
+        "Tatooine",
+        "Tatooine est une planète désertique située dans les territoires de la bordure extérieure de la galaxie."
+      ],
+      "ou;lang-en": "Tatooine is a desert planet located in the Outer Rim territories of the galaxy."
+    }
+  },
+  {
+    "dn": "cn=Din Djarin,ou=mandalore,ou=tv-3,ou=so,o=epfl,c=ch",
+    "attributes": {
+      "cn": ["Din Djarin", "Djarin"],
+      "sn": "Djarin",
+      "givenName": "Din",
+      "uniqueIdentifier": "670003",
+      "mail": "din.djarin@epfl.ch",
+      "objectClass": "Person",
+      "roomNumber": "Sundari 231",
+      "telephoneNumber": "+41 21 0054321",
+      "EPFLAccredOrder": "1",
+      "description": "Chasseur de prime",
+      "description;lang-en": "Bounty hunter",
+      "ou": [
+        "Mandalore",
+        "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie."
+      ],
+      "ou;lang-en": "Mandalore is a planet located in the Outer Rim territories of the galaxy."
+    }
+  },
+  {
+    "dn": "cn=Din Grogu,ou=mandalore,ou=tv-3,ou=so,o=epfl,c=ch",
+    "attributes": {
+      "cn": ["Din Grogu", "Grogu"],
+      "sn": "Grogu",
+      "givenName": "Din",
+      "uniqueIdentifier": "670005",
+      "mail": "din.grogu@epfl.ch",
+      "objectClass": "Person",
+      "roomNumber": "Jedi Temple",
+      "telephoneNumber": "+41 21 0054322",
+      "EPFLAccredOrder": "1",
+      "description": "Jedi",
+      "description;lang-en": "Jedi",
+      "ou": [
+        "Coruscant",
+        "Coruscant est une planète tellurique des Mondes du Noyau entièrement urbanisée et recouvertes d'infrastructures."
+      ],
+      "ou;lang-en": "Coruscant is an ecumenopolis, collectively known as Imperial City in the Core Worlds."
+    }
+  },
+  {
+    "dn": "cn=Paz Vizsla,ou=mandalore,ou=tv-3,ou=so,o=epfl,c=ch",
+    "attributes": {
+      "cn": ["Paz Vizsla", "Vizsla"],
+      "sn": "Vizsla",
+      "givenName": "Paz",
+      "uniqueIdentifier": "670004",
+      "mail": "paz.vizsla@epfl.ch",
+      "objectClass": "Person",
+      "roomNumber": "Ronion 001",
+      "telephoneNumber": "+41 21 0654321",
+      "EPFLAccredOrder": "1",
+      "description": "Infanterie lourde",
+      "description;lang-en": "Heavy infantry",
+      "ou": [
+        "Mandalore",
+        "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie."
+      ],
+      "ou;lang-en": "Mandalore is a planet located in the Outer Rim territories of the galaxy."
+    }
+  }
+]

@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const express = require('express');
 
 const cseRouter = require('./routes/cse.route');
+const peopleRouter = require('./routes/people.route');
 const unitRouter = require('./routes/unit.route');
 const semanticRouter = require('./routes/semantic.route');
 
@@ -28,6 +29,9 @@ app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 
 // Google CSE
 app.use('/api/cse', cseRouter);
+
+// People
+app.use('/api/ldap', peopleRouter);
 
 // Unit
 app.use('/api/unit', unitRouter);

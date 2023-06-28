@@ -1,0 +1,87 @@
+[
+  {
+    "sciper": "670003",
+    "rank": 0,
+    "name": "Djarin",
+    "firstname": "Din",
+    "email": "din.djarin@epfl.ch",
+    "accreds": [
+      {
+        "phoneList": ["+41 21 0054321"],
+        "officeList": ["Sundari 231"],
+        "path": "EPFL/SO/TV-3/MANDALORE",
+        "acronym": "MANDALORE",
+        "rank": "1",
+        "position": "Chasseur de prime",
+        "name": "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie."
+      }
+    ],
+    "profile": "din.djarin"
+  },
+  {
+    "sciper": "670001",
+    "rank": 0,
+    "name": "Fett",
+    "firstname": "Boba",
+    "email": "boba.fett@epfl.ch",
+    "accreds": [
+      {
+        "phoneList": ["+41 21 0000321"],
+        "officeList": ["Cloud City 016"],
+        "path": "EPFL/OT/EP-5/BESPIN",
+        "acronym": "BESPIN",
+        "rank": "1",
+        "position": "Chasseur de prime",
+        "name": "Bespin est une géante gazeuse du système stellaire du même nom."
+      },
+      {
+        "phoneList": ["+41 21 0000321"],
+        "officeList": ["Dune Sea 001"],
+        "path": "EPFL/OT/EP-6/TATOOINE",
+        "acronym": "TATOOINE",
+        "rank": "2",
+        "position": "Chasseur de prime",
+        "name": "Tatooine est une planète désertique située dans les territoires de la bordure extérieure de la galaxie."
+      }
+    ],
+    "profile": "boba.fett"
+  },
+  {
+    "sciper": "670002",
+    "rank": 0,
+    "name": "Fett",
+    "firstname": "Jango",
+    "email": "jango.fett@epfl.ch",
+    "accreds": [
+      {
+        "phoneList": ["+41 21 0004321"],
+        "officeList": ["Base 1468"],
+        "path": "EPFL/PT/EP-2/KAMINO",
+        "acronym": "KAMINO",
+        "rank": "1",
+        "position": "Chasseur de prime",
+        "name": "Kamino est une planète aquatique située dans le secteur Abrion de la bordure extérieure de la galaxie."
+      }
+    ],
+    "profile": "jango.fett"
+  },
+  {
+    "sciper": "670004",
+    "rank": 0,
+    "name": "Vizsla",
+    "firstname": "Paz",
+    "email": "paz.vizsla@epfl.ch",
+    "accreds": [
+      {
+        "phoneList": ["+41 21 0654321"],
+        "officeList": ["Ronion 001"],
+        "path": "EPFL/SO/TV-3/MANDALORE",
+        "acronym": "MANDALORE",
+        "rank": "1",
+        "position": "Infanterie lourde",
+        "name": "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie."
+      }
+    ],
+    "profile": "paz.vizsla"
+  }
+]
