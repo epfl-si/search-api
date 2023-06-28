@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const express = require('express');
 
 const cseRouter = require('./routes/cse.route');
+const unitRouter = require('./routes/unit.route');
 const semanticRouter = require('./routes/semantic.route');
 
 const app = express();
@@ -27,6 +28,9 @@ app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 
 // Google CSE
 app.use('/api/cse', cseRouter);
+
+// Unit
+app.use('/api/unit', unitRouter);
 
 // EPFL Graph
 app.use('/api/graphsearch', semanticRouter);
