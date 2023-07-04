@@ -29,7 +29,7 @@ describe('Test LDAP Service', () => {
     console.error = originalConsoleError;
   });
 
-  test('It should return an error on bad searchrequest', async () => {
+  test('It should return an error on bad search request', async () => {
     const emitter = new EventEmitter();
     mockSearchFn.mockImplementationOnce(
       (dn, opts, searchCallbackFn) => searchCallbackFn(false, emitter)
@@ -53,7 +53,7 @@ describe('Test LDAP Service', () => {
     }
   });
 
-  test('It should ', async () => {
+  test('It should return an error on timeout search request', async () => {
     const emitter = new EventEmitter();
     mockSearchFn.mockImplementationOnce(
       (dn, opts, searchCallbackFn) => searchCallbackFn(false, emitter)
