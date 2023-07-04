@@ -1,0 +1,20 @@
+[
+  {
+    "sigle": "OT",
+    "id_unite": 10001,
+    "libelle": "Trilogie originale",
+    "libelle_en": "Original trilogy",
+    "hierarchie": "EPFL OT",
+    "resp_sciper": "202020",
+    "resp_nom": "Lucas",
+    "resp_nom_usuel": null,
+    "resp_prenom": "Gerge Walton",
+    "resp_prenom_usuel": "George",
+    "url": "https://en.wikipedia.org/wiki/Star_Wars_original_trilogy",
+    "faxes": "10121,0216910122",
+    "adresse": "EPFL OT $ Original trilogy Square $ Station 15 $ CH-1015 Lausanne $  $ ",
+    "cmpl_type": "F",
+    "ghost": null,
+    "has_accreds": null
+  }
+]

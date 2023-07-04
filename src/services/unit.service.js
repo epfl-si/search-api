@@ -5,29 +5,28 @@ async function get (params) {
   const q = params.q;
   const acro = params.acro;
   if (acro) {
-    return await getUnitFullDetails(acro, lang);
+    return await getUnit(acro, lang);
   }
 
-  const unitList = await searchUnit(q, lang);
+  const unitList = await searchUnits(q, lang);
 
   if (unitList.length === 0) {
     return unitList;
   } else if (unitList.length === 1) {
-    return await getUnitFullDetails(unitList[0].acronym, lang);
+    return await getUnit(unitList[0].acronym, lang);
   } else {
     return unitList;
   }
 }
 
-async function searchUnit (q, lang) {
+async function searchUnits (q, lang) {
   const query = 'SELECT sigle, libelle, libelle_en, hierarchie ' +
                 'FROM Unites_v2 WHERE cmpl_type <> ? AND ' +
                 '(sigle like ? OR libelle like ? OR libelle_en like ?)';
   const values = ['Z', '%' + q + '%', '%' + q + '%', '%' + q + '%'];
 
   try {
-    const results = await cadidbService.sendQuery(query, values);
-    console.log('Pourquoi ça print???');
+    const results = await cadidbService.sendQuery(query, values, 'searchUnits');
     const formattedResults = results.map((dict) => {
       const modifiedDict = {
         acronym: dict.sigle,
@@ -42,9 +41,8 @@ async function searchUnit (q, lang) {
   }
 }
 
-// Get unit full details
-async function getUnitFullDetails (acro, lang) {
-  const query = 'SELECT sigle, id_unite, libelle, hierarchie, libelle_en, ' +
+async function getUnit (acro, lang) {
+  const query = 'SELECT sigle, id_unite, libelle, libelle_en, hierarchie, ' +
                 'resp_sciper, resp_nom, resp_nom_usuel, resp_prenom, ' +
                 'resp_prenom_usuel, url, faxes, adresse, cmpl_type, ghost, ' +
                 'has_accreds ' +
@@ -53,7 +51,7 @@ async function getUnitFullDetails (acro, lang) {
   const values = [acro, 'Z'];
 
   try {
-    const results = await cadidbService.sendQuery(query, values);
+    const results = await cadidbService.sendQuery(query, values, 'getUnit');
     if (results.length !== 1) {
       return;
     }
@@ -114,11 +112,11 @@ async function getUnitPath (hierarchy, lang) {
   const values = [];
 
   try {
-    const results = await cadidbService.sendQuery(query, values);
+    const results = await cadidbService.sendQuery(query, values, 'getUnitPath');
     const formattedResults = results.map((dict) => {
       const modifiedDict = {
         acronym: dict.sigle,
-        name: lang === 'en' ? dict.libelle_en || dict.libelle : dict.libelle
+        name: lang === 'en' ? dict.libelle_en : dict.libelle
       };
       return modifiedDict;
     });
@@ -136,11 +134,11 @@ async function getSubunits (unitId, lang) {
   const values = [unitId, 'Z'];
 
   try {
-    const results = await cadidbService.sendQuery(query, values);
+    const results = await cadidbService.sendQuery(query, values, 'getSubunits');
     const formattedResults = results.map((dict) => {
       const modifiedDict = {
         acronym: dict.sigle,
-        name: lang === 'en' ? dict.libelle_en || dict.libelle : dict.libelle
+        name: lang === 'en' ? dict.libelle_en : dict.libelle
       };
       return modifiedDict;
     });

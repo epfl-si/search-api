@@ -1,0 +1,43 @@
+{
+  "code": 10001,
+  "acronym": "OT",
+  "name": "Original trilogy",
+  "unitPath": "EPFL OT",
+  "path": [
+    {
+      "acronym": "EPFL",
+      "name": "Ecole polytechnique fédérale de Lausanne"
+    },
+    {
+      "acronym": "OT",
+      "name": "Original trilogy"
+    }
+  ],
+  "terminal": null,
+  "ghost": null,
+  "address": [
+    "EPFL OT",
+    "Original trilogy Square",
+    "Station 15",
+    "CH-1015 Lausanne"
+  ],
+  "head": {
+    "sciper": "202020",
+    "name": "Lucas",
+    "firstname": "George",
+    "email": "<EMAIL>",
+    "profile": "<EMAIL_PREFIX>"
+  },
+  "faxes": ["+41 21 6910121", "+41 21 6910122"],
+  "url": "https://en.wikipedia.org/wiki/Star_Wars_original_trilogy",
+  "subunits": [
+    {
+      "acronym": "EP-5",
+      "name": "Episode V - The Empire Strikes Back"
+    },
+    {
+      "acronym": "EP-6",
+      "name": "Episode VI - Return of the Jedi"
+    }
+  ]
+}

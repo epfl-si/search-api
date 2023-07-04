@@ -1,0 +1,20 @@
+[
+  {
+    "sigle": "KAMINO",
+    "libelle": "Kamino est une planète aquatique située dans le secteur Abrion de la bordure extérieure de la galaxie.",
+    "libelle_en": "Kamino is an aquatic planet located in the Abrion sector of the galaxy's Outer Rim.",
+    "hierarchie": "EPFL PT EP-2 KAMINO"
+  },
+  {
+    "sigle": "BESPIN",
+    "libelle": "Bespin est une géante gazeuse du système stellaire du même nom.",
+    "libelle_en": "Bespin is a gas giant in the star system of the same name.",
+    "hierarchie": "EPFL OT EP-5 BESPIN"
+  },
+  {
+    "sigle": "TATOOINE",
+    "libelle": "Tatooine est une planète désertique située dans les territoires de la bordure extérieure de la galaxie.",
+    "libelle_en": "Tatooine is a desert planet located in the Outer Rim territories of the galaxy.",
+    "hierarchie": "EPFL OT EP-6 TATOOINE"
+  }
+]

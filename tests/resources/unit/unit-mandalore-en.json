@@ -1,0 +1,39 @@
+{
+  "code": 10111,
+  "acronym": "MANDALORE",
+  "name": "Mandalore is a planet located in the Outer Rim territories of the galaxy.",
+  "unitPath": "EPFL SO TV-3 MANDALORE",
+  "path": [
+    {
+      "acronym": "EPFL",
+      "name": "Ecole polytechnique fédérale de Lausanne"
+    },
+    {
+      "acronym": "SO",
+      "name": "Spin-off"
+    },
+    {
+      "acronym": "TV-3",
+      "name": "TV Series 3"
+    },
+    {
+      "acronym": "MANDALORE",
+      "name": "Mandalore is a planet located in the Outer Rim territories of the galaxy."
+    }
+  ],
+  "terminal": "1",
+  "ghost": null,
+  "address": [
+    "EPFL SO TV-3 MANDALORE",
+    "Outer Rim",
+    "Station 12",
+    "CH-1015 Lausanne"
+  ],
+  "head": {
+    "sciper": "670005",
+    "name": "Grogu",
+    "firstname": "Din",
+    "email": "<EMAIL>",
+    "profile": "<EMAIL_PREFIX>"
+  }
+}
