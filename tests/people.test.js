@@ -65,9 +65,30 @@ describe('Test API People ("/api/ldap")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
-  test('It should find firstname Django', async () => {
+  test('It should find firstname Jango', async () => {
     const jsonResult = require('./resources/people/json-name-din-en.json');
     const response = await request(app).get('/api/ldap?q=Din&hl=en');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find name Fet (prefix)', async () => {
+    const jsonResult = require('./resources/people/json-name-fett-fr.json');
+    const response = await request(app).get('/api/ldap?q=Fet');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find name ett (suffix)', async () => {
+    const jsonResult = require('./resources/people/json-name-fett-fr.json');
+    const response = await request(app).get('/api/ldap?q=ett');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find Fett Boba', async () => {
+    const jsonResult = require('./resources/people/json-sciper-670001-en.json');
+    const response = await request(app).get('/api/ldap?q=Fett Boba&hl=en');
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });

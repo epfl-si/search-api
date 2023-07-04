@@ -25,9 +25,17 @@ function getPersonByPhone (number) {
 }
 
 function getPersonByName (name) {
-  return getPerson(
-    `(|(sn=${name}*)(sn=*${name})(givenName=${name}*)(givenName=*${name}))`
-  );
+  const term = name.split(/\s+/);
+
+  if (term.length === 2) {
+    const filter = `(displayName=*${term.join('*')}*)`;
+    term.reverse();
+    return getPerson(
+      `(|${filter}(displayName=*${term.join('*')}*))`
+    );
+  } else {
+    return getPerson(`(|(displayName=*${term[0]}*))`);
+  }
 }
 
 module.exports = {

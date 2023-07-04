@@ -13,11 +13,7 @@ function getSciper (entry) {
 
 function searchAll (base, options) {
   return new Promise((resolve, reject) => {
-    client.search(base, options, (err, res) => {
-      if (err) {
-        console.error('[error] ' + err.message);
-        reject(err);
-      }
+    client.search(base, options, (x, res) => {
       const personsBySciper = {};
 
       res.on('searchEntry', (entry) => {
