@@ -32,11 +32,18 @@ function sortAccreds (obj) {
 
 function score (a, q) {
   let points = 0;
-  if (a.name.toLowerCase() === q.toLowerCase()) {
-    points += 1;
-  }
-  if (a.firstname.toLowerCase() === q.toLowerCase()) {
-    points += 1;
+  const attributes = ['name', 'firstname'];
+  const terms = q.split(/\s+/);
+  for (const term of terms) {
+    for (const attr of attributes) {
+      if (a[attr].toLowerCase() === term.toLowerCase()) {
+        points += 3;
+      } else if (a[attr].toLowerCase().startsWith(term.toLowerCase())) {
+        points += 2;
+      } else if (a[attr].toLowerCase().endsWith(term.toLowerCase())) {
+        points += 1;
+      }
+    }
   }
   return points;
 }
