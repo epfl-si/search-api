@@ -43,10 +43,7 @@ describe('Test LDAP Service', () => {
 
     expect.assertions(2);
     try {
-      await ldapService.searchAll(
-        '',
-        { filter: '&(objectClass=Person)', scope: 'sub' }
-      );
+      await ldapService.searchAll();
     } catch (error) {
       expect(error).toBeInstanceOf(Error);
       expect(error.message).toEqual('Bad search request');
@@ -67,10 +64,7 @@ describe('Test LDAP Service', () => {
 
     expect.assertions(2);
     try {
-      await ldapService.searchAll(
-        '',
-        { filter: '&(objectClass=Person)', scope: 'sub' }
-      );
+      await ldapService.searchAll();
     } catch (error) {
       expect(error).toBeInstanceOf(Error);
       expect(error.message).toEqual('Timeout search request');
