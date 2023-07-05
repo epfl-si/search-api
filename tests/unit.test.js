@@ -14,6 +14,22 @@ jest.mock('mysql2/promise', () => {
 });
 
 describe('Test API Unit ("/api/unit")', () => {
+  let testOutput = [];
+  const originalConsoleError = console.error;
+  const testConsoleError = (output) => {
+    testOutput.push(output);
+  };
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    console.error = testConsoleError;
+    testOutput = [];
+  });
+
+  afterEach(() => {
+    console.error = originalConsoleError;
+  });
+
   test('It should return nothing', async () => {
     const mockConnection = {
       query: jest.fn().mockResolvedValue([[]]),
@@ -21,9 +37,13 @@ describe('Test API Unit ("/api/unit")', () => {
     };
     mysql.createPool().getConnection.mockResolvedValue(mockConnection);
 
-    const response = await request(app).get('/api/unit?q=drebin&hl=fr');
+    let response = await request(app).get('/api/unit?q=drebin&hl=fr');
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual([]);
+
+    response = await request(app).get('/api/unit?acro=mandalo&hl=fr');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toBe('');
   });
 
   test('It should return a unit list', async () => {
@@ -104,7 +124,6 @@ describe('Test API Unit ("/api/unit")', () => {
             break;
           case 'getSubunits':
             jsonData = require('./resources/cadidb/getSubunits-ot.json');
-            console.log(jsonData);
         }
         return Promise.resolve([jsonData]);
       }),
@@ -121,5 +140,22 @@ describe('Test API Unit ("/api/unit")', () => {
     response = await request(app).get('/api/unit?q=ot&hl=fr');
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should return a error with a status code 400', async () => {
+    const mockConnection = {
+      query: jest.fn().mockImplementation((query, values) => {
+        const jsonData = require('./resources/cadidb/searchUnits-badJSON.json');
+        return Promise.resolve([jsonData]);
+      }),
+      release: jest.fn()
+    };
+    mysql.createPool().getConnection.mockResolvedValue(mockConnection);
+
+    const response = await request(app).get('/api/unit?q=xxx&hl=en');
+    expect(response.statusCode).toBe(400);
+    expect(response.text).toMatch('Oops, something went wrong');
+    expect(testOutput.length).toBe(1);
+    expect(testOutput[0]).toMatch('error');
   });
 });

@@ -25,20 +25,16 @@ async function searchUnits (q, lang) {
                 '(sigle like ? OR libelle like ? OR libelle_en like ?)';
   const values = ['Z', '%' + q + '%', '%' + q + '%', '%' + q + '%'];
 
-  try {
-    const results = await cadidbService.sendQuery(query, values, 'searchUnits');
-    const formattedResults = results.map((dict) => {
-      const modifiedDict = {
-        acronym: dict.sigle,
-        path: dict.hierarchie.split(' '),
-        name: lang === 'en' ? dict.libelle_en : dict.libelle
-      };
-      return modifiedDict;
-    });
-    return formattedResults;
-  } catch (err) {
-    console.error('Error: ', err);
-  }
+  const results = await cadidbService.sendQuery(query, values, 'searchUnits');
+  const formattedResults = results.map((dict) => {
+    const modifiedDict = {
+      acronym: dict.sigle,
+      path: dict.hierarchie.split(' '),
+      name: lang === 'en' ? dict.libelle_en : dict.libelle
+    };
+    return modifiedDict;
+  });
+  return formattedResults;
 }
 
 async function getUnit (acro, lang) {
@@ -50,57 +46,53 @@ async function getUnit (acro, lang) {
                 'WHERE sigle = ? AND cmpl_type <> ?';
   const values = [acro, 'Z'];
 
-  try {
-    const results = await cadidbService.sendQuery(query, values, 'getUnit');
-    if (results.length !== 1) {
-      return;
-    }
-    const dict = results[0];
-    const unitPath = await getUnitPath(dict.hierarchie, lang);
-    const unitFullDetails = {
-      code: dict.id_unite,
-      acronym: dict.sigle,
-      name: lang === 'en' ? dict.libelle_en : dict.libelle,
-      unitPath: dict.hierarchie,
-      path: unitPath,
-      terminal: dict.has_accreds,
-      ghost: dict.ghost,
-      address: dict.adresse.split('$').map((value) => value.trim())
-        .filter((value) => value !== ''),
-      head: {
-        sciper: dict.resp_sciper,
-        name: dict.resp_nom_usuel || dict.resp_nom,
-        firstname: dict.resp_prenom_usuel || dict.resp_prenom,
-        email: '<EMAIL>', // TODO: Get email from ldap
-        profile: '<EMAIL_PREFIX>' // TODO: Build from email over
-      }
-    };
-    if (dict.url) {
-      unitFullDetails.url = dict.url;
-    }
-    if (dict.has_accreds) {
-      // TODO: Get people from ldap
-
-    } else {
-      unitFullDetails.subunits = await getSubunits(dict.id_unite, lang);
-    }
-    if (dict.faxes) {
-      unitFullDetails.faxes = dict.faxes.split(',').map((fax) => {
-        const trimmedFax = fax.trim();
-        if (trimmedFax.startsWith('0')) {
-          return trimmedFax.replace(/^0(\d{2})(.*)/, '+41 $1 $2');
-        } else {
-          return '+41 21 69' + trimmedFax;
-        }
-      });
-    }
-
-    // TODO: if req.get('X-EPFL-Internal') === 'TRUE' → add `adminData`
-
-    return unitFullDetails;
-  } catch (err) {
-    console.error('Error: ', err);
+  const results = await cadidbService.sendQuery(query, values, 'getUnit');
+  if (results.length !== 1) {
+    return;
   }
+  const dict = results[0];
+  const unitPath = await getUnitPath(dict.hierarchie, lang);
+  const unitFullDetails = {
+    code: dict.id_unite,
+    acronym: dict.sigle,
+    name: lang === 'en' ? dict.libelle_en : dict.libelle,
+    unitPath: dict.hierarchie,
+    path: unitPath,
+    terminal: dict.has_accreds,
+    ghost: dict.ghost,
+    address: dict.adresse.split('$').map((value) => value.trim())
+      .filter((value) => value !== ''),
+    head: {
+      sciper: dict.resp_sciper,
+      name: dict.resp_nom_usuel || dict.resp_nom,
+      firstname: dict.resp_prenom_usuel || dict.resp_prenom,
+      email: '<EMAIL>', // TODO: Get email from ldap
+      profile: '<EMAIL_PREFIX>' // TODO: Build from email over
+    }
+  };
+  if (dict.url) {
+    unitFullDetails.url = dict.url;
+  }
+  if (dict.has_accreds) {
+    // TODO: Get people from ldap
+
+  } else {
+    unitFullDetails.subunits = await getSubunits(dict.id_unite, lang);
+  }
+  if (dict.faxes) {
+    unitFullDetails.faxes = dict.faxes.split(',').map((fax) => {
+      const trimmedFax = fax.trim();
+      if (trimmedFax.startsWith('0')) {
+        return trimmedFax.replace(/^0(\d{2})(.*)/, '+41 $1 $2');
+      } else {
+        return '+41 21 69' + trimmedFax;
+      }
+    });
+  }
+
+  // TODO: if req.get('X-EPFL-Internal') === 'TRUE' → add `adminData`
+
+  return unitFullDetails;
 }
 
 // Get unit path (acronym + name)
@@ -111,19 +103,15 @@ async function getUnitPath (hierarchy, lang) {
                 `WHERE sigle ${inHierarchyClause}`;
   const values = [];
 
-  try {
-    const results = await cadidbService.sendQuery(query, values, 'getUnitPath');
-    const formattedResults = results.map((dict) => {
-      const modifiedDict = {
-        acronym: dict.sigle,
-        name: lang === 'en' ? dict.libelle_en : dict.libelle
-      };
-      return modifiedDict;
-    });
-    return formattedResults;
-  } catch (err) {
-    console.error('Error: ', err);
-  }
+  const results = await cadidbService.sendQuery(query, values, 'getUnitPath');
+  const formattedResults = results.map((dict) => {
+    const modifiedDict = {
+      acronym: dict.sigle,
+      name: lang === 'en' ? dict.libelle_en : dict.libelle
+    };
+    return modifiedDict;
+  });
+  return formattedResults;
 }
 
 // Get Subunit(s) (acronym + name)
@@ -133,19 +121,15 @@ async function getSubunits (unitId, lang) {
                 'WHERE id_parent = ? AND cmpl_type <> ?';
   const values = [unitId, 'Z'];
 
-  try {
-    const results = await cadidbService.sendQuery(query, values, 'getSubunits');
-    const formattedResults = results.map((dict) => {
-      const modifiedDict = {
-        acronym: dict.sigle,
-        name: lang === 'en' ? dict.libelle_en : dict.libelle
-      };
-      return modifiedDict;
-    });
-    return formattedResults;
-  } catch (err) {
-    console.error('Error: ', err);
-  }
+  const results = await cadidbService.sendQuery(query, values, 'getSubunits');
+  const formattedResults = results.map((dict) => {
+    const modifiedDict = {
+      acronym: dict.sigle,
+      name: lang === 'en' ? dict.libelle_en : dict.libelle
+    };
+    return modifiedDict;
+  });
+  return formattedResults;
 }
 
 module.exports = {
