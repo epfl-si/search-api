@@ -3,3 +3,6 @@ coverage
 
 # Ansible
 ansible/ansible-deps-cache
+
+# Ignore bad JSON for jest test
+tests/resources/cadidb/searchUnits-badJSON.json
