@@ -46,6 +46,26 @@
 - [/api/ldap?q=278890][ldap-1]
 - [/api/ldap?q=nicolas.borboen@epfl.ch&hl=en][ldap-2]
 
+## Unit
+
+### Endpoint
+
+`GET /api/unit`
+
+### Parameters
+
+| Name   | Type     | Comments                                                       |
+| ------ | -------- | -------------------------------------------------------------- |
+| `q`    | `String` | Query                                                          |
+| `acro` | `String` | Specifies an exact unit acronym. If specified, `q` is ignored. |
+| `hl`   | `String` | Sets the user interface language.                              |
+
+### Examples
+
+- [/api/unit?q=fsd][unit-1]
+- [/api/unit?q=vpo&hl=en][unit-2]
+- [/api/unit?acro=vpo][unit-3]
+
 ## EPFL Graph
 
 ### Endpoint
@@ -83,5 +103,8 @@ See [Contributing](CONTRIBUTING.md).
 [cse-3]: http://127.0.0.1:5555/api/cse?q=math&hl=en&sort=date&searchType=image
 [ldap-1]: http://127.0.0.1:5555/api/ldap?q=278890
 [ldap-2]: http://127.0.0.1:5555/api/ldap?q=nicolas.borboen@epfl.ch&hl=en
+[unit-1]: http://127.0.0.1:5555/api/unit?q=fsd
+[unit-2]: http://127.0.0.1:5555/api/unit?q=vpo&hl=en
+[unit-3]: http://127.0.0.1:5555/api/unit?acro=vpo
 [graphsearch-1]: http://127.0.0.1:5555/api/graphsearch?q=math
 [graphsearch-2]: http://127.0.0.1:5555/api/graphsearch?q=vetterli
