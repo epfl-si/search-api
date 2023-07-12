@@ -57,6 +57,42 @@ function sortPersons (obj, q) {
 }
 
 /**
+ * Build the LDAP query to search persons by name.
+ *
+ * @example
+ * const ldapUtil = require('../utils/ldap.util');
+ * const array = [ [ 'Jango' ]];
+ * ldapUtil.buildLdapQueryForPerson(array);
+ * // => '(|(displayName=*Jango*)))'
+ *
+ * @example
+ * const array = [ [ 'Fett', 'Boba' ], [ 'Boba', 'Fett' ] ];
+ * ldapUtil.buildLdapQueryForPerson(array);
+ * // => '(|(displayName=*Fett*Boba*)(displayName=*Boba*Fett*))'
+ *
+ * @example
+ * const array = [
+ *  [ 'Bo', 'Katan', 'Kryze' ], [ 'Bo', 'Kryze', 'Katan' ],
+ *  [ 'Katan', 'Bo', 'Kryze' ], [ 'Katan', 'Kryze', 'Bo' ],
+ *  [ 'Kryze', 'Bo', 'Katan' ], [ 'Kryze', 'Katan', 'Bo' ]
+ * ];
+ * ldapUtil.buildLdapQueryForPerson(array);
+ * // => '(|(displayName=*Bo*Katan*Kryze*)(displayName=*Bo*Kryze*Katan*) \
+ *          (displayName=*Katan*Bo*Kryze*)(displayName=*Katan*Kryze*Bo*) \
+ *          (displayName=*Kryze*Bo*Katan*)(displayName=*Kryze*Katan*Bo*))'
+ *
+ * @param {array} array An array of array with terms permutations.
+ * @returns {string} Return the LDAP query.
+ */
+function buildLdapQueryForPerson (array) {
+  let ldapQuery = '';
+  for (const terms of array) {
+    ldapQuery += `(displayName=*${terms.join('*')}*)`;
+  }
+  return `(|${ldapQuery})`;
+}
+
+/**
  * Transform dn to acronym (unit).
  *
  * @example
@@ -165,6 +201,7 @@ function ldap2api (ldapResults, q, hl) {
 }
 
 module.exports = {
+  buildLdapQueryForPerson,
   dn2acronym,
   dn2path,
   getProfile,

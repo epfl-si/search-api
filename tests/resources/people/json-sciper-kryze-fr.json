@@ -1,0 +1,21 @@
+[
+  {
+    "sciper": "670006",
+    "rank": 0,
+    "name": "Kryze",
+    "firstname": "Bo-Katan",
+    "profile": "bo-katan.kryze",
+    "email": "bo-katan.kryze@epfl.ch",
+    "accreds": [
+      {
+        "phoneList": ["+41 21 0054323"],
+        "officeList": ["Castle Kryze"],
+        "path": "EPFL/SO/TV-4/KALEVALA",
+        "rank": "1",
+        "position": "Princesse",
+        "acronym": "KALEVALA",
+        "name": "Kalevala est une planète du système Mandalore située dans les territoires de la bordure extérieure."
+      }
+    ]
+  }
+]
