@@ -65,7 +65,7 @@ describe('Test API People ("/api/ldap")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
-  test('It should find firstname Jango', async () => {
+  test('It should find firstname Din', async () => {
     const jsonResult = require('./resources/people/json-name-din-en.json');
     const response = await request(app).get('/api/ldap?q=Din&hl=en');
     expect(response.statusCode).toBe(200);
@@ -89,6 +89,13 @@ describe('Test API People ("/api/ldap")', () => {
   test('It should find Fett Boba', async () => {
     const jsonResult = require('./resources/people/json-sciper-670001-en.json');
     const response = await request(app).get('/api/ldap?q=Fett Boba&hl=en');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find Bo Katan Kryze', async () => {
+    const jsonResult = require('./resources/people/json-sciper-kryze-fr.json');
+    const response = await request(app).get('/api/ldap?q=Bo Katan Kryze');
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
