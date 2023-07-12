@@ -1,3 +1,5 @@
+const util = require('../utils/helper.util');
+const ldapUtil = require('../utils/ldap.util');
 const ldapConfig = require('../configs/ldap.config');
 const ldapService = require('../services/ldap.service');
 
@@ -25,17 +27,9 @@ function getPersonByPhone (number) {
 }
 
 function getPersonByName (name) {
-  const term = name.split(/\s+/);
-
-  if (term.length === 2) {
-    const filter = `(displayName=*${term.join('*')}*)`;
-    term.reverse();
-    return getPerson(
-      `(|${filter}(displayName=*${term.join('*')}*))`
-    );
-  } else {
-    return getPerson(`(|(displayName=*${term[0]}*))`);
-  }
+  const terms = name.split(/\s+/);
+  const ldapQuery = ldapUtil.buildLdapQueryForPerson(util.permutations(terms));
+  return getPerson(ldapQuery);
 }
 
 module.exports = {
