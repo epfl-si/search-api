@@ -39,11 +39,11 @@ describe('Test API Unit ("/api/unit")', () => {
 
     let response = await request(app).get('/api/unit?q=drebin&hl=fr');
     expect(response.statusCode).toBe(200);
-    expect(JSON.parse(response.text)).toStrictEqual([]);
+    expect(JSON.parse(response.text)).toStrictEqual({});
 
-    response = await request(app).get('/api/unit?acro=mandalo&hl=fr');
+    response = await request(app).get('/api/unit?acro=xxx&hl=fr');
     expect(response.statusCode).toBe(200);
-    expect(response.text).toBe('');
+    expect(JSON.parse(response.text)).toStrictEqual({});
   });
 
   test('It should return a unit list', async () => {
