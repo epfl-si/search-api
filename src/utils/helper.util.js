@@ -5,6 +5,34 @@
  */
 
 /**
+ * Generates all permutations of an array's elements.
+ *
+ * @example
+ * const util = require('../utils/helper.util');
+ * util.permutations([ 'Bo', 'Katan', 'Kryze' ])
+ * // => [[ 'Bo', 'Katan', 'Kryze' ], [ 'Bo', 'Kryze', 'Katan' ],
+ *        [ 'Katan', 'Bo', 'Kryze' ], [ 'Katan', 'Kryze', 'Bo' ],
+ *        [ 'Kryze', 'Bo', 'Katan' ], [ 'Kryze', 'Katan', 'Bo' ]]
+ *
+ * @param {array} arr An array of terms.
+ * @returns {array<array>} Return the array of array with all permutations.
+ */
+function permutations (arr) {
+  if (arr.length <= 2) {
+    return arr.length === 2 ? [arr, [arr[1], arr[0]]] : [arr];
+  }
+  return arr.reduce(
+    (acc, item, i) =>
+      acc.concat(
+        permutations([...arr.slice(0, i), ...arr.slice(i + 1)]).map(
+          val => [item, ...val]
+        )
+      ),
+    []
+  );
+};
+
+/**
  * Validate environment variables.
  *
  * @example
@@ -23,21 +51,6 @@ function validateEnv (key) {
   }
   return process.env[key];
 }
-
-function permutations (arr) {
-  if (arr.length <= 2) {
-    return arr.length === 2 ? [arr, [arr[1], arr[0]]] : [arr];
-  }
-  return arr.reduce(
-    (acc, item, i) =>
-      acc.concat(
-        permutations([...arr.slice(0, i), ...arr.slice(i + 1)]).map(
-          val => [item, ...val]
-        )
-      ),
-    []
-  );
-};
 
 module.exports = {
   permutations,
