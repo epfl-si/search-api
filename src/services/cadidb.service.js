@@ -1,19 +1,18 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 const cadidbConfig = require('../configs/cadidb.config');
 
-// Create the pool
 const pool = mysql.createPool(cadidbConfig.db);
-// Get a Promise wrapped instance of the pool
-const promisePool = pool.promise();
 
-async function sendQuery (query, values) {
+async function sendQuery (query, values, referrer) {
+  let connection;
   try {
-    // Perform the database query
-    const [rows] = await promisePool.query(query, values);
+    connection = await pool.getConnection();
+    const [rows] = await connection.query(query, values, referrer);
     return rows;
-  } catch (err) {
-    console.error('Error executing query', err);
-    return err;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
   }
 }
 

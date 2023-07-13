@@ -6,6 +6,7 @@ const express = require('express');
 
 const cseRouter = require('./routes/cse.route');
 const peopleRouter = require('./routes/people.route');
+const unitRouter = require('./routes/unit.route');
 const semanticRouter = require('./routes/semantic.route');
 
 const app = express();
@@ -31,6 +32,9 @@ app.use('/api/cse', cseRouter);
 
 // People
 app.use('/api/ldap', peopleRouter);
+
+// Unit
+app.use('/api/unit', unitRouter);
 
 // EPFL Graph
 app.use('/api/graphsearch', semanticRouter);

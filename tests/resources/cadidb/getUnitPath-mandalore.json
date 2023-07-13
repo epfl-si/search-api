@@ -1,0 +1,22 @@
+[
+  {
+    "sigle": "EPFL",
+    "libelle": "Ecole polytechnique fédérale de Lausanne",
+    "libelle_en": "Ecole polytechnique fédérale de Lausanne"
+  },
+  {
+    "sigle": "SO",
+    "libelle": "Dérivé",
+    "libelle_en": "Spin-off"
+  },
+  {
+    "sigle": "TV-3",
+    "libelle": "Série TV 3",
+    "libelle_en": "TV Series 3"
+  },
+  {
+    "sigle": "MANDALORE",
+    "libelle": "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie.",
+    "libelle_en": "Mandalore is a planet located in the Outer Rim territories of the galaxy."
+  }
+]
