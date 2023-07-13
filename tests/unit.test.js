@@ -30,6 +30,15 @@ describe('Test API Unit ("/api/unit")', () => {
     console.error = originalConsoleError;
   });
 
+  test('It should return an error without Cadi DB connection', async () => {
+    // Do not mock anything in this test.
+    const response = await request(app).get('/api/unit?q=zzz');
+    expect(response.statusCode).toBe(400);
+    expect(response.text).toMatch('Oops, something went wrong');
+    expect(testOutput.length).toBe(1);
+    expect(testOutput[0]).toMatch('error');
+  });
+
   test('It should return nothing', async () => {
     const mockConnection = {
       query: jest.fn().mockResolvedValue([[]]),
