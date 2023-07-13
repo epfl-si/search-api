@@ -130,5 +130,27 @@
       ],
       "ou;lang-en": "Mandalore is a planet located in the Outer Rim territories of the galaxy."
     }
+  },
+  {
+    "dn": "cn=Bo-Katan Kryze,ou=kalevala,ou=tv-4,ou=so,o=epfl,c=ch",
+    "attributes": {
+      "cn": ["Bo-Katan Kryze", "Kryze"],
+      "sn": "Kryze",
+      "givenName": "Bo-Katan",
+      "displayName": "Bo-Katan Kryze",
+      "uniqueIdentifier": "670006",
+      "mail": "bo-katan.kryze@epfl.ch",
+      "objectClass": "Person",
+      "roomNumber": "Castle Kryze",
+      "telephoneNumber": "+41 21 0054323",
+      "EPFLAccredOrder": "1",
+      "description": "Princesse",
+      "description;lang-en": "Princess",
+      "ou": [
+        "Kalevala",
+        "Kalevala est une planète du système Mandalore située dans les territoires de la bordure extérieure."
+      ],
+      "ou;lang-en": "Kalevala is a planet in the Mandalore system located in the Outer Rim territories."
+    }
   }
 ]
