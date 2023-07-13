@@ -94,7 +94,7 @@ describe('Test API People ("/api/ldap")', () => {
   });
 
   test('It should find Bo Katan Kryze', async () => {
-    const jsonResult = require('./resources/people/json-sciper-kryze-fr.json');
+    const jsonResult = require('./resources/people/json-name-kryze-fr.json');
     const response = await request(app).get('/api/ldap?q=Bo Katan Kryze');
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
