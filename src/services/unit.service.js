@@ -61,15 +61,17 @@ async function getUnit (acro, lang) {
     terminal: dict.has_accreds,
     ghost: dict.ghost,
     address: dict.adresse.split('$').map((value) => value.trim())
-      .filter((value) => value !== ''),
-    head: {
+      .filter((value) => value !== '')
+  };
+  if (dict.resp_sciper) {
+    unitFullDetails.head = {
       sciper: dict.resp_sciper,
       name: dict.resp_nom_usuel || dict.resp_nom,
       firstname: dict.resp_prenom_usuel || dict.resp_prenom,
       email: '<EMAIL>', // TODO: Get email from ldap
       profile: '<EMAIL_PREFIX>' // TODO: Build from email over
-    }
-  };
+    };
+  }
   if (dict.url) {
     unitFullDetails.url = dict.url;
   }
