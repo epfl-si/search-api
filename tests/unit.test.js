@@ -151,12 +151,9 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
-  test('It should return a error with a status code 400', async () => {
+  test('It should return an error with a status code 400', async () => {
     const mockConnection = {
-      query: jest.fn().mockImplementation((query, values) => {
-        const jsonData = require('./resources/cadidb/searchUnits-badJSON.json');
-        return Promise.resolve([jsonData]);
-      }),
+      query: jest.fn().mockRejectedValue(),
       release: jest.fn()
     };
     mysql.createPool().getConnection.mockResolvedValue(mockConnection);
