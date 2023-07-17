@@ -11,7 +11,7 @@ async function get (params) {
   const unitList = await searchUnits(q, lang);
 
   if (unitList.length === 0) {
-    return unitList;
+    return {};
   } else if (unitList.length === 1) {
     return await getUnit(unitList[0].acronym, lang);
   } else {
@@ -48,7 +48,7 @@ async function getUnit (acro, lang) {
 
   const results = await cadidbService.sendQuery(query, values, 'getUnit');
   if (results.length !== 1) {
-    return;
+    return {};
   }
   const dict = results[0];
   const unitPath = await getUnitPath(dict.hierarchie, lang);
