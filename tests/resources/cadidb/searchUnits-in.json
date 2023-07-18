@@ -7,14 +7,14 @@
   },
   {
     "sigle": "BESPIN",
-    "libelle": "Bespin est une géante gazeuse du système stellaire du même nom.",
+    "libelle": "",
     "libelle_en": "Bespin is a gas giant in the star system of the same name.",
     "hierarchie": "EPFL OT EP-5 BESPIN"
   },
   {
     "sigle": "TATOOINE",
     "libelle": "Tatooine est une planète désertique située dans les territoires de la bordure extérieure de la galaxie.",
-    "libelle_en": "Tatooine is a desert planet located in the Outer Rim territories of the galaxy.",
+    "libelle_en": "",
     "hierarchie": "EPFL OT EP-6 TATOOINE"
   }
 ]

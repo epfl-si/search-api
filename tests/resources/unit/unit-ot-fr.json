@@ -1,7 +1,7 @@
 {
   "code": 10001,
   "acronym": "OT",
-  "name": "Trilogie originale",
+  "name": "Original trilogy",
   "unitPath": "EPFL OT",
   "path": [
     {
@@ -10,7 +10,7 @@
     },
     {
       "acronym": "OT",
-      "name": "Trilogie originale"
+      "name": "Original trilogy"
     }
   ],
   "terminal": null,
@@ -26,7 +26,7 @@
   "subunits": [
     {
       "acronym": "EP-5",
-      "name": "Episode V - L'Empire contre-attaque"
+      "name": "Episode V - The Empire Strikes Back"
     },
     {
       "acronym": "EP-6",

@@ -6,7 +6,7 @@
   },
   {
     "sigle": "SO",
-    "libelle": "Dérivé",
+    "libelle": "",
     "libelle_en": "Spin-off"
   },
   {
@@ -17,6 +17,6 @@
   {
     "sigle": "MANDALORE",
     "libelle": "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie.",
-    "libelle_en": "Mandalore is a planet located in the Outer Rim territories of the galaxy."
+    "libelle_en": ""
   }
 ]

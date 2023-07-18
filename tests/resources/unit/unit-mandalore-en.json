@@ -1,7 +1,7 @@
 {
   "code": 10111,
   "acronym": "MANDALORE",
-  "name": "Mandalore is a planet located in the Outer Rim territories of the galaxy.",
+  "name": "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie.",
   "unitPath": "EPFL SO TV-3 MANDALORE",
   "path": [
     {
@@ -18,7 +18,7 @@
     },
     {
       "acronym": "MANDALORE",
-      "name": "Mandalore is a planet located in the Outer Rim territories of the galaxy."
+      "name": "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie."
     }
   ],
   "terminal": "1",
