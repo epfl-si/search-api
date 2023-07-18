@@ -30,7 +30,9 @@ async function searchUnits (q, lang) {
     const modifiedDict = {
       acronym: dict.sigle,
       path: dict.hierarchie.split(' '),
-      name: lang === 'en' ? dict.libelle_en : dict.libelle
+      name: lang === 'en'
+        ? (dict.libelle_en ? dict.libelle_en : dict.libelle)
+        : (dict.libelle ? dict.libelle : dict.libelle_en)
     };
     return modifiedDict;
   });
@@ -55,7 +57,9 @@ async function getUnit (acro, lang) {
   const unitFullDetails = {
     code: dict.id_unite,
     acronym: dict.sigle,
-    name: lang === 'en' ? dict.libelle_en : dict.libelle,
+    name: lang === 'en'
+      ? (dict.libelle_en ? dict.libelle_en : dict.libelle)
+      : (dict.libelle ? dict.libelle : dict.libelle_en),
     unitPath: dict.hierarchie,
     path: unitPath,
     terminal: dict.has_accreds,
@@ -109,7 +113,9 @@ async function getUnitPath (hierarchy, lang) {
   const formattedResults = results.map((dict) => {
     const modifiedDict = {
       acronym: dict.sigle,
-      name: lang === 'en' ? dict.libelle_en : dict.libelle
+      name: lang === 'en'
+        ? (dict.libelle_en ? dict.libelle_en : dict.libelle)
+        : (dict.libelle ? dict.libelle : dict.libelle_en)
     };
     return modifiedDict;
   });
@@ -127,7 +133,9 @@ async function getSubunits (unitId, lang) {
   const formattedResults = results.map((dict) => {
     const modifiedDict = {
       acronym: dict.sigle,
-      name: lang === 'en' ? dict.libelle_en : dict.libelle
+      name: lang === 'en'
+        ? (dict.libelle_en ? dict.libelle_en : dict.libelle)
+        : (dict.libelle ? dict.libelle : dict.libelle_en)
     };
     return modifiedDict;
   });
