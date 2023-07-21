@@ -1,3 +1,8 @@
+process.env.SEARCH_API_ENABLE_CSE='True'
+process.env.SEARCH_API_ENABLE_LDAP='True'
+process.env.SEARCH_API_ENABLE_UNIT='True'
+process.env.SEARCH_API_ENABLE_GRAPHSEARCH='True'
+
 process.env.SEARCH_API_CSE_API_KEY = 'foo';
 process.env.SEARCH_API_CSE_CX = 'bar';
 

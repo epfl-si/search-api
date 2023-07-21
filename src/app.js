@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const express = require('express');
 
+const configApi = require('./configs/api.config');
+
 const cseRouter = require('./routes/cse.route');
 const peopleRouter = require('./routes/people.route');
 const unitRouter = require('./routes/unit.route');
@@ -28,16 +30,24 @@ app.use(helmet.noSniff());
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 
 // Google CSE
-app.use('/api/cse', cseRouter);
+if (configApi.enableCse) {
+  app.use('/api/cse', cseRouter);
+}
 
 // People
-app.use('/api/ldap', peopleRouter);
+if (configApi.enableLdap) {
+  app.use('/api/ldap', peopleRouter);
+}
 
 // Unit
-app.use('/api/unit', unitRouter);
+if (configApi.enableUnit) {
+  app.use('/api/unit', unitRouter);
+}
 
 // EPFL Graph
-app.use('/api/graphsearch', semanticRouter);
+if (configApi.enableGraphsearch) {
+  app.use('/api/graphsearch', semanticRouter);
+}
 
 // 404
 app.use(function (req, res, next) {

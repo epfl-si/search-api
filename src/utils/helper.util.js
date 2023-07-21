@@ -33,6 +33,20 @@ function permutations (arr) {
 };
 
 /**
+ * Convert an environment variable from string to boolean.
+ *
+ * @example
+ * const helper = require('../utils/helper.util');
+ * helper.setBool('SEARCH_API_ENABLE_CSE');  // => true
+ *
+ * @param {string} key A key of an environment variable.
+ * @returns {boolean} Return true if the env. variable is "true" or false.
+ */
+function setBool (key) {
+  return validateEnv(key).toLowerCase() === 'true';
+}
+
+/**
  * Validate environment variables.
  *
  * @example
@@ -54,5 +68,6 @@ function validateEnv (key) {
 
 module.exports = {
   permutations,
+  setBool,
   validateEnv
 };
