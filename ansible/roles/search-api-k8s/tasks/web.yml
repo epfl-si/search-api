@@ -10,10 +10,6 @@
       {{ _data | from_yaml }}
   vars:
     _data: |
-      SEARCH_API_ENABLE_CSE: "{{ searchapi_secrets.SEARCH_API_ENABLE_CSE | b64encode }}"
-      SEARCH_API_ENABLE_LDAP: "{{ searchapi_secrets.SEARCH_API_ENABLE_LDAP | b64encode }}"
-      SEARCH_API_ENABLE_UNIT: "{{ searchapi_secrets.SEARCH_API_ENABLE_UNIT | b64encode }}"
-      SEARCH_API_ENABLE_GRAPHSEARCH: "{{ searchapi_secrets.SEARCH_API_ENABLE_GRAPHSEARCH | b64encode }}"
       SEARCH_API_CSE_API_KEY: "{{ searchapi_secrets.SEARCH_API_CSE_API_KEY | b64encode }}"
       SEARCH_API_CSE_CX: "{{ searchapi_secrets.SEARCH_API_CSE_CX | b64encode }}"
       SEARCH_API_CADIDB_HOST: "{{ searchapi_secrets.SEARCH_API_CADIDB_HOST | b64encode }}"
@@ -49,25 +45,13 @@
           containers:
             - env:
                 - name: SEARCH_API_ENABLE_CSE
-                  valueFrom:
-                    secretKeyRef:
-                      name: search-api-secrets
-                      key: SEARCH_API_ENABLE_CSE
+                  value: '{{ searchapi_secrets.SEARCH_API_ENABLE_CSE |string }}'
                 - name: SEARCH_API_ENABLE_LDAP
-                  valueFrom:
-                    secretKeyRef:
-                      name: search-api-secrets
-                      key: SEARCH_API_ENABLE_LDAP
+                  value: '{{ searchapi_secrets.SEARCH_API_ENABLE_LDAP |string }}'
                 - name: SEARCH_API_ENABLE_UNIT
-                  valueFrom:
-                    secretKeyRef:
-                      name: search-api-secrets
-                      key: SEARCH_API_ENABLE_UNIT
+                  value: '{{ searchapi_secrets.SEARCH_API_ENABLE_UNIT |string }}'
                 - name: SEARCH_API_ENABLE_GRAPHSEARCH
-                  valueFrom:
-                    secretKeyRef:
-                      name: search-api-secrets
-                      key: SEARCH_API_ENABLE_GRAPHSEARCH
+                  value: '{{ searchapi_secrets.SEARCH_API_ENABLE_GRAPHSEARCH |string }}'
                 - name: SEARCH_API_CSE_API_KEY
                   valueFrom:
                     secretKeyRef:
