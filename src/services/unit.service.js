@@ -22,8 +22,11 @@ async function get (params) {
 async function searchUnits (q, lang) {
   const query = 'SELECT sigle, libelle, libelle_en, hierarchie ' +
                 'FROM Unites_v2 WHERE cmpl_type <> ? AND ' +
-                '(sigle like ? OR libelle like ? OR libelle_en like ?)';
-  const values = ['Z', '%' + q + '%', '%' + q + '%', '%' + q + '%'];
+                '(sigle LIKE ? OR libelle LIKE ? OR libelle_en LIKE ?) AND ' +
+                'hierarchie NOT LIKE ?';
+  const values = [
+    'Z', '%' + q + '%', '%' + q + '%', '%' + q + '%', 'TECHNIQUE%'
+  ];
 
   const results = await cadidbService.sendQuery(query, values, 'searchUnits');
   const formattedResults = results.map((dict) => {
@@ -65,8 +68,9 @@ async function getUnit (acro, lang) {
                 'resp_prenom_usuel, url, faxes, adresse, cmpl_type, ghost, ' +
                 'has_accreds ' +
                 'FROM Unites_v2 ' +
-                'WHERE sigle = ? AND cmpl_type <> ?';
-  const values = [acro, 'Z'];
+                'WHERE sigle = ? AND cmpl_type <> ? AND ' +
+                'hierarchie NOT LIKE ?';
+  const values = [acro, 'Z', 'TECHNIQUE%'];
 
   const results = await cadidbService.sendQuery(query, values, 'getUnit');
   if (results.length !== 1) {
