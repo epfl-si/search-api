@@ -1,17 +1,22 @@
 [
   {
-    "acronym": "KAMINO",
-    "path": ["EPFL", "PT", "EP-2", "KAMINO"],
-    "name": "Kamino est une planète aquatique située dans le secteur Abrion de la bordure extérieure de la galaxie."
-  },
-  {
     "acronym": "BESPIN",
     "path": ["EPFL", "OT", "EP-5", "BESPIN"],
     "name": "Bespin is a gas giant in the star system of the same name."
   },
   {
+    "acronym": "KAMINO",
+    "path": ["EPFL", "PT", "EP-2", "KAMINO"],
+    "name": "Kamino est une planète aquatique située dans le secteur Abrion de la bordure extérieure de la galaxie."
+  },
+  {
     "acronym": "TATOOINE",
     "path": ["EPFL", "OT", "EP-6", "TATOOINE"],
     "name": "Tatooine est une planète désertique située dans les territoires de la bordure extérieure de la galaxie."
+  },
+  {
+    "acronym": "SO",
+    "path": ["EPFL", "SO"],
+    "name": "Spin-off"
   }
 ]
