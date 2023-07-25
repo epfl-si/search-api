@@ -32,13 +32,13 @@ help:
 	@echo "  make exec             — Enter the container"
 
 # To add all variable to your shell, use
-# export $(xargs < /keybase/team/epfl_search/api/env);
+# export $(xargs < /keybase/team/epfl_search/api/local/env);
 check-env:
-ifeq ($(wildcard /keybase/team/epfl_search/api/env),)
-	@echo "Be sure to have access to /keybase/team/epfl_search/api/env"
+ifeq ($(wildcard /keybase/team/epfl_search/api/local/env),)
+	@echo "Be sure to have access to /keybase/team/epfl_search/api/local/env"
 	@exit 1
 else
-include /keybase/team/epfl_search/api/env
+include /keybase/team/epfl_search/api/local/env
 export
 endif
 
