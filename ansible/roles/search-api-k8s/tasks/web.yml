@@ -10,8 +10,19 @@
       {{ _data | from_yaml }}
   vars:
     _data: |
-      SEARCH_API_CSE_API_KEY: "{{ searchapi_key | b64encode }}"
-      SEARCH_API_CSE_CX: "{{ searchapi_cx | b64encode }}"
+      SEARCH_API_ENABLE_CSE: "{{ searchapi_secrets.SEARCH_API_ENABLE_CSE | b64encode }}"
+      SEARCH_API_ENABLE_LDAP: "{{ searchapi_secrets.SEARCH_API_ENABLE_LDAP | b64encode }}"
+      SEARCH_API_ENABLE_UNIT: "{{ searchapi_secrets.SEARCH_API_ENABLE_UNIT | b64encode }}"
+      SEARCH_API_ENABLE_GRAPHSEARCH: "{{ searchapi_secrets.SEARCH_API_ENABLE_GRAPHSEARCH | b64encode }}"
+      SEARCH_API_CSE_API_KEY: "{{ searchapi_secrets.SEARCH_API_CSE_API_KEY | b64encode }}"
+      SEARCH_API_CSE_CX: "{{ searchapi_secrets.SEARCH_API_CSE_CX | b64encode }}"
+      SEARCH_API_CADIDB_HOST: "{{ searchapi_secrets.SEARCH_API_CADIDB_HOST | b64encode }}"
+      SEARCH_API_CADIDB_PORT: "{{ searchapi_secrets.SEARCH_API_CADIDB_PORT | b64encode }}"
+      SEARCH_API_CADIDB_DATABASE: "{{ searchapi_secrets.SEARCH_API_CADIDB_DATABASE | b64encode }}"
+      SEARCH_API_CADIDB_USER: "{{ searchapi_secrets.SEARCH_API_CADIDB_USER | b64encode }}"
+      SEARCH_API_CADIDB_PASSWORD: "{{ searchapi_secrets.SEARCH_API_CADIDB_PASSWORD | b64encode }}"
+      SEARCH_API_LDAP_URL: "{{ searchapi_secrets.SEARCH_API_LDAP_URL | b64encode }}"
+      SEARCH_API_LDAP_ROOTS_FILTER: "{{ searchapi_secrets.SEARCH_API_LDAP_ROOTS_FILTER | b64encode }}"
 
 - name: SearchAPI - Deployment
   openshift:
@@ -37,6 +48,26 @@
         spec:
           containers:
             - env:
+                - name: SEARCH_API_ENABLE_CSE
+                  valueFrom:
+                    secretKeyRef:
+                      name: search-api-secrets
+                      key: SEARCH_API_ENABLE_CSE
+                - name: SEARCH_API_ENABLE_LDAP
+                  valueFrom:
+                    secretKeyRef:
+                      name: search-api-secrets
+                      key: SEARCH_API_ENABLE_LDAP
+                - name: SEARCH_API_ENABLE_UNIT
+                  valueFrom:
+                    secretKeyRef:
+                      name: search-api-secrets
+                      key: SEARCH_API_ENABLE_UNIT
+                - name: SEARCH_API_ENABLE_GRAPHSEARCH
+                  valueFrom:
+                    secretKeyRef:
+                      name: search-api-secrets
+                      key: SEARCH_API_ENABLE_GRAPHSEARCH
                 - name: SEARCH_API_CSE_API_KEY
                   valueFrom:
                     secretKeyRef:
@@ -47,6 +78,41 @@
                     secretKeyRef:
                       name: search-api-secrets
                       key: SEARCH_API_CSE_CX
+                - name: SEARCH_API_CADIDB_HOST
+                  valueFrom:
+                    secretKeyRef:
+                      name: search-api-secrets
+                      key: SEARCH_API_CADIDB_HOST
+                - name: SEARCH_API_CADIDB_PORT
+                  valueFrom:
+                    secretKeyRef:
+                      name: search-api-secrets
+                      key: SEARCH_API_CADIDB_PORT
+                - name: SEARCH_API_CADIDB_DATABASE
+                  valueFrom:
+                    secretKeyRef:
+                      name: search-api-secrets
+                      key: SEARCH_API_CADIDB_DATABASE
+                - name: SEARCH_API_CADIDB_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: search-api-secrets
+                      key: SEARCH_API_CADIDB_USER
+                - name: SEARCH_API_CADIDB_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: search-api-secrets
+                      key: SEARCH_API_CADIDB_PASSWORD
+                - name: SEARCH_API_LDAP_URL
+                  valueFrom:
+                    secretKeyRef:
+                      name: search-api-secrets
+                      key: SEARCH_API_LDAP_URL
+                - name: SEARCH_API_LDAP_ROOTS_FILTER
+                  valueFrom:
+                    secretKeyRef:
+                      name: search-api-secrets
+                      key: SEARCH_API_LDAP_ROOTS_FILTER
               name: '{{ app_name }}'
               image: 'docker-registry.default.svc:5000/{{ openshift_namespace }}/search-api:latest'
               imagePullPolicy: Always
