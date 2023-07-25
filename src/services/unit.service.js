@@ -159,7 +159,7 @@ async function getSubunits (unitId, lang) {
     };
     return modifiedDict;
   });
-  return formattedResults;
+  return formattedResults.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 module.exports = {
