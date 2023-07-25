@@ -1,0 +1,44 @@
+[
+  {
+    "sigle": "EP-2",
+    "libelle": "Episode II - L'Attaque des clones",
+    "libelle_en": "Episode II - Attack of the Clones",
+    "hierarchie": "EPFL PT EP-2"
+  },
+  {
+    "sigle": "EP-1",
+    "libelle": "Episode I - La Menace fantôme",
+    "libelle_en": "Episode I - The Phantom Menace",
+    "hierarchie": "EPFL PT EP-1"
+  },
+  {
+    "sigle": "EP-3",
+    "libelle": "Episode III - La Revanche des Sith",
+    "libelle_en": "Episode III - Revenge of the Sith",
+    "hierarchie": "EPFL PT EP-3"
+  },
+  {
+    "sigle": "EP-5",
+    "libelle": "",
+    "libelle_en": "Episode V - The Empire Strikes Back",
+    "hierarchie": "EPFL OT EP-5"
+  },
+  {
+    "sigle": "SO",
+    "libelle": "",
+    "libelle_en": "Spin-off",
+    "hierarchie": "EPFL SO"
+  },
+  {
+    "sigle": "EP-6",
+    "libelle": "Episode VI - Le Retour du Jedi",
+    "libelle_en": "",
+    "hierarchie": "EPFL OT EP-6"
+  },
+  {
+    "sigle": "EP-4",
+    "libelle": "Episode IV - Un nouvel espoir",
+    "libelle_en": "Episode IV - A New Hope",
+    "hierarchie": "EPFL OT EP-4"
+  }
+]

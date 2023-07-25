@@ -81,6 +81,22 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
+  test('It should return a unit list in correct order', async () => {
+    const mockConnection = {
+      query: jest.fn().mockImplementation((query, values) => {
+        const jsonData = require('./resources/cadidb/searchUnits-so.json');
+        return Promise.resolve([jsonData]);
+      }),
+      release: jest.fn()
+    };
+    mysql.createPool().getConnection.mockResolvedValue(mockConnection);
+
+    const jsonResult = require('./resources/unit/unit-list-so-fr.json');
+    const response = await request(app).get('/api/unit?q=so&hl=fr');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
   test('It should return a unit with people', async () => {
     const mockConnection = {
       query: jest.fn().mockImplementation((query, values, referrer) => {

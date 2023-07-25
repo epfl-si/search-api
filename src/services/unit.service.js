@@ -15,7 +15,7 @@ async function get (params) {
   } else if (unitList.length === 1) {
     return await getUnit(unitList[0].acronym, lang);
   } else {
-    return unitList;
+    return sortUnits(unitList, q);
   }
 }
 
@@ -37,6 +37,26 @@ async function searchUnits (q, lang) {
     return modifiedDict;
   });
   return formattedResults;
+}
+
+function score (a, qLower) {
+  let points = 0;
+  const acronymLower = a.acronym.toLowerCase();
+  if (acronymLower === qLower) {
+    points += 2;
+  } else if (acronymLower.includes(qLower)) {
+    points += 1;
+  }
+  return points;
+}
+
+function sortUnits (units, q) {
+  const qLower = q.toLowerCase();
+  const scoredUnits = units.map(a => ({ unit: a, score: score(a, qLower) }));
+  return scoredUnits.sort((a, b) =>
+    b.score - a.score ||
+    a.unit.acronym.localeCompare(b.unit.acronym)
+  ).map(scoredUnit => scoredUnit.unit);
 }
 
 async function getUnit (acro, lang) {

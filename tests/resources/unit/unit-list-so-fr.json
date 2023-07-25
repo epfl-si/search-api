@@ -1,0 +1,37 @@
+[
+  {
+    "acronym": "SO",
+    "path": ["EPFL", "SO"],
+    "name": "Spin-off"
+  },
+  {
+    "acronym": "EP-1",
+    "path": ["EPFL", "PT", "EP-1"],
+    "name": "Episode I - La Menace fantôme"
+  },
+  {
+    "acronym": "EP-2",
+    "path": ["EPFL", "PT", "EP-2"],
+    "name": "Episode II - L'Attaque des clones"
+  },
+  {
+    "acronym": "EP-3",
+    "path": ["EPFL", "PT", "EP-3"],
+    "name": "Episode III - La Revanche des Sith"
+  },
+  {
+    "acronym": "EP-4",
+    "path": ["EPFL", "OT", "EP-4"],
+    "name": "Episode IV - Un nouvel espoir"
+  },
+  {
+    "acronym": "EP-5",
+    "path": ["EPFL", "OT", "EP-5"],
+    "name": "Episode V - The Empire Strikes Back"
+  },
+  {
+    "acronym": "EP-6",
+    "path": ["EPFL", "OT", "EP-6"],
+    "name": "Episode VI - Le Retour du Jedi"
+  }
+]

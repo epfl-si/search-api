@@ -6,6 +6,12 @@
     "hierarchie": "EPFL PT EP-2 KAMINO"
   },
   {
+    "sigle": "SO",
+    "libelle": "",
+    "libelle_en": "Spin-off",
+    "hierarchie": "EPFL SO"
+  },
+  {
     "sigle": "BESPIN",
     "libelle": "",
     "libelle_en": "Bespin is a gas giant in the star system of the same name.",
