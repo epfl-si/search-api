@@ -4,18 +4,17 @@
     apiVersion: route.openshift.io/v1
     kind: Route
     metadata:
-      name: search-api-test.epfl.ch
+      name: '{{ hostname }}'
       namespace: '{{ openshift_namespace }}'
       labels:
         app: '{{ app_name }}'
         team: '{{ team }}'
         epfl.ch/visibility: public
       annotations:
-        haproxy.router.openshift.io/balance: roundrobin
-        haproxy.router.openshift.io/disable_cookies: 'true'
+        router.openshift.io/cookie-same-site: Strict
         haproxy.router.openshift.io/hsts_header: max-age=15552001
     spec:
-      host: search-api-test.epfl.ch
+      host: '{{ hostname }}'
       wildcardPolicy: None
       port:
         targetPort: '80'
