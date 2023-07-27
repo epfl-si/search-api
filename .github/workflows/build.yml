@@ -63,5 +63,7 @@ jobs:
           IMAGE_ID=$(echo "ghcr.io/${{ github.repository }}" | tr '[A-Z]' '[a-z]')
 
           docker tag search-api $IMAGE_ID:$GITHUB_REF_NAME
+          docker push $IMAGE_ID:$GITHUB_REF_NAME
+
           docker tag search-api $IMAGE_ID:latest
           docker push $IMAGE_ID:latest
