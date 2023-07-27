@@ -1,0 +1,13 @@
+- name: SearchAPI - Pull image
+  community.docker.docker_image:
+    name: 'ghcr.io/epfl-si/{{ app_name }}:{{ tag }}'
+    force_source: yes
+    source: pull
+
+- name: SearchAPI - Push image
+  community.docker.docker_image:
+    name: 'ghcr.io/epfl-si/{{ app_name }}:{{ tag }}'
+    repository: 'os-docker-registry.epfl.ch/{{ openshift_namespace }}/{{ app_name }}:latest'
+    push: yes
+    force_tag: yes
+    source: local
