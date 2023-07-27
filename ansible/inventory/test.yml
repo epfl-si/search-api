@@ -8,4 +8,5 @@ all:
         openshift_namespace: 'wwp-test'
 
         hostname: staging-search-backend.epfl.ch
+        tag: latest
         searchapi_secrets: "{{ lookup('file', '/keybase/team/epfl_search/api/staging/secrets.yml') | from_yaml }}"
