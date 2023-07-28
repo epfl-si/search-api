@@ -61,14 +61,14 @@
                 httpGet:
                   path: /healthz
                   port: 5555
-                initialDelaySeconds: 5
+                initialDelaySeconds: 2
                 periodSeconds: 15
                 timeoutSeconds: 5
               readinessProbe:
                 httpGet:
                   path: /healthz
                   port: 5555
-                initialDelaySeconds: 5
+                initialDelaySeconds: 2
                 periodSeconds: 15
                 timeoutSeconds: 5
               name: '{{ app_name }}'
