@@ -49,6 +49,11 @@ if (configApi.enableGraphsearch) {
   app.use('/api/graphsearch', semanticRouter);
 }
 
+// Liveness probe
+app.use('/healthz', function (req, res) {
+  res.send('OK');
+});
+
 // 404
 app.use(function (req, res, next) {
   res.status(404).render('404');
