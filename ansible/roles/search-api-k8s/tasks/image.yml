@@ -11,3 +11,4 @@
     push: yes
     force_tag: yes
     source: local
+  register: _searchapi_push
