@@ -1,25 +1,3 @@
-- name: SearchAPI - Secrets
-  openshift:
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: search-api-secrets
-      namespace: '{{ openshift_namespace }}'
-    type: Opaque
-    data: >-
-      {{ _data | from_yaml }}
-  vars:
-    _data: |
-      SEARCH_API_CSE_API_KEY: "{{ searchapi_secrets.SEARCH_API_CSE_API_KEY | b64encode }}"
-      SEARCH_API_CSE_CX: "{{ searchapi_secrets.SEARCH_API_CSE_CX | b64encode }}"
-      SEARCH_API_CADIDB_HOST: "{{ searchapi_secrets.SEARCH_API_CADIDB_HOST | b64encode }}"
-      SEARCH_API_CADIDB_PORT: "{{ searchapi_secrets.SEARCH_API_CADIDB_PORT | b64encode }}"
-      SEARCH_API_CADIDB_DATABASE: "{{ searchapi_secrets.SEARCH_API_CADIDB_DATABASE | b64encode }}"
-      SEARCH_API_CADIDB_USER: "{{ searchapi_secrets.SEARCH_API_CADIDB_USER | b64encode }}"
-      SEARCH_API_CADIDB_PASSWORD: "{{ searchapi_secrets.SEARCH_API_CADIDB_PASSWORD | b64encode }}"
-      SEARCH_API_LDAP_URL: "{{ searchapi_secrets.SEARCH_API_LDAP_URL | b64encode }}"
-      SEARCH_API_LDAP_ROOTS_FILTER: "{{ searchapi_secrets.SEARCH_API_LDAP_ROOTS_FILTER | b64encode }}"
-
 - name: SearchAPI - Deployment
   openshift:
     apiVersion: extensions/v1beta1
@@ -55,48 +33,30 @@
                 - name: SEARCH_API_CSE_API_KEY
                   valueFrom:
                     secretKeyRef:
-                      name: search-api-secrets
+                      name: search-api-cse-secrets
                       key: SEARCH_API_CSE_API_KEY
                 - name: SEARCH_API_CSE_CX
-                  valueFrom:
-                    secretKeyRef:
-                      name: search-api-secrets
-                      key: SEARCH_API_CSE_CX
+                  value: '{{ searchapi_secrets.SEARCH_API_CSE_CX }}'
                 - name: SEARCH_API_CADIDB_HOST
-                  valueFrom:
-                    secretKeyRef:
-                      name: search-api-secrets
-                      key: SEARCH_API_CADIDB_HOST
+                  value: '{{ searchapi_secrets.SEARCH_API_CADIDB_HOST }}'
                 - name: SEARCH_API_CADIDB_PORT
-                  valueFrom:
-                    secretKeyRef:
-                      name: search-api-secrets
-                      key: SEARCH_API_CADIDB_PORT
+                  value: '{{ searchapi_secrets.SEARCH_API_CADIDB_PORT }}'
                 - name: SEARCH_API_CADIDB_DATABASE
-                  valueFrom:
-                    secretKeyRef:
-                      name: search-api-secrets
-                      key: SEARCH_API_CADIDB_DATABASE
+                  value: '{{ searchapi_secrets.SEARCH_API_CADIDB_DATABASE }}'
                 - name: SEARCH_API_CADIDB_USER
                   valueFrom:
                     secretKeyRef:
-                      name: search-api-secrets
+                      name: search-api-cadidb-secrets
                       key: SEARCH_API_CADIDB_USER
                 - name: SEARCH_API_CADIDB_PASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: search-api-secrets
+                      name: search-api-cadidb-secrets
                       key: SEARCH_API_CADIDB_PASSWORD
                 - name: SEARCH_API_LDAP_URL
-                  valueFrom:
-                    secretKeyRef:
-                      name: search-api-secrets
-                      key: SEARCH_API_LDAP_URL
+                  value: '{{ searchapi_secrets.SEARCH_API_LDAP_URL }}'
                 - name: SEARCH_API_LDAP_ROOTS_FILTER
-                  valueFrom:
-                    secretKeyRef:
-                      name: search-api-secrets
-                      key: SEARCH_API_LDAP_ROOTS_FILTER
+                  value: '{{ searchapi_secrets.SEARCH_API_LDAP_ROOTS_FILTER }}'
               name: '{{ app_name }}'
               image: 'docker-registry.default.svc:5000/{{ openshift_namespace }}/search-api:latest'
               imagePullPolicy: Always

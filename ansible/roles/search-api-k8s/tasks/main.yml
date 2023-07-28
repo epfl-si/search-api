@@ -1,3 +1,10 @@
+- name: Secrets tasks
+  include_tasks:
+    file: 'secrets.yml'
+    apply:
+      tags: Secrets
+  tags: Secrets
+
 - name: Image tasks
   include_tasks:
     file: 'image.yml'
