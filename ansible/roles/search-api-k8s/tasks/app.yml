@@ -57,6 +57,20 @@
                   value: '{{ searchapi_secrets.SEARCH_API_LDAP_URL }}'
                 - name: SEARCH_API_LDAP_ROOTS_FILTER
                   value: '{{ searchapi_secrets.SEARCH_API_LDAP_ROOTS_FILTER }}'
+              livenessProbe:
+                httpGet:
+                  path: /healthz
+                  port: 5555
+                initialDelaySeconds: 5
+                periodSeconds: 15
+                timeoutSeconds: 5
+              readinessProbe:
+                httpGet:
+                  path: /healthz
+                  port: 5555
+                initialDelaySeconds: 5
+                periodSeconds: 15
+                timeoutSeconds: 5
               name: '{{ app_name }}'
               image: 'docker-registry.default.svc:5000/{{ openshift_namespace }}/search-api:latest'
               imagePullPolicy: Always
