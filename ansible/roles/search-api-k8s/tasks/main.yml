@@ -19,10 +19,11 @@
       tags: route
   tags: route
 
-- name: Web tasks
+- name: App tasks
   include_tasks:
-    file: 'web.yml'
+    file: 'app.yml'
     apply:
-      tags: web
+      tags: app
   tags:
-    - web
+    - app
+    - app.restart

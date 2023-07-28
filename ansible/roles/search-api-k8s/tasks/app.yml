@@ -86,3 +86,15 @@
       selector:
         app: '{{ app_name }}'
         role: webserver
+
+- name: SearchAPI - Restart
+  when: >-
+    ('app.restart' in ansible_run_tags)
+    or
+    (_searchapi_push is changed)
+  local_action:
+    module: shell
+    cmd: >-
+      oc patch deployment/{{ app_name }} --namespace {{ openshift_namespace }} --patch \
+      '{"spec": {"template": {"metadata": {"annotations": {"last-restart": "{{ ansible_date_time.iso8601 }}"}}}}}'
+  tags: app.restart
