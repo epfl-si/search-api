@@ -2,7 +2,8 @@
 
 ## Prerequisites
 
-- Access to our Keybase /keybase/team/epfl_search directory.
+- Access to our Keybase `/keybase/team/epfl_search` directory.
+- Access to `wwp-test` and `wwp` namespaces on our OpenShift cluster.
 
 ## Setup
 
@@ -43,4 +44,21 @@ ssh -f kis@test-search01.epfl.ch -L 33306:test-cadidb.epfl.ch:3306 -N
 
 # Production
 make up
+```
+
+## Release
+
+Bump `package.json`, update [CHANGELOG.md](CHANGELOG.md) and
+
+```bash
+git tag -a v<version> -m "Search API - v<version>"
+git push origin main --tags
+```
+
+## Deploy
+
+Log into `ghcr.io` and `os-docker-registry.epfl.ch`, then
+
+```bash
+./ansible/searchapisible [--prod]
 ```
