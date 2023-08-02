@@ -48,7 +48,7 @@ make up
 
 ## Release
 
-Update the [CHANGELOG.md](CHANGELOG.md) and
+Bump `package.json`, update [CHANGELOG.md](CHANGELOG.md) and
 
 ```bash
 git tag -a v<version> -m "Search API - v<version>"
