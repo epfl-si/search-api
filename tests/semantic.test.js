@@ -28,7 +28,7 @@ describe('Test API Semantic Sarch ("/api/graphsearch")', () => {
 
   test('It should get Semantic Search results', async () => {
     const searchResult = require('./resources/semantic/math.json');
-    const mockSemanticService = jest.spyOn(semanticService, 'post');
+    const mockSemanticService = jest.spyOn(semanticService, 'get');
     mockSemanticService.mockResolvedValue({ data: searchResult });
 
     const response = await request(app).get('/api/graphsearch?q=epfl');
@@ -39,7 +39,7 @@ describe('Test API Semantic Sarch ("/api/graphsearch")', () => {
 
   test('It should get Semantic Search results from cache', async () => {
     const searchResult = require('./resources/semantic/math.json');
-    const mockSemanticService = jest.spyOn(semanticService, 'post');
+    const mockSemanticService = jest.spyOn(semanticService, 'get');
     mockSemanticService.mockResolvedValue({ data: searchResult });
 
     const response = await request(app).get('/api/graphsearch?q=epfl');

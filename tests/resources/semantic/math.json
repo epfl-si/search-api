@@ -1,133 +1,149 @@
 {
-  "docs": [
+  "query": { "types": "any", "q": "math" },
+  "result_count": 10,
+  "items": [
     {
-      "key": "52033",
-      "type": "concept",
-      "title": "Mathematical optimization",
-      "abstractAbbr": "<i>Mathematical optimization</i> (alternatively spelled <i>optimisation</i>) or <i>mathematical programming</i> is the selection of a best element, with regard to some criterion, from some set of available alternatives. Optimization problems of sorts arise in all quantitative disciplines from computer science and engineering to operations research and economics, and the development of solution"
-    },
-    {
-      "key": "20590",
-      "type": "concept",
-      "title": "Mathematical model",
-      "abstractAbbr": "A <i>mathematical model</i> is a description of a system using mathematical concepts and language. The process of developing a mathematical model is termed <i>mathematical modeling</i>. Mathematical models are used in the natural sciences (such as physics, biology, earth science, chemistry) and engineering disciplines (such as computer science, electrical engineering), as well as in non-physical"
-    },
-    {
-      "key": "18831",
-      "type": "concept",
-      "title": "Mathematics",
-      "abstractAbbr": "<i>Mathematics</i> is an area of knowledge that includes such topics as numbers (arithmetic, number theory), formulas and related structures (algebra), shapes and the spaces in which they are contained (geometry),"
-    },
-    {
-      "key": "MATH-265",
-      "type": "course",
-      "name": "Introduction to optimization and operations research",
-      "abstractAbbr": "Introduction to major operations research models and optimization algorithms"
-    },
-    {
-      "key": "CIVIL-557",
-      "type": "course",
-      "name": "Decision-aid methodologies in transportation",
-      "abstractAbbr": "Introduction to operations research, data mining and machine learning algorithms for decision support in transportation systems."
-    },
-    {
-      "key": "5a9a74a0lmB3OCV2oM",
-      "type": "lecture",
-      "course": {
-        "key": "MATH-265",
-        "type": "course",
-        "name": "Introduction to optimization and operations research"
+      "_id": "52033",
+      "_source": "https://en.wikipedia.org/wiki/Mathematical_optimization",
+      "_type": "concept",
+      "_url": "https://graphsearch.epfl.ch/concept/52033",
+      "title": {
+        "en": "Mathematical optimization",
+        "fr": "Optimisation (mathématiques)"
       },
-      "name": "Summary Week 10: Discrete Optimization (+ answers interactive Questions)",
-      "abstract": null
-    },
-    {
-      "key": "M-CONVERSION1",
-      "type": "mooc",
-      "platform": "edX",
-      "title": "Conversion electromécanique I",
-      "description": "Circuits magnétiques, aimants permanents, conversion électromécanique, actionneurs."
-    },
-    {
-      "key": "104596",
-      "type": "person",
-      "firstName": "Dominique",
-      "lastName": "Bonvin",
-      "abstractAbbr": "Dominique Bonvin is Professor and Director of the Automatic Control Laboratory of EPFL. He received his Diploma in Chemical Engineering from ETH Zürich, and his Ph.D. degree from the University of California, Santa Barbara. He worked in the field of process control for the Sandoz Corporation in Basel and with the Systems Engineering Group of ETH Zürich. He joined the EPFL in 1989, where his"
-    },
-    {
-      "key": "140973",
-      "type": "person",
-      "firstName": "François",
-      "lastName": "Maréchal",
-      "abstractAbbr": "Ph D. in engineering– Chemical process engineer Researcher and lecturer in the field of computer aided process and energy systems engineering. Lecturer in the mechanical engineering, electrical engineering and environmental sciences engineering in EPFL. I'm responsible for the Minor in Energy of EPFL and I'm involved in 3 projects of the Competence Center in Energy and Mobility (2nd generation"
-    },
-    {
-      "key": "289565",
-      "type": "publication",
-      "source": "Acs Infectious Diseases",
-      "title": "Design and Evaluation of New Quinazolin-4(3H)-one Derived PqsR Antagonists as Quorum Sensing Quenchers in Pseudomonas aeruginosa",
-      "year": 2021,
-      "authors": [
-        {
-          "key": "316998",
-          "type": "person",
-          "firstName": "Eduard",
-          "lastName": "Vico Oton"
-        }
-      ],
-      "abstractAbbr": "P. aeruginosa (PA) continues to pose a threat to global public health due to its high levels of antimicrobial resistance (AMR). The ongoing AMR crisis has led to an alarming shortage of effective treatments for resistant microbes, and hence there is a pressing demand for the development of novel antimicrobial interventions. The potential use of antivirulence therapeutics to tackle bacterial"
-    }
-  ],
-  "vars": {
-    "hits": [
-      { "index": "lite", "type": "concept", "key": "52033" },
-      { "index": "lite", "type": "concept", "key": "20590" },
-      { "index": "lite", "type": "concept", "key": "18831" },
-      { "index": "lite", "type": "concept", "key": "20556859" },
-      { "index": "lite", "type": "concept", "key": "8492" },
-      { "index": "lite", "type": "concept", "key": "48396" },
-      { "index": "lite", "type": "concept", "key": "19636" },
-      { "index": "lite", "type": "concept", "key": "185427" },
-      { "index": "lite", "type": "concept", "key": "82285" },
-      { "index": "lite", "type": "concept", "key": "325806" }
-    ],
-    "hitsInsertion": "prepend",
-    "indexId": "Index_T_StepScores/Nodes_N_Concept_52033",
-    "redistribute": false,
-    "size": 10,
-    "types": [
-      {
-        "name": "concept",
-        "key": "Concept",
-        "symbol": "Nodes_N_Concept",
-        "length": 3
-      },
-      {
-        "name": "course",
-        "key": "Course",
-        "symbol": "Nodes_N_Course",
-        "length": 2
-      },
-      {
-        "name": "lecture",
-        "key": "Lecture",
-        "symbol": "Nodes_N_Lecture",
-        "length": 1
-      },
-      { "name": "mooc", "key": "MOOC", "symbol": "Nodes_N_MOOC", "length": 1 },
-      {
-        "name": "person",
-        "key": "Person",
-        "symbol": "Nodes_N_Person",
-        "length": 2
-      },
-      {
-        "name": "publication",
-        "key": "Publication",
-        "symbol": "Nodes_N_Publication",
-        "length": 1
+      "summary": {
+        "en": "\nMathematical optimization (alternatively spelled optimisation) or mathematical programming is the selection of a best element, with regard to some criterion, from some set of available alternatives. It is generally divided into two subfields: discrete optimization and continuous optimization. Optimization problems of sorts arise in all quantitative disciplines from computer science and engineering to operations research and economics, and the development of solution methods has been of interest",
+        "fr": "\nL'optimisation est une branche des mathématiques cherchant à modéliser, à analyser et à résoudre analytiquement ou numériquement les problèmes qui consistent à minimiser ou maximiser une fonction sur un ensemble.\nL’optimisation joue un rôle important en recherche opérationnelle (domaine à la frontière entre l'informatique, les mathématiques et l'économie), dans les mathématiques appliquées (fondamentales pour l'industrie et l'ingénierie), en analyse et en analyse numérique, en statistique pour "
       }
-    ]
-  }
+    },
+    {
+      "_id": "20590",
+      "_source": "https://en.wikipedia.org/wiki/Mathematical_model",
+      "_type": "concept",
+      "_url": "https://graphsearch.epfl.ch/concept/20590",
+      "title": { "en": "Mathematical model", "fr": "Modèle mathématique" },
+      "summary": {
+        "en": "\nA mathematical model is an abstract description of a concrete system using mathematical concepts and language. The process of developing a mathematical model is termed mathematical modeling. Mathematical models are used in applied mathematics and in the natural sciences (such as physics, biology, earth science, chemistry) and engineering disciplines (such as computer science, electrical engineering), as well as in non-physical systems such as the social sciences\n(such as economics, psychology, ",
+        "fr": "vignette|Un automate fini est un exemple de modèle mathématique.\nUn modèle mathématique est une traduction d'une observation dans le but de lui appliquer les outils, les techniques et les théories mathématiques, puis généralement, en sens inverse, la traduction des résultats mathématiques obtenus en prédictions ou opérations dans le monde réel.\nUn modèle se rapporte toujours à ce qu’on espère en déduire. Un même objet, par exemple une souris, ne sera pas modélisé de la même façon selon que l'on "
+      }
+    },
+    {
+      "_id": "18831",
+      "_source": "https://en.wikipedia.org/wiki/Mathematics",
+      "_type": "concept",
+      "_url": "https://graphsearch.epfl.ch/concept/18831",
+      "title": { "en": "Mathematics", "fr": "Mathématiques" },
+      "summary": {
+        "en": "Mathematics is an area of knowledge that includes the topics of numbers, formulas and related structures, shapes and the spaces in which they are contained, and quantities and their changes. These topics are represented in modern mathematics with the major subdisciplines of number theory, algebra, geometry, and analysis, respectively. There is no general consensus among mathematicians about a common definition for their academic discipline.\nMost mathematical activity involves the discovery of pr",
+        "fr": "thumb|upright|Raisonnement mathématique sur un tableau.\nLes mathématiques (ou la mathématique) sont un ensemble de connaissances abstraites résultant de raisonnements logiques appliqués à des objets divers tels que les ensembles mathématiques, les nombres, les formes, les structures, les transformations ; ainsi qu'aux relations et opérations mathématiques qui existent entre ces objets. Elles sont aussi le domaine de recherche développant ces connaissances, ainsi que la discipline qui les enseign"
+      }
+    },
+    {
+      "_id": "MATH-265",
+      "_source": null,
+      "_type": "course",
+      "_url": "https://graphsearch.epfl.ch/course/MATH-265",
+      "code": "MATH-265",
+      "title": "Introduction to optimization and operations research",
+      "summary": {
+        "en": "Introduction to major operations research models and optimization algorithms",
+        "fr": "Introduction to major operations research models and optimization algorithms"
+      }
+    },
+    {
+      "_id": "CIVIL-557",
+      "_source": null,
+      "_type": "course",
+      "_url": "https://graphsearch.epfl.ch/course/CIVIL-557",
+      "code": "CIVIL-557",
+      "title": "Decision-aid methodologies in transportation",
+      "summary": {
+        "en": "The course proposes an introduction to operations research, big data analysis, and mathematical modelling for decision support in transportation systems.",
+        "fr": "The course proposes an introduction to operations research, big data analysis, and mathematical modelling for decision support in transportation systems."
+      }
+    },
+    {
+      "_id": "5a9a74a0lmB3OCV2oM",
+      "_source": null,
+      "_type": "lecture",
+      "_url": "https://graphsearch.epfl.ch/lecture/5a9a74a0lmB3OCV2oM",
+      "title": "Summary Week 10: Discrete Optimization (+ answers interactive Questions)",
+      "description": null,
+      "date_created": "2021-12-04T13:13:00.000Z",
+      "restricted": true,
+      "video": {
+        "id": "lmB3OCV2oM",
+        "url": "https://tube.switch.ch/videos/lmB3OCV2oM"
+      }
+    },
+    {
+      "_id": "M-CONVERSION1",
+      "_source": "https://www.edx.org/course/conversion-electromecanique-i",
+      "_type": "mooc",
+      "_url": "https://graphsearch.epfl.ch/mooc/M-CONVERSION1",
+      "description": "Les moteurs électriques et les actionneurs en général font partie de notre quotidien ; on en trouve aussi bien dans l’industrie que dans les applications grand public : les automobiles, l’électroménager, les ordinateurs et même les téléphones portables utilisent des systèmes électromécaniques afin de créer de la force ou du mouvement.\n\nCe cours aborde les principes de base permettant le calcul, la simulation et la conception de systèmes électromécaniques tels que les actionneurs ou les moteurs électriques.\n\nLe cours comprend les modules suivants :\n\n- Circuits magnétiques\n- Matériaux magnétiques\n- Transformateur monophasé\n- Conversion électromécanique\n- Systèmes dynamiques\n- Actionneurs\n\nPour chacun de ces modules, la matière est présentée non-seulement sous l’angle mathématique, afin de permettre la modélisation de systèmes complexes, mais aussi par des exemples d’applications pratiques et des démonstrations expérimentales.",
+      "language": "French",
+      "level": "Bachelor",
+      "platform": "edx",
+      "title": {
+        "en": "Conversion electromécanique I",
+        "fr": "Conversion electromécanique I"
+      }
+    },
+    {
+      "_id": "104596",
+      "_source": "https://people.epfl.ch/dominique.bonvin",
+      "_type": "person",
+      "_url": "https://graphsearch.epfl.ch/person/104596",
+      "name_first": "Dominique",
+      "name_last": "Bonvin",
+      "name_display": "Dominique Bonvin",
+      "email": "dominique.bonvin@epfl.ch",
+      "biography": {
+        "en": "Dominique Bonvin is Professor and Director of the Automatic Control Laboratory of EPFL. He received his Diploma in Chemical Engineering from ETH Zürich, and his Ph.D. degree from the University of California, Santa Barbara. He worked in the field of process control for the Sandoz Corporation in Basel and with the Systems Engineering Group of ETH Zürich. He joined the EPFL in 1989, where his current research interests include modeling, control and optimization of dynamic systems. He served as Director of the Automatic Control Laboratory for the periods 1993-97, 2003-2007 and again since 2012, Head of the Mechanical Engineering Department in 1995-97 and Dean of Bachelor and Master Studies at EPFL for the period 2004-2011.",
+        "fr": "Dominique Bonvin is Professor and Director of the Automatic Control Laboratory of EPFL. He received his Diploma in Chemical Engineering from ETH Zürich, and his Ph.D. degree from the University of California, Santa Barbara. He worked in the field of process control for the Sandoz Corporation in Basel and with the Systems Engineering Group of ETH Zürich. He joined the EPFL in 1989, where his current research interests include modeling, control and optimization of dynamic systems. He served as Director of the Automatic Control Laboratory for the periods 1993-97, 2003-2007 and again since 2012, Head of the Mechanical Engineering Department in 1995-97 and Dean of Bachelor and Master Studies at EPFL for the period 2004-2011."
+      }
+    },
+    {
+      "_id": "140973",
+      "_source": "https://people.epfl.ch/francois.marechal",
+      "_type": "person",
+      "_url": "https://graphsearch.epfl.ch/person/140973",
+      "name_first": "François",
+      "name_last": "Maréchal",
+      "name_display": "François Maréchal",
+      "email": "francois.marechal@epfl.ch",
+      "biography": {
+        "en": "Ph D. in engineering Chemical process engineer\n\n\nResearcher and lecturer in the field of computer aided process and energy systems engineering.\n\nLecturer in the mechanical engineering, electrical engineering and environmental sciences engineering in EPFL.\n\n\nI'm responsible for the Minor in Energy of EPFL and I'm involved in 3 projects of the Competence Center in Energy and Mobility (2nd generation biofuel, Wood SOFC, and gas turbine development with CO2 mitigation) in which i'm contributing  to the energy conversion system design and optimisation.\n\n\nShort summary of my scientific carrer\n\nAfter a graduation in chemical engineering from the University of Liège, I have obtained a Ph. D. from the University of Liège in the LASSC laboratory of Prof. Kalitventzeff (former president of the European working party on computer aided process engineering). This laboratory was one of the pioneering laboratory in the field of Computer Aided Process Engineering.\nIn the group of Professor Kalitventzeff, I have worked on the development and the applications of data reconciliation, process modelling and optimisation techniques in the chemical process industry, my experience ranges from nuclear power stations to chemical plants. In the LASSC, I have been responsible from the developments in the field of rational use of energy in the industry. My first research topic has been the methodological development of process integration techniques, combining the use of pinch based methods and of mathematical programming: e.g. for the design of multiperiod heat exchanger networks or Mixed integer non linear programming techniques for the optimal management of utility systems. Fronted with applications in the industry, my work then mainly concentrated on the optimal integration of utility systems considering not only the energy requirements but the cost of the energy requirements and the energy conversion systems. I developed methods for analysing and integrating the utility system, the steam networks, combustion (including waste fuel), gas turbines or other advanced energy conversion systems (cogeneration, refrigeration and heat). The techniques applied uses operation research tools like mixed integer linear programming and exergy analysis. In order to evaluate the results of the utility integration, a new graphical method for representing the integration of the utility systems has been developed. By the use of MILP techniques, the method developed for the utility integration has been extended to handled site scale problems, to incorporate environmental constraints  and reduce the water usage. This method (the Effect Modelling and Optimisation method) has been successfully applied to the chemical plants industry, the pulp and paper industry and the power plant. Instead of focusing on academic problems, I mainly developed my research based on industrial applications that lead to valuable and applicable patented results. Recently the methods developed have been extended to realise the thermoeconomic optimisation of integrated systems like fuel cells. My present R&D work concerns the application of multi-objective optimisation strategies in the design of processes and integrated energy conversion systems.\nSince 2001, Im working in the Industrial Energy Systems Laboratory (LENI) of Ecole Polytechnique fédérale de Lausanne (EPFL) where Im leading the R&D activities in the field of Computer Aided Analysis and Design of Industrial Energy Systems with a major focus on sustainable energy conversion system development using thermo-economic optimisation methodologies. A part from the application and the development of process integration techniques, that remains my major field of expertise, the applications concern :\nRational use of water and energy in Industrial processes and industrial production sites : projects with NESTLE, EDF, VEOLIA and Borregaard (pulp and paper).Energy conversion and process design : biofuels from waste biomass (with GASNAT, EGO and PSI), water dessalination and waste water treatment plant (VEOLIA), power plant design (ALSTOM), Energy conversion from geothermal sources (BFE). Integrated energy systems in urban areas : together with SCANE and SIG (GE) and IEA annexe 42 for micro-cogeneration systems.\n\nI as well contributed to the definition of the 2000 Watt society and to studies concerning the emergence of green technologies on the market in the frame of the Alliance for Global Sustainability.",
+        "fr": "Look at the\nresearcher id"
+      }
+    },
+    {
+      "_id": "289565",
+      "_source": "https://infoscience.epfl.ch/record/289565",
+      "_type": "publication",
+      "_url": "https://graphsearch.epfl.ch/publication/289565",
+      "type": "ARTICLE",
+      "title": "Design and Evaluation of New Quinazolin-4(3H)-one Derived PqsR Antagonists as Quorum Sensing Quenchers in Pseudomonas aeruginosa",
+      "publisher": "AMER CHEMICAL SOC",
+      "published_in": "Acs Infectious Diseases",
+      "year": 2021,
+      "abstract": "P. aeruginosa (PA) continues to pose a threat to global public health due to its high levels of antimicrobial resistance (AMR). The ongoing AMR crisis has led to an alarming shortage of effective treatments for resistant microbes, and hence there is a pressing demand for the development of novel antimicrobial interventions. The potential use of antivirulence therapeutics to tackle bacterial infections has attracted considerable attention over the past decades as they hamper the pathogenicity of target microbes with reduced selective pressure, minimizing the emergence of resistance. One such approach is to interfere with the PA pqs quorum sensing system which upon the interaction of PqsR, a Lys-R type transcriptional regulator, with its cognate signal molecules 4-hydroxy-2-heptylquinoline (HHQ) and 2-heptyl-3-hydroxy-4-quinolone (PQS), governs multiple virulence traits and host-microbe interactions. In this study, we report the hit identification and optimization of PqsR antagonists using virtual screening coupled with whole cell assay validation. The optimized hit compound 61 ((R)-2-(4-(3-(6-chloro-4-oxoquinazolin-3(4H)-yl)-2-hydroxypropoxy)phenyl)acetonitrile) was found to inhibit the expression of the PA P-pqsA promoter controlled by PqsR with an IC50 of 1 mu M. Using isothermal titration calorimetry, a K-d of 10 nM for the P-qsR ligand binding domain (PqsR(LBD)) was determined for 61. Furthermore, the crystal structure of 61 with PqsR(LBD) was attained with a resolution of 2.65 angstrom. Compound 61 significantly reduced levels of pyocyanin, PQS, and HHQ in PAO1-L, PA14 lab strains and PAK6085 clinical isolate. Furthermore, this compound potentiated the effect of ciprofloxacin in early stages of biofilm treatment and in Galleria mellonella infected with PA. Altogether, this data shows 61 as a potent PqsR inhibitor with potential for hit to lead optimization toward the identification of a PA QS inhibitor which can be advanced into preclinical development.",
+      "authors": {
+        "items": [
+          {
+            "_id": "316998",
+            "_source": "https://people.epfl.ch/eduard.vicooton",
+            "_type": "person",
+            "_url": "https://graphsearch.epfl.ch/person/316998",
+            "name_first": "Eduard",
+            "name_last": "Vico Oton",
+            "name_display": "Eduard Vico Oton",
+            "email": "eduard.vicooton@epfl.ch"
+          }
+        ],
+        "result_count": 1
+      }
+    }
+  ]
 }
