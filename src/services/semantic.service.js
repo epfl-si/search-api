@@ -1,13 +1,14 @@
 const axios = require('axios');
 
-async function post (params) {
-  return axios.post('https://graphsearch.epfl.ch/api/top-suggestions', {
-    terms: params.q,
-    output: 'abbr',
-    types: params.doctype || 'any'
+async function get (query) {
+  return axios.get('https://graphdb.epfl.ch:41110/search/search.epfl.ch', {
+    params: {
+      q: query.q,
+      types: query.doctype || 'any'
+    }
   });
 }
 
 module.exports = {
-  post
+  get
 };
