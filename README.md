@@ -74,14 +74,16 @@
 
 ### Parameters
 
-| Name | Type     | Comments |
-| ---- | -------- | -------- |
-| `q`  | `String` | Query    |
+| Name      | Type     | Comments                                                                         |
+| --------- | -------- | -------------------------------------------------------------------------------- |
+| `q`       | `String` | Query                                                                            |
+| `doctype` | `String` | Values : `concept`, `course`, `lecture`, `mooc`, `person`, `publication`, `unit` |
 
 ### Examples
 
 - [/api/graphsearch?q=math][graphsearch-1]
-- [/api/graphsearch?q=vetterli][graphsearch-2]
+- [/api/graphsearch?q=vetterli&doctype=person][graphsearch-2]
+- [/api/graphsearch?q=lts&doctype=unit][graphsearch-3]
 
 ## Documentation
 
@@ -107,4 +109,5 @@ See [Contributing](CONTRIBUTING.md).
 [unit-2]: http://127.0.0.1:5555/api/unit?q=vpo&hl=en
 [unit-3]: http://127.0.0.1:5555/api/unit?acro=vpo
 [graphsearch-1]: http://127.0.0.1:5555/api/graphsearch?q=math
-[graphsearch-2]: http://127.0.0.1:5555/api/graphsearch?q=vetterli
+[graphsearch-2]: http://127.0.0.1:5555/api/graphsearch?q=vetterli&doctype=person
+[graphsearch-3]: http://127.0.0.1:5555/api/graphsearch?q=lts&doctype=unit
