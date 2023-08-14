@@ -74,10 +74,11 @@
 
 ### Parameters
 
-| Name      | Type     | Comments                                                                         |
-| --------- | -------- | -------------------------------------------------------------------------------- |
-| `q`       | `String` | Query                                                                            |
-| `doctype` | `String` | Values : `concept`, `course`, `lecture`, `mooc`, `person`, `publication`, `unit` |
+| Name      | Type     | Comments                                                                               |
+| --------- | -------- | -------------------------------------------------------------------------------------- |
+| `q`       | `String` | Query                                                                                  |
+| `doctype` | `String` | Values : `concept`, `course`, `lecture`, `mooc`, `person`, `publication`, `unit`       |
+| `offset`  | `Number` | The index of the first result to return. The default number of results per page is 10. |
 
 ### Examples
 
