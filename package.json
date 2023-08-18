@@ -7,7 +7,7 @@
   "author": "William Belle <william.belle@gmail.com>",
   "homepage": "https://github.com/epfl-si/search-api#readme",
   "engines": {
-    "node": "^14.17.0 || >=16.0.0"
+    "node": "^16.10.0 || >=18.0.0"
   },
   "scripts": {
     "docs": "jsdoc -c jsdoc.json",
