@@ -10,6 +10,7 @@ const cseRouter = require('./routes/cse.route');
 const peopleRouter = require('./routes/people.route');
 const unitRouter = require('./routes/unit.route');
 const semanticRouter = require('./routes/semantic.route');
+const addressRouter = require('./routes/address.route');
 
 const app = express();
 
@@ -37,6 +38,11 @@ if (configApi.enableCse) {
 // People
 if (configApi.enableLdap) {
   app.use('/api/ldap', peopleRouter);
+}
+
+// Address
+if (configApi.enableLdap) {
+  app.use('/api/address', addressRouter);
 }
 
 // Unit
