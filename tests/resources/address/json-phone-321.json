@@ -1,0 +1,74 @@
+[
+  {
+    "sciper": "670003",
+    "name": "Djarin",
+    "firstname": "Din",
+    "email": "din.djarin@epfl.ch",
+    "accreds": [
+      {
+        "officeList": ["Sundari 231"],
+        "path": "EPFL/SO/TV-3/MANDALORE",
+        "acronym": "MANDALORE",
+        "fullAddress": "EPFL SO TV-3 MANDALORE $ Base 231 (Bâtiment Mandalore) $ Station 231 $ DI-231",
+        "postOfficeBox": "Station 231",
+        "postalCode": "DI-231"
+      }
+    ]
+  },
+  {
+    "sciper": "670001",
+    "name": "Fett",
+    "firstname": "Boba",
+    "email": "boba.fett@epfl.ch",
+    "accreds": [
+      {
+        "officeList": ["Cloud City 016"],
+        "path": "EPFL/OT/EP-5/BESPIN",
+        "acronym": "BESPIN",
+        "fullAddress": "EPFL OT EP-5 BESPIN $ Base 016 (Bâtiment Kamino) $ Station 016 $ BO-016",
+        "postOfficeBox": "Station 016",
+        "postalCode": "BO-016"
+      },
+      {
+        "officeList": ["Dune Sea 001"],
+        "path": "EPFL/OT/EP-6/TATOOINE",
+        "acronym": "TATOOINE",
+        "fullAddress": "EPFL OT EP-6 TATOOINE $ Base 001 (Bâtiment Tatooine) $ Station 001 $ BO-001",
+        "postOfficeBox": "Station 001",
+        "postalCode": "BO-001"
+      }
+    ]
+  },
+  {
+    "sciper": "670002",
+    "name": "Fett",
+    "firstname": "Jango",
+    "email": "jango.fett@epfl.ch",
+    "accreds": [
+      {
+        "officeList": ["Base 1468"],
+        "path": "EPFL/PT/EP-2/KAMINO",
+        "acronym": "KAMINO",
+        "fullAddress": "EPFL PT EP-2 KAMINO $ Base 1468 (Bâtiment Kamino) $ Station 1468 $ JA-1468",
+        "postOfficeBox": "Station 1468",
+        "postalCode": "JA-1468"
+      }
+    ]
+  },
+  {
+    "sciper": "670004",
+    "name": "Vizsla",
+    "firstname": "Paz",
+    "email": "paz.vizsla@epfl.ch",
+    "accreds": [
+      {
+        "officeList": ["Ronion 001"],
+        "path": "EPFL/SO/TV-3/MANDALORE",
+        "acronym": "MANDALORE",
+        "fullAddress": "EPFL SO TV-3 MANDALORE $ Base 001 (Bâtiment Mandalore) $ Station 001 $ Ronion 001",
+        "postOfficeBox": "Station 001",
+        "postalCode": "PA-001"
+      }
+    ]
+  }
+]

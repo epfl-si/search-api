@@ -1,0 +1,34 @@
+[
+  {
+    "sciper": "670003",
+    "name": "Djarin",
+    "firstname": "Din",
+    "email": "din.djarin@epfl.ch",
+    "accreds": [
+      {
+        "officeList": ["Sundari 231"],
+        "path": "EPFL/SO/TV-3/MANDALORE",
+        "acronym": "MANDALORE",
+        "fullAddress": "EPFL SO TV-3 MANDALORE $ Base 231 (Bâtiment Mandalore) $ Station 231 $ DI-231",
+        "postOfficeBox": "Station 231",
+        "postalCode": "DI-231"
+      }
+    ]
+  },
+  {
+    "sciper": "670005",
+    "name": "Grogu",
+    "firstname": "Din",
+    "email": "din.grogu@epfl.ch",
+    "accreds": [
+      {
+        "officeList": ["Jedi Temple"],
+        "path": "EPFL/SO/TV-3/MANDALORE",
+        "acronym": "MANDALORE",
+        "fullAddress": "EPFL SO TV-3 MANDALORE $ Base Temple (Bâtiment Coruscant) $ Station Temple $ Jedi Temple",
+        "postOfficeBox": "Station Temple",
+        "postalCode": "DI-Temple"
+      }
+    ]
+  }
+]

@@ -1,0 +1,107 @@
+const request = require('supertest');
+
+const app = require('../src/app');
+const ldapService = require('../src/services/ldap.service');
+
+describe('Test API People ("/api/address")', () => {
+  let testOutput = [];
+  const originalConsoleError = console.error;
+  const testConsoleError = (output) => { testOutput.push(output); };
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    console.error = testConsoleError;
+    testOutput = [];
+  });
+
+  afterEach(() => {
+    console.error = originalConsoleError;
+  });
+
+  test('It should get an empty result without query', async () => {
+    const response = await request(app).get('/api/address');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toMatch('[]');
+  });
+
+  test('It should get an empty result with a small query', async () => {
+    const response = await request(app).get('/api/address?q=w');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toMatch('[]');
+  });
+
+  test('It should find sciper 670001', async () => {
+    const jsonResult = require('./resources/address/json-sciper-670001.json');
+    const response = await request(app).get('/api/address?q=670001');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find mail boba.fett@epfl.ch', async () => {
+    const jsonResult = require('./resources/address/json-sciper-670001.json');
+    const response = await request(app).get('/api/address?q=boba.fett@epfl.ch');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find phone number 321', async () => {
+    const jsonResult = require('./resources/address/json-phone-321.json');
+    const response = await request(app).get('/api/address?q=321');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find name Fett', async () => {
+    const jsonResult = require('./resources/address/json-name-fett.json');
+    const response = await request(app).get('/api/address?q=Fett');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find firstname Din', async () => {
+    const jsonResult = require('./resources/address/json-name-din.json');
+    const response = await request(app).get('/api/address?q=Din');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find name Fet (prefix)', async () => {
+    const jsonResult = require('./resources/address/json-name-fett.json');
+    const response = await request(app).get('/api/address?q=Fet');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find name ett (suffix)', async () => {
+    const jsonResult = require('./resources/address/json-name-fett.json');
+    const response = await request(app).get('/api/address?q=ett');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find Fett Boba', async () => {
+    const jsonResult = require('./resources/address/json-sciper-670001.json');
+    const response = await request(app).get('/api/address?q=Fett Boba');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find Bo Katan Kryze', async () => {
+    const jsonResult = require('./resources/address/json-name-kryze.json');
+    const response = await request(app).get('/api/address?q=Bo Katan Kryze');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should not find sciper 679999 without ldap server', async () => {
+    const mockLdapService = jest.spyOn(ldapService, 'searchAll');
+    mockLdapService.mockRejectedValue(new Error('LDAP is Gone'));
+
+    const response = await request(app).get('/api/address?q=679999');
+    expect(mockLdapService).toHaveBeenCalled();
+    expect(response.statusCode).toBe(400);
+    expect(response.text).toMatch('Oops, something went wrong');
+    expect(testOutput.length).toBe(1);
+    expect(testOutput[0]).toMatch('error');
+  });
+});
