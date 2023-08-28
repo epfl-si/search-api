@@ -7,16 +7,17 @@ RUN \
 ENV TZ="Europe/Zurich" \
     NODE_ENV="production"
 
-WORKDIR /app
+USER node
+WORKDIR /usr/src/app
 
-COPY package*.json ./
-COPY src /app
+COPY --chown=node:node package*.json ./
 
 RUN \
   npm ci --omit=dev && \
   npm cache clean --force
 
-EXPOSE 5555
-USER node
+COPY --chown=node:node src ./
 
-CMD [ "dumb-init", "node", "/app/server.js" ]
+EXPOSE 5555
+
+CMD [ "dumb-init", "node", "/usr/src/app/server.js" ]
