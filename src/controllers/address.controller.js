@@ -4,7 +4,7 @@ const appCache = require('../services/cache.service');
 
 async function get (req, res) {
   const q = req.query.q || '';
-  if (q.length < 6) {
+  if (!/^[0-9]{6}$/.test(q)) {
     return res.json({});
   }
 
@@ -12,10 +12,7 @@ async function get (req, res) {
     return res.send(appCache.get(req.originalUrl));
   } else {
     try {
-      let ldapResults;
-      if (/^[0-9]{6}$/.test(q)) {
-        ldapResults = await addressService.getPersonBySciper(q);
-      }
+      const ldapResults = await addressService.getPersonBySciper(q);
       const jsonResponse = ldapUtil.ldapAddress2api(ldapResults);
       appCache.set(req.originalUrl, jsonResponse);
       return res.json(jsonResponse);
