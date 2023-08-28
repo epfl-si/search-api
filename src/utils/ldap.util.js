@@ -221,12 +221,12 @@ function ldap2api (ldapResults, q, hl) {
  * @param {string} q The query.
  * @returns {object} Return the result for the API.
  */
-function ldapAddress2api (ldapResults, q) {
-  const list = [];
+function ldapAddress2api (ldapResults) {
   const ldapAddressMapper = newLdapAddressMapper();
+  const person = {};
 
   for (const [sciper, entry] of Object.entries(ldapResults)) {
-    const person = { sciper };
+    person.sciper = sciper;
     const listAccreds = [];
     for (let acc = 0; acc < entry.length; acc++) {
       const accred = {
@@ -251,9 +251,8 @@ function ldapAddress2api (ldapResults, q) {
       listAccreds.push(accred);
     }
     person.accreds = sortAccreds(listAccreds);
-    list.push(person);
   }
-  return sortPersons(list, q);
+  return person;
 }
 
 module.exports = {

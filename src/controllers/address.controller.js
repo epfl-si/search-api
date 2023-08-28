@@ -8,9 +8,8 @@ async function get (req, res) {
   }
 
   try {
-    let ldapResults = [];
-    ldapResults = await addressService.getPersonBySciper(q);
-    return res.json(ldapUtil.ldapAddress2api(ldapResults, q));
+    const ldapResults = await addressService.getPersonBySciper(q);
+    return res.json(ldapUtil.ldapAddress2api(ldapResults));
   } catch (err) {
     console.error('[error] ', err.message);
     return res.status(400).json({
