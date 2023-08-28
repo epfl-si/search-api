@@ -37,6 +37,13 @@ describe('Test API People ("/api/address")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
+  test('It should find sciper 670001 (cache)', async () => {
+    const jsonResult = require('./resources/address/json-sciper-670001.json');
+    const response = await request(app).get('/api/address?q=670001');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
   test('It should not find sciper 679999 without ldap server', async () => {
     const mockLdapService = jest.spyOn(ldapService, 'searchAll');
     mockLdapService.mockRejectedValue(new Error('LDAP is Gone'));
