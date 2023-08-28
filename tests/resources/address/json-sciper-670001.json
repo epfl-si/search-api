@@ -1,26 +1,24 @@
-[
-  {
-    "sciper": "670001",
-    "name": "Fett",
-    "firstname": "Boba",
-    "email": "boba.fett@epfl.ch",
-    "accreds": [
-      {
-        "officeList": ["Cloud City 016"],
-        "path": "EPFL/OT/EP-5/BESPIN",
-        "acronym": "BESPIN",
-        "fullAddress": "EPFL OT EP-5 BESPIN $ Base 016 (Bâtiment Kamino) $ Station 016 $ BO-016",
-        "postOfficeBox": "Station 016",
-        "postalCode": "BO-016"
-      },
-      {
-        "officeList": ["Dune Sea 001"],
-        "path": "EPFL/OT/EP-6/TATOOINE",
-        "acronym": "TATOOINE",
-        "fullAddress": "EPFL OT EP-6 TATOOINE $ Base 001 (Bâtiment Tatooine) $ Station 001 $ BO-001",
-        "postOfficeBox": "Station 001",
-        "postalCode": "BO-001"
-      }
-    ]
-  }
-]
+{
+  "sciper": "670001",
+  "name": "Fett",
+  "firstname": "Boba",
+  "email": "boba.fett@epfl.ch",
+  "accreds": [
+    {
+      "officeList": ["Cloud City 016"],
+      "path": "EPFL/OT/EP-5/BESPIN",
+      "acronym": "BESPIN",
+      "fullAddress": "EPFL OT EP-5 BESPIN $ Base 016 (Bâtiment Kamino) $ Station 016 $ BO-016",
+      "postOfficeBox": "Station 016",
+      "postalCode": "BO-016"
+    },
+    {
+      "officeList": ["Dune Sea 001"],
+      "path": "EPFL/OT/EP-6/TATOOINE",
+      "acronym": "TATOOINE",
+      "fullAddress": "EPFL OT EP-6 TATOOINE $ Base 001 (Bâtiment Tatooine) $ Station 001 $ BO-001",
+      "postOfficeBox": "Station 001",
+      "postalCode": "BO-001"
+    }
+  ]
+}
