@@ -41,7 +41,7 @@ if (configApi.enableLdap) {
 }
 
 // Address
-if (configApi.enableLdap) {
+if (configApi.enableAddress) {
   app.use('/api/address', addressRouter);
 }
 

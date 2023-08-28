@@ -26,6 +26,8 @@
                   value: '{{ searchapi_secrets.SEARCH_API_ENABLE_CSE |string }}'
                 - name: SEARCH_API_ENABLE_LDAP
                   value: '{{ searchapi_secrets.SEARCH_API_ENABLE_LDAP |string }}'
+                - name: SEARCH_API_ENABLE_ADDRESS
+                  value: '{{ searchapi_secrets.SEARCH_API_ENABLE_ADDRESS |string }}'
                 - name: SEARCH_API_ENABLE_UNIT
                   value: '{{ searchapi_secrets.SEARCH_API_ENABLE_UNIT |string }}'
                 - name: SEARCH_API_ENABLE_GRAPHSEARCH
