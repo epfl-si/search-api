@@ -5,7 +5,7 @@ const appCache = require('../services/cache.service');
 async function get (req, res) {
   const q = req.query.q || '';
   if (q.length < 6) {
-    return res.json([]);
+    return res.json({});
   }
 
   if (appCache.has(req.originalUrl)) {

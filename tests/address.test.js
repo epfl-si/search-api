@@ -21,13 +21,13 @@ describe('Test API People ("/api/address")', () => {
   test('It should get an empty result without query', async () => {
     const response = await request(app).get('/api/address');
     expect(response.statusCode).toBe(200);
-    expect(response.text).toMatch('[]');
+    expect(response.text).toMatch('{}');
   });
 
   test('It should get an empty result with a small query', async () => {
     const response = await request(app).get('/api/address?q=w');
     expect(response.statusCode).toBe(200);
-    expect(response.text).toMatch('[]');
+    expect(response.text).toMatch('{}');
   });
 
   test('It should find sciper 670001', async () => {
