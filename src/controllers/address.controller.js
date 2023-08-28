@@ -3,7 +3,7 @@ const addressService = require('../services/people.service');
 
 async function get (req, res) {
   const q = req.query.q || '';
-  if (q.length < 2) {
+  if (q.length < 6) {
     return res.json([]);
   }
 
