@@ -1,5 +1,5 @@
 const ldapUtil = require('../utils/ldap.util');
-const addressService = require('../services/address.service');
+const addressService = require('../services/people.service');
 
 async function get (req, res) {
   const q = req.query.q || '';
