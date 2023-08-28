@@ -9,15 +9,7 @@ async function get (req, res) {
 
   try {
     let ldapResults = [];
-    if (/^[0-9]{6}$/.test(q)) {
-      ldapResults = await addressService.getPersonBySciper(q);
-    } else if (/^\+?[0-9 ]+$/.test(q)) {
-      ldapResults = await addressService.getPersonByPhone(q);
-    } else if (/^[^@]+@[^@]+$/.test(q)) {
-      ldapResults = await addressService.getPersonByEmail(q);
-    } else {
-      ldapResults = await addressService.getPersonByName(q);
-    }
+    ldapResults = await addressService.getPersonBySciper(q);
     return res.json(ldapUtil.ldapAddress2api(ldapResults, q));
   } catch (err) {
     console.error('[error] ', err.message);
