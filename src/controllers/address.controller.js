@@ -12,7 +12,10 @@ async function get (req, res) {
     return res.send(appCache.get(req.originalUrl));
   } else {
     try {
-      const ldapResults = await addressService.getPersonBySciper(q);
+      let ldapResults;
+      if (/^[0-9]{6}$/.test(q)) {
+        ldapResults = await addressService.getPersonBySciper(q);
+      }
       const jsonResponse = ldapUtil.ldapAddress2api(ldapResults);
       appCache.set(req.originalUrl, jsonResponse);
       return res.json(jsonResponse);
