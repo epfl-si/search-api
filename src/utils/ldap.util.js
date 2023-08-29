@@ -235,12 +235,6 @@ function ldapAddress2api (ldapResults) {
         acronym: dn2acronym(entry[acc].objectName)
       };
       for (let att = 0; att < entry[acc].attributes.length; att++) {
-        if (entry[acc].attributes[att].type in ldapUserMapper) {
-          person[ldapUserMapper[entry[acc].attributes[att].type][0]] =
-            ldapUserMapper[
-              entry[acc].attributes[att].type
-            ][1](entry[acc].attributes[att].values);
-        }
         if (entry[acc].attributes[att].type in ldapAddressMapper) {
           accred[ldapAddressMapper[entry[acc].attributes[att].type][0]] =
             ldapAddressMapper[
