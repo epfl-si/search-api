@@ -57,8 +57,21 @@ git push origin main --tags
 
 ## Deploy
 
-Log into `ghcr.io` and `os-docker-registry.epfl.ch`, then
+Log into `ghcr.io`, `os-docker-registry.epfl.ch` and OpenShift, then
 
-```bash
-./ansible/searchapisible [--prod]
+```text
+Usage: ./ansible/searchapisible [options]
+
+Options:
+  -h, --help         Show help message and exit
+      --list-tags    List all available tags
+      --prod         Deploy in production
+  -t, --tags         Run tasks tagged with these values             [string]
+  -v, --verbose      Causes Ansible to print more debug messages
+      --version      Show version number
+
+Examples:
+  ./ansible/searchapisible
+  ./ansible/searchapisible --prod
+  ./ansible/searchapisible --prod -t app.restart
 ```
