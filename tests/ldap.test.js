@@ -22,7 +22,8 @@ describe('Test LDAP Service', () => {
 
   test('It should return an error with a wrong ldap url', async () => {
     const ldapConfig = require('../src/configs/ldap.config');
-    ldapConfig.client.url = 'ldaps://fakeldap.epfl.ch';
+    ldapConfig.client.url = 'ldaps://0.0.0.0:666';
+    ldapConfig.client.connectTimeout = 50;
 
     const ldapService = require('../src/services/ldap.service');
     expect.assertions(2);
