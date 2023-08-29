@@ -10,15 +10,6 @@ describe('Test LDAP Service', () => {
     (client, dn, opts, searchCallbackFn) => searchCallbackFn()
   );
 
-  jest.spyOn(ldap, 'createClient').mockReturnValue({
-    url: {
-      host: process.env.SEARCH_API_LDAP_URL,
-      timeout: 50,
-      connectTimeout: 30
-    },
-    search: mockSearchFn
-  });
-
   beforeEach(() => {
     jest.clearAllMocks();
     console.error = testConsoleError;
@@ -29,11 +20,37 @@ describe('Test LDAP Service', () => {
     console.error = originalConsoleError;
   });
 
+  test('It should return an error with a wrong ldap url', async () => {
+    const ldapConfig = require('../src/configs/ldap.config');
+    ldapConfig.client.url = 'ldaps://0.0.0.0:666';
+    ldapConfig.client.connectTimeout = 50;
+
+    const ldapService = require('../src/services/ldap.service');
+    expect.assertions(2);
+    try {
+      await ldapService.searchAll();
+    } catch (error) {
+      expect(error.code).toEqual('ERR_ASSERTION');
+      expect(error.message).toEqual('search base');
+    }
+  });
+
   test('It should return an error on bad search request', async () => {
     const emitter = new EventEmitter();
     mockSearchFn.mockImplementationOnce(
       (dn, opts, searchCallbackFn) => searchCallbackFn(false, emitter)
     );
+
+    jest.spyOn(ldap, 'createClient').mockReturnValue({
+      url: {
+        host: process.env.SEARCH_API_LDAP_URL,
+        timeout: 50,
+        connectTimeout: 30
+      },
+      destroy: jest.fn(),
+      on: jest.fn(),
+      search: mockSearchFn
+    });
 
     setTimeout(() => {
       emitter.emit('error', new Error('Bad search request'));
@@ -55,6 +72,17 @@ describe('Test LDAP Service', () => {
     mockSearchFn.mockImplementationOnce(
       (dn, opts, searchCallbackFn) => searchCallbackFn(false, emitter)
     );
+
+    jest.spyOn(ldap, 'createClient').mockReturnValue({
+      url: {
+        host: process.env.SEARCH_API_LDAP_URL,
+        timeout: 50,
+        connectTimeout: 30
+      },
+      destroy: jest.fn(),
+      on: jest.fn(),
+      search: mockSearchFn
+    });
 
     setTimeout(() => {
       emitter.emit('timeout', new Error('Timeout search request'));
