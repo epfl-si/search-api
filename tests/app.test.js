@@ -34,6 +34,7 @@ describe('Test 404 routes', () => {
 
   testNonEnabledRoute('SEARCH_API_ENABLE_CSE', '/api/cse');
   testNonEnabledRoute('SEARCH_API_ENABLE_LDAP', '/api/ldap');
+  testNonEnabledRoute('SEARCH_API_ENABLE_ADDRESS', '/api/address');
   testNonEnabledRoute('SEARCH_API_ENABLE_UNIT', '/api/unit');
   testNonEnabledRoute('SEARCH_API_ENABLE_GRAPHSEARCH', '/api/graphsearch');
 });

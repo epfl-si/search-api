@@ -1,13 +1,13 @@
 {
   "name": "search-api",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "EPFL Search Engine API",
   "repository": "epfl-si/search-api",
   "author": "William Belle <william.belle@gmail.com>",
   "homepage": "https://github.com/epfl-si/search-api#readme",
   "engines": {
-    "node": "^14.17.0 || >=16.0.0"
+    "node": "^16.10.0 || >=18.0.0"
   },
   "scripts": {
     "docs": "jsdoc -c jsdoc.json",
@@ -16,8 +16,8 @@
     "prettier": "prettier --check --ignore-unknown '**' '!**/*.js' '!**/ansible-deps-cache'",
     "prettier:fix": "prettier --write --ignore-unknown '**' '!**/*.js' '!**/ansible-deps-cache'",
     "start": "nodemon src/server.js",
-    "test": "npm run lint && jest --forceExit --verbose",
-    "test:coverage": "jest --coverage --forceExit --verbose",
+    "test": "npm run lint && jest --verbose",
+    "test:coverage": "jest --coverage --verbose",
     "test:watch": "jest --watchAll --verbose"
   },
   "devDependencies": {

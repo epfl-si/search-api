@@ -46,6 +46,22 @@
 - [/api/ldap?q=278890][ldap-1]
 - [/api/ldap?q=nicolas.borboen@epfl.ch&hl=en][ldap-2]
 
+## Address
+
+### Endpoint
+
+`GET /api/address`
+
+### Parameters
+
+| Name | Type     | Comments       |
+| ---- | -------- | -------------- |
+| `q`  | `String` | Query (sciper) |
+
+### Examples
+
+- [/api/address?q=278890][address-1]
+
 ## Unit
 
 ### Endpoint
@@ -112,3 +128,4 @@ See [Contributing](CONTRIBUTING.md).
 [graphsearch-1]: http://127.0.0.1:5555/api/graphsearch?q=math
 [graphsearch-2]: http://127.0.0.1:5555/api/graphsearch?q=vetterli&doctype=person
 [graphsearch-3]: http://127.0.0.1:5555/api/graphsearch?q=lts&doctype=unit
+[address-1]: http://127.0.0.1:5555/api/address?q=278890
