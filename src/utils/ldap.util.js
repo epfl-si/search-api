@@ -26,6 +26,16 @@ function newLdapAccredMapper (lang) {
   return ldapAccredMapper;
 }
 
+function newLdapAddressMapper () {
+  const ldapAddressMapper = {
+    roomNumber: ['officeList', (val) => val],
+    postalAddress: ['fullAddress', (val) => val[0]],
+    postalCode: ['postalCode', (val) => val[0]],
+    postOfficeBox: ['postOfficeBox', (val) => val[0]]
+  };
+  return ldapAddressMapper;
+}
+
 function sortAccreds (obj) {
   return obj.sort((a, b) => a.rank - b.rank);
 }
@@ -200,10 +210,50 @@ function ldap2api (ldapResults, q, hl) {
   return sortPersons(list, q);
 }
 
+/**
+ * Convert LDAP Address search result into API result.
+ *
+ * @example
+ * const ldapUtil = require('../utils/ldap.util');
+ * const address = ldapUtil.ldapAddress2api(ldapResults, 'Fett');
+ *
+ * @param {object} ldapResults The result from the LDAP Address search.
+ * @param {string} q The query.
+ * @returns {object} Return the result for the API.
+ */
+function ldapAddress2api (ldapResults) {
+  const ldapAddressMapper = newLdapAddressMapper();
+  const person = {};
+
+  for (const [sciper, entry] of Object.entries(ldapResults)) {
+    person.sciper = sciper;
+    const listAccreds = [];
+    for (let acc = 0; acc < entry.length; acc++) {
+      const accred = {
+        officeList: [],
+        path: dn2path(entry[acc].objectName),
+        acronym: dn2acronym(entry[acc].objectName)
+      };
+      for (let att = 0; att < entry[acc].attributes.length; att++) {
+        if (entry[acc].attributes[att].type in ldapAddressMapper) {
+          accred[ldapAddressMapper[entry[acc].attributes[att].type][0]] =
+            ldapAddressMapper[
+              entry[acc].attributes[att].type
+            ][1](entry[acc].attributes[att].values);
+        }
+      }
+      listAccreds.push(accred);
+    }
+    person.accreds = sortAccreds(listAccreds);
+  }
+  return person;
+}
+
 module.exports = {
   buildLdapQueryForPerson,
   dn2acronym,
   dn2path,
   getProfile,
-  ldap2api
+  ldap2api,
+  ldapAddress2api
 };

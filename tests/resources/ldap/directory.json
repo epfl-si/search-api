@@ -18,7 +18,10 @@
         "Kamino",
         "Kamino est une planète aquatique située dans le secteur Abrion de la bordure extérieure de la galaxie."
       ],
-      "ou;lang-en": "Kamino is an aquatic planet located in the Abrion sector of the galaxy's Outer Rim."
+      "ou;lang-en": "Kamino is an aquatic planet located in the Abrion sector of the galaxy's Outer Rim.",
+      "postalCode": "JA-1468",
+      "postOfficeBox": "Station 1468",
+      "postalAddress": "EPFL PT EP-2 KAMINO $ Base 1468 (Bâtiment Kamino) $ Station 1468 $ JA-1468"
     }
   },
   {
@@ -40,7 +43,10 @@
         "Bespin",
         "Bespin est une géante gazeuse du système stellaire du même nom."
       ],
-      "ou;lang-en": "Bespin is a gas giant in the star system of the same name."
+      "ou;lang-en": "Bespin is a gas giant in the star system of the same name.",
+      "postalCode": "BO-016",
+      "postOfficeBox": "Station 016",
+      "postalAddress": "EPFL OT EP-5 BESPIN $ Base 016 (Bâtiment Kamino) $ Station 016 $ BO-016"
     }
   },
   {
@@ -62,7 +68,10 @@
         "Tatooine",
         "Tatooine est une planète désertique située dans les territoires de la bordure extérieure de la galaxie."
       ],
-      "ou;lang-en": "Tatooine is a desert planet located in the Outer Rim territories of the galaxy."
+      "ou;lang-en": "Tatooine is a desert planet located in the Outer Rim territories of the galaxy.",
+      "postalCode": "BO-001",
+      "postOfficeBox": "Station 001",
+      "postalAddress": "EPFL OT EP-6 TATOOINE $ Base 001 (Bâtiment Tatooine) $ Station 001 $ BO-001"
     }
   },
   {
@@ -84,7 +93,10 @@
         "Mandalore",
         "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie."
       ],
-      "ou;lang-en": "Mandalore is a planet located in the Outer Rim territories of the galaxy."
+      "ou;lang-en": "Mandalore is a planet located in the Outer Rim territories of the galaxy.",
+      "postalCode": "DI-231",
+      "postOfficeBox": "Station 231",
+      "postalAddress": "EPFL SO TV-3 MANDALORE $ Base 231 (Bâtiment Mandalore) $ Station 231 $ DI-231"
     }
   },
   {
@@ -106,7 +118,10 @@
         "Coruscant",
         "Coruscant est une planète tellurique des Mondes du Noyau entièrement urbanisée et recouvertes d'infrastructures."
       ],
-      "ou;lang-en": "Coruscant is an ecumenopolis, collectively known as Imperial City in the Core Worlds."
+      "ou;lang-en": "Coruscant is an ecumenopolis, collectively known as Imperial City in the Core Worlds.",
+      "postalCode": "DI-Temple",
+      "postOfficeBox": "Station Temple",
+      "postalAddress": "EPFL SO TV-3 MANDALORE $ Base Temple (Bâtiment Coruscant) $ Station Temple $ Jedi Temple"
     }
   },
   {
@@ -128,7 +143,10 @@
         "Mandalore",
         "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie."
       ],
-      "ou;lang-en": "Mandalore is a planet located in the Outer Rim territories of the galaxy."
+      "ou;lang-en": "Mandalore is a planet located in the Outer Rim territories of the galaxy.",
+      "postalCode": "PA-001",
+      "postOfficeBox": "Station 001",
+      "postalAddress": "EPFL SO TV-3 MANDALORE $ Base 001 (Bâtiment Mandalore) $ Station 001 $ Ronion 001"
     }
   },
   {
@@ -150,7 +168,10 @@
         "Kalevala",
         "Kalevala est une planète du système Mandalore située dans les territoires de la bordure extérieure."
       ],
-      "ou;lang-en": "Kalevala is a planet in the Mandalore system located in the Outer Rim territories."
+      "ou;lang-en": "Kalevala is a planet in the Mandalore system located in the Outer Rim territories.",
+      "postalCode": "BO-Kryze",
+      "postOfficeBox": "Station Kryze",
+      "postalAddress": "EPFL SO TV-4 KALEVALA $ Base Kryze (Bâtiment Kalevala) $ Station Kryze $ Castle Kryze"
     }
   }
 ]

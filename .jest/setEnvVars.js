@@ -1,5 +1,6 @@
 process.env.SEARCH_API_ENABLE_CSE='True'
 process.env.SEARCH_API_ENABLE_LDAP='True'
+process.env.SEARCH_API_ENABLE_ADDRESS='True'
 process.env.SEARCH_API_ENABLE_UNIT='True'
 process.env.SEARCH_API_ENABLE_GRAPHSEARCH='True'
 
