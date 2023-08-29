@@ -9,10 +9,13 @@ function getSciper (entry) {
 }
 
 function searchAll (base, options) {
-  // http://ldapjs.org/client.html
-  const client = ldap.createClient(ldapConfig.client);
-
   return new Promise((resolve, reject) => {
+    // http://ldapjs.org/client.html
+    const client = ldap.createClient(ldapConfig.client);
+    client.on('error', (err) => {
+      reject(err);
+    });
+
     client.search(base, options, (x, res) => {
       const personsBySciper = {};
 
@@ -25,13 +28,11 @@ function searchAll (base, options) {
       });
 
       res.on('timeout', (err) => {
-        console.error('[error] ' + err.message);
         client.destroy();
         reject(err);
       });
 
       res.on('error', (err) => {
-        console.error('[error] ' + err.message);
         client.destroy();
         reject(err);
       });
