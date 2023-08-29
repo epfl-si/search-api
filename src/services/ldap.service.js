@@ -13,7 +13,6 @@ function searchAll (base, options) {
     // http://ldapjs.org/client.html
     const client = ldap.createClient(ldapConfig.client);
     client.on('error', (err) => {
-      console.error('[error] ' + err.message);
       reject(err);
     });
 
