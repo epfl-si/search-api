@@ -35,5 +35,6 @@
     "firstname": "Din",
     "email": "<EMAIL>",
     "profile": "<EMAIL_PREFIX>"
-  }
+  },
+  "people": []
 }

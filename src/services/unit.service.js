@@ -1,4 +1,6 @@
+const ldapUtil = require('../utils/ldap.util');
 const cadidbService = require('./cadidb.service');
+const peopleService = require('./people.service');
 
 async function get (params) {
   const lang = params.hl || 'fr';
@@ -104,8 +106,8 @@ async function getUnit (acro, lang) {
     unitFullDetails.url = dict.url;
   }
   if (dict.has_accreds) {
-    // TODO: Get people from ldap
-
+    const ldapUnitPersons = await peopleService.getPersonByUnit(dict.sigle);
+    unitFullDetails.people = ldapUtil.ldap2unit(ldapUnitPersons, lang);
   } else {
     unitFullDetails.subunits = await getSubunits(dict.id_unite, lang);
   }
