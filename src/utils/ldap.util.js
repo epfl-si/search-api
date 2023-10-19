@@ -6,8 +6,9 @@
 
 const ldapUserMapper = {
   mail: ['email', (val) => val[0]],
-  sn: ['name', (val) => val[0]],
-  givenName: ['firstname', (val) => val[0]]
+  sn: ['name', (val) => val],
+  givenName: ['firstname', (val) => val],
+  displayName: ['displayName', (val) => val[0]]
 };
 
 function newLdapAccredMapper (lang) {
@@ -97,7 +98,7 @@ function sortPersons (obj, q) {
 function buildLdapQueryForPerson (array) {
   let ldapQuery = '';
   for (const terms of array) {
-    ldapQuery += `(displayName=*${terms.join('*')}*)`;
+    ldapQuery += `(cn=*${terms.join('*')}*)`;
   }
   return `(|${ldapQuery})`;
 }
@@ -143,6 +144,29 @@ function dn2path (dn) {
     .map(x => x.replace(/ou?=/g, ''))
     .join('/')
     .toUpperCase();
+}
+
+/**
+ * Retrieve the correct firstname and name.
+ *
+ * @example
+ * const ldapUtil = require('../utils/ldap.util');
+ * ldapUtil.getCorrectNames(['Alpha', 'Boba'], ['Fett'], 'Boba Fett');
+ *
+ * @param {*} firstnames A list of firstname.
+ * @param {*} names A list of name.
+ * @param {*} displayName The correct display name to use.
+ * @returns {array} Return the correct firstname and name.
+ */
+function getCorrectName (firstnames, names, displayName) {
+  for (const fn of firstnames) {
+    for (const n of names) {
+      const dn = `${fn} ${n}`;
+      if (dn === displayName) {
+        return [fn, n];
+      }
+    }
+  }
 }
 
 /**
@@ -203,6 +227,14 @@ function ldap2api (ldapResults, q, hl) {
       }
       listAccreds.push(accred);
     }
+    const correctName = getCorrectName(
+      person.firstname,
+      person.name,
+      person.displayName
+    );
+    person.firstname = correctName[0];
+    person.name = correctName[1];
+    delete person.displayName;
     person.accreds = sortAccreds(listAccreds);
     person.profile = getProfile(person.email, sciper);
     list.push(person);
@@ -253,6 +285,7 @@ module.exports = {
   buildLdapQueryForPerson,
   dn2acronym,
   dn2path,
+  getCorrectName,
   getProfile,
   ldap2api,
   ldapAddress2api
