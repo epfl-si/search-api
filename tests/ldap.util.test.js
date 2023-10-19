@@ -28,4 +28,12 @@ describe('Test LDAP utilities', () => {
     profile = ldapUtil.getProfile('boba.fett@epfl.ch', '670001');
     expect(profile).toEqual('boba.fett');
   });
+
+  test('It should get the correct name', () => {
+    const firstnames = ['Alpha', 'Boba'];
+    const names = ['Fett'];
+    const displayName = 'Boba Fett';
+    const correctName = ldapUtil.getCorrectName(firstnames, names, displayName);
+    expect(correctName).toEqual(['Boba', 'Fett']);
+  });
 });
