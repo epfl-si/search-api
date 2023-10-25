@@ -150,7 +150,8 @@ async function getUnitPath (hierarchy, lang) {
 async function getSubunits (unitId, lang) {
   const query = 'SELECT sigle, libelle, libelle_en ' +
                 'FROM Unites_v2 ' +
-                'WHERE id_parent = ? AND cmpl_type <> ?';
+                'WHERE id_parent = ? AND ' +
+                '(ghost = 1 OR ISNULL(cmpl_type) OR cmpl_type <> ?)';
   const values = [unitId, 'Z'];
 
   const results = await cadidbService.sendQuery(query, values, 'getSubunits');
