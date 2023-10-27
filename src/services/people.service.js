@@ -27,7 +27,8 @@ function getPersonByPhone (number) {
 }
 
 function getPersonByName (name) {
-  const terms = name.split(/\s+/);
+  const term = name.normalize('NFD').replace(/\p{Diacritic}/gu, '');
+  const terms = term.split(/\s+/);
   const ldapQuery = ldapUtil.buildLdapQueryForPerson(util.permutations(terms));
   return getPerson(ldapQuery);
 }
