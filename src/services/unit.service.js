@@ -1,4 +1,7 @@
 const cadidbService = require('./cadidb.service');
+const visibleConditionByCmplType = `
+    (cmpl_type IS NULL OR cmpl_type not in ('A', 'Z'))
+  `;
 
 async function get (params) {
   const lang = params.hl || 'fr';
@@ -21,12 +24,11 @@ async function get (params) {
 
 async function searchUnits (q, lang) {
   const query = 'SELECT sigle, libelle, libelle_en, hierarchie ' +
-                'FROM Unites_v2 WHERE cmpl_type <> ? AND ' +
-                '(sigle LIKE ? OR libelle LIKE ? OR libelle_en LIKE ?) AND ' +
-                'hierarchie NOT LIKE ?';
-  const values = [
-    'Z', '%' + q + '%', '%' + q + '%', '%' + q + '%', 'TECHNIQUE%'
-  ];
+                'FROM Unites_v2 ' +
+                'WHERE (sigle LIKE ? OR libelle LIKE ? OR libelle_en LIKE ?) ' +
+                `AND ${visibleConditionByCmplType}` +
+                'AND hierarchie NOT LIKE ?';
+  const values = ['%' + q + '%', '%' + q + '%', '%' + q + '%', 'TECHNIQUE%'];
 
   const results = await cadidbService.sendQuery(query, values, 'searchUnits');
   const formattedResults = results.map((dict) => {
@@ -68,9 +70,10 @@ async function getUnit (acro, lang) {
                 'resp_prenom_usuel, url, faxes, adresse, cmpl_type, ghost, ' +
                 'has_accreds ' +
                 'FROM Unites_v2 ' +
-                'WHERE sigle = ? AND cmpl_type <> ? AND ' +
-                'hierarchie NOT LIKE ?';
-  const values = [acro, 'Z', 'TECHNIQUE%'];
+                'WHERE sigle = ? ' +
+                `AND ${visibleConditionByCmplType} ` +
+                'AND hierarchie NOT LIKE ?';
+  const values = [acro, 'TECHNIQUE%'];
 
   const results = await cadidbService.sendQuery(query, values, 'getUnit');
   if (results.length !== 1) {
@@ -150,9 +153,9 @@ async function getUnitPath (hierarchy, lang) {
 async function getSubunits (unitId, lang) {
   const query = 'SELECT sigle, libelle, libelle_en ' +
                 'FROM Unites_v2 ' +
-                'WHERE id_parent = ? AND ' +
-                '(ghost = 1 OR ISNULL(cmpl_type) OR cmpl_type <> ?)';
-  const values = [unitId, 'Z'];
+                'WHERE id_parent = ? ' +
+                `AND ${visibleConditionByCmplType}`;
+  const values = [unitId];
 
   const results = await cadidbService.sendQuery(query, values, 'getSubunits');
   const formattedResults = results.map((dict) => {
