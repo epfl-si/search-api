@@ -3,6 +3,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const express = require('express');
+const compression = require('compression');
 
 const configApi = require('./configs/api.config');
 
@@ -17,6 +18,9 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('x-powered-by', false);
+
+// Gzip all responses > 1kb
+app.use(compression());
 
 // Log
 app.use(
