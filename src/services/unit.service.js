@@ -127,7 +127,8 @@ async function getUnit (acro, lang) {
 
 // Get unit path (acronym + name)
 async function getUnitPath (hierarchy, lang) {
-  const inHierarchyClause = `IN ('${hierarchy.split(' ').join("', '")}')`;
+  const hierarchyArray = hierarchy.split(' ');
+  const inHierarchyClause = `IN ('${hierarchyArray.join("', '")}')`;
   const query = 'SELECT sigle, libelle, libelle_en ' +
                 'FROM Unites_v2 ' +
                 `WHERE sigle ${inHierarchyClause}`;
@@ -143,7 +144,13 @@ async function getUnitPath (hierarchy, lang) {
     };
     return modifiedDict;
   });
-  return formattedResults;
+  const hierarchyMap = {};
+  hierarchyArray.forEach((value, index) => {
+    hierarchyMap[value] = index;
+  });
+  return formattedResults.sort((a, b) => {
+    return hierarchyMap[a.acronym] - hierarchyMap[b.acronym];
+  });
 }
 
 // Get Subunit(s) (acronym + name)

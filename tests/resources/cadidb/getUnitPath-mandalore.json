@@ -1,13 +1,13 @@
 [
   {
-    "sigle": "EPFL",
-    "libelle": "Ecole polytechnique fédérale de Lausanne",
-    "libelle_en": "Ecole polytechnique fédérale de Lausanne"
-  },
-  {
     "sigle": "SO",
     "libelle": "",
     "libelle_en": "Spin-off"
+  },
+  {
+    "sigle": "EPFL",
+    "libelle": "Ecole polytechnique fédérale de Lausanne",
+    "libelle_en": "Ecole polytechnique fédérale de Lausanne"
   },
   {
     "sigle": "TV-3",
