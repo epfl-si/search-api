@@ -15,7 +15,7 @@
       "description": "Chasseur de prime",
       "description;lang-en": "Bounty hunter",
       "ou": [
-        "Kamino",
+        "KAMINO",
         "Kamino est une planète aquatique située dans le secteur Abrion de la bordure extérieure de la galaxie."
       ],
       "ou;lang-en": "Kamino is an aquatic planet located in the Abrion sector of the galaxy's Outer Rim.",
@@ -40,7 +40,7 @@
       "description": "Chasseur de prime",
       "description;lang-en": "Bounty hunter",
       "ou": [
-        "Bespin",
+        "BESPIN",
         "Bespin est une géante gazeuse du système stellaire du même nom."
       ],
       "ou;lang-en": "Bespin is a gas giant in the star system of the same name.",
@@ -65,7 +65,7 @@
       "description": "Chasseur de prime",
       "description;lang-en": "Bounty hunter",
       "ou": [
-        "Tatooine",
+        "TATOOINE",
         "Tatooine est une planète désertique située dans les territoires de la bordure extérieure de la galaxie."
       ],
       "ou;lang-en": "Tatooine is a desert planet located in the Outer Rim territories of the galaxy.",
@@ -90,7 +90,7 @@
       "description": "Chasseur de prime",
       "description;lang-en": "Bounty hunter",
       "ou": [
-        "Mandalore",
+        "MANDALORE",
         "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie."
       ],
       "ou;lang-en": "Mandalore is a planet located in the Outer Rim territories of the galaxy.",
@@ -100,7 +100,7 @@
     }
   },
   {
-    "dn": "cn=Din Grogu,ou=mandalore,ou=tv-3,ou=so,o=epfl,c=ch",
+    "dn": "cn=Din Grogu,ou=coruscant,ou=tv-3,ou=so,o=epfl,c=ch",
     "attributes": {
       "cn": ["Din Grogu", "Grogu"],
       "sn": "Grogu",
@@ -115,7 +115,7 @@
       "description": "Jedi",
       "description;lang-en": "Jedi",
       "ou": [
-        "Coruscant",
+        "CORUSCANT",
         "Coruscant est une planète tellurique des Mondes du Noyau entièrement urbanisée et recouvertes d'infrastructures."
       ],
       "ou;lang-en": "Coruscant is an ecumenopolis, collectively known as Imperial City in the Core Worlds.",
@@ -140,7 +140,7 @@
       "description": "Infanterie lourde",
       "description;lang-en": "Heavy infantry",
       "ou": [
-        "Mandalore",
+        "MANDALORE",
         "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie."
       ],
       "ou;lang-en": "Mandalore is a planet located in the Outer Rim territories of the galaxy.",
@@ -165,7 +165,7 @@
       "description": "Princesse",
       "description;lang-en": "Princess",
       "ou": [
-        "Kalevala",
+        "KALEVALA",
         "Kalevala est une planète du système Mandalore située dans les territoires de la bordure extérieure."
       ],
       "ou;lang-en": "Kalevala is a planet in the Mandalore system located in the Outer Rim territories.",
