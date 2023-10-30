@@ -11,13 +11,17 @@ server.search('c=ch', searchHandler);
   Examples queries:
 
   > ldapsearch -H ldap://localhost:1389 -x \
-      -LLL -b "o=epfl" uniqueIdentifier=670001
+      -LLL -b "c=ch" uniqueIdentifier=670001
 
   > ldapsearch -H ldap://localhost:1389 -x \
-      -LLL -b "o=epfl" sn=Fett
+      -LLL -b "c=ch" sn=Fett
 */
 function searchHandler (req, res, next) {
   directory.forEach(function (user) {
+    /*
+      This test is pretty dumb, make sure in the directory that things are
+      spaced / cased exactly.
+    */
     if (user.dn.indexOf(req.dn.toString()) === -1) {
       return;
     }
