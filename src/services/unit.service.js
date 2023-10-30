@@ -111,7 +111,7 @@ async function getUnit (acro, lang) {
   }
   if (dict.has_accreds) {
     const ldapUnitPersons = await peopleService.getPersonByUnit(dict.sigle);
-    const UnitPersons = ldapUtil.ldap2unit(ldapUnitPersons, lang);
+    const UnitPersons = ldapUtil.ldapUnit2api(ldapUnitPersons, lang);
     if (UnitPersons.length > 0) {
       unitFullDetails.people = UnitPersons;
     }

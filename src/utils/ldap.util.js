@@ -298,7 +298,18 @@ function ldapAddress2api (ldapResults) {
   return person;
 }
 
-function ldap2unit (ldapResults, hl) {
+/**
+ * Convert LDAP Unit result into API result.
+ *
+ * @example
+ * const ldapUtil = require('../utils/ldap.util');
+ * const persons = ldapUtil.ldapUnit2api(ldapResults, 'en');
+ *
+ * @param {object} ldapResults The result from the LDAP Unit search.
+ * @param {string} hl The user interface language.
+ * @returns {object} Return the result for the API.
+ */
+function ldapUnit2api (ldapResults, hl) {
   const list = [];
   const ldapUnitMapper = newLdapUnitMapper(hl);
 
@@ -336,5 +347,5 @@ module.exports = {
   getProfile,
   ldap2api,
   ldapAddress2api,
-  ldap2unit
+  ldapUnit2api
 };
