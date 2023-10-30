@@ -1,0 +1,20 @@
+[
+  {
+    "sigle": "NEVARRO",
+    "id_unite": 10111,
+    "libelle": "Nevarro est une planète volcanique située dans les territoires de la bordure extérieure de la galaxie.",
+    "libelle_en": "",
+    "hierarchie": "EPFL SO TV-3 NEVARRO",
+    "resp_sciper": "670003",
+    "resp_nom": "Djarin",
+    "resp_nom_usuel": null,
+    "resp_prenom": "Din",
+    "resp_prenom_usuel": null,
+    "url": "",
+    "faxes": "",
+    "adresse": "EPFL SO TV-3 NEVARRO $ Outer Rim $ Station 12 $ CH-1015 Lausanne $  $ ",
+    "cmpl_type": "F",
+    "ghost": null,
+    "has_accreds": "1"
+  }
+]

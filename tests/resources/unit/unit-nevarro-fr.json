@@ -1,0 +1,39 @@
+{
+  "code": 10111,
+  "acronym": "NEVARRO",
+  "name": "Nevarro est une planète volcanique située dans les territoires de la bordure extérieure de la galaxie.",
+  "unitPath": "EPFL SO TV-3 NEVARRO",
+  "path": [
+    {
+      "acronym": "EPFL",
+      "name": "Ecole polytechnique fédérale de Lausanne"
+    },
+    {
+      "acronym": "SO",
+      "name": "Spin-off"
+    },
+    {
+      "acronym": "TV-3",
+      "name": "Série TV 3"
+    },
+    {
+      "acronym": "NEVARRO",
+      "name": "Nevarro est une planète volcanique située dans les territoires de la bordure extérieure de la galaxie."
+    }
+  ],
+  "terminal": "1",
+  "ghost": null,
+  "address": [
+    "EPFL SO TV-3 NEVARRO",
+    "Outer Rim",
+    "Station 12",
+    "CH-1015 Lausanne"
+  ],
+  "head": {
+    "sciper": "670003",
+    "name": "Djarin",
+    "firstname": "Din",
+    "email": "din.djarin@epfl.ch",
+    "profile": "din.djarin"
+  }
+}
