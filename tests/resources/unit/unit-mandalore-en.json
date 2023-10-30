@@ -30,11 +30,34 @@
     "CH-1015 Lausanne"
   ],
   "head": {
-    "sciper": "670005",
-    "name": "Grogu",
+    "sciper": "670003",
+    "name": "Djarin",
     "firstname": "Din",
-    "email": "din.grogu@epfl.ch",
-    "profile": "din.grogu"
+    "email": "din.djarin@epfl.ch",
+    "profile": "din.djarin"
   },
-  "people": []
+  "people": [
+    {
+      "email": "din.djarin@epfl.ch",
+      "firstname": "Din",
+      "name": "Djarin",
+      "officeList": ["Sundari 231"],
+      "phoneList": ["+41 21 0054321"],
+      "position": "Bounty hunter",
+      "profile": "din.djarin",
+      "rank": 0,
+      "sciper": "670003"
+    },
+    {
+      "email": "paz.vizsla@epfl.ch",
+      "firstname": "Paz",
+      "name": "Vizsla",
+      "officeList": ["Ronion 001"],
+      "phoneList": ["+41 21 0654321"],
+      "position": "Heavy infantry",
+      "profile": "paz.vizsla",
+      "rank": 0,
+      "sciper": "670004"
+    }
+  ]
 }
