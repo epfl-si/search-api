@@ -1,4 +1,6 @@
+const ldapUtil = require('../utils/ldap.util');
 const cadidbService = require('./cadidb.service');
+const peopleService = require('./people.service');
 
 async function get (params) {
   const lang = params.hl || 'fr';
@@ -78,6 +80,10 @@ async function getUnit (acro, lang) {
   }
   const dict = results[0];
   const unitPath = await getUnitPath(dict.hierarchie, lang);
+  const ldapHeadPerson = await peopleService.getPersonBySciper(
+    dict.resp_sciper
+  );
+  const headPerson = ldapUtil.ldap2api(ldapHeadPerson, '', lang);
   const unitFullDetails = {
     code: dict.id_unite,
     acronym: dict.sigle,
@@ -96,8 +102,8 @@ async function getUnit (acro, lang) {
       sciper: dict.resp_sciper,
       name: dict.resp_nom_usuel || dict.resp_nom,
       firstname: dict.resp_prenom_usuel || dict.resp_prenom,
-      email: '<EMAIL>', // TODO: Get email from ldap
-      profile: '<EMAIL_PREFIX>' // TODO: Build from email over
+      email: headPerson[0].email,
+      profile: headPerson[0].profile
     };
   }
   if (dict.url) {
