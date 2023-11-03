@@ -3,7 +3,10 @@ const cadidbService = require('./cadidb.service');
 const peopleService = require('./people.service');
 
 const visibleConditionByCmplType = `
-    (cmpl_type IS NULL OR cmpl_type not in ('A', 'Z'))
+    (
+      cmpl_type IS NULL OR cmpl_type = '' OR
+      (cmpl_type NOT LIKE ('%Z%') AND cmpl_type IN ('FS', 'F', 'E', 'X', 'S'))
+    )
   `;
 
 async function get (params) {
