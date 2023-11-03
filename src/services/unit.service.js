@@ -100,10 +100,13 @@ async function getUnit (acro, lang) {
     unitPath: dict.hierarchie,
     path: unitPath,
     terminal: dict.has_accreds,
-    ghost: dict.ghost,
-    address: dict.adresse.split('$').map((value) => value.trim())
-      .filter((value) => value !== '')
+    ghost: dict.ghost
   };
+  const address = dict.adresse.split('$').map((value) => value.trim())
+    .filter((value) => value !== '');
+  if (address.length > 0) {
+    unitFullDetails.address = address;
+  }
   if (dict.resp_sciper) {
     unitFullDetails.head = {
       sciper: dict.resp_sciper,
