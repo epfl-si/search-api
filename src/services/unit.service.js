@@ -121,7 +121,8 @@ async function getUnit (acro, lang) {
     unitFullDetails.url = dict.url;
   }
   if (dict.has_accreds) {
-    unitFullDetails.people = await apimdService.getPersonsByUnit(dict.id_unite);
+    unitFullDetails.people = await apimdService
+      .getPersonsByUnit(dict.id_unite, lang);
   } else {
     unitFullDetails.subunits = await getSubunits(dict.id_unite, lang);
   }

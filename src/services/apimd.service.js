@@ -14,12 +14,11 @@ const apimdClient = axios.create({
   }
 });
 
-async function getPersonsByUnit (unitId) {
+async function getPersonsByUnit (unitId, lang) {
   const url = '/v1/epfl-search/' + unitId;
   const response = await apimdClient.get(url);
   const data = response.data;
 
-  // Get authorized persons (array of SCIPER)
   const authorizedScipers = data.authorizations
     .filter(a => a.name === 'botweb' && a.value.includes('y'))
     .map(a => a.persid.toString());
@@ -38,8 +37,13 @@ async function getPersonsByUnit (unitId) {
         phoneList: person.phones,
         officeList: person.rooms
       };
-      people.position = 'TO COMPLETE';
-      // const position = data.accreds.filter(a => a.persid.toString() === person.id).map(a => a.position);
+      const pos = data.accreds
+        .filter(a => a.persid.toString() === person.id).map(a => a.position)[0];
+      if (lang === 'en') {
+        people.position = pos.labelen;
+      } else {
+        people.position = person.gender === 'M' ? pos.labelfr : pos.labelxx;
+      }
       peoples.push(people);
     }
   });
