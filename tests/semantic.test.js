@@ -31,7 +31,7 @@ describe('Test API Semantic Sarch ("/api/graphsearch")', () => {
     const mockSemanticService = jest.spyOn(semanticService, 'get');
     mockSemanticService.mockResolvedValue({ data: searchResult });
 
-    const response = await request(app).get('/api/graphsearch?q=epfl');
+    const response = await request(app).get('/api/graphsearch?q=math');
     expect(mockSemanticService).toHaveBeenCalled();
     expect(response.statusCode).toBe(200);
     expect(response.text).toMatch('developing a mathematical model');
@@ -42,9 +42,9 @@ describe('Test API Semantic Sarch ("/api/graphsearch")', () => {
     const mockSemanticService = jest.spyOn(semanticService, 'get');
     mockSemanticService.mockResolvedValue({ data: searchResult });
 
-    const response = await request(app).get('/api/graphsearch?q=epfl');
+    const response = await request(app).get('/api/graphsearch?q=math');
     expect(mockSemanticService).toHaveBeenCalled();
     expect(response.statusCode).toBe(200);
-    expect(response.text).toMatch('Summary Week 10: Discrete Optimization');
+    expect(response.text).toMatch('application to problems in physics');
   });
 });
