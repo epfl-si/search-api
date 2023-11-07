@@ -133,6 +133,32 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
+  test('It should return a unit without people', async () => {
+    const mockConnection = {
+      query: jest.fn().mockImplementation((query, values, referrer) => {
+        let jsonData;
+        switch (referrer) {
+          case 'searchUnits':
+            jsonData = require('./resources/cadidb/searchUnits-nevarro.json');
+            break;
+          case 'getUnit':
+            jsonData = require('./resources/cadidb/getUnit-nevarro.json');
+            break;
+          case 'getUnitPath':
+            jsonData = require('./resources/cadidb/getUnitPath-nevarro.json');
+        }
+        return Promise.resolve([jsonData]);
+      }),
+      release: jest.fn()
+    };
+    mysql.createPool().getConnection.mockResolvedValue(mockConnection);
+
+    const jsonResult = require('./resources/unit/unit-nevarro-fr.json');
+    const response = await request(app).get('/api/unit?q=nevarro&hl=fr');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
   test('It should return a unit with subunits', async () => {
     const mockConnection = {
       query: jest.fn().mockImplementation((query, values, referrer) => {
