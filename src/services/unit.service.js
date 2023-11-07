@@ -1,4 +1,13 @@
+const ldapUtil = require('../utils/ldap.util');
 const cadidbService = require('./cadidb.service');
+const peopleService = require('./people.service');
+
+const visibleConditionByCmplType = `
+    (
+      cmpl_type IS NULL OR cmpl_type = '' OR
+      (cmpl_type NOT LIKE ('%Z%') AND cmpl_type IN ('FS', 'F', 'E', 'X', 'S'))
+    )
+  `;
 
 async function get (params) {
   const lang = params.hl || 'fr';
@@ -21,12 +30,11 @@ async function get (params) {
 
 async function searchUnits (q, lang) {
   const query = 'SELECT sigle, libelle, libelle_en, hierarchie ' +
-                'FROM Unites_v2 WHERE cmpl_type <> ? AND ' +
-                '(sigle LIKE ? OR libelle LIKE ? OR libelle_en LIKE ?) AND ' +
-                'hierarchie NOT LIKE ?';
-  const values = [
-    'Z', '%' + q + '%', '%' + q + '%', '%' + q + '%', 'TECHNIQUE%'
-  ];
+                'FROM Unites_v2 ' +
+                'WHERE (sigle LIKE ? OR libelle LIKE ? OR libelle_en LIKE ?) ' +
+                `AND ${visibleConditionByCmplType}` +
+                'AND hierarchie NOT LIKE ?';
+  const values = ['%' + q + '%', '%' + q + '%', '%' + q + '%', 'TECHNIQUE%'];
 
   const results = await cadidbService.sendQuery(query, values, 'searchUnits');
   const formattedResults = results.map((dict) => {
@@ -68,9 +76,10 @@ async function getUnit (acro, lang) {
                 'resp_prenom_usuel, url, faxes, adresse, cmpl_type, ghost, ' +
                 'has_accreds ' +
                 'FROM Unites_v2 ' +
-                'WHERE sigle = ? AND cmpl_type <> ? AND ' +
-                'hierarchie NOT LIKE ?';
-  const values = [acro, 'Z', 'TECHNIQUE%'];
+                'WHERE sigle = ? ' +
+                `AND ${visibleConditionByCmplType} ` +
+                'AND hierarchie NOT LIKE ?';
+  const values = [acro, 'TECHNIQUE%'];
 
   const results = await cadidbService.sendQuery(query, values, 'getUnit');
   if (results.length !== 1) {
@@ -78,6 +87,10 @@ async function getUnit (acro, lang) {
   }
   const dict = results[0];
   const unitPath = await getUnitPath(dict.hierarchie, lang);
+  const ldapHeadPerson = await peopleService.getPersonBySciper(
+    dict.resp_sciper
+  );
+  const headPerson = ldapUtil.ldap2api(ldapHeadPerson, '', lang);
   const unitFullDetails = {
     code: dict.id_unite,
     acronym: dict.sigle,
@@ -87,25 +100,31 @@ async function getUnit (acro, lang) {
     unitPath: dict.hierarchie,
     path: unitPath,
     terminal: dict.has_accreds,
-    ghost: dict.ghost,
-    address: dict.adresse.split('$').map((value) => value.trim())
-      .filter((value) => value !== '')
+    ghost: dict.ghost
   };
+  const address = dict.adresse.split('$').map((value) => value.trim())
+    .filter((value) => value !== '');
+  if (address.length > 0) {
+    unitFullDetails.address = address;
+  }
   if (dict.resp_sciper) {
     unitFullDetails.head = {
       sciper: dict.resp_sciper,
       name: dict.resp_nom_usuel || dict.resp_nom,
       firstname: dict.resp_prenom_usuel || dict.resp_prenom,
-      email: '<EMAIL>', // TODO: Get email from ldap
-      profile: '<EMAIL_PREFIX>' // TODO: Build from email over
+      email: headPerson[0].email,
+      profile: headPerson[0].profile
     };
   }
   if (dict.url) {
     unitFullDetails.url = dict.url;
   }
   if (dict.has_accreds) {
-    // TODO: Get people from ldap
-
+    const ldapUnitPersons = await peopleService.getPersonByUnit(dict.sigle);
+    const UnitPersons = ldapUtil.ldapUnit2api(ldapUnitPersons, lang);
+    if (UnitPersons.length > 0) {
+      unitFullDetails.people = UnitPersons;
+    }
   } else {
     unitFullDetails.subunits = await getSubunits(dict.id_unite, lang);
   }
@@ -127,7 +146,8 @@ async function getUnit (acro, lang) {
 
 // Get unit path (acronym + name)
 async function getUnitPath (hierarchy, lang) {
-  const inHierarchyClause = `IN ('${hierarchy.split(' ').join("', '")}')`;
+  const hierarchyArray = hierarchy.split(' ');
+  const inHierarchyClause = `IN ('${hierarchyArray.join("', '")}')`;
   const query = 'SELECT sigle, libelle, libelle_en ' +
                 'FROM Unites_v2 ' +
                 `WHERE sigle ${inHierarchyClause}`;
@@ -143,15 +163,22 @@ async function getUnitPath (hierarchy, lang) {
     };
     return modifiedDict;
   });
-  return formattedResults;
+  const hierarchyMap = {};
+  hierarchyArray.forEach((value, index) => {
+    hierarchyMap[value] = index;
+  });
+  return formattedResults.sort((a, b) => {
+    return hierarchyMap[a.acronym] - hierarchyMap[b.acronym];
+  });
 }
 
 // Get Subunit(s) (acronym + name)
 async function getSubunits (unitId, lang) {
   const query = 'SELECT sigle, libelle, libelle_en ' +
                 'FROM Unites_v2 ' +
-                'WHERE id_parent = ? AND cmpl_type <> ?';
-  const values = [unitId, 'Z'];
+                'WHERE id_parent = ? ' +
+                `AND ${visibleConditionByCmplType}`;
+  const values = [unitId];
 
   const results = await cadidbService.sendQuery(query, values, 'getSubunits');
   const formattedResults = results.map((dict) => {
