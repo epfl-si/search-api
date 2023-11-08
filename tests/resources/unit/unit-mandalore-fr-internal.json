@@ -35,5 +35,11 @@
     "firstname": "Din",
     "email": "din.grogu@epfl.ch",
     "profile": "din.grogu"
+  },
+  "adminData": {
+    "mailing-list": "https://cadiwww.epfl.ch/listes?unite=MANDALORE",
+    "details": "https://units.epfl.ch/#/unites/10111",
+    "accreds": "https://accred.epfl.ch/#/catalog/units/10111",
+    "fmt-list": "https://search-api.epfl.ch/api/unit/csv?q=MANDALORE&hl=fr"
   }
 }
