@@ -33,9 +33,14 @@ function getPersonByName (name) {
   return getPerson(ldapQuery);
 }
 
+function getPersonByUnit (unit) {
+  return getPerson(`(ou=${unit})`);
+}
+
 module.exports = {
   getPersonByEmail,
   getPersonByName,
   getPersonByPhone,
-  getPersonBySciper
+  getPersonBySciper,
+  getPersonByUnit
 };

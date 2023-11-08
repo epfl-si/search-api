@@ -120,8 +120,11 @@ async function getUnit (acro, lang, isInternal) {
     unitFullDetails.url = dict.url;
   }
   if (dict.has_accreds) {
-    // TODO: Get people from ldap
-
+    const ldapUnitPersons = await peopleService.getPersonByUnit(dict.sigle);
+    const UnitPersons = ldapUtil.ldapUnit2api(ldapUnitPersons, lang);
+    if (UnitPersons.length > 0) {
+      unitFullDetails.people = UnitPersons;
+    }
   } else {
     unitFullDetails.subunits = await getSubunits(dict.id_unite, lang);
   }
