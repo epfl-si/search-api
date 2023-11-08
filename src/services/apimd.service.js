@@ -14,15 +14,39 @@ const apimdClient = axios.create({
   }
 });
 
+function getPosition (accred, gender, lang) {
+  const position = accred.position;
+  if (accred.origin === 's') {
+    // Students have no position
+    return lang === 'en'
+      ? 'Student'
+      : (gender === 'M' ? 'Étudiant' : 'Étudiante');
+  } else if (!position) {
+    return '';
+  } else if (lang === 'en') {
+    // lang EN
+    if (position.labelen) {
+      return position.labelen;
+    } else {
+      return gender === 'M'
+        ? (position.labelfr ? position.labelfr : position.labelxx)
+        : (position.labelxx ? position.labelxx : position.labelfr);
+    }
+  } else {
+    // lang FR
+    return gender === 'M'
+      ? (position.labelfr ? position.labelfr : position.labelen)
+      : (position.labelxx ? position.labelxx : position.labelen);
+  }
+}
+
 async function getPersonsByUnit (unitId, lang) {
   const url = '/v1/epfl-search/' + unitId;
   const response = await apimdClient.get(url);
   const data = response.data;
-
   const authorizedScipers = data.authorizations
     .filter(a => a.name === 'botweb' && a.value.includes('y'))
     .map(a => a.persid.toString());
-
   const peoples = [];
 
   data.persons.forEach((person) => {
@@ -37,13 +61,9 @@ async function getPersonsByUnit (unitId, lang) {
         phoneList: person.phones,
         officeList: person.rooms
       };
-      const pos = data.accreds
-        .filter(a => a.persid.toString() === person.id).map(a => a.position)[0];
-      if (lang === 'en') {
-        people.position = pos.labelen;
-      } else {
-        people.position = person.gender === 'M' ? pos.labelfr : pos.labelxx;
-      }
+      const accred = data.accreds
+        .filter(a => a.persid.toString() === person.id)[0];
+      people.position = getPosition(accred, person.gender, lang);
       peoples.push(people);
     }
   });
