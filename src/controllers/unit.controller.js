@@ -2,7 +2,8 @@ const unitService = require('../services/unit.service');
 
 async function get (req, res) {
   try {
-    const results = await unitService.get(req.query);
+    const isInternal = req.header('X-EPFL-Internal') === 'TRUE';
+    const results = await unitService.get(req.query, isInternal);
     return res.json(results);
   } catch (err) {
     console.error('[error] ', err);

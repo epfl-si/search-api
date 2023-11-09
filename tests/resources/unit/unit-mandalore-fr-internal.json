@@ -1,0 +1,69 @@
+{
+  "code": 10111,
+  "acronym": "MANDALORE",
+  "name": "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie.",
+  "unitPath": "EPFL SO TV-3 MANDALORE",
+  "path": [
+    {
+      "acronym": "EPFL",
+      "name": "Ecole polytechnique fédérale de Lausanne"
+    },
+    {
+      "acronym": "SO",
+      "name": "Spin-off"
+    },
+    {
+      "acronym": "TV-3",
+      "name": "Série TV 3"
+    },
+    {
+      "acronym": "MANDALORE",
+      "name": "Mandalore est une planète située dans les territoires de la bordure extérieure de la galaxie."
+    }
+  ],
+  "terminal": "1",
+  "ghost": null,
+  "address": [
+    "EPFL SO TV-3 MANDALORE",
+    "Outer Rim",
+    "Station 12",
+    "CH-1015 Lausanne"
+  ],
+  "head": {
+    "sciper": "670003",
+    "name": "Djarin",
+    "firstname": "Din",
+    "email": "din.djarin@epfl.ch",
+    "profile": "din.djarin"
+  },
+  "people": [
+    {
+      "email": "din.djarin@epfl.ch",
+      "firstname": "Din",
+      "name": "Djarin",
+      "officeList": ["Sundari 231"],
+      "phoneList": ["+41 21 0054321"],
+      "position": "Chasseur de prime",
+      "profile": "din.djarin",
+      "rank": 0,
+      "sciper": "670003"
+    },
+    {
+      "email": "paz.vizsla@epfl.ch",
+      "firstname": "Paz",
+      "name": "Vizsla",
+      "officeList": ["Ronion 001"],
+      "phoneList": ["+41 21 0654321"],
+      "position": "Infanterie lourde",
+      "profile": "paz.vizsla",
+      "rank": 0,
+      "sciper": "670004"
+    }
+  ],
+  "adminData": {
+    "mailing-list": "https://cadiwww.epfl.ch/listes?unite=MANDALORE",
+    "details": "https://units.epfl.ch/#/unites/10111",
+    "accreds": "https://accred.epfl.ch/#/catalog/units/10111",
+    "fmt-list": "https://search-api.epfl.ch/api/unit/csv?q=MANDALORE&hl=fr"
+  }
+}

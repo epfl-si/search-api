@@ -44,8 +44,9 @@ async function getPersonsByUnit (unitId, lang) {
   const url = '/v1/epfl-search/' + unitId;
   const response = await apimdClient.get(url);
   const data = response.data;
+  // authid 1 → botweb (Appear in the unit's web directory)
   const authorizedScipers = data.authorizations
-    .filter(a => a.name === 'botweb' && a.value.includes('y'))
+    .filter(a => a.authid === 1 && a.value.includes('y'))
     .map(a => a.persid.toString());
   const peoples = [];
 
