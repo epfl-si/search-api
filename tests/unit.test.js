@@ -117,18 +117,27 @@ describe('Test API Unit ("/api/unit")', () => {
     };
     mysql.createPool().getConnection.mockResolvedValue(mockConnection);
 
-    let jsonResult = require('./resources/unit/unit-mandalore-en.json');
-    let response = await request(app).get('/api/unit?q=mandalore&hl=en');
+    let jsonResult =
+      require('./resources/unit/unit-mandalore-en-external.json');
+    let response = await request(app)
+      .get('/api/unit?q=mandalore&hl=en')
+      .set({ 'X-EPFL-Internal': 'FALSE' });
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
 
-    jsonResult = require('./resources/unit/unit-mandalore-fr.json');
-    response = await request(app).get('/api/unit?q=mandalore&hl=fr');
+    jsonResult =
+      require('./resources/unit/unit-mandalore-fr-internal.json');
+    response = await request(app)
+      .get('/api/unit?q=mandalore&hl=fr')
+      .set({ 'X-EPFL-Internal': 'TRUE' });
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
 
-    jsonResult = require('./resources/unit/unit-mandalore-fr.json');
-    response = await request(app).get('/api/unit?acro=mandalore&hl=fr');
+    jsonResult =
+    require('./resources/unit/unit-mandalore-fr-internal.json');
+    response = await request(app)
+      .get('/api/unit?acro=mandalore&hl=fr')
+      .set({ 'X-EPFL-Internal': 'TRUE' });
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
@@ -182,13 +191,17 @@ describe('Test API Unit ("/api/unit")', () => {
     };
     mysql.createPool().getConnection.mockResolvedValue(mockConnection);
 
-    let jsonResult = require('./resources/unit/unit-ot-en.json');
-    let response = await request(app).get('/api/unit?q=ot&hl=en');
+    let jsonResult = require('./resources/unit/unit-ot-en-external.json');
+    let response = await request(app)
+      .get('/api/unit?q=ot&hl=en')
+      .set({ 'X-EPFL-Internal': 'FALSE' });
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
 
-    jsonResult = require('./resources/unit/unit-ot-fr.json');
-    response = await request(app).get('/api/unit?q=ot&hl=fr');
+    jsonResult = require('./resources/unit/unit-ot-fr-internal.json');
+    response = await request(app)
+      .get('/api/unit?q=ot&hl=fr')
+      .set({ 'X-EPFL-Internal': 'TRUE' });
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });

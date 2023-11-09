@@ -26,5 +26,10 @@
       "acronym": "EP-6",
       "name": "Episode VI - Le Retour du Jedi"
     }
-  ]
+  ],
+  "adminData": {
+    "mailing-list": "https://cadiwww.epfl.ch/listes?unite=OT",
+    "details": "https://units.epfl.ch/#/unites/10001",
+    "accreds": "https://accred.epfl.ch/#/catalog/units/10001"
+  }
 }
