@@ -54,7 +54,7 @@ async function getPersonsByUnit (unitId, lang) {
     if (authorizedScipers.includes(person.id)) {
       const people = {
         name: person.lastname,
-        firstname: person.firstname,
+        firstname: person.firstnameusual,
         email: person.email,
         sciper: person.id,
         rank: 0,
