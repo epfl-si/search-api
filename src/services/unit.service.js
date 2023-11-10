@@ -121,8 +121,11 @@ async function getUnit (acro, lang, isInternal) {
     unitFullDetails.url = dict.url;
   }
   if (dict.has_accreds) {
-    unitFullDetails.people = await apimdService
+    const unitPersons = await apimdService
       .getPersonsByUnit(dict.id_unite, lang);
+    if (unitPersons.length > 0) {
+      unitFullDetails.people = unitPersons;
+    }
   } else {
     unitFullDetails.subunits = await getSubunits(dict.id_unite, lang);
   }
