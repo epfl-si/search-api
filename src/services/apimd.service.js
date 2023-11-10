@@ -53,22 +53,43 @@ async function getPersonsByUnit (unitId, lang) {
   data.persons.forEach((person) => {
     if (authorizedScipers.includes(person.id)) {
       const people = {
-        name: person.lastname,
-        firstname: person.firstnameusual,
+        name: person.lastnameusual
+          ? person.lastnameusual
+          : person.lastname,
+        firstname: person.firstnameusual
+          ? person.firstnameusual
+          : person.firstname,
         email: person.email,
         sciper: person.id,
         rank: 0,
-        profile: ldapUtils.getProfile(person.email, person.id),
-        phoneList: person.phones,
-        officeList: person.rooms
+        profile: ldapUtils.getProfile(person.email, person.id)
       };
+      // Set Phone and Office lists
+      if (!person['ATELA.phonerooms']) {
+        people.phoneList = [];
+        people.officeList = [];
+      } else {
+        const phoneRooms = person['ATELA.phonerooms']
+          .find(p => p.unitid === unitId.toString());
+        people.phoneList = (phoneRooms && ['phone1', 'phone2']
+          .map(key => phoneRooms[key])
+          .filter(value => value !== '')
+          .map(value => '+412169' + value)) || [];
+        people.officeList = phoneRooms && phoneRooms.roomname !== ''
+          ? [phoneRooms.roomname]
+          : [];
+      }
+      // Set position
       const accred = data.accreds
-        .filter(a => a.persid.toString() === person.id)[0];
+        .find(a => a.persid.toString() === person.id);
       people.position = getPosition(accred, person.gender, lang);
       peoples.push(people);
     }
   });
-  return peoples;
+  return peoples.sort((a, b) =>
+    a.name.localeCompare(b.name) ||
+    a.firstname.localeCompare(b.firstname)
+  );
 }
 
 module.exports = {
