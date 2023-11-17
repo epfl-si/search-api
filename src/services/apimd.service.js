@@ -40,6 +40,28 @@ function getPosition (accred, gender, lang) {
   }
 }
 
+function getPhoneList (person, unitId) {
+  if (!person.phones) {
+    return [];
+  } else {
+    return person.phones
+      .filter(p => p.unitid === unitId.toString() && p.hidden === 0)
+      .sort((a, b) => a.order - b.order)
+      .map(p => p.number);
+  }
+}
+
+function getOfficeList (person, unitId) {
+  if (!person.rooms) {
+    return [];
+  } else {
+    return person.rooms
+      .filter(p => p.unitid === unitId.toString() && p.hidden === 0)
+      .sort((a, b) => a.order - b.order)
+      .map(p => p.name);
+  }
+}
+
 async function getPersonsByUnit (unitId, lang) {
   const url = '/v1/epfl-search/' + unitId;
   const response = await apimdClient.get(url);
@@ -64,22 +86,8 @@ async function getPersonsByUnit (unitId, lang) {
         rank: 0,
         profile: ldapUtils.getProfile(person.email, person.id)
       };
-      // Set Phone and Office lists
-      if (!person['ATELA.phonerooms']) {
-        people.phoneList = [];
-        people.officeList = [];
-      } else {
-        const phoneRooms = person['ATELA.phonerooms']
-          .find(p => p.unitid === unitId.toString());
-        people.phoneList = (phoneRooms && ['phone1', 'phone2']
-          .map(key => phoneRooms[key])
-          .filter(value => value !== '')
-          .map(value => '+412169' + value)) || [];
-        people.officeList = phoneRooms && phoneRooms.roomname !== ''
-          ? [phoneRooms.roomname]
-          : [];
-      }
-      // Set position
+      people.phoneList = getPhoneList(person, unitId);
+      people.officeList = getOfficeList(person, unitId);
       const accred = data.accreds
         .find(a => a.persid.toString() === person.id);
       people.position = getPosition(accred, person.gender, lang);
