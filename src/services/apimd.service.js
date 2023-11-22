@@ -22,7 +22,7 @@ function getPosition (accred, gender, lang) {
       ? 'Student'
       : (gender === 'M' ? 'Étudiant' : 'Étudiante');
   } else if (!position) {
-    return '';
+    return null;
   } else if (lang === 'en') {
     // lang EN
     if (position.labelen) {
