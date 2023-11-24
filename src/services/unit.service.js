@@ -111,10 +111,12 @@ async function getUnit (acro, lang, isInternal) {
     unitFullDetails.head = {
       sciper: dict.resp_sciper,
       name: dict.resp_nom_usuel || dict.resp_nom,
-      firstname: dict.resp_prenom_usuel || dict.resp_prenom,
-      email: headPerson[0].email,
-      profile: headPerson[0].profile
+      firstname: dict.resp_prenom_usuel || dict.resp_prenom
     };
+    if (headPerson.length > 0) {
+      unitFullDetails.head.email = headPerson[0].email;
+      unitFullDetails.head.profile = headPerson[0].profile;
+    }
   }
   if (dict.url) {
     unitFullDetails.url = dict.url;
