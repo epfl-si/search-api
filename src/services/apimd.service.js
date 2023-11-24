@@ -90,6 +90,10 @@ async function getPersonsByUnit (unitId, lang) {
       people.officeList = getOfficeList(person, unitId);
       const accred = data.accreds
         .find(a => a.persid.toString() === person.id);
+      if (!accred) {
+        // Skip the person if no accreditation
+        return;
+      }
       people.position = getPosition(accred, person.gender, lang);
       peoples.push(people);
     }
