@@ -70,11 +70,11 @@ async function getPersonsByUnit (unitId, lang) {
   const authorizedScipers = data.authorizations
     .filter(a => a.authid === 1 && a.value.includes('y'))
     .map(a => a.persid.toString());
-  const peoples = [];
+  const people = [];
 
   data.persons.forEach((person) => {
     if (authorizedScipers.includes(person.id)) {
-      const people = {
+      const p = {
         name: person.lastnameusual
           ? person.lastnameusual
           : person.lastname,
@@ -86,19 +86,19 @@ async function getPersonsByUnit (unitId, lang) {
         rank: 0,
         profile: ldapUtils.getProfile(person.email, person.id)
       };
-      people.phoneList = getPhoneList(person, unitId);
-      people.officeList = getOfficeList(person, unitId);
+      p.phoneList = getPhoneList(person, unitId);
+      p.officeList = getOfficeList(person, unitId);
       const accred = data.accreds
         .find(a => a.persid.toString() === person.id);
       if (!accred) {
         // Skip the person if no accreditation
         return;
       }
-      people.position = getPosition(accred, person.gender, lang);
-      peoples.push(people);
+      p.position = getPosition(accred, person.gender, lang);
+      people.push(p);
     }
   });
-  return peoples.sort((a, b) =>
+  return people.sort((a, b) =>
     a.name.localeCompare(b.name) ||
     a.firstname.localeCompare(b.firstname)
   );
