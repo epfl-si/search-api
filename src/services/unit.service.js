@@ -114,7 +114,9 @@ async function getUnit (acro, lang, isInternal) {
       firstname: dict.resp_prenom_usuel || dict.resp_prenom
     };
     if (headPerson.length > 0) {
-      unitFullDetails.head.email = headPerson[0].email;
+      unitFullDetails.head.email = headPerson[0].email
+        ? headPerson[0].email
+        : '';
       unitFullDetails.head.profile = headPerson[0].profile;
     }
   }

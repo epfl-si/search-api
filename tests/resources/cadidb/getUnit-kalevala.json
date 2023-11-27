@@ -1,0 +1,20 @@
+[
+  {
+    "sigle": "KALEVALA",
+    "id_unite": 11401,
+    "libelle": "Kalevala est une planète du système Mandalore située dans les territoires de la bordure extérieure.",
+    "libelle_en": "Kalevala is a planet in the Mandalore system located in the Outer Rim territories.",
+    "hierarchie": "EPFL SO TV-4 KALEVALA",
+    "resp_sciper": "670006",
+    "resp_nom": "Kryze",
+    "resp_nom_usuel": null,
+    "resp_prenom": "Bo-Katan",
+    "resp_prenom_usuel": null,
+    "url": "",
+    "faxes": "",
+    "adresse": "EPFL SO TV-4 KALEVALA $ Outer Rim $ Station 12 $ CH-1015 Lausanne $  $ ",
+    "cmpl_type": "F",
+    "ghost": null,
+    "has_accreds": "1"
+  }
+]
