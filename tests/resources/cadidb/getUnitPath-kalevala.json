@@ -1,0 +1,22 @@
+[
+  {
+    "sigle": "SO",
+    "libelle": "",
+    "libelle_en": "Spin-off"
+  },
+  {
+    "sigle": "EPFL",
+    "libelle": "Ecole polytechnique fédérale de Lausanne",
+    "libelle_en": "Ecole polytechnique fédérale de Lausanne"
+  },
+  {
+    "sigle": "TV-4",
+    "libelle": "Série TV 4",
+    "libelle_en": "TV Series 4"
+  },
+  {
+    "sigle": "KALEVALA",
+    "libelle": "Kalevala est une planète du système Mandalore située dans les territoires de la bordure extérieure.",
+    "libelle_en": "Kalevala is a planet in the Mandalore system located in the Outer Rim territories."
+  }
+]

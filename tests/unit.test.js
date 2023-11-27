@@ -168,6 +168,29 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
+  test('It should return Kalevala unit (where head has no email)', async () => {
+    const mockConnection = {
+      query: jest.fn().mockImplementation((query, values, referrer) => {
+        let jsonData;
+        switch (referrer) {
+          case 'getUnit':
+            jsonData = require('./resources/cadidb/getUnit-kalevala.json');
+            break;
+          case 'getUnitPath':
+            jsonData = require('./resources/cadidb/getUnitPath-kalevala.json');
+        }
+        return Promise.resolve([jsonData]);
+      }),
+      release: jest.fn()
+    };
+    mysql.createPool().getConnection.mockResolvedValue(mockConnection);
+
+    const jsonResult = require('./resources/unit/unit-kalevala-fr.json');
+    const response = await request(app).get('/api/unit?acro=kalevala&hl=fr');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
   test('It should return a unit with subunits', async () => {
     const mockConnection = {
       query: jest.fn().mockImplementation((query, values, referrer) => {
