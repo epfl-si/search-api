@@ -39,7 +39,7 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(testOutput[0]).toMatch('error');
   });
 
-  test('It should return nothing', async () => {
+  test('It should find nothing', async () => {
     const mockConnection = {
       query: jest.fn().mockResolvedValue([[]]),
       release: jest.fn()
@@ -55,7 +55,7 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(JSON.parse(response.text)).toStrictEqual({});
   });
 
-  test('It should return a unit list', async () => {
+  test('It should find a unit list based on search term "in"', async () => {
     const mockConnection = {
       query: jest.fn().mockImplementation((query, values) => {
         const jsonData = require('./resources/cadidb/searchUnits-in.json');
@@ -81,7 +81,7 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
-  test('It should return a unit list in correct order', async () => {
+  test('It should find a unit list based on search term "so"', async () => {
     const mockConnection = {
       query: jest.fn().mockImplementation((query, values) => {
         const jsonData = require('./resources/cadidb/searchUnits-so.json');
@@ -97,7 +97,7 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
-  test('It should return a unit with people', async () => {
+  test('It should find Mandalore unit (without/with admin data)', async () => {
     const mockConnection = {
       query: jest.fn().mockImplementation((query, values, referrer) => {
         let jsonData;
@@ -142,7 +142,7 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
-  test('It should return a unit without people', async () => {
+  test('It should find Nevarro unit (where there is nobody)', async () => {
     const mockConnection = {
       query: jest.fn().mockImplementation((query, values, referrer) => {
         let jsonData;
@@ -168,7 +168,30 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
-  test('It should return a unit with subunits', async () => {
+  test('It should find Kalevala unit (where head has no email)', async () => {
+    const mockConnection = {
+      query: jest.fn().mockImplementation((query, values, referrer) => {
+        let jsonData;
+        switch (referrer) {
+          case 'getUnit':
+            jsonData = require('./resources/cadidb/getUnit-kalevala.json');
+            break;
+          case 'getUnitPath':
+            jsonData = require('./resources/cadidb/getUnitPath-kalevala.json');
+        }
+        return Promise.resolve([jsonData]);
+      }),
+      release: jest.fn()
+    };
+    mysql.createPool().getConnection.mockResolvedValue(mockConnection);
+
+    const jsonResult = require('./resources/unit/unit-kalevala-fr.json');
+    const response = await request(app).get('/api/unit?acro=kalevala&hl=fr');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find OT unit (with subunits)', async () => {
     const mockConnection = {
       query: jest.fn().mockImplementation((query, values, referrer) => {
         let jsonData;

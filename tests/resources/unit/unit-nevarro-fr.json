@@ -1,5 +1,5 @@
 {
-  "code": 10111,
+  "code": 11302,
   "acronym": "NEVARRO",
   "name": "Nevarro est une planète volcanique située dans les territoires de la bordure extérieure de la galaxie.",
   "unitPath": "EPFL SO TV-3 NEVARRO",
@@ -30,10 +30,8 @@
     "CH-1015 Lausanne"
   ],
   "head": {
-    "sciper": "670003",
-    "name": "Djarin",
-    "firstname": "Din",
-    "email": "din.djarin@epfl.ch",
-    "profile": "din.djarin"
+    "sciper": "670007",
+    "name": "Karga",
+    "firstname": "Greef"
   }
 }
