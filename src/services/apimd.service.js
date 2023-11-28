@@ -56,7 +56,8 @@ function getOfficeList (person, unitId) {
     return [];
   } else {
     return person.rooms
-      .filter(p => p.unitid === unitId.toString() && p.hidden === 0)
+      .filter(
+        p => p.unitid === unitId.toString() && p.hidden === 0 && p.name !== '')
       .sort((a, b) => a.order - b.order)
       .map(p => p.name);
   }
