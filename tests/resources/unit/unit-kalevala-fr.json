@@ -31,10 +31,11 @@
   ],
   "people": [
     {
+      "email": "",
       "firstname": "Bo-Katan",
       "name": "Kryze",
       "officeList": ["Castle Kryze"],
-      "phoneList": ["+41 21 0054323"],
+      "phoneList": ["+41210054323"],
       "position": "Princesse",
       "profile": "670006",
       "rank": 0,

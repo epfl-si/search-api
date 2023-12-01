@@ -2,17 +2,16 @@ const apimdConfig = require('../configs/apimd.config');
 const axios = require('axios');
 const ldapUtils = require('../utils/ldap.util');
 
-const apimdClient = axios.create({
-  baseURL: apimdConfig.baseURL,
-  timeout: 10000,
+const axiosConfig = {
   auth: {
     username: apimdConfig.username,
     password: apimdConfig.password
   },
   headers: {
     Accept: 'application/json'
-  }
-});
+  },
+  timeout: 10000
+};
 
 function getPosition (accred, gender, lang) {
   const position = accred.position;
@@ -23,20 +22,14 @@ function getPosition (accred, gender, lang) {
       : (gender === 'M' ? 'Étudiant' : 'Étudiante');
   } else if (!position) {
     return null;
-  } else if (lang === 'en') {
+  } else if (lang === 'en' && position.labelen) {
     // lang EN
-    if (position.labelen) {
-      return position.labelen;
-    } else {
-      return gender === 'M'
-        ? (position.labelfr ? position.labelfr : position.labelxx)
-        : (position.labelxx ? position.labelxx : position.labelfr);
-    }
+    return position.labelen;
   } else {
     // lang FR
     return gender === 'M'
-      ? (position.labelfr ? position.labelfr : position.labelen)
-      : (position.labelxx ? position.labelxx : position.labelen);
+      ? (position.labelfr ? position.labelfr : position.labelxx)
+      : (position.labelxx ? position.labelxx : position.labelfr);
   }
 }
 
@@ -65,7 +58,7 @@ function getOfficeList (person, unitId) {
 
 async function getPersonsByUnit (unitId, lang) {
   const url = '/v1/epfl-search/' + unitId;
-  const response = await apimdClient.get(url);
+  const response = await axios.get(`${apimdConfig.baseURL}${url}`, axiosConfig);
   const data = response.data;
   // authid 1 → botweb (Appear in the unit's web directory)
   const authorizedScipers = data.authorizations

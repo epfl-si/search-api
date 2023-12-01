@@ -1,0 +1,49 @@
+{
+  "accreds": [
+    {
+      "origin": "p",
+      "persid": 670006,
+      "position": {
+        "id": 17,
+        "labelen": "Princess",
+        "labelfr": "Prince",
+        "labelxx": "Princesse"
+      }
+    }
+  ],
+  "authorizations": [
+    {
+      "authid": 1,
+      "persid": 670006,
+      "value": "y:U10000"
+    }
+  ],
+  "persons": [
+    {
+      "display": "Bo-Katan Kryze",
+      "email": "",
+      "firstname": "Bo-Katan",
+      "gender": "F",
+      "id": "670006",
+      "lastname": "Kryze",
+      "phones": [
+        {
+          "hidden": 0,
+          "number": "+41210054323",
+          "order": 1,
+          "unitid": "11401"
+        }
+      ],
+      "rooms": [
+        {
+          "hidden": 0,
+          "name": "Castle Kryze",
+          "order": 1,
+          "unitid": "11401"
+        }
+      ],
+      "status": "Personnel"
+    }
+  ],
+  "unit": {}
+}
