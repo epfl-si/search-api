@@ -1,7 +1,9 @@
+const axios = require('axios');
 const request = require('supertest');
 
 const app = require('../src/app');
-const semanticService = require('../src/services/semantic.service');
+
+jest.mock('axios');
 
 describe('Test API Semantic Sarch ("/api/graphsearch")', () => {
   let testOutput = [];
@@ -28,22 +30,20 @@ describe('Test API Semantic Sarch ("/api/graphsearch")', () => {
 
   test('It should get Semantic Search results', async () => {
     const searchResult = require('./resources/semantic/math.json');
-    const mockSemanticService = jest.spyOn(semanticService, 'get');
-    mockSemanticService.mockResolvedValue({ data: searchResult });
+    axios.get.mockResolvedValueOnce({ data: searchResult });
 
     const response = await request(app).get('/api/graphsearch?q=math');
-    expect(mockSemanticService).toHaveBeenCalled();
+    expect(axios.get).toHaveBeenCalled();
     expect(response.statusCode).toBe(200);
     expect(response.text).toMatch('developing a mathematical model');
   });
 
   test('It should get Semantic Search results from cache', async () => {
     const searchResult = require('./resources/semantic/math.json');
-    const mockSemanticService = jest.spyOn(semanticService, 'get');
-    mockSemanticService.mockResolvedValue({ data: searchResult });
+    axios.get.mockResolvedValueOnce({ data: searchResult });
 
     const response = await request(app).get('/api/graphsearch?q=math');
-    expect(mockSemanticService).toHaveBeenCalled();
+    expect(axios.get).toHaveBeenCalled();
     expect(response.statusCode).toBe(200);
     expect(response.text).toMatch('application to problems in physics');
   });
