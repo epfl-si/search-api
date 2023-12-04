@@ -241,6 +241,32 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
+  test('It should find TV-2 unit (where no subunits)', async () => {
+    const mockConnection = {
+      query: jest.fn().mockImplementation((query, values, referrer) => {
+        let jsonData;
+        switch (referrer) {
+          case 'getUnit':
+            jsonData = require('./resources/cadidb/getUnit-tv-2.json');
+            break;
+          case 'getUnitPath':
+            jsonData = require('./resources/cadidb/getUnitPath-tv-2.json');
+            break;
+          case 'getSubunits':
+            jsonData = [];
+        }
+        return Promise.resolve([jsonData]);
+      }),
+      release: jest.fn()
+    };
+    mysql.createPool().getConnection.mockResolvedValue(mockConnection);
+
+    const jsonResult = require('./resources/unit/unit-tv-2-fr.json');
+    const response = await request(app).get('/api/unit?acro=tv-2&hl=fr');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
   test('It should return an error with a status code 400', async () => {
     const mockConnection = {
       query: jest.fn().mockRejectedValue(),

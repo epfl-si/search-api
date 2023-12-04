@@ -1,0 +1,20 @@
+[
+  {
+    "sigle": "TV-2",
+    "id_unite": 11200,
+    "libelle": "Série TV 2",
+    "libelle_en": "TV Series 2",
+    "hierarchie": "EPFL SO TV-2",
+    "resp_sciper": "670006",
+    "resp_nom": "Kryze",
+    "resp_nom_usuel": null,
+    "resp_prenom": "Bo-Katan",
+    "resp_prenom_usuel": null,
+    "url": "",
+    "faxes": "",
+    "adresse": " $  $  $  $  $ ",
+    "cmpl_type": "F",
+    "ghost": null,
+    "has_accreds": null
+  }
+]

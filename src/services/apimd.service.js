@@ -23,10 +23,8 @@ function getPosition (accred, gender, lang) {
   } else if (!position) {
     return null;
   } else if (lang === 'en' && position.labelen) {
-    // lang EN
     return position.labelen;
   } else {
-    // lang FR
     return gender === 'M'
       ? (position.labelfr ? position.labelfr : position.labelxx)
       : (position.labelxx ? position.labelxx : position.labelfr);

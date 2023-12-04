@@ -131,7 +131,11 @@ async function getUnit (acro, lang, isInternal) {
       unitFullDetails.people = unitPersons;
     }
   } else {
-    unitFullDetails.subunits = await getSubunits(dict.id_unite, lang);
+    const subunits = await getSubunits(dict.id_unite, lang);
+    console.log(subunits);
+    if (subunits.length > 0) {
+      unitFullDetails.subunits = subunits;
+    }
   }
   if (dict.faxes) {
     unitFullDetails.faxes = dict.faxes.split(',').map((fax) => {
