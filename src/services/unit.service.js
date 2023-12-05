@@ -88,10 +88,6 @@ async function getUnit (acro, lang, isInternal) {
   }
   const dict = results[0];
   const unitPath = await getUnitPath(dict.hierarchie, lang);
-  const ldapHeadPerson = await peopleService.getPersonBySciper(
-    dict.resp_sciper
-  );
-  const headPerson = ldapUtil.ldap2api(ldapHeadPerson, '', lang);
   const unitFullDetails = {
     code: dict.id_unite,
     acronym: dict.sigle,
@@ -114,6 +110,10 @@ async function getUnit (acro, lang, isInternal) {
       name: dict.resp_nom_usuel || dict.resp_nom,
       firstname: dict.resp_prenom_usuel || dict.resp_prenom
     };
+    const ldapHeadPerson = await peopleService.getPersonBySciper(
+      dict.resp_sciper
+    );
+    const headPerson = ldapUtil.ldap2api(ldapHeadPerson, '', lang);
     if (headPerson.length > 0) {
       unitFullDetails.head.email = headPerson[0].email
         ? headPerson[0].email
