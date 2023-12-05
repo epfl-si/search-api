@@ -73,7 +73,7 @@ async function getPersonsByUnit (unitId, lang) {
         firstname: person.firstnameusual
           ? person.firstnameusual
           : person.firstname,
-        email: person.email,
+        email: person.email ? person.email : null,
         sciper: person.id,
         rank: 0,
         profile: ldapUtils.getProfile(person.email, person.id)

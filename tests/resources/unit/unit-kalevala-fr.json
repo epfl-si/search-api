@@ -31,7 +31,7 @@
   ],
   "people": [
     {
-      "email": "",
+      "email": null,
       "firstname": "Bo-Katan",
       "name": "Kryze",
       "officeList": ["Castle Kryze"],
