@@ -1,0 +1,51 @@
+{
+  "code": 11401,
+  "acronym": "KALEVALA",
+  "name": "Kalevala est une planète du système Mandalore située dans les territoires de la bordure extérieure.",
+  "unitPath": "EPFL SO TV-4 KALEVALA",
+  "path": [
+    {
+      "acronym": "EPFL",
+      "name": "Ecole polytechnique fédérale de Lausanne"
+    },
+    {
+      "acronym": "SO",
+      "name": "Spin-off"
+    },
+    {
+      "acronym": "TV-4",
+      "name": "Série TV 4"
+    },
+    {
+      "acronym": "KALEVALA",
+      "name": "Kalevala est une planète du système Mandalore située dans les territoires de la bordure extérieure."
+    }
+  ],
+  "terminal": "1",
+  "ghost": null,
+  "address": [
+    "EPFL SO TV-4 KALEVALA",
+    "Outer Rim",
+    "Station 12",
+    "CH-1015 Lausanne"
+  ],
+  "people": [
+    {
+      "firstname": "Bo-Katan",
+      "name": "Kryze",
+      "officeList": ["Castle Kryze"],
+      "phoneList": ["+41 21 0054323"],
+      "position": "Princesse",
+      "profile": "670006",
+      "rank": 0,
+      "sciper": "670006"
+    }
+  ],
+  "head": {
+    "sciper": "670006",
+    "name": "Kryze",
+    "firstname": "Bo-Katan",
+    "email": "",
+    "profile": "670006"
+  }
+}

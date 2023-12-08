@@ -9,12 +9,12 @@ const visibleConditionByCmplType = `
     )
   `;
 
-async function get (params) {
+async function get (params, isInternal) {
   const lang = params.hl || 'fr';
   const q = params.q;
   const acro = params.acro;
   if (acro) {
-    return await getUnit(acro, lang);
+    return await getUnit(acro, lang, isInternal);
   }
 
   const unitList = await searchUnits(q, lang);
@@ -22,7 +22,7 @@ async function get (params) {
   if (unitList.length === 0) {
     return {};
   } else if (unitList.length === 1) {
-    return await getUnit(unitList[0].acronym, lang);
+    return await getUnit(unitList[0].acronym, lang, isInternal);
   } else {
     return sortUnits(unitList, q);
   }
@@ -70,7 +70,7 @@ function sortUnits (units, q) {
   ).map(scoredUnit => scoredUnit.unit);
 }
 
-async function getUnit (acro, lang) {
+async function getUnit (acro, lang, isInternal) {
   const query = 'SELECT sigle, id_unite, libelle, libelle_en, hierarchie, ' +
                 'resp_sciper, resp_nom, resp_nom_usuel, resp_prenom, ' +
                 'resp_prenom_usuel, url, faxes, adresse, cmpl_type, ghost, ' +
@@ -111,10 +111,14 @@ async function getUnit (acro, lang) {
     unitFullDetails.head = {
       sciper: dict.resp_sciper,
       name: dict.resp_nom_usuel || dict.resp_nom,
-      firstname: dict.resp_prenom_usuel || dict.resp_prenom,
-      email: headPerson[0].email,
-      profile: headPerson[0].profile
+      firstname: dict.resp_prenom_usuel || dict.resp_prenom
     };
+    if (headPerson.length > 0) {
+      unitFullDetails.head.email = headPerson[0].email
+        ? headPerson[0].email
+        : '';
+      unitFullDetails.head.profile = headPerson[0].profile;
+    }
   }
   if (dict.url) {
     unitFullDetails.url = dict.url;
@@ -139,7 +143,17 @@ async function getUnit (acro, lang) {
     });
   }
 
-  // TODO: if req.get('X-EPFL-Internal') === 'TRUE' → add `adminData`
+  if (isInternal) {
+    unitFullDetails.adminData = {
+      'mailing-list': `https://cadiwww.epfl.ch/listes?unite=${dict.sigle}`,
+      details: `https://units.epfl.ch/#/unites/${dict.id_unite}`,
+      accreds: `https://accred.epfl.ch/#/catalog/units/${dict.id_unite}`
+    };
+    if (dict.has_accreds) {
+      unitFullDetails.adminData['fmt-list'] =
+        `https://search-api.epfl.ch/api/unit/csv?q=${dict.sigle}&hl=${lang}`;
+    }
+  }
 
   return unitFullDetails;
 }
