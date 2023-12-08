@@ -35,7 +35,7 @@ async function searchUnits (q, lang) {
                 'WHERE (sigle LIKE ? OR libelle LIKE ? OR libelle_en LIKE ?) ' +
                 `AND ${visibleConditionByCmplType}` +
                 'AND hierarchie NOT LIKE ?';
-  const values = ['%' + q + '%', '%' + q + '%', '%' + q + '%', 'TECHNIQUE%'];
+  const values = ['%' + q + '%', '%' + q + '%', '%' + q + '%', '%TECHNIQUE%'];
 
   const results = await cadidbService.sendQuery(query, values, 'searchUnits');
   const formattedResults = results.map((dict) => {
@@ -80,7 +80,7 @@ async function getUnit (acro, lang, isInternal) {
                 'WHERE sigle = ? ' +
                 `AND ${visibleConditionByCmplType} ` +
                 'AND hierarchie NOT LIKE ?';
-  const values = [acro, 'TECHNIQUE%'];
+  const values = [acro, '%TECHNIQUE%'];
 
   const results = await cadidbService.sendQuery(query, values, 'getUnit');
   if (results.length !== 1) {
@@ -195,8 +195,9 @@ async function getSubunits (unitId, lang) {
   const query = 'SELECT sigle, libelle, libelle_en ' +
                 'FROM Unites_v2 ' +
                 'WHERE id_parent = ? ' +
-                `AND ${visibleConditionByCmplType}`;
-  const values = [unitId];
+                `AND ${visibleConditionByCmplType}` +
+                'AND hierarchie NOT LIKE ?';
+  const values = [unitId, '%TECHNIQUE%'];
 
   const results = await cadidbService.sendQuery(query, values, 'getSubunits');
   const formattedResults = results.map((dict) => {
