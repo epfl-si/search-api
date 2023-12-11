@@ -59,6 +59,18 @@
                   value: '{{ searchapi_secrets.SEARCH_API_LDAP_URL }}'
                 - name: SEARCH_API_LDAP_ROOTS_FILTER
                   value: '{{ searchapi_secrets.SEARCH_API_LDAP_ROOTS_FILTER }}'
+                - name: SEARCH_API_MD_BASE_URL
+                  value: '{{ searchapi_secrets.SEARCH_API_MD_BASE_URL }}'
+                - name: SEARCH_API_MD_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: search-api-md-secrets
+                      key: SEARCH_API_MD_USER
+                - name: SEARCH_API_MD_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: search-api-md-secrets
+                      key: SEARCH_API_MD_PASSWORD
               livenessProbe:
                 httpGet:
                   path: /healthz

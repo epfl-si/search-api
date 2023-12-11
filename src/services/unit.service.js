@@ -1,4 +1,5 @@
 const ldapUtil = require('../utils/ldap.util');
+const apimdService = require('./apimd.service');
 const cadidbService = require('./cadidb.service');
 const peopleService = require('./people.service');
 
@@ -34,7 +35,7 @@ async function searchUnits (q, lang) {
                 'WHERE (sigle LIKE ? OR libelle LIKE ? OR libelle_en LIKE ?) ' +
                 `AND ${visibleConditionByCmplType}` +
                 'AND hierarchie NOT LIKE ?';
-  const values = ['%' + q + '%', '%' + q + '%', '%' + q + '%', 'TECHNIQUE%'];
+  const values = ['%' + q + '%', '%' + q + '%', '%' + q + '%', '%TECHNIQUE%'];
 
   const results = await cadidbService.sendQuery(query, values, 'searchUnits');
   const formattedResults = results.map((dict) => {
@@ -79,7 +80,7 @@ async function getUnit (acro, lang, isInternal) {
                 'WHERE sigle = ? ' +
                 `AND ${visibleConditionByCmplType} ` +
                 'AND hierarchie NOT LIKE ?';
-  const values = [acro, 'TECHNIQUE%'];
+  const values = [acro, '%TECHNIQUE%'];
 
   const results = await cadidbService.sendQuery(query, values, 'getUnit');
   if (results.length !== 1) {
@@ -87,10 +88,6 @@ async function getUnit (acro, lang, isInternal) {
   }
   const dict = results[0];
   const unitPath = await getUnitPath(dict.hierarchie, lang);
-  const ldapHeadPerson = await peopleService.getPersonBySciper(
-    dict.resp_sciper
-  );
-  const headPerson = ldapUtil.ldap2api(ldapHeadPerson, '', lang);
   const unitFullDetails = {
     code: dict.id_unite,
     acronym: dict.sigle,
@@ -113,6 +110,10 @@ async function getUnit (acro, lang, isInternal) {
       name: dict.resp_nom_usuel || dict.resp_nom,
       firstname: dict.resp_prenom_usuel || dict.resp_prenom
     };
+    const ldapHeadPerson = await peopleService.getPersonBySciper(
+      dict.resp_sciper
+    );
+    const headPerson = ldapUtil.ldap2api(ldapHeadPerson, '', lang);
     if (headPerson.length > 0) {
       unitFullDetails.head.email = headPerson[0].email
         ? headPerson[0].email
@@ -124,13 +125,16 @@ async function getUnit (acro, lang, isInternal) {
     unitFullDetails.url = dict.url;
   }
   if (dict.has_accreds) {
-    const ldapUnitPersons = await peopleService.getPersonByUnit(dict.sigle);
-    const UnitPersons = ldapUtil.ldapUnit2api(ldapUnitPersons, lang);
-    if (UnitPersons.length > 0) {
-      unitFullDetails.people = UnitPersons;
+    const unitPersons = await apimdService
+      .getPersonsByUnit(dict.id_unite, lang);
+    if (unitPersons.length > 0) {
+      unitFullDetails.people = unitPersons;
     }
   } else {
-    unitFullDetails.subunits = await getSubunits(dict.id_unite, lang);
+    const subunits = await getSubunits(dict.id_unite, lang);
+    if (subunits.length > 0) {
+      unitFullDetails.subunits = subunits;
+    }
   }
   if (dict.faxes) {
     unitFullDetails.faxes = dict.faxes.split(',').map((fax) => {
@@ -191,8 +195,9 @@ async function getSubunits (unitId, lang) {
   const query = 'SELECT sigle, libelle, libelle_en ' +
                 'FROM Unites_v2 ' +
                 'WHERE id_parent = ? ' +
-                `AND ${visibleConditionByCmplType}`;
-  const values = [unitId];
+                `AND ${visibleConditionByCmplType}` +
+                'AND hierarchie NOT LIKE ?';
+  const values = [unitId, '%TECHNIQUE%'];
 
   const results = await cadidbService.sendQuery(query, values, 'getSubunits');
   const formattedResults = results.map((dict) => {
