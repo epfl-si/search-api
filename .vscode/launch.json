@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug",
+      "type": "node",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/src/server.js",
+      "envFile": "/keybase/team/epfl_search/api/local/env"
+    }
+  ]
+}
