@@ -55,7 +55,7 @@ function getOfficeList (person, unitId) {
 }
 
 async function getPersonsByUnit (unitId, lang) {
-  const url = '/v1/epfl-search/' + unitId;
+  const url = '/v1/epfl-search/unit/' + unitId;
   const response = await axios.get(`${apimdConfig.baseURL}${url}`, axiosConfig);
   const data = response.data;
   // authid 1 → botweb (Appear in the unit's web directory)
