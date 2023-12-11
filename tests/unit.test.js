@@ -1,6 +1,9 @@
 const request = require('supertest');
 const app = require('../src/app');
 const mysql = require('mysql2/promise');
+const axios = require('axios');
+
+jest.mock('axios');
 
 jest.mock('mysql2/promise', () => {
   const mockPool = {
@@ -117,6 +120,9 @@ describe('Test API Unit ("/api/unit")', () => {
     };
     mysql.createPool().getConnection.mockResolvedValue(mockConnection);
 
+    const mockApimdResponse = require('./resources/apimd/unit-mandalore.json');
+    axios.get.mockResolvedValue({ data: mockApimdResponse });
+
     let jsonResult =
       require('./resources/unit/unit-mandalore-en-external.json');
     let response = await request(app)
@@ -134,7 +140,7 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
 
     jsonResult =
-    require('./resources/unit/unit-mandalore-fr-internal.json');
+      require('./resources/unit/unit-mandalore-fr-internal.json');
     response = await request(app)
       .get('/api/unit?acro=mandalore&hl=fr')
       .set({ 'X-EPFL-Internal': 'TRUE' });
@@ -162,6 +168,9 @@ describe('Test API Unit ("/api/unit")', () => {
     };
     mysql.createPool().getConnection.mockResolvedValue(mockConnection);
 
+    const mockApimdResponse = require('./resources/apimd/unit-nevarro.json');
+    axios.get.mockResolvedValue({ data: mockApimdResponse });
+
     const jsonResult = require('./resources/unit/unit-nevarro-fr.json');
     const response = await request(app).get('/api/unit?q=nevarro&hl=fr');
     expect(response.statusCode).toBe(200);
@@ -184,6 +193,9 @@ describe('Test API Unit ("/api/unit")', () => {
       release: jest.fn()
     };
     mysql.createPool().getConnection.mockResolvedValue(mockConnection);
+
+    const mockApimdResponse = require('./resources/apimd/unit-kalevala.json');
+    axios.get.mockResolvedValue({ data: mockApimdResponse });
 
     const jsonResult = require('./resources/unit/unit-kalevala-fr.json');
     const response = await request(app).get('/api/unit?acro=kalevala&hl=fr');
@@ -225,6 +237,32 @@ describe('Test API Unit ("/api/unit")', () => {
     response = await request(app)
       .get('/api/unit?q=ot&hl=fr')
       .set({ 'X-EPFL-Internal': 'TRUE' });
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find TV-2 unit (where no subunits)', async () => {
+    const mockConnection = {
+      query: jest.fn().mockImplementation((query, values, referrer) => {
+        let jsonData;
+        switch (referrer) {
+          case 'getUnit':
+            jsonData = require('./resources/cadidb/getUnit-tv-2.json');
+            break;
+          case 'getUnitPath':
+            jsonData = require('./resources/cadidb/getUnitPath-tv-2.json');
+            break;
+          case 'getSubunits':
+            jsonData = [];
+        }
+        return Promise.resolve([jsonData]);
+      }),
+      release: jest.fn()
+    };
+    mysql.createPool().getConnection.mockResolvedValue(mockConnection);
+
+    const jsonResult = require('./resources/unit/unit-tv-2-fr.json');
+    const response = await request(app).get('/api/unit?acro=tv-2&hl=fr');
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });

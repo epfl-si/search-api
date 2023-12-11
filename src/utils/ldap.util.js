@@ -37,23 +37,6 @@ function newLdapAddressMapper () {
   return ldapAddressMapper;
 }
 
-function newLdapUnitMapper (lang) {
-  const ldapUnitMapper = {
-    mail: ['email', (val) => val[0]],
-    sn: ['name', (val) => val],
-    givenName: ['firstname', (val) => val],
-    displayName: ['displayName', (val) => val[0]],
-    roomNumber: ['officeList', (val) => val],
-    telephoneNumber: ['phoneList', (val) => val]
-  };
-  if (lang === 'fr') {
-    ldapUnitMapper.description = ['position', (val) => val[0]];
-  } else {
-    ldapUnitMapper['description;lang-en'] = ['position', (val) => val[0]];
-  }
-  return ldapUnitMapper;
-}
-
 function sortAccreds (obj) {
   return obj.sort((a, b) => a.rank - b.rank);
 }
@@ -298,47 +281,6 @@ function ldapAddress2api (ldapResults) {
   return person;
 }
 
-/**
- * Convert LDAP Unit result into API result.
- *
- * @example
- * const ldapUtil = require('../utils/ldap.util');
- * const persons = ldapUtil.ldapUnit2api(ldapResults, 'en');
- *
- * @param {object} ldapResults The result from the LDAP Unit search.
- * @param {string} hl The user interface language.
- * @returns {object} Return the result for the API.
- */
-function ldapUnit2api (ldapResults, hl) {
-  const list = [];
-  const ldapUnitMapper = newLdapUnitMapper(hl);
-
-  for (const [sciper, entry] of Object.entries(ldapResults)) {
-    const person = { sciper, rank: 0 };
-    for (let acc = 0; acc < entry.length; acc++) {
-      for (let att = 0; att < entry[acc].attributes.length; att++) {
-        if (entry[acc].attributes[att].type in ldapUnitMapper) {
-          person[ldapUnitMapper[entry[acc].attributes[att].type][0]] =
-          ldapUnitMapper[
-            entry[acc].attributes[att].type
-          ][1](entry[acc].attributes[att].values);
-        }
-      }
-    }
-    const correctName = getCorrectName(
-      person.firstname,
-      person.name,
-      person.displayName
-    );
-    person.firstname = correctName[0];
-    person.name = correctName[1];
-    delete person.displayName;
-    person.profile = getProfile(person.email, sciper);
-    list.push(person);
-  }
-  return sortPersons(list, '');
-}
-
 module.exports = {
   buildLdapQueryForPerson,
   dn2acronym,
@@ -346,6 +288,5 @@ module.exports = {
   getCorrectName,
   getProfile,
   ldap2api,
-  ldapAddress2api,
-  ldapUnit2api
+  ldapAddress2api
 };

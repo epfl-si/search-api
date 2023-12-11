@@ -1,0 +1,29 @@
+{
+  "code": 11200,
+  "acronym": "TV-2",
+  "name": "Série TV 2",
+  "unitPath": "EPFL SO TV-2",
+  "path": [
+    {
+      "acronym": "EPFL",
+      "name": "Ecole polytechnique fédérale de Lausanne"
+    },
+    {
+      "acronym": "SO",
+      "name": "Spin-off"
+    },
+    {
+      "acronym": "TV-2",
+      "name": "Série TV 2"
+    }
+  ],
+  "terminal": null,
+  "ghost": null,
+  "head": {
+    "sciper": "670006",
+    "name": "Kryze",
+    "firstname": "Bo-Katan",
+    "email": "",
+    "profile": "670006"
+  }
+}
