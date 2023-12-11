@@ -39,8 +39,8 @@ npm run test:watch
 # Development
 make start
 
-# To access Cadi DB test (for Unit tab)
-ssh -f kis@test-search01.epfl.ch -L 33306:test-cadidb.epfl.ch:3306 -N
+# Set up access Cadi DB staging (for Unit tab)
+ssh -f kis@test-search01.epfl.ch -L 33306:db-cadi-staging.epfl.ch:3306 -N
 
 # Production
 make up
