@@ -4,9 +4,9 @@
 
 - Add API MD service
 - Add adminData for internal request, based on header X-EPFL-Internal
-- Rename labels in tests (Unit API)
 - Fix head of unit has no email
 - Fix head of unit has left
+- Rename labels in tests (Unit API)
 - Debug with VS Code
 - Update DB CADI host (staging)
 - Update googleapis to 129.0.0
