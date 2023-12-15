@@ -155,7 +155,7 @@ async function getUnit (acro, lang, isInternal) {
     };
     if (dict.has_accreds) {
       unitFullDetails.adminData['fmt-list'] =
-        `https://search-api.epfl.ch/api/unit/csv?q=${dict.sigle}&hl=${lang}`;
+        `https://search-backend.epfl.ch/api/unit/csv?q=${dict.sigle}&hl=${lang}`;
     }
   }
 
