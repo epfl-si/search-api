@@ -90,15 +90,15 @@
 
 ### Parameters
 
-| Name      | Type     | Comments                                                                               |
-| --------- | -------- | -------------------------------------------------------------------------------------- |
-| `q`       | `String` | Query                                                                                  |
-| `doctype` | `String` | Values : `concept`, `course`, `lecture`, `mooc`, `person`, `publication`, `unit`       |
-| `offset`  | `Number` | The index of the first result to return. The default number of results per page is 10. |
+| Name      | Type     | Comments                                                                         |
+| --------- | -------- | -------------------------------------------------------------------------------- |
+| `q`       | `String` | Query                                                                            |
+| `doctype` | `String` | Values : `concept`, `course`, `lecture`, `mooc`, `person`, `publication`, `unit` |
+| `limit`   | `Number` | Sets the number of entries on a page. Default is 10. Max is 100.                 |
 
 ### Examples
 
-- [/api/graphsearch?q=math][graphsearch-1]
+- [/api/graphsearch?q=math&limit=20][graphsearch-1]
 - [/api/graphsearch?q=vetterli&doctype=person][graphsearch-2]
 - [/api/graphsearch?q=lts&doctype=unit][graphsearch-3]
 
@@ -125,7 +125,7 @@ See [Contributing](CONTRIBUTING.md).
 [unit-1]: http://127.0.0.1:5555/api/unit?q=fsd
 [unit-2]: http://127.0.0.1:5555/api/unit?q=vpo&hl=en
 [unit-3]: http://127.0.0.1:5555/api/unit?acro=vpo
-[graphsearch-1]: http://127.0.0.1:5555/api/graphsearch?q=math
+[graphsearch-1]: http://127.0.0.1:5555/api/graphsearch?q=math&limit=20
 [graphsearch-2]: http://127.0.0.1:5555/api/graphsearch?q=vetterli&doctype=person
 [graphsearch-3]: http://127.0.0.1:5555/api/graphsearch?q=lts&doctype=unit
 [address-1]: http://127.0.0.1:5555/api/address?q=278890
