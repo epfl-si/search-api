@@ -97,7 +97,8 @@ async function getUnit (acro, lang, isInternal) {
     unitPath: dict.hierarchie,
     path: unitPath,
     terminal: dict.has_accreds,
-    ghost: dict.ghost
+    ghost: dict.ghost,
+    url: dict.url ? dict.url : null
   };
   const address = dict.adresse.split('$').map((value) => value.trim())
     .filter((value) => value !== '');
@@ -120,9 +121,6 @@ async function getUnit (acro, lang, isInternal) {
         : '';
       unitFullDetails.head.profile = headPerson[0].profile;
     }
-  }
-  if (dict.url) {
-    unitFullDetails.url = dict.url;
   }
   if (dict.has_accreds) {
     const unitPersons = await apimdService
