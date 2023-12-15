@@ -115,13 +115,13 @@
       "sciper": "670013"
     },
     {
-      "email": "trapper.wolf@epfl.ch",
+      "email": null,
       "firstname": "Trapper",
       "name": "Wolf",
       "officeList": [],
       "phoneList": [],
       "position": null,
-      "profile": "trapper.wolf",
+      "profile": "670009",
       "rank": 0,
       "sciper": "670009"
     }
@@ -130,6 +130,6 @@
     "mailing-list": "https://cadiwww.epfl.ch/listes?unite=MANDALORE",
     "details": "https://units.epfl.ch/#/unites/11301",
     "accreds": "https://accred.epfl.ch/#/catalog/units/11301",
-    "fmt-list": "https://search-api.epfl.ch/api/unit/csv?q=MANDALORE&hl=fr"
+    "fmt-list": "https://search-backend.epfl.ch/api/unit/csv?q=MANDALORE&hl=fr"
   }
 }
