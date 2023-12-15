@@ -212,49 +212,43 @@ async function getSubunits (unitId, lang) {
   return formattedResults.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-async function getCsv (params) {
-  const lang = params.hl || 'fr';
-  const acro = params.q;
-  if (acro) {
-    const unitData = await getUnit(acro, lang, false);
-    if (!unitData.people) {
-      return null;
-    }
-    const unitAcro = unitData.acronym;
-    const unitPath = unitData.unitPath;
-    const unitAddress = unitData.address ? unitData.address.join(' $ ') : '';
-
-    const data = [];
-    const header = lang === 'en'
-      ? ['Name', 'First name', 'Sciper', 'email', 'Unit', 'Unit path',
-          'Position', 'Office(s)', 'Phone(s)', 'Address']
-      : ['Nom', 'Prénom', 'Sciper', 'email', 'Unité', "Chemin de l'unité",
-          'Fonction', 'Bureau(x)', 'Téléphone(s)', 'Adresse'];
-
-    data.push(header);
-
-    unitData.people.forEach((person) => {
-      data.push([
-        person.name,
-        person.firstname,
-        person.sciper,
-        person.email ? person.email : '',
-        unitAcro,
-        unitPath,
-        person.position ? person.position : '',
-        person.officeList.join(', '),
-        person.phoneList.join(', '),
-        unitAddress
-      ]);
-    });
-
-    const formatRow = row => row.map(value => `"${value}"`).join(';');
-    const csvData = data.map(formatRow).join('\n');
-
-    return csvData;
+async function getCsv (acro, lang) {
+  const unitData = await getUnit(acro, lang, false);
+  if (!unitData.people) {
+    return null;
   }
+  const unitAcro = unitData.acronym;
+  const unitPath = unitData.unitPath;
+  const unitAddress = unitData.address ? unitData.address.join(', ') : '';
 
-  return null;
+  const data = [];
+  const header = lang === 'en'
+    ? ['Name', 'First name', 'Sciper', 'email', 'Unit', 'Unit path',
+        'Position', 'Office(s)', 'Phone(s)', 'Address']
+    : ['Nom', 'Prénom', 'Sciper', 'email', 'Unité', "Chemin de l'unité",
+        'Fonction', 'Bureau(x)', 'Téléphone(s)', 'Adresse'];
+
+  data.push(header);
+
+  unitData.people.forEach((person) => {
+    data.push([
+      person.name,
+      person.firstname,
+      person.sciper,
+      person.email ? person.email : '',
+      unitAcro,
+      unitPath,
+      person.position ? person.position : '',
+      person.officeList.join(', '),
+      person.phoneList.join(', '),
+      unitAddress
+    ]);
+  });
+
+  const formatRow = row => row.map(value => `"${value}"`).join(';');
+  const csvData = data.map(formatRow).join('\n');
+
+  return csvData;
 }
 
 module.exports = {

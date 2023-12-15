@@ -17,10 +17,16 @@ async function get (req, res) {
 async function getCsv (req, res) {
   try {
     const isInternal = req.header('X-EPFL-Internal') === 'TRUE';
+    const lang = req.query.hl || 'fr';
+    const acro = req.query.q;
     if (!isInternal) {
-      return res.sendStatus(403);
+      return res.status(403)
+        .send('CSV export is only allowed via EPFL intranet or VPN');
+    } else if (!acro) {
+      return res.status(400)
+        .send('Missing required query parameter: q');
     }
-    const csvData = await unitService.getCsv(req.query);
+    const csvData = await unitService.getCsv(acro, lang);
     if (!csvData) {
       return res.sendStatus(404);
     }
