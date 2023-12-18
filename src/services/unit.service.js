@@ -121,6 +121,8 @@ async function getUnit (acro, lang, isInternal) {
         : '';
       unitFullDetails.head.profile = headPerson[0].profile;
     }
+  } else {
+    unitFullDetails.head = null;
   }
   if (dict.has_accreds) {
     const unitPersons = await apimdService
