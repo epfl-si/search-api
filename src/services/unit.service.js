@@ -102,9 +102,7 @@ async function getUnit (acro, lang, isInternal) {
   };
   const address = dict.adresse.split('$').map((value) => value.trim())
     .filter((value) => value !== '');
-  if (address.length > 0) {
-    unitFullDetails.address = address;
-  }
+  unitFullDetails.address = address.length > 0 ? address : null;
   if (dict.resp_sciper) {
     unitFullDetails.head = {
       sciper: dict.resp_sciper,

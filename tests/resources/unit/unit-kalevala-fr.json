@@ -24,6 +24,7 @@
   "terminal": "1",
   "ghost": null,
   "url": null,
+  "address": null,
   "people": [
     {
       "email": null,
