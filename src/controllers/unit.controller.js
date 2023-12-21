@@ -1,10 +1,17 @@
+const appCache = require('../services/cache.service');
 const unitService = require('../services/unit.service');
 
 async function get (req, res) {
   try {
     const isInternal = req.header('X-EPFL-Internal') === 'TRUE';
-    const results = await unitService.get(req.query, isInternal);
-    return res.json(results);
+    const cacheKey = req.originalUrl + '-' + (isInternal ? 'int' : 'ext');
+    if (appCache.has(cacheKey)) {
+      return res.send(appCache.get(cacheKey));
+    } else {
+      const results = await unitService.get(req.query, isInternal);
+      appCache.set(cacheKey, results);
+      return res.json(results);
+    }
   } catch (err) {
     console.error('[error] ', err);
     return res.status(400).json({
