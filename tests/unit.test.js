@@ -243,6 +243,22 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
+  test('It should find OT unit (with subunits) from cache', async () => {
+    let jsonResult = require('./resources/unit/unit-ot-en-external.json');
+    let response = await request(app)
+      .get('/api/unit?q=ot&hl=en')
+      .set({ 'X-EPFL-Internal': 'FALSE' });
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+
+    jsonResult = require('./resources/unit/unit-ot-fr-internal.json');
+    response = await request(app)
+      .get('/api/unit?q=ot&hl=fr')
+      .set({ 'X-EPFL-Internal': 'TRUE' });
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
   test('It should find TV-2 unit (where no subunits)', async () => {
     const mockConnection = {
       query: jest.fn().mockImplementation((query, values, referrer) => {
