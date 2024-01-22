@@ -2,6 +2,8 @@ const request = require('supertest');
 const app = require('../src/app');
 const mysql = require('mysql2/promise');
 const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
 
 jest.mock('axios');
 
@@ -241,6 +243,22 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
+  test('It should find OT unit (with subunits) from cache', async () => {
+    let jsonResult = require('./resources/unit/unit-ot-en-external.json');
+    let response = await request(app)
+      .get('/api/unit?q=ot&hl=en')
+      .set({ 'X-EPFL-Internal': 'FALSE' });
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+
+    jsonResult = require('./resources/unit/unit-ot-fr-internal.json');
+    response = await request(app)
+      .get('/api/unit?q=ot&hl=fr')
+      .set({ 'X-EPFL-Internal': 'TRUE' });
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
   test('It should find TV-2 unit (where no subunits)', async () => {
     const mockConnection = {
       query: jest.fn().mockImplementation((query, values, referrer) => {
@@ -275,6 +293,130 @@ describe('Test API Unit ("/api/unit")', () => {
     mysql.createPool().getConnection.mockResolvedValue(mockConnection);
 
     const response = await request(app).get('/api/unit?q=xxx&hl=en');
+    expect(response.statusCode).toBe(400);
+    expect(response.text).toMatch('Oops, something went wrong');
+    expect(testOutput.length).toBe(1);
+    expect(testOutput[0]).toMatch('error');
+  });
+
+  test('(csv) It should return 404 (unit TV-2 has no accreds)', async () => {
+    const mockConnection = {
+      query: jest.fn().mockImplementation((query, values, referrer) => {
+        let jsonData;
+        switch (referrer) {
+          case 'getUnit':
+            jsonData = require('./resources/cadidb/getUnit-tv-2.json');
+            break;
+          case 'getUnitPath':
+            jsonData = require('./resources/cadidb/getUnitPath-tv-2.json');
+            break;
+          case 'getSubunits':
+            jsonData = [];
+        }
+        return Promise.resolve([jsonData]);
+      }),
+      release: jest.fn()
+    };
+    mysql.createPool().getConnection.mockResolvedValue(mockConnection);
+    const response = await request(app)
+      .get('/api/unit/csv?q=tv-2&hl=fr')
+      .set({ 'X-EPFL-Internal': 'TRUE' });
+    expect(response.statusCode).toBe(404);
+  });
+
+  test('(csv) It should return 403 (query from external)', async () => {
+    const response = await request(app)
+      .get('/api/unit/csv?q=mandalore&hl=fr')
+      .set({ 'X-EPFL-Internal': 'FALSE' });
+    expect(response.statusCode).toBe(403);
+  });
+
+  test('(csv) It should return 400 (missing query parameter: q)', async () => {
+    const response = await request(app)
+      .get('/api/unit/csv?hl=fr')
+      .set({ 'X-EPFL-Internal': 'TRUE' });
+    expect(response.statusCode).toBe(400);
+  });
+
+  test('(csv) It should return the csv export file of Mandalore)', async () => {
+    const mockConnection = {
+      query: jest.fn().mockImplementation((query, values, referrer) => {
+        let jsonData;
+        switch (referrer) {
+          case 'getUnit':
+            jsonData = require('./resources/cadidb/getUnit-mandalore.json');
+            break;
+          case 'getUnitPath':
+            jsonData = require('./resources/cadidb/getUnitPath-mandalore.json');
+        }
+        return Promise.resolve([jsonData]);
+      }),
+      release: jest.fn()
+    };
+    mysql.createPool().getConnection.mockResolvedValue(mockConnection);
+
+    const mockApimdResponse = require('./resources/apimd/unit-mandalore.json');
+    axios.get.mockResolvedValue({ data: mockApimdResponse });
+
+    let expectedCsv = fs.readFileSync(
+      path.resolve(__dirname,
+        './resources/unit/csv-unit-mandalore-en.csv'), 'utf-8');
+    let response = await request(app)
+      .get('/api/unit/csv?q=mandalore&hl=en')
+      .set({ 'X-EPFL-Internal': 'TRUE' });
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toEqual(expectedCsv);
+
+    expectedCsv = fs.readFileSync(
+      path.resolve(__dirname,
+        './resources/unit/csv-unit-mandalore-fr.csv'), 'utf-8');
+    response = await request(app)
+      .get('/api/unit/csv?q=mandalore&hl=fr')
+      .set({ 'X-EPFL-Internal': 'TRUE' });
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toEqual(expectedCsv);
+  });
+
+  test('(csv) It should return the csv export file of Kalevala)', async () => {
+    const mockConnection = {
+      query: jest.fn().mockImplementation((query, values, referrer) => {
+        let jsonData;
+        switch (referrer) {
+          case 'getUnit':
+            jsonData = require('./resources/cadidb/getUnit-kalevala.json');
+            break;
+          case 'getUnitPath':
+            jsonData = require('./resources/cadidb/getUnitPath-kalevala.json');
+        }
+        return Promise.resolve([jsonData]);
+      }),
+      release: jest.fn()
+    };
+    mysql.createPool().getConnection.mockResolvedValue(mockConnection);
+
+    const mockApimdResponse = require('./resources/apimd/unit-kalevala.json');
+    axios.get.mockResolvedValue({ data: mockApimdResponse });
+
+    const expectedCsv = fs.readFileSync(
+      path.resolve(__dirname,
+        './resources/unit/csv-unit-kalevala-fr.csv'), 'utf-8');
+    const response = await request(app)
+      .get('/api/unit/csv?q=kalevala')
+      .set({ 'X-EPFL-Internal': 'TRUE' });
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toEqual(expectedCsv);
+  });
+
+  test('(csv) It should return an error with a status code 400', async () => {
+    const mockConnection = {
+      query: jest.fn().mockRejectedValue(),
+      release: jest.fn()
+    };
+    mysql.createPool().getConnection.mockResolvedValue(mockConnection);
+
+    const response = await request(app)
+      .get('/api/unit/csv?q=mandalore&hl=en')
+      .set({ 'X-EPFL-Internal': 'TRUE' });
     expect(response.statusCode).toBe(400);
     expect(response.text).toMatch('Oops, something went wrong');
     expect(testOutput.length).toBe(1);

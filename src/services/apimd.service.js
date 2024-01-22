@@ -14,20 +14,32 @@ const axiosConfig = {
 };
 
 function getPosition (accred, gender, lang) {
-  const position = accred.position;
-  if (accred.origin === 's') {
-    // Students have no position
-    return lang === 'en'
-      ? 'Student'
-      : (gender === 'M' ? 'Étudiant' : 'Étudiante');
-  } else if (!position) {
+  const position = accred.origin === 's'
+    ? {
+        labelen: 'Student',
+        labelfr: 'Etudiant',
+        labelxx: 'Etudiante',
+        labelinclusive: 'Etudiante/Etudiant'
+      }
+    : accred.position;
+  if (!position) {
     return null;
   } else if (lang === 'en' && position.labelen) {
     return position.labelen;
+  } else if (gender === 'M') {
+    return position.labelfr
+      ? position.labelfr
+      : (position.labelxx ? position.labelxx : position.labelen);
+  } else if (gender === 'F') {
+    return position.labelxx
+      ? position.labelxx
+      : (position.labelfr ? position.labelfr : position.labelen);
   } else {
-    return gender === 'M'
-      ? (position.labelfr ? position.labelfr : position.labelxx)
-      : (position.labelxx ? position.labelxx : position.labelfr);
+    return position.labelinclusive
+      ? position.labelinclusive
+      : (position.labelfr
+          ? position.labelfr
+          : (position.labelxx ? position.labelxx : position.labelen));
   }
 }
 

@@ -23,6 +23,7 @@
   ],
   "terminal": "1",
   "ghost": null,
+  "url": null,
   "address": [
     "EPFL SO TV-3 MANDALORE",
     "Outer Rim",
@@ -60,15 +61,59 @@
       "sciper": "670015"
     },
     {
+      "email": "lyra.korr@epfl.ch",
+      "firstname": "Lyra",
+      "name": "Korr",
+      "officeList": [],
+      "phoneList": [],
+      "position": "Drone Engineer",
+      "profile": "lyra.korr",
+      "rank": 0,
+      "sciper": "670017"
+    },
+    {
       "email": "kara.ordo@epfl.ch",
       "firstname": "Kara",
       "name": "Ordo",
       "officeList": [],
       "phoneList": [],
-      "position": "Étudiante",
+      "position": "Etudiante",
       "profile": "kara.ordo",
       "rank": 0,
       "sciper": "670008"
+    },
+    {
+      "email": "aria.sol@epfl.ch",
+      "firstname": "Aria",
+      "name": "Sol",
+      "officeList": [],
+      "phoneList": [],
+      "position": "Analyste de données",
+      "profile": "aria.sol",
+      "rank": 0,
+      "sciper": "670018"
+    },
+    {
+      "email": "hera.sunrider@epfl.ch",
+      "firstname": "Hera",
+      "name": "Sunrider",
+      "officeList": [],
+      "phoneList": [],
+      "position": "UI/UX Designer",
+      "profile": "hera.sunrider",
+      "rank": 0,
+      "sciper": "670020"
+    },
+    {
+      "email": "rex.trin@epfl.ch",
+      "firstname": "Rex",
+      "name": "Trin",
+      "officeList": [],
+      "phoneList": [],
+      "position": "AI Researcher",
+      "profile": "rex.trin",
+      "rank": 0,
+      "sciper": "670016"
     },
     {
       "email": "bryn.vek@epfl.ch",
@@ -80,6 +125,17 @@
       "profile": "bryn.vek",
       "rank": 0,
       "sciper": "670014"
+    },
+    {
+      "email": "quin.vex@epfl.ch",
+      "firstname": "Quin",
+      "name": "Vex",
+      "officeList": [],
+      "phoneList": [],
+      "position": "Dentiste",
+      "profile": "quin.vex",
+      "rank": 0,
+      "sciper": "670019"
     },
     {
       "email": "paz.vizsla@epfl.ch",
@@ -98,7 +154,7 @@
       "name": "Voss",
       "officeList": [],
       "phoneList": [],
-      "position": "Étudiant",
+      "position": "Etudiant",
       "profile": "kaden.voss",
       "rank": 0,
       "sciper": "670010"
@@ -109,19 +165,19 @@
       "name": "Voss",
       "officeList": [],
       "phoneList": [],
-      "position": "Étudiant",
+      "position": "Etudiante/Etudiant",
       "profile": "renn.voss",
       "rank": 0,
       "sciper": "670013"
     },
     {
-      "email": "trapper.wolf@epfl.ch",
+      "email": null,
       "firstname": "Trapper",
       "name": "Wolf",
       "officeList": [],
       "phoneList": [],
       "position": null,
-      "profile": "trapper.wolf",
+      "profile": "670009",
       "rank": 0,
       "sciper": "670009"
     }
@@ -130,6 +186,6 @@
     "mailing-list": "https://cadiwww.epfl.ch/listes?unite=MANDALORE",
     "details": "https://units.epfl.ch/#/unites/11301",
     "accreds": "https://accred.epfl.ch/#/catalog/units/11301",
-    "fmt-list": "https://search-api.epfl.ch/api/unit/csv?q=MANDALORE&hl=fr"
+    "fmt-list": "https://search-backend.epfl.ch/api/unit/csv?q=MANDALORE&hl=fr"
   }
 }

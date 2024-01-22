@@ -6,6 +6,7 @@
       "position": {
         "labelen": "",
         "labelfr": "Bounty hunter",
+        "labelinclusive": "",
         "labelxx": ""
       }
     },
@@ -15,6 +16,7 @@
       "position": {
         "labelen": "Heavy infantry",
         "labelfr": "Infanterie lourde",
+        "labelinclusive": "",
         "labelxx": ""
       }
     },
@@ -44,6 +46,7 @@
       "position": {
         "labelen": "Midwife",
         "labelfr": "",
+        "labelinclusive": "",
         "labelxx": "Sage-femme"
       }
     },
@@ -53,6 +56,57 @@
       "position": {
         "labelen": "Tech Engineer",
         "labelfr": "Ingénieur technique",
+        "labelinclusive": "",
+        "labelxx": ""
+      }
+    },
+    {
+      "origin": "p",
+      "persid": 670016,
+      "position": {
+        "labelen": "AI Researcher",
+        "labelfr": "",
+        "labelinclusive": "",
+        "labelxx": ""
+      }
+    },
+    {
+      "origin": "p",
+      "persid": 670017,
+      "position": {
+        "labelen": "Drone Engineer",
+        "labelfr": "",
+        "labelinclusive": "",
+        "labelxx": ""
+      }
+    },
+    {
+      "origin": "p",
+      "persid": 670018,
+      "position": {
+        "labelen": "",
+        "labelfr": "Analyste de données",
+        "labelinclusive": "",
+        "labelxx": ""
+      }
+    },
+    {
+      "origin": "p",
+      "persid": 670019,
+      "position": {
+        "labelen": "",
+        "labelfr": "",
+        "labelinclusive": "",
+        "labelxx": "Dentiste"
+      }
+    },
+    {
+      "origin": "p",
+      "persid": 670020,
+      "position": {
+        "labelen": "UI/UX Designer",
+        "labelfr": "",
+        "labelinclusive": "",
         "labelxx": ""
       }
     }
@@ -106,6 +160,31 @@
     {
       "authid": 1,
       "persid": 670015,
+      "value": "y:U10000"
+    },
+    {
+      "authid": 1,
+      "persid": 670016,
+      "value": "y:U10000"
+    },
+    {
+      "authid": 1,
+      "persid": 670017,
+      "value": "y:U10000"
+    },
+    {
+      "authid": 1,
+      "persid": 670018,
+      "value": "y:U10000"
+    },
+    {
+      "authid": 1,
+      "persid": 670019,
+      "value": "y:U10000"
+    },
+    {
+      "authid": 1,
+      "persid": 670020,
       "value": "y:U10000"
     }
   ],
@@ -169,7 +248,6 @@
     },
     {
       "display": "Trapper Wolf",
-      "email": "trapper.wolf@epfl.ch",
       "firstname": "Trapper",
       "gender": "M",
       "id": "670009",
@@ -207,7 +285,7 @@
       "display": "Renn Voss",
       "email": "renn.voss@epfl.ch",
       "firstname": "Renn",
-      "gender": "M",
+      "gender": "X",
       "id": "670013",
       "lastname": "Voss",
       "status": "Student"
@@ -222,12 +300,57 @@
       "status": "Personnel"
     },
     {
-      "display": "Mara Drayde ",
+      "display": "Mara Drayde",
       "email": "mara.drayde@epfl.ch",
       "firstname": "Mara",
       "gender": "F",
       "id": "670015",
       "lastname": "Drayde",
+      "status": "Personnel"
+    },
+    {
+      "display": "Rex Trin",
+      "email": "rex.trin@epfl.ch",
+      "firstname": "Rex",
+      "gender": "M",
+      "id": "670016",
+      "lastname": "Trin",
+      "status": "Personnel"
+    },
+    {
+      "display": "Lyra Korr",
+      "email": "lyra.korr@epfl.ch",
+      "firstname": "Lyra",
+      "gender": "F",
+      "id": "670017",
+      "lastname": "Korr",
+      "status": "Personnel"
+    },
+    {
+      "display": "Aria Sol",
+      "email": "aria.sol@epfl.ch",
+      "firstname": "Aria",
+      "gender": "X",
+      "id": "670018",
+      "lastname": "Sol",
+      "status": "Personnel"
+    },
+    {
+      "display": "Quin Vex",
+      "email": "quin.vex@epfl.ch",
+      "firstname": "Quin",
+      "gender": "X",
+      "id": "670019",
+      "lastname": "Vex",
+      "status": "Personnel"
+    },
+    {
+      "display": "Hera Sunrider",
+      "email": "hera.sunrider@epfl.ch",
+      "firstname": "Hera",
+      "gender": "X",
+      "id": "670020",
+      "lastname": "Sunrider",
       "status": "Personnel"
     }
   ],

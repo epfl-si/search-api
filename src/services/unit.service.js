@@ -97,13 +97,12 @@ async function getUnit (acro, lang, isInternal) {
     unitPath: dict.hierarchie,
     path: unitPath,
     terminal: dict.has_accreds,
-    ghost: dict.ghost
+    ghost: dict.ghost,
+    url: dict.url ? dict.url : null
   };
   const address = dict.adresse.split('$').map((value) => value.trim())
     .filter((value) => value !== '');
-  if (address.length > 0) {
-    unitFullDetails.address = address;
-  }
+  unitFullDetails.address = address.length > 0 ? address : null;
   if (dict.resp_sciper) {
     unitFullDetails.head = {
       sciper: dict.resp_sciper,
@@ -120,9 +119,8 @@ async function getUnit (acro, lang, isInternal) {
         : '';
       unitFullDetails.head.profile = headPerson[0].profile;
     }
-  }
-  if (dict.url) {
-    unitFullDetails.url = dict.url;
+  } else {
+    unitFullDetails.head = null;
   }
   if (dict.has_accreds) {
     const unitPersons = await apimdService
@@ -155,7 +153,8 @@ async function getUnit (acro, lang, isInternal) {
     };
     if (dict.has_accreds) {
       unitFullDetails.adminData['fmt-list'] =
-        `https://search-api.epfl.ch/api/unit/csv?q=${dict.sigle}&hl=${lang}`;
+        `https://search-backend.epfl.ch/api/unit/csv?q=${dict.sigle}` +
+        `&hl=${lang}`;
     }
   }
 
@@ -212,6 +211,46 @@ async function getSubunits (unitId, lang) {
   return formattedResults.sort((a, b) => a.name.localeCompare(b.name));
 }
 
+async function getCsv (acro, lang) {
+  const unitData = await getUnit(acro, lang, false);
+  if (!unitData.people) {
+    return null;
+  }
+  const unitAcro = unitData.acronym;
+  const unitPath = unitData.unitPath;
+  const unitAddress = unitData.address ? unitData.address.join(', ') : '';
+
+  const data = [];
+  const header = lang === 'en'
+    ? ['Name', 'First name', 'Sciper', 'email', 'Unit', 'Unit path',
+        'Position', 'Office(s)', 'Phone(s)', 'Address']
+    : ['Nom', 'Prénom', 'Sciper', 'email', 'Unité', "Chemin de l'unité",
+        'Fonction', 'Bureau(x)', 'Téléphone(s)', 'Adresse'];
+
+  data.push(header);
+
+  unitData.people.forEach((person) => {
+    data.push([
+      person.name,
+      person.firstname,
+      person.sciper,
+      person.email ? person.email : '',
+      unitAcro,
+      unitPath,
+      person.position ? person.position : '',
+      person.officeList.join(', '),
+      person.phoneList.join(', '),
+      unitAddress
+    ]);
+  });
+
+  const formatRow = row => row.map(value => `"${value}"`).join(';');
+  const csvData = data.map(formatRow).join('\n');
+
+  return csvData;
+}
+
 module.exports = {
-  get
+  get,
+  getCsv
 };

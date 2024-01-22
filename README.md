@@ -82,6 +82,25 @@
 - [/api/unit?q=vpo&hl=en][unit-2]
 - [/api/unit?acro=vpo][unit-3]
 
+## Unit (CSV Export)
+
+Only allowed via EPFL intranet or VPN.
+
+### Endpoint
+
+`GET /api/unit/csv`
+
+### Parameters
+
+| Name | Type     | Comments                           |
+| ---- | -------- | ---------------------------------- |
+| `q`  | `String` | acronym (should be the exact name) |
+| `hl` | `String` | Sets the user interface language.  |
+
+### Example
+
+- [/api/unit/csv?q=isas-fsd&hl=en][unit-csv-1]
+
 ## EPFL Graph
 
 ### Endpoint
@@ -125,6 +144,7 @@ See [Contributing](CONTRIBUTING.md).
 [unit-1]: http://127.0.0.1:5555/api/unit?q=fsd
 [unit-2]: http://127.0.0.1:5555/api/unit?q=vpo&hl=en
 [unit-3]: http://127.0.0.1:5555/api/unit?acro=vpo
+[unit-csv-1]: http://127.0.0.1:5555/api/unit/csv?q=isas-fsd&hl=en
 [graphsearch-1]: http://127.0.0.1:5555/api/graphsearch?q=math&limit=20
 [graphsearch-2]: http://127.0.0.1:5555/api/graphsearch?q=vetterli&doctype=person
 [graphsearch-3]: http://127.0.0.1:5555/api/graphsearch?q=lts&doctype=unit
