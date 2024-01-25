@@ -8,6 +8,7 @@ const compression = require('compression');
 const configApi = require('./configs/api.config');
 
 const cseRouter = require('./routes/cse.route');
+const eduRouter = require('./routes/edu.route');
 const peopleRouter = require('./routes/people.route');
 const unitRouter = require('./routes/unit.route');
 const semanticRouter = require('./routes/semantic.route');
@@ -40,9 +41,7 @@ if (configApi.enableCse) {
 }
 
 // People
-if (configApi.enableLdap) {
-  app.use('/api/ldap', peopleRouter);
-}
+app.use('/api/ldap', peopleRouter);
 
 // Address
 if (configApi.enableAddress) {
