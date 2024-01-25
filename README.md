@@ -41,10 +41,26 @@
 | `q`  | `String` | Query                             |
 | `hl` | `String` | Sets the user interface language. |
 
+## People suggestions
+
 ### Examples
 
 - [/api/ldap?q=278890][ldap-1]
 - [/api/ldap?q=nicolas.borboen@epfl.ch&hl=en][ldap-2]
+
+### Endpoint
+
+`GET /api/ldap/suggestions`
+
+### Parameter
+
+| Name | Type     | Comments |
+| ---- | -------- | -------- |
+| `q`  | `String` | Query    |
+
+### Example
+
+- [/api/ldap/suggestions?q=math][ldap-suggestions-1]
 
 ## Address
 
@@ -138,6 +154,7 @@ See [Contributing](CONTRIBUTING.md).
 [cse-3]: http://127.0.0.1:5555/api/cse?q=math&hl=en&sort=date&searchType=image
 [ldap-1]: http://127.0.0.1:5555/api/ldap?q=278890
 [ldap-2]: http://127.0.0.1:5555/api/ldap?q=nicolas.borboen@epfl.ch&hl=en
+[ldap-suggestions-1]: http://127.0.0.1:5555/api/ldap/suggestions?q=math
 [unit-1]: http://127.0.0.1:5555/api/unit?q=fsd
 [unit-2]: http://127.0.0.1:5555/api/unit?q=vpo&hl=en
 [unit-3]: http://127.0.0.1:5555/api/unit?acro=vpo

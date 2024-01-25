@@ -24,10 +24,22 @@ describe('Test API People ("/api/ldap")', () => {
     expect(response.text).toMatch('[]');
   });
 
+  test('It should get an empty result without query', async () => {
+    const response = await request(app).get('/api/ldap/suggestions');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toMatch('["",[]]');
+  });
+
   test('It should get an empty result with a small query', async () => {
     const response = await request(app).get('/api/ldap?q=w');
     expect(response.statusCode).toBe(200);
     expect(response.text).toMatch('[]');
+  });
+
+  test('It should get an empty result with a small query', async () => {
+    const response = await request(app).get('/api/ldap/suggestions?q=w');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toMatch('["w",[]]');
   });
 
   test('It should find sciper 670001 (fr)', async () => {
@@ -61,6 +73,13 @@ describe('Test API People ("/api/ldap")', () => {
   test('It should find name Fett', async () => {
     const jsonResult = require('./resources/people/json-name-fett-fr.json');
     const response = await request(app).get('/api/ldap?q=Fett');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find name Fett', async () => {
+    const jsonResult = ['Fett', ['Boba Fett', 'Jango Fett']];
+    const response = await request(app).get('/api/ldap/suggestions?q=Fett');
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
@@ -105,6 +124,18 @@ describe('Test API People ("/api/ldap")', () => {
     mockLdapService.mockRejectedValue(new Error('LDAP is Gone'));
 
     const response = await request(app).get('/api/ldap?q=679999');
+    expect(mockLdapService).toHaveBeenCalled();
+    expect(response.statusCode).toBe(400);
+    expect(response.text).toMatch('Oops, something went wrong');
+    expect(testOutput.length).toBe(1);
+    expect(testOutput[0]).toMatch('error');
+  });
+
+  test('It should not find Kryze without ldap server', async () => {
+    const mockLdapService = jest.spyOn(ldapService, 'searchAll');
+    mockLdapService.mockRejectedValue(new Error('LDAP is Gone'));
+
+    const response = await request(app).get('/api/ldap/suggestions?q=kryze');
     expect(mockLdapService).toHaveBeenCalled();
     expect(response.statusCode).toBe(400);
     expect(response.text).toMatch('Oops, something went wrong');
