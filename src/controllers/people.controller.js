@@ -28,6 +28,30 @@ async function get (req, res) {
   }
 }
 
+async function getSuggestions (req, res) {
+  const q = req.query.q || '';
+  if (q.length < 2) {
+    return res.json([q, []]);
+  }
+
+  try {
+    const ldapResults = await peopleService.getPersonByName(q);
+    const results = ldapUtil.ldap2api(ldapResults, q, 'en').slice(0, 10);
+    const suggestions = [];
+    for (const person of results) {
+      suggestions.push(`${person.firstname} ${person.name}`);
+    }
+    return res.json([q, suggestions]);
+  } catch (err) {
+    console.error('[error] ', err.message);
+    return res.status(400).json({
+      success: false,
+      error: 'Oops, something went wrong'
+    });
+  }
+}
+
 module.exports = {
-  get
+  get,
+  getSuggestions
 };
