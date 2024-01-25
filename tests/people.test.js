@@ -79,7 +79,9 @@ describe('Test API People ("/api/ldap")', () => {
 
   test('It should find name Fett', async () => {
     const jsonResult = ['Fett', ['Boba Fett', 'Jango Fett']];
-    const response = await request(app).get('/api/ldap/suggestions?q=Fett');
+    const response = await request(app).get(
+      '/api/ldap/suggestions?q=Fett&limit=20'
+    );
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
