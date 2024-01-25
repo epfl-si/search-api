@@ -52,15 +52,17 @@
 
 `GET /api/ldap/suggestions`
 
-### Parameter
+### Parameters
 
-| Name | Type     | Comments |
-| ---- | -------- | -------- |
-| `q`  | `String` | Query    |
+| Name    | Type     | Comments                                               |
+| ------- | -------- | ------------------------------------------------------ |
+| `q`     | `String` | Query                                                  |
+| `limit` | `Number` | Sets the number of suggestions. Default and max is 10. |
 
-### Example
+### Examples
 
 - [/api/ldap/suggestions?q=math][ldap-suggestions-1]
+- [/api/ldap/suggestions?q=william&limit=3][ldap-suggestions-2]
 
 ## Address
 
@@ -155,6 +157,7 @@ See [Contributing](CONTRIBUTING.md).
 [ldap-1]: http://127.0.0.1:5555/api/ldap?q=278890
 [ldap-2]: http://127.0.0.1:5555/api/ldap?q=nicolas.borboen@epfl.ch&hl=en
 [ldap-suggestions-1]: http://127.0.0.1:5555/api/ldap/suggestions?q=math
+[ldap-suggestions-2]: http://127.0.0.1:5555/api/ldap/suggestions?q=william&limit=3
 [unit-1]: http://127.0.0.1:5555/api/unit?q=fsd
 [unit-2]: http://127.0.0.1:5555/api/unit?q=vpo&hl=en
 [unit-3]: http://127.0.0.1:5555/api/unit?acro=vpo
