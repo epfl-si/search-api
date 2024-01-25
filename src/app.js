@@ -8,7 +8,6 @@ const compression = require('compression');
 const configApi = require('./configs/api.config');
 
 const cseRouter = require('./routes/cse.route');
-const eduRouter = require('./routes/edu.route');
 const peopleRouter = require('./routes/people.route');
 const unitRouter = require('./routes/unit.route');
 const semanticRouter = require('./routes/semantic.route');
