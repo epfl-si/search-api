@@ -29,6 +29,10 @@ async function get (req, res) {
 }
 
 async function getSuggestions (req, res) {
+  // Max and default 10 suggestions
+  let limit = req.query.limit || 10;
+  limit = limit > 10 ? 10 : limit;
+
   const q = req.query.q || '';
   if (q.length < 2) {
     return res.json([q, []]);
@@ -36,7 +40,7 @@ async function getSuggestions (req, res) {
 
   try {
     const ldapResults = await peopleService.getPersonByName(q);
-    const results = ldapUtil.ldap2api(ldapResults, q, 'en').slice(0, 10);
+    const results = ldapUtil.ldap2api(ldapResults, q, 'en').slice(0, limit);
     const suggestions = [];
     for (const person of results) {
       suggestions.push(`${person.firstname} ${person.name}`);
