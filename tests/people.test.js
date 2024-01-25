@@ -86,6 +86,15 @@ describe('Test API People ("/api/ldap")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
+  test('It should find name Fett via cache', async () => {
+    const jsonResult = ['Fett', ['Boba Fett', 'Jango Fett']];
+    const response = await request(app).get(
+      '/api/ldap/suggestions?q=Fett&limit=20'
+    );
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
   test('It should find firstname Din', async () => {
     const jsonResult = require('./resources/people/json-name-din-en.json');
     const response = await request(app).get('/api/ldap?q=Din&hl=en');
