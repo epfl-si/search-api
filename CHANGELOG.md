@@ -1,5 +1,20 @@
 # CHANGELOG
 
+### v0.4.0 / 2024-01-31
+
+- Add CSV unit export
+- Add suggestions for people
+- Add cache to Unit (except CSV)
+- Add cache to people suggestions
+- Add limit parameter to people suggestions
+- Set unit address to null if none
+- Set unit head to null if none
+- Set url with null if none
+- Implement inclusive with gender 'X' (Unit API)
+- Fix missing ENV when running Docker
+- Deploy only in production with --prod option
+- Bump follow-redirects from 1.15.2 to 1.15.4
+
 ### v0.3.0 / 2023-12-12
 
 - Add API MD service
