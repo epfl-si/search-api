@@ -27,6 +27,7 @@ ensure_ansible () {
           SUITCASE_DIR=$PWD/ansible-deps-cache \
           SUITCASE_ANSIBLE_VERSION=6.3.0 \
           SUITCASE_ANSIBLE_REQUIREMENTS=requirements.yml \
+          SUITCASE_PIP_EXTRA=docker \
           bash -x
   fi
   export PATH="$PWD/ansible-deps-cache/bin:$PATH"
