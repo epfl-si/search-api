@@ -90,7 +90,7 @@
 
 | Name   | Type     | Comments                                                       |
 | ------ | -------- | -------------------------------------------------------------- |
-| `q`    | `String` | Query                                                          |
+| `q`    | `String` | Query (acronym, name or ID)                                    |
 | `acro` | `String` | Specifies an exact unit acronym. If specified, `q` is ignored. |
 | `hl`   | `String` | Sets the user interface language.                              |
 
@@ -98,7 +98,8 @@
 
 - [/api/unit?q=fsd][unit-1]
 - [/api/unit?q=vpo&hl=en][unit-2]
-- [/api/unit?acro=vpo][unit-3]
+- [/api/unit?q=13030][unit-3]
+- [/api/unit?acro=vpo][unit-4]
 
 ## Unit (CSV Export)
 
@@ -160,7 +161,8 @@ See [Contributing](CONTRIBUTING.md).
 [ldap-suggestions-2]: http://127.0.0.1:5555/api/ldap/suggestions?q=william&limit=3
 [unit-1]: http://127.0.0.1:5555/api/unit?q=fsd
 [unit-2]: http://127.0.0.1:5555/api/unit?q=vpo&hl=en
-[unit-3]: http://127.0.0.1:5555/api/unit?acro=vpo
+[unit-3]: http://127.0.0.1:5555/api/unit?q=13030
+[unit-4]: http://127.0.0.1:5555/api/unit?acro=vpo
 [unit-csv-1]: http://127.0.0.1:5555/api/unit/csv?q=isas-fsd&hl=en
 [graphsearch-1]: http://127.0.0.1:5555/api/graphsearch?q=math
 [graphsearch-2]: http://127.0.0.1:5555/api/graphsearch?q=vetterli
