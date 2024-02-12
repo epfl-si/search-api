@@ -30,12 +30,19 @@ async function get (params, isInternal) {
 }
 
 async function searchUnits (q, lang) {
+  let unitId;
+  if (!isNaN(q)) {
+    unitId = parseInt(q);
+  }
   const query = 'SELECT sigle, libelle, libelle_en, hierarchie ' +
                 'FROM Unites_v2 ' +
-                'WHERE (sigle LIKE ? OR libelle LIKE ? OR libelle_en LIKE ?) ' +
+                'WHERE (sigle LIKE ? OR libelle LIKE ? OR ' +
+                'libelle_en LIKE ? OR id_unite = ?) ' +
                 `AND ${visibleConditionByCmplType}` +
                 'AND hierarchie NOT LIKE ?';
-  const values = ['%' + q + '%', '%' + q + '%', '%' + q + '%', '%TECHNIQUE%'];
+  const values = [
+    '%' + q + '%', '%' + q + '%', '%' + q + '%', unitId, '%TECHNIQUE%'
+  ];
 
   const results = await cadidbService.sendQuery(query, values, 'searchUnits');
   const formattedResults = results.map((dict) => {
