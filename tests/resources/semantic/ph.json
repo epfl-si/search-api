@@ -1,0 +1,91 @@
+{
+  "query": { "q": "ph", "types": ["any"], "limit": 100 },
+  "result_count": 100,
+  "items": [
+    {
+      "_id": "54423",
+      "_external_key": {
+        "en": "Phase_transition",
+        "fr": "Transition_de_phase"
+      },
+      "_external_url": {
+        "en": "https://en.wikipedia.org/wiki/Phase_transition",
+        "fr": "https://fr.wikipedia.org/wiki/Transition_de_phase"
+      },
+      "_created": "2023-09-13T14:09:05.000Z",
+      "_updated": null,
+      "_description_small": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "\n\nIn chemistry, thermodynamics, and other related fields, a phase transition (or phase change) is th"
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "vignette|droite|Noms exclusifs des transitions de phase en thermodynamique.\n\nEn physique, une transi"
+        }
+      },
+      "_description_medium": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "\n\nIn chemistry, thermodynamics, and other related fields, a phase transition (or phase change) is the physical process of transition between one state of a medium and another. Commonly the term is use"
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "vignette|droite|Noms exclusifs des transitions de phase en thermodynamique.\n\nEn physique, une transition de phase est la transformation physique d'un système d'une phase vers une autre, induite par la"
+        }
+      },
+      "_description_large": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "\n\nIn chemistry, thermodynamics, and other related fields, a phase transition (or phase change) is the physical process of transition between one state of a medium and another. Commonly the term is used to refer to changes among the basic states of matter: solid, liquid, and gas, and in rare cases, plasma. A phase of a thermodynamic system and the states of matter have uniform physical properties. During a phase transition of a given medium, certain properties of the medium change as a result of the change of external conditions, such as temperature or pressure. This can be a discontinuous change; for example, a liquid may become gas upon heating to its boiling point, resulting in an abrupt change in volume. The identification of the external conditions at which a transformation occurs defines the phase transition point.\n\n<h2>Types of phase transition</h2>\n\n\n<h3>States of matter</h3>\nvapor pressure and phase diagram\n\nPhase transitions commonly refer to when a substance transforms betwee"
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "vignette|droite|Noms exclusifs des transitions de phase en thermodynamique.\n\nEn physique, une transition de phase est la transformation physique d'un système d'une phase vers une autre, induite par la variation d'un paramètre de contrôle externe (température, champ magnétique...).\n\nUne telle transition se produit lorsque ce paramètre externe atteint une valeur seuil (ou valeur « critique »). La transformation traduit généralement un changement des propriétés de symétrie du système.\n\nQuelques exemples :\n* les changements d'état de la matière : fusion, ébullition, sublimation ;\n* les changements de propriétés magnétiques : un métal ferromagnétique passe d'un comportement ferromagnétique à paramagnétique au-delà du point de Curie ; certains matériaux deviennent supraconducteurs en dessous d'une température critique ;\n* la condensation quantique de fluides bosoniques en condensat de Bose-Einstein ;\n* les brisures de symétrie dans les lois de la physique au début de l'histoire de l'Univers,"
+        }
+      },
+      "_type": "concept",
+      "_url": "https://graphsearch.epfl.ch/concept/54423",
+      "name": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": true,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "Phase transition"
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": true,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "Transition de phase"
+        }
+      },
+      "degree_score": 0.780815,
+      "is_ontology_category": true,
+      "is_ontology_concept": false,
+      "score_epfl_concept": 27.6473,
+      "is_person": false,
+      "is_company": false
+    }
+  ]
+}

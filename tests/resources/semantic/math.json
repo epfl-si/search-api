@@ -1,133 +1,95 @@
 {
-  "docs": [
+  "query": {
+    "q": "math",
+    "types": ["any"],
+    "limit": 10
+  },
+  "result_count": 10,
+  "items": [
     {
-      "key": "52033",
-      "type": "concept",
-      "title": "Mathematical optimization",
-      "abstractAbbr": "<i>Mathematical optimization</i> (alternatively spelled <i>optimisation</i>) or <i>mathematical programming</i> is the selection of a best element, with regard to some criterion, from some set of available alternatives. Optimization problems of sorts arise in all quantitative disciplines from computer science and engineering to operations research and economics, and the development of solution"
-    },
-    {
-      "key": "20590",
-      "type": "concept",
-      "title": "Mathematical model",
-      "abstractAbbr": "A <i>mathematical model</i> is a description of a system using mathematical concepts and language. The process of developing a mathematical model is termed <i>mathematical modeling</i>. Mathematical models are used in the natural sciences (such as physics, biology, earth science, chemistry) and engineering disciplines (such as computer science, electrical engineering), as well as in non-physical"
-    },
-    {
-      "key": "18831",
-      "type": "concept",
-      "title": "Mathematics",
-      "abstractAbbr": "<i>Mathematics</i> is an area of knowledge that includes such topics as numbers (arithmetic, number theory), formulas and related structures (algebra), shapes and the spaces in which they are contained (geometry),"
-    },
-    {
-      "key": "MATH-265",
-      "type": "course",
-      "name": "Introduction to optimization and operations research",
-      "abstractAbbr": "Introduction to major operations research models and optimization algorithms"
-    },
-    {
-      "key": "CIVIL-557",
-      "type": "course",
-      "name": "Decision-aid methodologies in transportation",
-      "abstractAbbr": "Introduction to operations research, data mining and machine learning algorithms for decision support in transportation systems."
-    },
-    {
-      "key": "5a9a74a0lmB3OCV2oM",
-      "type": "lecture",
-      "course": {
-        "key": "MATH-265",
-        "type": "course",
-        "name": "Introduction to optimization and operations research"
+      "_id": "52033",
+      "_external_key": {
+        "en": "Mathematical_optimization",
+        "fr": "Optimisation_(mathématiques)"
       },
-      "name": "Summary Week 10: Discrete Optimization (+ answers interactive Questions)",
-      "abstract": null
-    },
-    {
-      "key": "M-CONVERSION1",
-      "type": "mooc",
-      "platform": "edX",
-      "title": "Conversion electromécanique I",
-      "description": "Circuits magnétiques, aimants permanents, conversion électromécanique, actionneurs."
-    },
-    {
-      "key": "104596",
-      "type": "person",
-      "firstName": "Dominique",
-      "lastName": "Bonvin",
-      "abstractAbbr": "Dominique Bonvin is Professor and Director of the Automatic Control Laboratory of EPFL. He received his Diploma in Chemical Engineering from ETH Zürich, and his Ph.D. degree from the University of California, Santa Barbara. He worked in the field of process control for the Sandoz Corporation in Basel and with the Systems Engineering Group of ETH Zürich. He joined the EPFL in 1989, where his"
-    },
-    {
-      "key": "140973",
-      "type": "person",
-      "firstName": "François",
-      "lastName": "Maréchal",
-      "abstractAbbr": "Ph D. in engineering– Chemical process engineer Researcher and lecturer in the field of computer aided process and energy systems engineering. Lecturer in the mechanical engineering, electrical engineering and environmental sciences engineering in EPFL. I'm responsible for the Minor in Energy of EPFL and I'm involved in 3 projects of the Competence Center in Energy and Mobility (2nd generation"
-    },
-    {
-      "key": "289565",
-      "type": "publication",
-      "source": "Acs Infectious Diseases",
-      "title": "Design and Evaluation of New Quinazolin-4(3H)-one Derived PqsR Antagonists as Quorum Sensing Quenchers in Pseudomonas aeruginosa",
-      "year": 2021,
-      "authors": [
-        {
-          "key": "316998",
-          "type": "person",
-          "firstName": "Eduard",
-          "lastName": "Vico Oton"
+      "_external_url": {
+        "en": "https://en.wikipedia.org/wiki/Mathematical_optimization",
+        "fr": "https://fr.wikipedia.org/wiki/Optimisation_(math%C3%A9matiques)"
+      },
+      "_created": "2023-09-13T14:09:05.000Z",
+      "_updated": null,
+      "_description_small": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "\n\n\n\nMathematical optimization (alternatively spelled optimisation) or mathematical programming is th"
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "\nL'optimisation est une branche des mathématiques cherchant à modéliser, à analyser et à résoudre an"
         }
-      ],
-      "abstractAbbr": "P. aeruginosa (PA) continues to pose a threat to global public health due to its high levels of antimicrobial resistance (AMR). The ongoing AMR crisis has led to an alarming shortage of effective treatments for resistant microbes, and hence there is a pressing demand for the development of novel antimicrobial interventions. The potential use of antivirulence therapeutics to tackle bacterial"
+      },
+      "_description_medium": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "\n\n\n\nMathematical optimization (alternatively spelled optimisation) or mathematical programming is the selection of a best element, with regard to some criterion, from some set of available alternative"
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "\nL'optimisation est une branche des mathématiques cherchant à modéliser, à analyser et à résoudre analytiquement ou numériquement les problèmes qui consistent à minimiser ou maximiser une fonction sur"
+        }
+      },
+      "_description_large": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "\n\n\n\nMathematical optimization (alternatively spelled optimisation) or mathematical programming is the selection of a best element, with regard to some criterion, from some set of available alternatives. It is generally divided into two subfields: discrete optimization and continuous optimization. Optimization problems arise in all quantitative disciplines from computer science and engineering to operations research and economics, and the development of solution methods has been of interest in mathematics for centuries.\n\nIn the more general approach, an optimization problem consists of maximizing or minimizing a real function by systematically choosing input values from within an allowed set and computing the value of the function. The generalization of optimization theory and techniques to other formulations constitutes a large area of applied mathematics. More generally, optimization includes finding \"best available\" values of some objective function given a defined domain (or input),"
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "\nL'optimisation est une branche des mathématiques cherchant à modéliser, à analyser et à résoudre analytiquement ou numériquement les problèmes qui consistent à minimiser ou maximiser une fonction sur un ensemble.\n\nL’optimisation joue un rôle important en recherche opérationnelle (domaine à la frontière entre l'informatique, les mathématiques et l'économie), dans les mathématiques appliquées (fondamentales pour l'industrie et l'ingénierie), en analyse et en analyse numérique, en statistique pour l’estimation du maximum de vraisemblance d’une distribution, pour la recherche de stratégies dans le cadre de la théorie des jeux, ou encore en théorie du contrôle et de la commande.\n\nBeaucoup de systèmes susceptibles d’être décrits par un modèle mathématique sont optimisés. La qualité des résultats et des prédictions dépend de la pertinence du modèle, du bon choix des variables que l'on cherche à optimiser, de l’efficacité de l’algorithme et des moyens pour le traitement numérique.\n\n<h2> Histo"
+        }
+      },
+      "_type": "concept",
+      "_url": "https://graphsearch.epfl.ch/concept/52033",
+      "name": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": true,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "Mathematical optimization"
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": true,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "Optimisation (mathématiques)"
+        }
+      },
+      "degree_score": 0.835587,
+      "is_ontology_category": false,
+      "is_ontology_concept": false,
+      "score_epfl_concept": 35.7168,
+      "is_person": false,
+      "is_company": false
     }
-  ],
-  "vars": {
-    "hits": [
-      { "index": "lite", "type": "concept", "key": "52033" },
-      { "index": "lite", "type": "concept", "key": "20590" },
-      { "index": "lite", "type": "concept", "key": "18831" },
-      { "index": "lite", "type": "concept", "key": "20556859" },
-      { "index": "lite", "type": "concept", "key": "8492" },
-      { "index": "lite", "type": "concept", "key": "48396" },
-      { "index": "lite", "type": "concept", "key": "19636" },
-      { "index": "lite", "type": "concept", "key": "185427" },
-      { "index": "lite", "type": "concept", "key": "82285" },
-      { "index": "lite", "type": "concept", "key": "325806" }
-    ],
-    "hitsInsertion": "prepend",
-    "indexId": "Index_T_StepScores/Nodes_N_Concept_52033",
-    "redistribute": false,
-    "size": 10,
-    "types": [
-      {
-        "name": "concept",
-        "key": "Concept",
-        "symbol": "Nodes_N_Concept",
-        "length": 3
-      },
-      {
-        "name": "course",
-        "key": "Course",
-        "symbol": "Nodes_N_Course",
-        "length": 2
-      },
-      {
-        "name": "lecture",
-        "key": "Lecture",
-        "symbol": "Nodes_N_Lecture",
-        "length": 1
-      },
-      { "name": "mooc", "key": "MOOC", "symbol": "Nodes_N_MOOC", "length": 1 },
-      {
-        "name": "person",
-        "key": "Person",
-        "symbol": "Nodes_N_Person",
-        "length": 2
-      },
-      {
-        "name": "publication",
-        "key": "Publication",
-        "symbol": "Nodes_N_Publication",
-        "length": 1
-      }
-    ]
-  }
+  ]
 }
