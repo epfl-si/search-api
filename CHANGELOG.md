@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### v0.6.0 / 2024-02-14
+
+- Semantic search v2
+
 ### v0.5.0 / 2024-02-13
 
 - Add search unit by ID
