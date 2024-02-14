@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### v0.5.0 / 2024-02-13
+
+- Add search unit by ID
+- Add Docker as pip extra
+
 ### v0.4.0 / 2024-01-31
 
 - Add CSV unit export

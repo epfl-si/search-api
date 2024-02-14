@@ -173,8 +173,13 @@ describe('Test API Unit ("/api/unit")', () => {
     const mockApimdResponse = require('./resources/apimd/unit-nevarro.json');
     axios.get.mockResolvedValue({ data: mockApimdResponse });
 
-    const jsonResult = require('./resources/unit/unit-nevarro-fr.json');
-    const response = await request(app).get('/api/unit?q=nevarro&hl=fr');
+    let jsonResult = require('./resources/unit/unit-nevarro-fr.json');
+    let response = await request(app).get('/api/unit?q=nevarro&hl=fr');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+
+    jsonResult = require('./resources/unit/unit-nevarro-fr.json');
+    response = await request(app).get('/api/unit?q=11302&hl=fr');
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
