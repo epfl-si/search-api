@@ -43,6 +43,6 @@
     "morgan": "^1.10.0",
     "mysql2": "^3.3.3",
     "node-cache": "^5.1.2",
-    "passport": "^0.7.0"
+    "passport-tequila": "^1.1.0"
   }
 }
