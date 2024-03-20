@@ -27,7 +27,7 @@ function getPersonByPhone (number) {
 }
 
 function getPersonByName (name) {
-  const term = name.normalize('NFD').replace(/\p{Diacritic}/gu, '');
+  const term = util.removeAccents(name);
   const terms = term.split(/\s+/);
   const ldapQuery = ldapUtil.buildLdapQueryForPerson(util.permutations(terms));
   return getPerson(ldapQuery);
