@@ -33,6 +33,20 @@ function permutations (arr) {
 };
 
 /**
+ * Remove accents/diacritics in a string
+ *
+ * @example
+ * const helper = require('../utils/helper.util');
+ * helper.removeAccents('jérôme');  // => 'jerome'
+ *
+ * @param {string} s A string
+ * @returns {string} Return the string without accents/diacritics.
+ */
+function removeAccents (s) {
+  return s.normalize('NFD').replace(/\p{Diacritic}/gu, '');
+}
+
+/**
  * Convert an environment variable from string to boolean.
  *
  * @example
@@ -68,6 +82,7 @@ function validateEnv (key) {
 
 module.exports = {
   permutations,
+  removeAccents,
   setBool,
   validateEnv
 };
