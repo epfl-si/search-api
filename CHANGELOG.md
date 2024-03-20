@@ -1,5 +1,15 @@
 # CHANGELOG
 
+### v0.6.1 / 2024-03-20
+
+- Fix suggestions ranking
+- Add passeport-tequila package
+- Add passport package
+- Update actions/setup-node to v4
+- Update actions/checkout to v4
+- Update codecov/codecov-action to v4
+- Bump follow-redirects from 1.15.4 to 1.15.6
+
 ### v0.6.0 / 2024-02-14
 
 - Semantic search v2
