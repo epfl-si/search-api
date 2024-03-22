@@ -4,6 +4,8 @@
  * @module utils/ldap
  */
 
+const util = require('./helper.util');
+
 const ldapUserMapper = {
   mail: ['email', (val) => val[0]],
   sn: ['name', (val) => val],
@@ -44,14 +46,18 @@ function sortAccreds (obj) {
 function score (a, q) {
   let points = 0;
   const attributes = ['name', 'firstname'];
-  const terms = q.split(/\s+/);
-  for (const term of terms) {
+  const terms = util.removeAccents(q).split(/\s+/);
+  for (let term of terms) {
+    term = term.toLowerCase();
     for (const attr of attributes) {
-      if (a[attr].toLowerCase() === term.toLowerCase()) {
+      const name = util.removeAccents(a[attr]).toLowerCase();
+      if (name === term && attr === 'name') {
+        points += 4;
+      } else if (name === term && attr === 'firstname') {
         points += 3;
-      } else if (a[attr].toLowerCase().startsWith(term.toLowerCase())) {
+      } else if (name.startsWith(term)) {
         points += 2;
-      } else if (a[attr].toLowerCase().endsWith(term.toLowerCase())) {
+      } else if (name.endsWith(term)) {
         points += 1;
       }
     }
