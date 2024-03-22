@@ -3,6 +3,7 @@ const apimdService = require('./apimd.service');
 const cadidbService = require('./cadidb.service');
 const peopleService = require('./people.service');
 
+const unitsToShow = ['', 'FS', 'F', 'E', 'X', 'S'];
 const visibleConditionByCmplType = `
     (
       cmpl_type IS NULL OR cmpl_type = '' OR
@@ -257,7 +258,37 @@ async function getCsv (acro, lang) {
   return csvData;
 }
 
+function scoreUnitsSuggestions (a, q) {
+  let points = 0;
+  if (a.toLowerCase() === q.toLowerCase()) {
+    points += 2;
+  } else if (a.toLowerCase().includes(q.toLowerCase())) {
+    points += 1;
+  }
+  return points;
+}
+
+function sortUnitsSuggestions (array, q) {
+  return array.sort((a, b) =>
+    scoreUnitsSuggestions(b, q) - scoreUnitsSuggestions(a, q) ||
+    a.localeCompare(b)
+  );
+}
+
+async function getSuggestions (query) {
+  const results = await apimdService.getUnits(query);
+  const units = results.data.units;
+  const suggestions = [];
+  for (const unit of units) {
+    if (unitsToShow.includes(unit.complementtype)) {
+      suggestions.push(unit.name);
+    }
+  }
+  return sortUnitsSuggestions(suggestions, query);
+}
+
 module.exports = {
   get,
-  getCsv
+  getCsv,
+  getSuggestions
 };

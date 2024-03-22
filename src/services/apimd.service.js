@@ -108,22 +108,14 @@ async function getPersonsByUnit (unitId, lang) {
   );
 }
 
-/**
- * Search units by name, label
- *
- * @param {*} query
- * @returns {Promise<object>}
- */
 async function getUnits (query) {
   const route = '/v1/units';
   const config = axiosConfig;
   config.params = {
     query
   };
-  return await axios.get(
-    `${apimdConfig.baseURL}${route}`,
-    config
-  );
+
+  return await axios.get(`${apimdConfig.baseURL}${route}`, config);
 }
 
 module.exports = {
