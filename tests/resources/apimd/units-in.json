@@ -1,0 +1,24 @@
+{
+  "units": [
+    {
+      "name": "KAMINO",
+      "complementtype": ""
+    },
+    {
+      "name": "SO",
+      "complementtype": "E"
+    },
+    {
+      "name": "BESPIN",
+      "complementtype": "F"
+    },
+    {
+      "name": "TATOOINE",
+      "complementtype": "X"
+    },
+    {
+      "name": "YAVIN",
+      "complementtype": "W"
+    }
+  ]
+}
