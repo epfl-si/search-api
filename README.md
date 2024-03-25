@@ -120,6 +120,23 @@ Only allowed via EPFL intranet or VPN.
 
 - [/api/unit/csv?q=isas-fsd&hl=en][unit-csv-1]
 
+## Unit suggestions
+
+### Endpoint
+
+`GET /api/unit/suggestions`
+
+### Parameters
+
+| Name    | Type     | Comments                                               |
+| ------- | -------- | ------------------------------------------------------ |
+| `q`     | `String` | Query                                                  |
+| `limit` | `Number` | Sets the number of suggestions. Default and max is 10. |
+
+### Example
+
+- [/api/unit/suggestions?q=isas&hl=en][unit-suggestions-1]
+
 ## EPFL Graph
 
 ### Endpoint
@@ -167,6 +184,7 @@ See [Contributing](CONTRIBUTING.md).
 [unit-3]: http://127.0.0.1:5555/api/unit?q=13030
 [unit-4]: http://127.0.0.1:5555/api/unit?acro=vpo
 [unit-csv-1]: http://127.0.0.1:5555/api/unit/csv?q=isas-fsd&hl=en
+[unit-suggestions-1]: http://127.0.0.1:5555/api/unit/suggestions?q=isas&hl=en
 [graphsearch-1]: http://127.0.0.1:5555/api/graphsearch?q=math&limit=20
 [graphsearch-2]: http://127.0.0.1:5555/api/graphsearch?q=vetterli&doctype=person
 [graphsearch-3]: http://127.0.0.1:5555/api/graphsearch?q=lts&doctype=unit
