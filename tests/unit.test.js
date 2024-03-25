@@ -467,7 +467,7 @@ describe('Test API Unit ("/api/unit")', () => {
   });
 
   test('(sug) It should find unit "yavin"', async () => {
-    const jsonResult = ['yavin', ['YAVIN', 'YAVIN 4']];
+    const jsonResult = ['yavin', ['YAVIN', 'YAVIN4']];
 
     const mockApimdResponse = require('./resources/apimd/units-yavin.json');
     axios.get.mockResolvedValue({ data: mockApimdResponse });

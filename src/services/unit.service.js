@@ -280,7 +280,8 @@ async function getSuggestions (query) {
   const units = results.data.units;
   const suggestions = [];
   for (const unit of units) {
-    if (unitsToShow.includes(unit.complementtype)) {
+    if (!unit.path.includes('TECHNIQUE') &&
+         unitsToShow.includes(unit.complementtype)) {
       suggestions.push(unit.name);
     }
   }

@@ -2,23 +2,28 @@
   "units": [
     {
       "name": "KAMINO",
-      "complementtype": ""
+      "complementtype": "",
+      "path": "EPFL PT EP-2 KAMINO"
     },
     {
       "name": "SO",
-      "complementtype": "E"
+      "complementtype": "E",
+      "path": "EPFL SO"
     },
     {
       "name": "BESPIN",
-      "complementtype": "F"
+      "complementtype": "F",
+      "path": "EPFL OT EP-5 BESPIN"
     },
     {
       "name": "TATOOINE",
-      "complementtype": "X"
+      "complementtype": "X",
+      "path": "EPFL OT EP-6 TATOOINE"
     },
     {
       "name": "SORGAN",
-      "complementtype": "W"
+      "complementtype": "W",
+      "path": ""
     }
   ]
 }

@@ -2,11 +2,13 @@
   "units": [
     {
       "name": "YAVIN",
-      "complementtype": "X"
+      "complementtype": "X",
+      "path": "EPFL OT EP-4 YAVIN"
     },
     {
-      "name": "YAVIN 4",
-      "complementtype": "X"
+      "name": "YAVIN4",
+      "complementtype": "X",
+      "path": "EPFL OT EP-4 YAVIN4"
     }
   ]
 }
