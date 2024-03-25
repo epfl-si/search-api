@@ -466,7 +466,7 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
-  test('(sug) It should find unit "yavin"', async () => {
+  test('(sug) It should find units with term "yavin"', async () => {
     const jsonResult = ['yavin', ['YAVIN', 'YAVIN4']];
 
     const mockApimdResponse = require('./resources/apimd/units-yavin.json');
@@ -479,7 +479,7 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
-  test('(sug) It should find units without api', async () => {
+  test('(sug) It should not find units without api', async () => {
     axios.get.mockRejectedValue(new Error('API is Gone'));
 
     const response = await request(app).get(
