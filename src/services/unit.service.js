@@ -258,19 +258,20 @@ async function getCsv (acro, lang) {
   return csvData;
 }
 
-function scoreUnitsSuggestions (a, q) {
+function scoreSuggestions (a, q) {
   let points = 0;
-  if (a.toLowerCase() === q.toLowerCase()) {
+  a = a.toLowerCase();
+  if (a === q) {
     points += 2;
-  } else if (a.toLowerCase().includes(q.toLowerCase())) {
+  } else if (a.includes(q)) {
     points += 1;
   }
   return points;
 }
 
-function sortUnitsSuggestions (array, q) {
+function sortSuggestions (array, q) {
   return array.sort((a, b) =>
-    scoreUnitsSuggestions(b, q) - scoreUnitsSuggestions(a, q) ||
+    scoreSuggestions(b, q) - scoreSuggestions(a, q) ||
     a.localeCompare(b)
   );
 }
@@ -285,7 +286,7 @@ async function getSuggestions (query) {
       suggestions.push(unit.name);
     }
   }
-  return sortUnitsSuggestions(suggestions, query);
+  return sortSuggestions(suggestions, query.toLowerCase());
 }
 
 module.exports = {
