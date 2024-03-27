@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### v0.7.0 / 2024-03-27
+
+- Add units suggestions
+- Refactor visible condition by hierarchy
+
 ### v0.6.1 / 2024-03-20
 
 - Fix suggestions ranking
