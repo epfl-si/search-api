@@ -108,6 +108,17 @@ async function getPersonsByUnit (unitId, lang) {
   );
 }
 
+async function getUnits (query) {
+  const route = '/v1/units';
+  const config = axiosConfig;
+  config.params = {
+    query
+  };
+
+  return await axios.get(`${apimdConfig.baseURL}${route}`, config);
+}
+
 module.exports = {
-  getPersonsByUnit
+  getPersonsByUnit,
+  getUnits
 };

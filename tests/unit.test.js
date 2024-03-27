@@ -427,4 +427,67 @@ describe('Test API Unit ("/api/unit")', () => {
     expect(testOutput.length).toBe(1);
     expect(testOutput[0]).toMatch('error');
   });
+
+  test('(sug) It should get an empty result without query', async () => {
+    const response = await request(app).get('/api/unit/suggestions');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toMatch('["",[]]');
+  });
+
+  test('(sug) It should get an empty result with a small query', async () => {
+    const response = await request(app).get('/api/unit/suggestions?q=z');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toMatch('["z",[]]');
+  });
+
+  test('(sug) It should find units with term "in"', async () => {
+    const jsonResult = ['in', ['BESPIN', 'KAMINO', 'TATOOINE', 'SO']];
+
+    const mockApimdResponse = require('./resources/apimd/units-in.json');
+    axios.get.mockResolvedValue({ data: mockApimdResponse });
+
+    const response = await request(app).get(
+      '/api/unit/suggestions?q=in&limit=20'
+    );
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('(sug) It should find units with term "in" via cache', async () => {
+    const jsonResult = ['in', ['BESPIN', 'KAMINO', 'TATOOINE', 'SO']];
+
+    const mockApimdResponse = require('./resources/apimd/units-in.json');
+    axios.get.mockResolvedValue({ data: mockApimdResponse });
+
+    const response = await request(app).get(
+      '/api/unit/suggestions?q=in&limit=20'
+    );
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('(sug) It should find units with term "yavin"', async () => {
+    const jsonResult = ['yavin', ['YAVIN', 'YAVIN4']];
+
+    const mockApimdResponse = require('./resources/apimd/units-yavin.json');
+    axios.get.mockResolvedValue({ data: mockApimdResponse });
+
+    const response = await request(app).get(
+      '/api/unit/suggestions?q=yavin&limit=5'
+    );
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('(sug) It should not find units without api', async () => {
+    axios.get.mockRejectedValue(new Error('API is Gone'));
+
+    const response = await request(app).get(
+      '/api/unit/suggestions?q=zzzzz'
+    );
+    expect(response.statusCode).toBe(400);
+    expect(response.text).toMatch('Oops, something went wrong');
+    expect(testOutput.length).toBe(1);
+    expect(testOutput[0]).toMatch('error');
+  });
 });
