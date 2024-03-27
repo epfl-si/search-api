@@ -11,6 +11,9 @@ const visibleConditionByCmplType = `
     )
   `;
 
+// cmpl_type is surprisingly insufficient for some units
+const visibleConditionByHierarchy = 'hierarchie NOT LIKE \'%TECHNIQUE%\'';
+
 async function get (params, isInternal) {
   const lang = params.hl || 'fr';
   const q = params.q;
@@ -40,9 +43,9 @@ async function searchUnits (q, lang) {
                 'WHERE (sigle LIKE ? OR libelle LIKE ? OR ' +
                 'libelle_en LIKE ? OR id_unite = ?) ' +
                 `AND ${visibleConditionByCmplType}` +
-                'AND hierarchie NOT LIKE ?';
+                `AND ${visibleConditionByHierarchy}`;
   const values = [
-    '%' + q + '%', '%' + q + '%', '%' + q + '%', unitId, '%TECHNIQUE%'
+    '%' + q + '%', '%' + q + '%', '%' + q + '%', unitId
   ];
 
   const results = await cadidbService.sendQuery(query, values, 'searchUnits');
@@ -87,8 +90,8 @@ async function getUnit (acro, lang, isInternal) {
                 'FROM Unites_v2 ' +
                 'WHERE sigle = ? ' +
                 `AND ${visibleConditionByCmplType} ` +
-                'AND hierarchie NOT LIKE ?';
-  const values = [acro, '%TECHNIQUE%'];
+                `AND ${visibleConditionByHierarchy}`;
+  const values = [acro];
 
   const results = await cadidbService.sendQuery(query, values, 'getUnit');
   if (results.length !== 1) {
@@ -203,8 +206,8 @@ async function getSubunits (unitId, lang) {
                 'FROM Unites_v2 ' +
                 'WHERE id_parent = ? ' +
                 `AND ${visibleConditionByCmplType}` +
-                'AND hierarchie NOT LIKE ?';
-  const values = [unitId, '%TECHNIQUE%'];
+                `AND ${visibleConditionByHierarchy}`;
+  const values = [unitId];
 
   const results = await cadidbService.sendQuery(query, values, 'getSubunits');
   const formattedResults = results.map((dict) => {
