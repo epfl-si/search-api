@@ -2,6 +2,15 @@ const ldapUtil = require('../utils/ldap.util');
 const appCache = require('../services/cache.service');
 const peopleService = require('../services/people.service');
 
+async function buildHashUnit () {
+  const unitHash = {};
+  const units = await peopleService.getUnits();
+  for (const unit of units) {
+    unitHash[unit.sigle] = unit.id_unite;
+  }
+  return unitHash;
+}
+
 async function get (req, res) {
   const q = req.query.q || '';
   if (q.length < 2) {
@@ -19,7 +28,18 @@ async function get (req, res) {
     } else {
       ldapResults = await peopleService.getPersonByName(q);
     }
-    return res.json(ldapUtil.ldap2api(ldapResults, q, req.query.hl));
+    const apiResults = ldapUtil.ldap2api(ldapResults, q, req.query.hl);
+    const unitHash = await buildHashUnit();
+
+    // Add code
+    for (const person of apiResults) {
+      for (const accred of person.accreds) {
+        const code = unitHash[accred.acronym];
+        accred.code = code;
+      }
+    }
+
+    return res.json(apiResults);
   } catch (err) {
     console.error('[error] ', err.message);
     return res.status(400).json({

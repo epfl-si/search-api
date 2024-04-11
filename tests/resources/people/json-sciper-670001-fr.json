@@ -14,6 +14,7 @@
         "rank": "1",
         "position": "Chasseur de prime",
         "acronym": "BESPIN",
+        "code": 14001,
         "name": "Bespin est une géante gazeuse du système stellaire du même nom."
       },
       {
@@ -23,6 +24,7 @@
         "rank": "2",
         "position": "Chasseur de prime",
         "acronym": "TATOOINE",
+        "code": 14002,
         "name": "Tatooine est une planète désertique située dans les territoires de la bordure extérieure de la galaxie."
       }
     ]

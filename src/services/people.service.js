@@ -1,7 +1,9 @@
 const util = require('../utils/helper.util');
 const ldapUtil = require('../utils/ldap.util');
 const ldapConfig = require('../configs/ldap.config');
-const ldapService = require('../services/ldap.service');
+
+const ldapService = require('./ldap.service');
+const cadidbService = require('./cadidb.service');
 
 const rootsFilter = ldapConfig.filter.roots;
 
@@ -33,9 +35,15 @@ function getPersonByName (name) {
   return getPerson(ldapQuery);
 }
 
+async function getUnits () {
+  const query = 'SELECT sigle, id_unite FROM Unites_v2';
+  return await cadidbService.sendQuery(query, '', 'getUnits');
+}
+
 module.exports = {
   getPersonByEmail,
   getPersonByName,
   getPersonByPhone,
-  getPersonBySciper
+  getPersonBySciper,
+  getUnits
 };
