@@ -1,0 +1,26 @@
+[
+  {
+    "sigle": "KAMINO",
+    "id_unite": 14000
+  },
+  {
+    "sigle": "BESPIN",
+    "id_unite": 14001
+  },
+  {
+    "sigle": "TATOOINE",
+    "id_unite": 14002
+  },
+  {
+    "sigle": "MANDALORE",
+    "id_unite": 11301
+  },
+  {
+    "sigle": "CORUSCANT",
+    "id_unite": 14100
+  },
+  {
+    "sigle": "KALEVALA",
+    "id_unite": 11401
+  }
+]

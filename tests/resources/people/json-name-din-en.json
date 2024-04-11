@@ -11,6 +11,7 @@
         "officeList": ["Sundari 231"],
         "path": "EPFL/SO/TV-3/MANDALORE",
         "acronym": "MANDALORE",
+        "code": 11301,
         "rank": "1",
         "position": "Bounty hunter",
         "name": "Mandalore is a planet located in the Outer Rim territories of the galaxy."
@@ -30,6 +31,7 @@
         "officeList": ["Jedi Temple"],
         "path": "EPFL/SO/TV-3/CORUSCANT",
         "acronym": "CORUSCANT",
+        "code": 14100,
         "rank": "1",
         "position": "Jedi",
         "name": "Coruscant is an ecumenopolis, collectively known as Imperial City in the Core Worlds."

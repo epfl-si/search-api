@@ -14,6 +14,7 @@
         "rank": "1",
         "position": "Bounty hunter",
         "acronym": "BESPIN",
+        "code": 14001,
         "name": "Bespin is a gas giant in the star system of the same name."
       },
       {
@@ -23,6 +24,7 @@
         "rank": "2",
         "position": "Bounty hunter",
         "acronym": "TATOOINE",
+        "code": 14002,
         "name": "Tatooine is a desert planet located in the Outer Rim territories of the galaxy."
       }
     ]
