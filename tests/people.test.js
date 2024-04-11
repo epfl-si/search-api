@@ -1,7 +1,19 @@
+const mysql = require('mysql2/promise');
 const request = require('supertest');
 
 const app = require('../src/app');
 const ldapService = require('../src/services/ldap.service');
+
+jest.mock('mysql2/promise', () => {
+  const mockPool = {
+    getConnection: jest.fn()
+  };
+
+  return {
+    createPool: jest.fn(() => mockPool),
+    mockPool // Exporting the mock pool for reference
+  };
+});
 
 describe('Test API People ("/api/ldap")', () => {
   let testOutput = [];
@@ -9,6 +21,15 @@ describe('Test API People ("/api/ldap")', () => {
   const testConsoleError = (output) => { testOutput.push(output); };
 
   beforeEach(() => {
+    const mockConnection = {
+      query: jest.fn().mockImplementation((query, values) => {
+        const jsonData = require('./resources/cadidb/getUnits.json');
+        return Promise.resolve([jsonData]);
+      }),
+      release: jest.fn()
+    };
+    mysql.createPool().getConnection.mockResolvedValue(mockConnection);
+
     jest.clearAllMocks();
     console.error = testConsoleError;
     testOutput = [];
