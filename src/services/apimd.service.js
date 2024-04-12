@@ -118,7 +118,18 @@ async function getUnits (query) {
   return await axios.get(`${apimdConfig.baseURL}${route}`, config);
 }
 
+async function getPersonsBySciper (sciperList) {
+  const route = '/v1/persons';
+  const config = axiosConfig;
+  config.params = {
+    persid: sciperList.join(',')
+  };
+
+  return await axios.get(`${apimdConfig.baseURL}${route}`, config);
+}
+
 module.exports = {
+  getPersonsBySciper,
   getPersonsByUnit,
   getUnits
 };

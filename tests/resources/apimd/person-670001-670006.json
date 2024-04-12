@@ -1,0 +1,113 @@
+{
+  "persons": [
+    {
+      "id": "670001",
+      "rooms": [
+        {
+          "unitid": "14001",
+          "name": "Cloud City 016"
+        },
+        {
+          "unitid": "14002",
+          "name": "Dune Sea 002"
+        }
+      ],
+      "phones": [
+        {
+          "unitid": "14001",
+          "number": "+41210000321"
+        },
+        {
+          "unitid": "14002",
+          "number": "+41210000321"
+        }
+      ]
+    },
+    {
+      "id": "670002",
+      "rooms": [
+        {
+          "unitid": "14000",
+          "name": "Base 1468"
+        }
+      ],
+      "phones": [
+        {
+          "unitid": "14000",
+          "number": "+41210004321"
+        }
+      ]
+    },
+    {
+      "id": "670003",
+      "rooms": [
+        {
+          "unitid": "11301",
+          "name": "Sundari 231"
+        }
+      ],
+      "phones": [
+        {
+          "unitid": "11301",
+          "number": "+41210054321"
+        }
+      ]
+    },
+    {
+      "id": "670004",
+      "phones": [
+        {
+          "unitid": "11301",
+          "number": "+41210654321"
+        }
+      ]
+    },
+    {
+      "id": "670005",
+      "rooms": [
+        {
+          "unitid": "14100",
+          "name": "Jedi Temple"
+        }
+      ]
+    },
+    {
+      "id": "670006",
+      "rooms": [
+        {
+          "unitid": "11401",
+          "name": "Castle Kryze"
+        }
+      ],
+      "phones": [
+        {
+          "unitid": "11401",
+          "number": "+41210054323"
+        }
+      ]
+    },
+    {
+      "id": "999999",
+      "rooms": [
+        {
+          "unitid": "99999",
+          "name": "XXXXX"
+        },
+        {
+          "unitid": "99999",
+          "name": "ZZZZZ"
+        }
+      ],
+      "phones": [
+        {
+          "unitid": "11401",
+          "number": "+41999999998"
+        },
+        {
+          "unitid": "11401",
+          "number": "+41999999999"
+        }
+      ]
+    }
+  ]
+}
