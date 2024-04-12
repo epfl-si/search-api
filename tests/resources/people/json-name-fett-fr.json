@@ -7,7 +7,7 @@
     "email": "boba.fett@epfl.ch",
     "accreds": [
       {
-        "phoneList": ["+41 21 0000321"],
+        "phoneList": ["+41210000321"],
         "officeList": ["Cloud City 016"],
         "path": "EPFL/OT/EP-5/BESPIN",
         "acronym": "BESPIN",
@@ -17,8 +17,8 @@
         "name": "Bespin est une géante gazeuse du système stellaire du même nom."
       },
       {
-        "phoneList": ["+41 21 0000321"],
-        "officeList": ["Dune Sea 001"],
+        "phoneList": ["+41210000321"],
+        "officeList": ["Dune Sea 002"],
         "path": "EPFL/OT/EP-6/TATOOINE",
         "acronym": "TATOOINE",
         "code": 14002,
@@ -37,7 +37,7 @@
     "email": "jango.fett@epfl.ch",
     "accreds": [
       {
-        "phoneList": ["+41 21 0004321"],
+        "phoneList": ["+41210004321"],
         "officeList": ["Base 1468"],
         "path": "EPFL/PT/EP-2/KAMINO",
         "acronym": "KAMINO",
