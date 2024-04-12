@@ -1,8 +1,11 @@
+const axios = require('axios');
 const mysql = require('mysql2/promise');
 const request = require('supertest');
 
 const app = require('../src/app');
 const ldapService = require('../src/services/ldap.service');
+
+jest.mock('axios');
 
 jest.mock('mysql2/promise', () => {
   const mockPool = {
@@ -29,6 +32,11 @@ describe('Test API People ("/api/ldap")', () => {
       release: jest.fn()
     };
     mysql.createPool().getConnection.mockResolvedValue(mockConnection);
+
+    const mockApimdResponse = require(
+      './resources/apimd/person-670001-670006.json'
+    );
+    axios.get.mockResolvedValue({ data: mockApimdResponse });
 
     jest.clearAllMocks();
     console.error = testConsoleError;
