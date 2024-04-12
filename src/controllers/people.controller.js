@@ -1,6 +1,15 @@
 const ldapUtil = require('../utils/ldap.util');
 const appCache = require('../services/cache.service');
+const apimdService = require('../services/apimd.service');
 const peopleService = require('../services/people.service');
+
+function listSciper (apiResults) {
+  const sciperList = [];
+  for (const p of apiResults) {
+    sciperList.push(p.sciper);
+  }
+  return sciperList;
+}
 
 async function buildHashUnit () {
   const unitHash = {};
@@ -9,6 +18,34 @@ async function buildHashUnit () {
     unitHash[unit.sigle] = unit.id_unite;
   }
   return unitHash;
+}
+
+async function buildHashPhoneRoom (apiResults) {
+  const persons = await apimdService.getPersonsBySciper(listSciper(apiResults));
+
+  const phoneHash = {};
+  const roomHash = {};
+  for (const person of persons.data.persons) {
+    phoneHash[person.id] = {};
+    roomHash[person.id] = {};
+    if ('phones' in person) {
+      for (const phone of person.phones) {
+        if (!(phone.unitid in phoneHash[person.id])) {
+          phoneHash[person.id][phone.unitid] = [];
+        }
+        phoneHash[person.id][phone.unitid].push(phone.number);
+      }
+    }
+    if ('rooms' in person) {
+      for (const room of person.rooms) {
+        if (!(room.unitid in roomHash[person.id])) {
+          roomHash[person.id][room.unitid] = [];
+        }
+        roomHash[person.id][room.unitid].push(room.name);
+      }
+    }
+  }
+  return [phoneHash, roomHash];
 }
 
 async function get (req, res) {
@@ -28,14 +65,24 @@ async function get (req, res) {
     } else {
       ldapResults = await peopleService.getPersonByName(q);
     }
-    const apiResults = ldapUtil.ldap2api(ldapResults, q, req.query.hl);
-    const unitHash = await buildHashUnit();
 
-    // Add code
+    // Keep only the 1st 1000 results.
+    const apiResults = ldapUtil.ldap2api(
+      ldapResults,
+      q,
+      req.query.hl
+    ).slice(0, 1000);
+
+    const unitHash = await buildHashUnit();
+    const [phoneHash, roomHash] = await buildHashPhoneRoom(apiResults);
+
+    // Add code and fix phones and rooms
     for (const person of apiResults) {
       for (const accred of person.accreds) {
         const code = unitHash[accred.acronym];
         accred.code = code;
+        accred.phoneList = phoneHash[person.sciper][code] || [];
+        accred.officeList = roomHash[person.sciper][code] || [];
       }
     }
 
