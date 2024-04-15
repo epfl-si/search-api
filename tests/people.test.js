@@ -33,10 +33,22 @@ describe('Test API People ("/api/ldap")', () => {
     };
     mysql.createPool().getConnection.mockResolvedValue(mockConnection);
 
-    const mockApimdResponse = require(
-      './resources/apimd/person-670001-670006.json'
+    const mockApimdResponsePersons = require(
+      './resources/apimd/persons-670001-670006.json'
     );
-    axios.get.mockResolvedValue({ data: mockApimdResponse });
+    const mockApimdResponseRooms = require(
+      './resources/apimd/rooms-cloud-city.json'
+    );
+    axios.get.mockImplementation((url) => {
+      switch (url) {
+        case 'base_url/v1/persons':
+          return Promise.resolve({ data: mockApimdResponsePersons });
+        case 'base_url/v1/rooms':
+          return Promise.resolve({ data: mockApimdResponseRooms });
+        default:
+          return Promise.reject(new Error('not found'));
+      }
+    });
 
     jest.clearAllMocks();
     console.error = testConsoleError;
@@ -69,6 +81,12 @@ describe('Test API People ("/api/ldap")', () => {
     const response = await request(app).get('/api/ldap/suggestions?q=w');
     expect(response.statusCode).toBe(200);
     expect(response.text).toMatch('["w",[]]');
+  });
+
+  test('It shouldnt find Vador', async () => {
+    const response = await request(app).get('/api/ldap?q=Vador');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toMatch('[]');
   });
 
   test('It should find sciper 670001 (fr)', async () => {
@@ -155,6 +173,15 @@ describe('Test API People ("/api/ldap")', () => {
   test('It should find Bo Katan Kryze', async () => {
     const jsonResult = require('./resources/people/json-name-kryze-fr.json');
     const response = await request(app).get('/api/ldap?q=Bo Katan Kryze');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find Cloud City 016', async () => {
+    const jsonResult = require(
+      './resources/people/json-room-cloud-city-en.json'
+    );
+    const response = await request(app).get('/api/ldap?q=Cloud City 016&hl=en');
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
