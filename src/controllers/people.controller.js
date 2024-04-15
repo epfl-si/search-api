@@ -3,6 +3,15 @@ const appCache = require('../services/cache.service');
 const apimdService = require('../services/apimd.service');
 const peopleService = require('../services/people.service');
 
+async function checkRoom (query) {
+  const room = query.replace(' ', '').replace('.', '');
+  if (!/^[A-Z].*[0-9]/i.test(room)) {
+    return false;
+  }
+  const results = await apimdService.getRooms(query);
+  return results.data.rooms.length > 0;
+}
+
 function listSciper (apiResults) {
   const sciperList = [];
   for (const p of apiResults) {
@@ -63,7 +72,12 @@ async function get (req, res) {
     } else if (/^[^@]+@[^@]+$/.test(q)) {
       ldapResults = await peopleService.getPersonByEmail(q);
     } else {
-      ldapResults = await peopleService.getPersonByName(q);
+      const isRoom = await checkRoom(q);
+      if (isRoom) {
+        ldapResults = await peopleService.getPersonByRoom(q);
+      } else {
+        ldapResults = await peopleService.getPersonByName(q);
+      }
     }
 
     // Keep only the 1st 1000 results.
@@ -73,16 +87,18 @@ async function get (req, res) {
       req.query.hl
     ).slice(0, 1000);
 
-    const unitHash = await buildHashUnit();
-    const [phoneHash, roomHash] = await buildHashPhoneRoom(apiResults);
+    if (apiResults.length) {
+      const unitHash = await buildHashUnit();
+      const [phoneHash, roomHash] = await buildHashPhoneRoom(apiResults);
 
-    // Add code and fix phones and rooms
-    for (const person of apiResults) {
-      for (const accred of person.accreds) {
-        const code = unitHash[accred.acronym];
-        accred.code = code;
-        accred.phoneList = phoneHash[person.sciper][code] || [];
-        accred.officeList = roomHash[person.sciper][code] || [];
+      // Add code and fix phones and rooms
+      for (const person of apiResults) {
+        for (const accred of person.accreds) {
+          const code = unitHash[accred.acronym];
+          accred.code = code;
+          accred.phoneList = phoneHash[person.sciper][code] || [];
+          accred.officeList = roomHash[person.sciper][code] || [];
+        }
       }
     }
 

@@ -118,6 +118,16 @@ async function getUnits (query) {
   return await axios.get(`${apimdConfig.baseURL}${route}`, config);
 }
 
+async function getRooms (query) {
+  const route = '/v1/rooms';
+  const config = axiosConfig;
+  config.params = {
+    query
+  };
+
+  return await axios.get(`${apimdConfig.baseURL}${route}`, config);
+}
+
 async function getPersonsBySciper (sciperList) {
   const route = '/v1/persons';
   const config = axiosConfig;
@@ -131,5 +141,6 @@ async function getPersonsBySciper (sciperList) {
 module.exports = {
   getPersonsBySciper,
   getPersonsByUnit,
+  getRooms,
   getUnits
 };

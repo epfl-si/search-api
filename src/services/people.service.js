@@ -28,6 +28,10 @@ function getPersonByPhone (number) {
   return getPerson(`(telephoneNumber=*${number})`);
 }
 
+function getPersonByRoom (room) {
+  return getPerson(`(roomNumber=${room}*)`);
+}
+
 function getPersonByName (name) {
   const term = util.removeAccents(name);
   const terms = term.split(/\s+/);
@@ -44,6 +48,7 @@ module.exports = {
   getPersonByEmail,
   getPersonByName,
   getPersonByPhone,
+  getPersonByRoom,
   getPersonBySciper,
   getUnits
 };
