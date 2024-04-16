@@ -3,6 +3,10 @@ const appCache = require('../services/cache.service');
 const apimdService = require('../services/apimd.service');
 const peopleService = require('../services/people.service');
 
+function removeSpecialChars (q) {
+  return q.replace(/[()]/g, '');
+}
+
 async function checkRoom (query) {
   const room = query.replace(' ', '').replace('.', '');
   if (!/^[A-Z].*[0-9]/i.test(room)) {
@@ -62,7 +66,8 @@ async function buildHashPhoneRoom (apiResults) {
 }
 
 async function get (req, res) {
-  const q = req.query.q || '';
+  let q = req.query.q || '';
+  q = removeSpecialChars(q);
   if (q.length < 2) {
     return res.json([]);
   }
@@ -124,7 +129,8 @@ async function getSuggestions (req, res) {
     let limit = req.query.limit || 10;
     limit = limit > 10 ? 10 : limit;
 
-    const q = req.query.q || '';
+    let q = req.query.q || '';
+    q = removeSpecialChars(q);
     if (q.length < 2) {
       return res.json([q, []]);
     }
