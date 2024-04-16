@@ -66,58 +66,62 @@ async function buildHashPhoneRoom (apiResults) {
 }
 
 async function get (req, res) {
-  let q = req.query.q || '';
-  q = removeSpecialChars(q);
-  if (q.length < 2) {
-    return res.json([]);
-  }
-
-  try {
-    let ldapResults = [];
-    if (/^[0-9]{6}$/.test(q)) {
-      ldapResults = await peopleService.getPersonBySciper(q);
-    } else if (/^\+?[0-9 ]+$/.test(q)) {
-      ldapResults = await peopleService.getPersonByPhone(q);
-    } else if (/^[^@]+@[^@]+$/.test(q)) {
-      ldapResults = await peopleService.getPersonByEmail(q);
-    } else {
-      const isRoom = await checkRoom(q);
-      if (isRoom) {
-        ldapResults = await peopleService.getPersonByRoom(q);
-      } else {
-        ldapResults = await peopleService.getPersonByName(q);
-      }
+  if (appCache.has(req.originalUrl)) {
+    return res.send(appCache.get(req.originalUrl));
+  } else {
+    let q = req.query.q || '';
+    q = removeSpecialChars(q);
+    if (q.length < 2) {
+      return res.json([]);
     }
 
-    // Keep only the 1st 1000 results.
-    const apiResults = ldapUtil.ldap2api(
-      ldapResults,
-      q,
-      req.query.hl
-    ).slice(0, 1000);
-
-    if (apiResults.length) {
-      const unitHash = await buildHashUnit();
-      const [phoneHash, roomHash] = await buildHashPhoneRoom(apiResults);
-
-      // Add code and fix phones and rooms
-      for (const person of apiResults) {
-        for (const accred of person.accreds) {
-          const code = unitHash[accred.acronym];
-          accred.code = code;
-          accred.phoneList = phoneHash[person.sciper][code] || [];
-          accred.officeList = roomHash[person.sciper][code] || [];
+    try {
+      let ldapResults = [];
+      if (/^[0-9]{6}$/.test(q)) {
+        ldapResults = await peopleService.getPersonBySciper(q);
+      } else if (/^\+?[0-9 ]+$/.test(q)) {
+        ldapResults = await peopleService.getPersonByPhone(q);
+      } else if (/^[^@]+@[^@]+$/.test(q)) {
+        ldapResults = await peopleService.getPersonByEmail(q);
+      } else {
+        const isRoom = await checkRoom(q);
+        if (isRoom) {
+          ldapResults = await peopleService.getPersonByRoom(q);
+        } else {
+          ldapResults = await peopleService.getPersonByName(q);
         }
       }
-    }
 
-    return res.json(apiResults);
-  } catch (err) {
-    console.error('[error] ', err.message);
-    return res.status(400).json({
-      success: false,
-      error: 'Oops, something went wrong'
-    });
+      // Keep only the 1st 1000 results.
+      const apiResults = ldapUtil.ldap2api(
+        ldapResults,
+        q,
+        req.query.hl
+      ).slice(0, 1000);
+
+      if (apiResults.length) {
+        const unitHash = await buildHashUnit();
+        const [phoneHash, roomHash] = await buildHashPhoneRoom(apiResults);
+
+        // Add code and fix phones and rooms
+        for (const person of apiResults) {
+          for (const accred of person.accreds) {
+            const code = unitHash[accred.acronym];
+            accred.code = code;
+            accred.phoneList = phoneHash[person.sciper][code] || [];
+            accred.officeList = roomHash[person.sciper][code] || [];
+          }
+        }
+      }
+      appCache.set(req.originalUrl, apiResults);
+      return res.json(apiResults);
+    } catch (err) {
+      console.error('[error] ', err.message);
+      return res.status(400).json({
+        success: false,
+        error: 'Oops, something went wrong'
+      });
+    }
   }
 }
 
