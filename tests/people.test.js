@@ -142,6 +142,13 @@ describe('Test API People ("/api/ldap")', () => {
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });
 
+  test('It should find firstname Di', async () => {
+    const jsonResult = require('./resources/people/json-name-din-en.json');
+    const response = await request(app).get('/api/ldap?q=Di&hl=en');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
   test('It should find firstname Din', async () => {
     const jsonResult = require('./resources/people/json-name-din-en.json');
     const response = await request(app).get('/api/ldap?q=Din&hl=en');

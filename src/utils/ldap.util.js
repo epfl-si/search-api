@@ -55,9 +55,9 @@ function score (a, q) {
         points += 4;
       } else if (name === term && attr === 'firstname') {
         points += 3;
-      } else if (name.startsWith(term)) {
+      } else if (name.startsWith(term) && attr === 'name') {
         points += 2;
-      } else if (name.endsWith(term)) {
+      } else if (name.startsWith(term) && attr === 'firstname') {
         points += 1;
       }
     }
