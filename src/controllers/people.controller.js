@@ -42,7 +42,9 @@ async function buildHashPhoneRoom (apiResults) {
         if (!(phone.unitid in phoneHash[person.id])) {
           phoneHash[person.id][phone.unitid] = [];
         }
-        phoneHash[person.id][phone.unitid].push(phone.number);
+        if (phone.hidden === 0) {
+          phoneHash[person.id][phone.unitid].push(phone.number);
+        }
       }
     }
     if ('rooms' in person) {
@@ -50,7 +52,9 @@ async function buildHashPhoneRoom (apiResults) {
         if (!(room.unitid in roomHash[person.id])) {
           roomHash[person.id][room.unitid] = [];
         }
-        roomHash[person.id][room.unitid].push(room.name);
+        if (room.hidden === 0 && room.name !== '') {
+          roomHash[person.id][room.unitid].push(room.name);
+        }
       }
     }
   }

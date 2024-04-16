@@ -5,21 +5,25 @@
       "rooms": [
         {
           "unitid": "14001",
-          "name": "Cloud City 016"
+          "name": "Cloud City 016",
+          "hidden": 0
         },
         {
           "unitid": "14002",
-          "name": "Dune Sea 002"
+          "name": "Dune Sea 002",
+          "hidden": 0
         }
       ],
       "phones": [
         {
           "unitid": "14001",
-          "number": "+41210000321"
+          "number": "+41210000321",
+          "hidden": 0
         },
         {
           "unitid": "14002",
-          "number": "+41210000321"
+          "number": "+41210000321",
+          "hidden": 0
         }
       ]
     },
@@ -28,13 +32,15 @@
       "rooms": [
         {
           "unitid": "14000",
-          "name": "Base 1468"
+          "name": "Base 1468",
+          "hidden": 0
         }
       ],
       "phones": [
         {
           "unitid": "14000",
-          "number": "+41210004321"
+          "number": "+41210004321",
+          "hidden": 0
         }
       ]
     },
@@ -43,13 +49,15 @@
       "rooms": [
         {
           "unitid": "11301",
-          "name": "Sundari 231"
+          "name": "Sundari 231",
+          "hidden": 0
         }
       ],
       "phones": [
         {
           "unitid": "11301",
-          "number": "+41210054321"
+          "number": "+41210054321",
+          "hidden": 0
         }
       ]
     },
@@ -58,7 +66,8 @@
       "phones": [
         {
           "unitid": "11301",
-          "number": "+41210654321"
+          "number": "+41210654321",
+          "hidden": 0
         }
       ]
     },
@@ -67,7 +76,8 @@
       "rooms": [
         {
           "unitid": "14100",
-          "name": "Jedi Temple"
+          "name": "Jedi Temple",
+          "hidden": 0
         }
       ]
     },
@@ -76,13 +86,15 @@
       "rooms": [
         {
           "unitid": "11401",
-          "name": "Castle Kryze"
+          "name": "Castle Kryze",
+          "hidden": 0
         }
       ],
       "phones": [
         {
           "unitid": "11401",
-          "number": "+41210054323"
+          "number": "+41210054323",
+          "hidden": 0
         }
       ]
     },
@@ -91,21 +103,25 @@
       "rooms": [
         {
           "unitid": "99999",
-          "name": "XXXXX"
+          "name": "XXXXX",
+          "hidden": 1
         },
         {
           "unitid": "99999",
-          "name": "ZZZZZ"
+          "name": "ZZZZZ",
+          "hidden": 0
         }
       ],
       "phones": [
         {
           "unitid": "11401",
-          "number": "+41999999998"
+          "number": "+41999999998",
+          "hidden": 1
         },
         {
           "unitid": "11401",
-          "number": "+41999999999"
+          "number": "+41999999999",
+          "hidden": 0
         }
       ]
     }
