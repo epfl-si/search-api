@@ -1,5 +1,17 @@
 # CHANGELOG
 
+### v0.8.0 / 2024-04-22
+
+- Add search by room
+- Add cache to people
+- Improve people ranking
+- Fix phones and rooms visibility
+- Fix phones and rooms (people)
+- Get unit code (people)
+- Remove special characters (people)
+- Bump mysql2 from 3.3.3 to 3.9.4
+- Bump express from 4.18.2 to 4.19.2
+
 ### v0.7.0 / 2024-03-27
 
 - Add units suggestions
