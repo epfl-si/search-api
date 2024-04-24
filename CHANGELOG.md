@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### v0.8.1 / 2024-04-24
+
+- Fix axios configuration for apimd
+- Bump mysql2 from 3.9.4 to 3.9.7
+
 ### v0.8.0 / 2024-04-22
 
 - Add search by room
