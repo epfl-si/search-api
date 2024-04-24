@@ -110,7 +110,7 @@ async function getPersonsByUnit (unitId, lang) {
 
 async function getUnits (query) {
   const route = '/v1/units';
-  const config = axiosConfig;
+  const config = structuredClone(axiosConfig);
   config.params = {
     query
   };
@@ -120,7 +120,7 @@ async function getUnits (query) {
 
 async function getRooms (query) {
   const route = '/v1/rooms';
-  const config = axiosConfig;
+  const config = structuredClone(axiosConfig);
   config.params = {
     query
   };
@@ -130,11 +130,10 @@ async function getRooms (query) {
 
 async function getPersonsBySciper (sciperList) {
   const route = '/v1/persons';
-  const config = axiosConfig;
+  const config = structuredClone(axiosConfig);
   config.params = {
     persid: sciperList.join(',')
   };
-
   return await axios.get(`${apimdConfig.baseURL}${route}`, config);
 }
 
