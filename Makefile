@@ -24,6 +24,7 @@ help:
 	@echo "  make hadolint         — Lint Dockerfile with hadolint"
 	@echo "  make scan             — Scan latest image"
 	@echo "Local development:"
+	@echo "  make inspect          — Launch search-api with debugger"
 	@echo "  make start            — Launch search-api"
 	@echo "Local production Docker:"
 	@echo "  make build            — Build search-api"
@@ -79,6 +80,10 @@ docs:
 scan:
 	@${TRIVY} image --clear-cache
 	@${TRIVY} image --severity HIGH,CRITICAL search-api:latest
+
+.PHONY: inspect
+inspect:
+	@npm run inspect
 
 .PHONY: start
 start:

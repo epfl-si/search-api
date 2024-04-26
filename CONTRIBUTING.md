@@ -53,6 +53,16 @@ make up
 Debugging configuration is stored in the `launch.json` file. Select the Run and
 Debug icon in the Activity Bar and press F5.
 
+### Chrome
+
+Start the server with the debugger daemon:
+
+```bash
+make inspect
+```
+
+Open Chrome Developer Tools and click the green Node.js icon.
+
 ## Release
 
 Bump `package.json`, update [CHANGELOG.md](CHANGELOG.md) and
