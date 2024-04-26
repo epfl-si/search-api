@@ -161,6 +161,16 @@ describe('Test API People ("/api/ldap")', () => {
     expect(response.text).toEqual(csvResult);
   });
 
+  test('It should find name Fett via cache', async () => {
+    const csvResult = fs.readFileSync(
+      path.resolve(
+        __dirname, './resources/people/csv-name-fett-fr.csv'), 'utf-8'
+    );
+    const response = await request(app).get('/api/ldap/csv?q=Fett');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toEqual(csvResult);
+  });
+
   test('It should find name Fett', async () => {
     const jsonResult = ['Fett', ['Boba Fett', 'Jango Fett']];
     const response = await request(app).get(
