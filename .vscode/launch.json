@@ -4,10 +4,12 @@
     {
       "name": "Debug",
       "type": "node",
+      "restart": true,
       "request": "launch",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/src/server.js",
-      "envFile": "/keybase/team/epfl_search/api/local/env"
+      "envFile": "/keybase/team/epfl_search/api/local/env",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/nodemon/bin/nodemon.js"
     }
   ]
 }

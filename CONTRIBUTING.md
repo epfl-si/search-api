@@ -46,6 +46,13 @@ ssh -f kis@test-search01.epfl.ch -L 33306:db-cadi-staging.epfl.ch:3306 -N
 make up
 ```
 
+## Debug
+
+### VS Code
+
+Debugging configuration is stored in the `launch.json` file. Select the Run and
+Debug icon in the Activity Bar and press F5.
+
 ## Release
 
 Bump `package.json`, update [CHANGELOG.md](CHANGELOG.md) and
