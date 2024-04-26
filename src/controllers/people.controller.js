@@ -131,26 +131,30 @@ async function get (req, res) {
 async function getCsv (req, res) {
   res.setHeader('Content-Type', 'text/plain');
 
-  let q = req.query.q || '';
-  q = removeSpecialChars(q);
-  if (q.length < 2) {
-    return res.send('');
-  }
-
-  try {
-    let csv = '';
-    const apiResults = await search(q, req.query.hl);
-    if (apiResults.length) {
-      for (const person of apiResults) {
-        csv += [person.sciper, person.firstname, person.name].join(': ');
-        csv += '\n';
-      }
+  if (appCache.has(req.originalUrl)) {
+    return res.send(appCache.get(req.originalUrl));
+  } else {
+    let q = req.query.q || '';
+    q = removeSpecialChars(q);
+    if (q.length < 2) {
+      return res.send('');
     }
 
-    return res.send(csv);
-  } catch (err) {
-    console.error('[error] ', err.message);
-    return res.status(400).send('Oops, something went wrong');
+    try {
+      let csv = '';
+      const apiResults = await search(q, req.query.hl);
+      if (apiResults.length) {
+        for (const person of apiResults) {
+          csv += [person.sciper, person.firstname, person.name].join(': ');
+          csv += '\n';
+        }
+      }
+      appCache.set(req.originalUrl, csv);
+      return res.send(csv);
+    } catch (err) {
+      console.error('[error] ', err.message);
+      return res.status(400).send('Oops, something went wrong');
+    }
   }
 }
 
