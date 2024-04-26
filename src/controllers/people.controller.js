@@ -65,6 +65,31 @@ async function buildHashPhoneRoom (apiResults) {
   return [phoneHash, roomHash];
 }
 
+async function search (query, lang) {
+  let ldapResults = [];
+  if (/^[0-9]{6}$/.test(query)) {
+    ldapResults = await peopleService.getPersonBySciper(query);
+  } else if (/^\+?[0-9 ]+$/.test(query)) {
+    ldapResults = await peopleService.getPersonByPhone(query);
+  } else if (/^[^@]+@[^@]+$/.test(query)) {
+    ldapResults = await peopleService.getPersonByEmail(query);
+  } else {
+    const isRoom = await checkRoom(query);
+    if (isRoom) {
+      ldapResults = await peopleService.getPersonByRoom(query);
+    } else {
+      ldapResults = await peopleService.getPersonByName(query);
+    }
+  }
+
+  // Keep only the 1st 1000 results.
+  return ldapUtil.ldap2api(
+    ldapResults,
+    query,
+    lang
+  ).slice(0, 1000);
+}
+
 async function get (req, res) {
   if (appCache.has(req.originalUrl)) {
     return res.send(appCache.get(req.originalUrl));
@@ -76,29 +101,7 @@ async function get (req, res) {
     }
 
     try {
-      let ldapResults = [];
-      if (/^[0-9]{6}$/.test(q)) {
-        ldapResults = await peopleService.getPersonBySciper(q);
-      } else if (/^\+?[0-9 ]+$/.test(q)) {
-        ldapResults = await peopleService.getPersonByPhone(q);
-      } else if (/^[^@]+@[^@]+$/.test(q)) {
-        ldapResults = await peopleService.getPersonByEmail(q);
-      } else {
-        const isRoom = await checkRoom(q);
-        if (isRoom) {
-          ldapResults = await peopleService.getPersonByRoom(q);
-        } else {
-          ldapResults = await peopleService.getPersonByName(q);
-        }
-      }
-
-      // Keep only the 1st 1000 results.
-      const apiResults = ldapUtil.ldap2api(
-        ldapResults,
-        q,
-        req.query.hl
-      ).slice(0, 1000);
-
+      const apiResults = await search(q, req.query.hl);
       if (apiResults.length) {
         const unitHash = await buildHashUnit();
         const [phoneHash, roomHash] = await buildHashPhoneRoom(apiResults);
@@ -122,6 +125,32 @@ async function get (req, res) {
         error: 'Oops, something went wrong'
       });
     }
+  }
+}
+
+async function getCsv (req, res) {
+  res.setHeader('Content-Type', 'text/plain');
+
+  let q = req.query.q || '';
+  q = removeSpecialChars(q);
+  if (q.length < 2) {
+    return res.send('');
+  }
+
+  try {
+    let csv = '';
+    const apiResults = await search(q, req.query.hl);
+    if (apiResults.length) {
+      for (const person of apiResults) {
+        csv += [person.sciper, person.firstname, person.name].join(': ');
+        csv += '\n';
+      }
+    }
+
+    return res.send(csv);
+  } catch (err) {
+    console.error('[error] ', err.message);
+    return res.status(400).send('Oops, something went wrong');
   }
 }
 
@@ -160,5 +189,6 @@ async function getSuggestions (req, res) {
 
 module.exports = {
   get,
+  getCsv,
   getSuggestions
 };
