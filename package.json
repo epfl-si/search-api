@@ -11,6 +11,7 @@
   },
   "scripts": {
     "docs": "jsdoc -c jsdoc.json",
+    "inspect": "nodemon --inspect src/server.js",
     "lint": "eslint src --ext=js",
     "lint:fix": "npm run lint -- --fix",
     "prettier": "prettier --check --ignore-unknown '**' '!**/*.js' '!**/ansible-deps-cache'",
