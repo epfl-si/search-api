@@ -41,12 +41,28 @@
 | `q`  | `String` | Query                             |
 | `hl` | `String` | Sets the user interface language. |
 
-## People suggestions
-
 ### Examples
 
 - [/api/ldap?q=278890][ldap-1]
 - [/api/ldap?q=nicolas.borboen@epfl.ch&hl=en][ldap-2]
+
+## People (CSV Export)
+
+### Endpoint
+
+`GET /api/ldap/csv`
+
+### Parameters
+
+| Name | Type     | Comments |
+| ---- | -------- | -------- |
+| `q`  | `String` | Query    |
+
+### Examples
+
+- [/api/ldap/csv?q=jango][ldap-csv]
+
+## People suggestions
 
 ### Endpoint
 
@@ -177,6 +193,7 @@ See [Contributing](CONTRIBUTING.md).
 [cse-3]: http://127.0.0.1:5555/api/cse?q=math&hl=en&sort=date&searchType=image
 [ldap-1]: http://127.0.0.1:5555/api/ldap?q=278890
 [ldap-2]: http://127.0.0.1:5555/api/ldap?q=nicolas.borboen@epfl.ch&hl=en
+[ldap-csv]: http://127.0.0.1:5555/api/ldap?q=jango
 [ldap-suggestions-1]: http://127.0.0.1:5555/api/ldap/suggestions?q=math
 [ldap-suggestions-2]: http://127.0.0.1:5555/api/ldap/suggestions?q=william&limit=3
 [unit-1]: http://127.0.0.1:5555/api/unit?q=fsd

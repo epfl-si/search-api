@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const axios = require('axios');
 const mysql = require('mysql2/promise');
 const request = require('supertest');
@@ -66,6 +68,12 @@ describe('Test API People ("/api/ldap")', () => {
   });
 
   test('It should get an empty result without query', async () => {
+    const response = await request(app).get('/api/ldap/csv');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toMatch('');
+  });
+
+  test('It should get an empty result without query', async () => {
     const response = await request(app).get('/api/ldap/suggestions');
     expect(response.statusCode).toBe(200);
     expect(response.text).toMatch('["",[]]');
@@ -78,9 +86,21 @@ describe('Test API People ("/api/ldap")', () => {
   });
 
   test('It should get an empty result with a small query', async () => {
+    const response = await request(app).get('/api/ldap/csv?q=w');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toMatch('');
+  });
+
+  test('It should get an empty result with a small query', async () => {
     const response = await request(app).get('/api/ldap/suggestions?q=w');
     expect(response.statusCode).toBe(200);
     expect(response.text).toMatch('["w",[]]');
+  });
+
+  test('It shouldnt find Vador', async () => {
+    const response = await request(app).get('/api/ldap/csv?q=Vador');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toMatch('');
   });
 
   test('It shouldnt find Vador', async () => {
@@ -129,6 +149,16 @@ describe('Test API People ("/api/ldap")', () => {
     const response = await request(app).get('/api/ldap?q=Fett');
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find name Fett', async () => {
+    const csvResult = fs.readFileSync(
+      path.resolve(
+        __dirname, './resources/people/csv-name-fett-fr.csv'), 'utf-8'
+    );
+    const response = await request(app).get('/api/ldap/csv?q=Fett');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toEqual(csvResult);
   });
 
   test('It should find name Fett', async () => {
@@ -205,6 +235,18 @@ describe('Test API People ("/api/ldap")', () => {
     mockLdapService.mockRejectedValue(new Error('LDAP is Gone'));
 
     const response = await request(app).get('/api/ldap?q=679999');
+    expect(mockLdapService).toHaveBeenCalled();
+    expect(response.statusCode).toBe(400);
+    expect(response.text).toMatch('Oops, something went wrong');
+    expect(testOutput.length).toBe(1);
+    expect(testOutput[0]).toMatch('error');
+  });
+
+  test('It should not find Djarin without ldap server', async () => {
+    const mockLdapService = jest.spyOn(ldapService, 'searchAll');
+    mockLdapService.mockRejectedValue(new Error('LDAP is Gone'));
+
+    const response = await request(app).get('/api/ldap/csv?q=djarin');
     expect(mockLdapService).toHaveBeenCalled();
     expect(response.statusCode).toBe(400);
     expect(response.text).toMatch('Oops, something went wrong');

@@ -40,7 +40,9 @@ if (configApi.enableCse) {
 }
 
 // People
-app.use('/api/ldap', peopleRouter);
+if (configApi.enableLdap) {
+  app.use('/api/ldap', peopleRouter);
+}
 
 // Address
 if (configApi.enableAddress) {
