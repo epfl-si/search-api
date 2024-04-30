@@ -24,6 +24,14 @@ describe('Test 404 routes', () => {
     expect(response.text).toMatch('Oops! That page can\'t be found.');
   });
 
+  test('It should get a 200 for "/robots.txt"', async () => {
+    const app = require('../src/app');
+
+    const response = await request(app).get('/robots.txt');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toMatch('Disallow: /');
+  });
+
   test('It should get a 200 for "/healthz"', async () => {
     const app = require('../src/app');
 

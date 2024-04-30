@@ -59,6 +59,12 @@ if (configApi.enableGraphsearch) {
   app.use('/api/graphsearch', semanticRouter);
 }
 
+// Robots.txt
+app.get('/robots.txt', function (req, res) {
+  res.type('text/plain');
+  res.send('User-agent: *\nDisallow: /');
+});
+
 // Liveness probe
 app.use('/healthz', function (req, res) {
   res.send('OK');
