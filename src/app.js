@@ -9,6 +9,7 @@ const configApi = require('./configs/api.config');
 
 const cseRouter = require('./routes/cse.route');
 const peopleRouter = require('./routes/people.route');
+const legacyPeopleRouter = require('./routes/legacy.people.route');
 const unitRouter = require('./routes/unit.route');
 const semanticRouter = require('./routes/semantic.route');
 const addressRouter = require('./routes/address.route');
@@ -42,6 +43,7 @@ if (configApi.enableCse) {
 // People
 if (configApi.enableLdap) {
   app.use('/api/ldap', peopleRouter);
+  app.use('/ws', legacyPeopleRouter);
 }
 
 // Address
