@@ -7,6 +7,9 @@ all:
         ansible_connection: local
         openshift_namespace: 'wwp'
 
-        hostname: search-backend.epfl.ch
+        hostnames:
+          - search-backend.epfl.ch
+          - search-2012.epfl.ch
+          - search-api.epfl.ch
         tag: latest
         searchapi_secrets: "{{ lookup('file', '/keybase/team/epfl_search/api/prod/secrets.yml') | from_yaml }}"

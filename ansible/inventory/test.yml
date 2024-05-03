@@ -7,6 +7,9 @@ all:
         ansible_connection: local
         openshift_namespace: 'wwp-test'
 
-        hostname: staging-search-backend.epfl.ch
+        hostnames:
+          - staging-search-backend.epfl.ch
+          - test-search-2012.epfl.ch
+          - test-search-api.epfl.ch
         tag: latest
         searchapi_secrets: "{{ lookup('file', '/keybase/team/epfl_search/api/staging/secrets.yml') | from_yaml }}"
