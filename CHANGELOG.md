@@ -1,5 +1,19 @@
 # CHANGELOG
 
+### v0.9.0 / 2024-05-13
+
+- Add CSV people export
+- Add cache to people CSV
+- Add legacy route for people
+- Add robots.txt
+- Add OpenShift routes from old search
+- Enable Node.js Inspector
+- Restart debug sessions automatically
+- Update eslint-plugin-jest to 28.3.0
+- Update googleapis to 135.0.0
+- Update supertest to 7.0.0
+- Bump ejs from 3.1.9 to 3.1.10
+
 ### v0.8.1 / 2024-04-24
 
 - Fix axios configuration for apimd
