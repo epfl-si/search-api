@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### v0.9.1 / 2024-05-15
+
+- Add alias for unit route
+
 ### v0.9.0 / 2024-05-13
 
 - Add CSV people export
