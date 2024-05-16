@@ -19,6 +19,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('x-powered-by', false);
+app.set('trust proxy', true);
 
 // Gzip all responses > 1kb
 app.use(compression());
