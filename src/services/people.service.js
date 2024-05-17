@@ -33,8 +33,9 @@ function getPersonByRoom (room) {
 }
 
 function getPersonByName (name) {
+  // Limit search to 6 terms for performance.
   const term = util.removeAccents(name);
-  const terms = term.split(/\s+/);
+  const terms = term.split(/\s+/).slice(0, 6);
   const ldapQuery = ldapUtil.buildLdapQueryForPerson(util.permutations(terms));
   return getPerson(ldapQuery);
 }
