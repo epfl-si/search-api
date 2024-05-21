@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### v0.9.2 / 2024-05-21
+
+- Limit search to 6 terms for people
+- Get IP address of client through proxies
+
 ### v0.9.1 / 2024-05-15
 
 - Add alias for unit route
