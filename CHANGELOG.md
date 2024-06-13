@@ -1,5 +1,11 @@
 # CHANGELOG
 
+### v0.9.3 / 2024-06-13
+
+- Fix accreds rank
+- Bump braces to 3.0.3
+- Bump mysql2 from 3.9.7 to 3.9.8
+
 ### v0.9.2 / 2024-05-21
 
 - Limit search to 6 terms for people
