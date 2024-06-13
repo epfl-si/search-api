@@ -12,7 +12,8 @@
         "path": "EPFL/OT/EP-5/BESPIN",
         "acronym": "BESPIN",
         "code": 14001,
-        "rank": "1",
+        "rank": 0,
+        "order": 1,
         "position": "Chasseur de prime",
         "name": "Bespin est une géante gazeuse du système stellaire du même nom."
       },
@@ -22,7 +23,8 @@
         "path": "EPFL/OT/EP-6/TATOOINE",
         "acronym": "TATOOINE",
         "code": 14002,
-        "rank": "2",
+        "rank": 1,
+        "order": 2,
         "position": "Chasseur de prime",
         "name": "Tatooine est une planète désertique située dans les territoires de la bordure extérieure de la galaxie."
       }
@@ -42,7 +44,8 @@
         "path": "EPFL/PT/EP-2/KAMINO",
         "acronym": "KAMINO",
         "code": 14000,
-        "rank": "1",
+        "rank": 0,
+        "order": 1,
         "position": "Chasseur de prime",
         "name": "Kamino est une planète aquatique située dans le secteur Abrion de la bordure extérieure de la galaxie."
       }
