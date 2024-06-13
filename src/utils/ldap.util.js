@@ -15,7 +15,7 @@ const ldapUserMapper = {
 
 function newLdapAccredMapper (lang) {
   const ldapAccredMapper = {
-    EPFLAccredOrder: ['rank', (val) => val[0]],
+    EPFLAccredOrder: ['order', (val) => parseInt(val[0])],
     roomNumber: ['officeList', (val) => val],
     telephoneNumber: ['phoneList', (val) => val]
   };
@@ -40,7 +40,7 @@ function newLdapAddressMapper () {
 }
 
 function sortAccreds (obj) {
-  return obj.sort((a, b) => a.rank - b.rank);
+  return obj.sort((a, b) => a.order - b.order);
 }
 
 function score (a, q) {
@@ -231,6 +231,7 @@ function ldap2api (ldapResults, q, hl) {
             ][1](entry[acc].attributes[att].values);
         }
       }
+      accred.rank = accred.order > 1 ? 1 : 0;
       listAccreds.push(accred);
     }
     const correctName = getCorrectName(
