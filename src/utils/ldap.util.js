@@ -66,11 +66,12 @@ function score (a, q) {
 }
 
 function sortPersons (obj, q) {
-  return obj.sort((a, b) =>
-    score(b, q) - score(a, q) ||
-    a.name.localeCompare(b.name) ||
-    a.firstname.localeCompare(b.firstname)
-  );
+  const scores = obj.map(a => ({ p: a, score: score(a, q) }));
+  return scores.sort((a, b) =>
+    b.score - a.score ||
+    a.p.name.localeCompare(b.p.name) ||
+    a.p.firstname.localeCompare(b.p.firstname)
+  ).map(scores => scores.p);
 }
 
 /**
