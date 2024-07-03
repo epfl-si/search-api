@@ -1,0 +1,23 @@
+[
+  {
+    "sciper": "670007",
+    "rank": 0,
+    "name": "San Tekka",
+    "firstname": "Lor",
+    "email": "lor.san.tekka@epfl.ch",
+    "accreds": [
+      {
+        "phoneList": ["+41211234567"],
+        "officeList": ["Jakku 316"],
+        "path": "EPFL/SE/EP-7/JAKKU",
+        "acronym": "JAKKU",
+        "order": 1,
+        "position": "Explorateur",
+        "name": "Jakku était une planète désertique isolée située dans le système Jakku, dans les confins occidentaux de la bordure intérieure de la galaxie.",
+        "rank": 0,
+        "code": 11501
+      }
+    ],
+    "profile": "lor.san.tekka"
+  }
+]
