@@ -36,7 +36,7 @@ describe('Test API People ("/api/ldap")', () => {
     mysql.createPool().getConnection.mockResolvedValue(mockConnection);
 
     const mockApimdResponsePersons = require(
-      './resources/apimd/persons-670001-670006.json'
+      './resources/apimd/persons.json'
     );
     const mockApimdResponseRooms = require(
       './resources/apimd/rooms-cloud-city.json'
@@ -220,6 +220,13 @@ describe('Test API People ("/api/ldap")', () => {
   test('It should find Fett Boba', async () => {
     const jsonResult = require('./resources/people/json-sciper-670001-en.json');
     const response = await request(app).get('/api/ldap?q=Fett Boba&hl=en');
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find Lor San Tekka', async () => {
+    const jsonResult = require('./resources/people/json-name-san.json');
+    const response = await request(app).get('/api/ldap?q=San');
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });

@@ -172,5 +172,30 @@
       "postOfficeBox": "Station Kryze",
       "postalAddress": "EPFL SO TV-4 KALEVALA $ Base Kryze (Bâtiment Kalevala) $ Station Kryze $ Castle Kryze"
     }
+  },
+  {
+    "dn": "cn=Lor San Tekka,ou=jakku,ou=ep-7,ou=se,o=epfl,c=ch",
+    "attributes": {
+      "cn": ["Lor San Tekka", "San Tekka"],
+      "sn": "San Tekka",
+      "givenName": "Lor",
+      "displayName": "Lor San Tekka",
+      "uniqueIdentifier": "670007",
+      "mail": "lor.san.tekka@epfl.ch",
+      "objectClass": "Person",
+      "roomNumber": "Jakku 316",
+      "telephoneNumber": "+41 21 1234567",
+      "EPFLAccredOrder": "1",
+      "description": "Explorateur",
+      "description;lang-en": "Explorer",
+      "ou": [
+        "JAKKU",
+        "Jakku était une planète désertique isolée située dans le système Jakku, dans les confins occidentaux de la bordure intérieure de la galaxie."
+      ],
+      "ou;lang-en": "Jakku was a remote desert planet located in the Jakku system, within the Western Reaches of the galaxy's Inner Rim.",
+      "postalCode": "JA-1468",
+      "postOfficeBox": "Station 316",
+      "postalAddress": "EPFL SE EP-7 JAKKU $ Jakku 316 $ Station 316 $ JA-316"
+    }
   }
 ]

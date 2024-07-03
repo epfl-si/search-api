@@ -51,10 +51,13 @@ function score (a, q) {
     term = term.toLowerCase();
     for (const attr of attributes) {
       const name = util.removeAccents(a[attr]).toLowerCase();
+      const subnames = name.split(/\s+/);
       if (name === term && attr === 'name') {
-        points += 4;
+        points += 100;
       } else if (name === term && attr === 'firstname') {
-        points += 3;
+        points += 99;
+      } else if (subnames.includes(term)) {
+        points += 49;
       } else if (name.startsWith(term) && attr === 'name') {
         points += 2;
       } else if (name.startsWith(term) && attr === 'firstname') {
