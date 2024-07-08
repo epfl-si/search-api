@@ -1,5 +1,11 @@
 # CHANGELOG
 
+### v0.9.4 / 2024-07-08
+
+- Boost ranking for people with multiple names
+- Optimize sortPersons
+- Version is obsolete (docker-compose.yml)
+
 ### v0.9.3 / 2024-06-13
 
 - Fix accreds rank
