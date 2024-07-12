@@ -3,7 +3,10 @@ const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const express = require('express');
+const passport = require('passport');
 const compression = require('compression');
+
+const TequilaStrategy = require('passport-tequila').Strategy;
 
 const configApi = require('./configs/api.config');
 
@@ -13,6 +16,13 @@ const legacyPeopleRouter = require('./routes/legacy.people.route');
 const unitRouter = require('./routes/unit.route');
 const semanticRouter = require('./routes/semantic.route');
 const addressRouter = require('./routes/address.route');
+
+// Use the TequilaStrategy within Passport.
+const tequila = new TequilaStrategy({
+  service: 'Search engine',
+  request: ['displayname']
+});
+passport.use(tequila);
 
 const app = express();
 
