@@ -38,6 +38,7 @@
     "cors": "^2.8.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "express-session": "^1.18.0",
     "googleapis": "^135.0.0",
     "helmet": "^7.0.0",
     "ldapjs": "^3.0.2",
