@@ -1,128 +1,152 @@
-- name: SearchAPI - Deployment
-  openshift:
-    apiVersion: extensions/v1beta1
-    kind: Deployment
-    metadata:
-      name: '{{ app_name }}'
-      namespace: '{{ openshift_namespace }}'
-      labels:
-        app: '{{ app_name }}'
-        team: '{{ team }}'
-    spec:
-      replicas: 2
-      selector:
-        matchLabels:
+- name: Search API - ServiceAccount
+  kubernetes.core.k8s:
+    definition:
+      apiVersion: v1
+      kind: ServiceAccount
+      metadata:
+        name: '{{ app_name }}-service-account'
+        namespace: '{{ openshift_namespace }}'
+      imagePullSecrets:
+        - name: '{{ app_name }}-pull-secret'
+
+- name: Search API - Service
+  kubernetes.core.k8s:
+    definition:
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: '{{ app_name }}'
+        namespace: '{{ openshift_namespace }}'
+        labels:
           app: '{{ app_name }}'
-      template:
-        metadata:
-          labels:
+          team: '{{ team }}'
+      spec:
+        type: ClusterIP
+        ports:
+          - name: '80'
+            port: 80
+            targetPort: 5555
+        selector:
+          app: '{{ app_name }}'
+
+- name: Search API - Deployment
+  kubernetes.core.k8s:
+    definition:
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: '{{ app_name }}'
+        namespace: '{{ openshift_namespace }}'
+        labels:
+          app: '{{ app_name }}'
+          team: '{{ team }}'
+          version: '{{ tag }}'
+      spec:
+        replicas: 2
+        strategy:
+          type: RollingUpdate
+          rollingUpdate:
+            maxUnavailable: 1
+        selector:
+          matchLabels:
             app: '{{ app_name }}'
-            team: '{{ team }}'
-            role: webserver
-        spec:
-          containers:
-            - env:
-                - name: SEARCH_API_ENABLE_CSE
-                  value: '{{ searchapi_secrets.SEARCH_API_ENABLE_CSE |string }}'
-                - name: SEARCH_API_ENABLE_LDAP
-                  value: '{{ searchapi_secrets.SEARCH_API_ENABLE_LDAP |string }}'
-                - name: SEARCH_API_ENABLE_ADDRESS
-                  value: '{{ searchapi_secrets.SEARCH_API_ENABLE_ADDRESS |string }}'
-                - name: SEARCH_API_ENABLE_UNIT
-                  value: '{{ searchapi_secrets.SEARCH_API_ENABLE_UNIT |string }}'
-                - name: SEARCH_API_ENABLE_GRAPHSEARCH
-                  value: '{{ searchapi_secrets.SEARCH_API_ENABLE_GRAPHSEARCH |string }}'
-                - name: SEARCH_API_CSE_API_KEY
-                  valueFrom:
-                    secretKeyRef:
-                      name: search-api-cse-secrets
-                      key: SEARCH_API_CSE_API_KEY
-                - name: SEARCH_API_CSE_CX
-                  value: '{{ searchapi_secrets.SEARCH_API_CSE_CX }}'
-                - name: SEARCH_API_CADIDB_HOST
-                  value: '{{ searchapi_secrets.SEARCH_API_CADIDB_HOST }}'
-                - name: SEARCH_API_CADIDB_PORT
-                  value: '{{ searchapi_secrets.SEARCH_API_CADIDB_PORT }}'
-                - name: SEARCH_API_CADIDB_DATABASE
-                  value: '{{ searchapi_secrets.SEARCH_API_CADIDB_DATABASE }}'
-                - name: SEARCH_API_CADIDB_USER
-                  valueFrom:
-                    secretKeyRef:
-                      name: search-api-cadidb-secrets
-                      key: SEARCH_API_CADIDB_USER
-                - name: SEARCH_API_CADIDB_PASSWORD
-                  valueFrom:
-                    secretKeyRef:
-                      name: search-api-cadidb-secrets
-                      key: SEARCH_API_CADIDB_PASSWORD
-                - name: SEARCH_API_LDAP_URL
-                  value: '{{ searchapi_secrets.SEARCH_API_LDAP_URL }}'
-                - name: SEARCH_API_LDAP_ROOTS_FILTER
-                  value: '{{ searchapi_secrets.SEARCH_API_LDAP_ROOTS_FILTER }}'
-                - name: SEARCH_API_MD_BASE_URL
-                  value: '{{ searchapi_secrets.SEARCH_API_MD_BASE_URL }}'
-                - name: SEARCH_API_MD_USER
-                  valueFrom:
-                    secretKeyRef:
-                      name: search-api-md-secrets
-                      key: SEARCH_API_MD_USER
-                - name: SEARCH_API_MD_PASSWORD
-                  valueFrom:
-                    secretKeyRef:
-                      name: search-api-md-secrets
-                      key: SEARCH_API_MD_PASSWORD
-              livenessProbe:
-                httpGet:
-                  path: /healthz
-                  port: 5555
-                initialDelaySeconds: 2
-                periodSeconds: 15
-                timeoutSeconds: 5
-              readinessProbe:
-                httpGet:
-                  path: /healthz
-                  port: 5555
-                initialDelaySeconds: 2
-                periodSeconds: 15
-                timeoutSeconds: 5
-              name: '{{ app_name }}'
-              image: 'docker-registry.default.svc:5000/{{ openshift_namespace }}/search-api:latest'
-              imagePullPolicy: Always
-          dnsPolicy: ClusterFirst
-          restartPolicy: Always
-          schedulerName: default-scheduler
-          terminationGracePeriodSeconds: 30
-
-- name: SearchAPI - Service
-  openshift:
-    state: latest
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: '{{ app_name }}'
-      namespace: '{{ openshift_namespace }}'
-      labels:
-        app: '{{ app_name }}'
-        team: '{{ team }}'
-    spec:
-      type: ClusterIP
-      ports:
-        - name: '80'
-          port: 80
-          protocol: TCP
-          targetPort: 5555
-      selector:
-        app: '{{ app_name }}'
-        role: webserver
-
-- name: SearchAPI - Restart
-  when: >-
-    ('app.restart' in ansible_run_tags)
-    or
-    (_searchapi_push is changed)
-  local_action:
-    module: shell
-    cmd: >-
-      oc patch deployment/{{ app_name }} --namespace {{ openshift_namespace }} --patch \
-      '{"spec": {"template": {"metadata": {"annotations": {"last-restart": "{{ ansible_date_time.iso8601 }}"}}}}}'
-  tags: app.restart
+        template:
+          metadata:
+            labels:
+              app: '{{ app_name }}'
+              team: '{{ team }}'
+              version: '{{ tag }}'
+          spec:
+            serviceAccountName: '{{ app_name }}-service-account'
+            affinity:
+              podAntiAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  - labelSelector:
+                      matchLabels:
+                        app: '{{ app_name }}'
+                    topologyKey: kubernetes.io/hostname
+            containers:
+              - name: '{{ app_name }}'
+                image: '{{ quay_registry }}/{{ app_name }}:{{ tag }}'
+                env:
+                  - name: SEARCH_API_ENABLE_CSE
+                    value: '{{ secrets.SEARCH_API_ENABLE_CSE | string }}'
+                  - name: SEARCH_API_ENABLE_LDAP
+                    value: '{{ secrets.SEARCH_API_ENABLE_LDAP | string }}'
+                  - name: SEARCH_API_ENABLE_ADDRESS
+                    value: '{{ secrets.SEARCH_API_ENABLE_ADDRESS | string }}'
+                  - name: SEARCH_API_ENABLE_UNIT
+                    value: '{{ secrets.SEARCH_API_ENABLE_UNIT | string }}'
+                  - name: SEARCH_API_ENABLE_GRAPHSEARCH
+                    value: '{{ secrets.SEARCH_API_ENABLE_GRAPHSEARCH | string }}'
+                  - name: SEARCH_API_CSE_API_KEY
+                    valueFrom:
+                      secretKeyRef:
+                        name: search-api-cse-secrets
+                        key: SEARCH_API_CSE_API_KEY
+                  - name: SEARCH_API_CSE_CX
+                    value: '{{ secrets.SEARCH_API_CSE_CX }}'
+                  - name: SEARCH_API_CADIDB_HOST
+                    value: '{{ secrets.SEARCH_API_CADIDB_HOST }}'
+                  - name: SEARCH_API_CADIDB_PORT
+                    value: '{{ secrets.SEARCH_API_CADIDB_PORT }}'
+                  - name: SEARCH_API_CADIDB_DATABASE
+                    value: '{{ secrets.SEARCH_API_CADIDB_DATABASE }}'
+                  - name: SEARCH_API_CADIDB_USER
+                    valueFrom:
+                      secretKeyRef:
+                        name: search-api-cadidb-secrets
+                        key: SEARCH_API_CADIDB_USER
+                  - name: SEARCH_API_CADIDB_PASSWORD
+                    valueFrom:
+                      secretKeyRef:
+                        name: search-api-cadidb-secrets
+                        key: SEARCH_API_CADIDB_PASSWORD
+                  - name: SEARCH_API_LDAP_URL
+                    value: '{{ secrets.SEARCH_API_LDAP_URL }}'
+                  - name: SEARCH_API_LDAP_ROOTS_FILTER
+                    value: '{{ secrets.SEARCH_API_LDAP_ROOTS_FILTER }}'
+                  - name: SEARCH_API_MD_BASE_URL
+                    value: '{{ secrets.SEARCH_API_MD_BASE_URL }}'
+                  - name: SEARCH_API_MD_USER
+                    valueFrom:
+                      secretKeyRef:
+                        name: search-api-md-secrets
+                        key: SEARCH_API_MD_USER
+                  - name: SEARCH_API_MD_PASSWORD
+                    valueFrom:
+                      secretKeyRef:
+                        name: search-api-md-secrets
+                        key: SEARCH_API_MD_PASSWORD
+                resources:
+                  limits:
+                    cpu: 500m
+                    memory: 512Mi
+                  requests:
+                    cpu: 100m
+                    memory: 128Mi
+                livenessProbe:
+                  httpGet:
+                    path: /healthz
+                    port: 5555
+                  initialDelaySeconds: 2
+                  periodSeconds: 15
+                  timeoutSeconds: 5
+                readinessProbe:
+                  httpGet:
+                    path: /healthz
+                    port: 5555
+                  initialDelaySeconds: 2
+                  periodSeconds: 15
+                  timeoutSeconds: 5
+# - name: SearchAPI - Restart
+#   when: >-
+#     ('app.restart' in ansible_run_tags)
+#     or
+#     (_searchapi_push is changed)
+#   local_action:
+#     module: shell
+#     cmd: >-
+#       oc patch deployment/{{ app_name }} --namespace {{ openshift_namespace }} --patch \
+#       '{"spec": {"template": {"metadata": {"annotations": {"last-restart": "{{ ansible_date_time.iso8601 }}"}}}}}'
+#   tags: app.restart

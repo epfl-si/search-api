@@ -1,0 +1,13 @@
+all:
+  hosts:
+    search-staging-openshift:
+      ansible_connection: local
+      ansible_host: localhost
+      openshift_namespace: svc0012t-search-engine
+      ansible_python_interpreter: '{{searchapisible_suitcase_dir}}/bin/python3'
+  vars:
+    hostnames:
+      - staging-search-api.epfl.ch
+    routes_availability: private
+    secrets: '{{ lookup("file", "/keybase/team/epfl_search/api/staging/secrets.yml") | from_yaml }}'
+    tag: 0.9.4

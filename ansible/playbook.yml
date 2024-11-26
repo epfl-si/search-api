@@ -1,5 +1,5 @@
 - name: Search API Kubernetes objects
-  hosts: openshift_namespaces
+  hosts: all
   gather_facts: yes
   roles:
     - role: roles/search-api-k8s

@@ -1,15 +1,15 @@
 all:
-  children:
-    openshift_namespaces:
-      hosts:
-        wwp: {}
-      vars:
-        ansible_connection: local
-        openshift_namespace: 'wwp'
-
-        hostnames:
-          - search-backend.epfl.ch
-          - search-2012.epfl.ch
-          - search-api.epfl.ch
-        tag: latest
-        searchapi_secrets: "{{ lookup('file', '/keybase/team/epfl_search/api/prod/secrets.yml') | from_yaml }}"
+  hosts:
+    search-staging-openshift:
+      ansible_connection: local
+      ansible_host: localhost
+      openshift_namespace: svc0012p-search-engine
+      ansible_python_interpreter: '{{searchapisible_suitcase_dir}}/bin/python3'
+  vars:
+    hostnames:
+      - search-backend.epfl.ch
+      - search-2012.epfl.ch
+      - search-api.epfl.ch
+    routes_availability: public
+    secrets: '{{ lookup("file", "/keybase/team/epfl_search/api/prod/secrets.yml") | from_yaml }}'
+    tag: 0.9.4
