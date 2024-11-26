@@ -19,7 +19,7 @@ jobs:
             --tag search-api
 
       - name: Scan image
-        uses: aquasecurity/trivy-action@0.10.0
+        uses: aquasecurity/trivy-action@0.29.0
         with:
           image-ref: 'search-api'
           severity: 'CRITICAL,HIGH'
