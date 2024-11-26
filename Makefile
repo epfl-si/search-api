@@ -9,7 +9,7 @@ HADOLINT_VLOCAL = -v ${mkfile_dir}:/host:ro
 HADOLINT = @docker run --rm ${HADOLINT_VLOCAL} ${HADOLINT_IMAGE}:${HADOLINT_VERSION}
 
 TRIVY_IMAGE = aquasec/trivy
-TRIVY_VERSION = 0.40.0
+TRIVY_VERSION = 0.57.1
 TRIVY_VCACHE = -v /tmp/trivy/:/root/.cache/
 TRIVY_VLOCAL = -v /var/run/docker.sock:/var/run/docker.sock
 TRIVY = @docker run --rm ${TRIVY_VCACHE} ${TRIVY_VLOCAL} ${TRIVY_IMAGE}:${TRIVY_VERSION}
@@ -78,7 +78,7 @@ docs:
 
 .PHONY: scan
 scan:
-	@${TRIVY} image --clear-cache
+	@${TRIVY} clean --scan-cache
 	@${TRIVY} image --severity HIGH,CRITICAL search-api:latest
 
 .PHONY: inspect
