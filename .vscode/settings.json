@@ -6,10 +6,17 @@
     ],
     "editor.formatOnSave": false
   },
+  "ansible.python.interpreterPath": "ansible/ansible-deps-cache/bin/python3",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "eslint.validate": ["javascript"],
   "files.associations": {
-    "**/*.ejs": "html"
-  }
+    "**/*.ejs": "html",
+    "**/inventory/*.yml": "ansible",
+    "**/tasks/*.yml": "ansible"
+  },
+  "files.exclude": {
+    "ansible/ansible-deps-cache": true
+  },
+  "python.analysis.exclude": ["ansible/ansible-deps-cache/**"]
 }

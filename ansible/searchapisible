@@ -38,7 +38,7 @@ ensure_ansible () {
           SUITCASE_DIR=$PWD/ansible-deps-cache \
           SUITCASE_ANSIBLE_VERSION=10.6.0 \
           SUITCASE_ANSIBLE_REQUIREMENTS=requirements.yml \
-          SUITCASE_PIP_EXTRA="kubernetes" \
+          SUITCASE_PIP_EXTRA="ansible-lint kubernetes" \
           bash -x
   fi
 
