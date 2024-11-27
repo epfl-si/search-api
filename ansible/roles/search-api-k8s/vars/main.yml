@@ -1,2 +1,5 @@
 app_name: 'search-api'
 team: 'isas-fsd'
+
+ghcr_registry: 'ghcr.io/epfl-si'
+quay_registry: 'quay-its.epfl.ch/svc0012'

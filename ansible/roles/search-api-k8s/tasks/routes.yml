@@ -1,0 +1,27 @@
+- name: Search API - Routes
+  with_items: '{{ hostnames }}'
+  kubernetes.core.k8s:
+    definition:
+      apiVersion: route.openshift.io/v1
+      kind: Route
+      metadata:
+        name: '{{ item }}'
+        namespace: '{{ openshift_namespace }}'
+        labels:
+          app: '{{ app_name }}'
+          team: '{{ team }}'
+          route: '{{ routes_availability }}'
+        annotations:
+          router.openshift.io/cookie-same-site: Strict
+          haproxy.router.openshift.io/hsts_header: max-age=15552001
+      spec:
+        host: '{{ item }}'
+        wildcardPolicy: None
+        port:
+          targetPort: '80'
+        tls:
+          termination: edge
+          insecureEdgeTerminationPolicy: Redirect
+        to:
+          kind: Service
+          name: '{{ app_name }}'

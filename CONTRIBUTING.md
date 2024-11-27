@@ -2,8 +2,9 @@
 
 ## Prerequisites
 
-- Access to our Keybase `/keybase/team/epfl_search` directory.
-- Access to `wwp-test` and `wwp` namespaces on our OpenShift cluster.
+- Groups `vra_p_svc0012`.
+- Keybase `epfl_search`.
+- Access to ghcr.io via a personal access tokens (PATs).
 
 ## Setup
 
@@ -74,21 +75,10 @@ git push origin main --tags
 
 ## Deploy
 
-Log into `ghcr.io`, `os-docker-registry.epfl.ch` and OpenShift, then
+```bash
+# Help
+./ansible/searchapisible --help
 
-```text
-Usage: ./ansible/searchapisible [options]
-
-Options:
-  -h, --help         Show help message and exit
-      --list-tags    List all available tags
-      --prod         Deploy in production
-  -t, --tags         Run tasks tagged with these values             [string]
-  -v, --verbose      Causes Ansible to print more debug messages
-      --version      Show version number
-
-Examples:
-  ./ansible/searchapisible
-  ./ansible/searchapisible --prod
-  ./ansible/searchapisible --prod -t app.restart
+# Production
+./ansible/searchapisible --prod
 ```

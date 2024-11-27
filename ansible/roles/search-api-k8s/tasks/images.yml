@@ -1,0 +1,11 @@
+- name: Search API - Pull image
+  community.docker.docker_image:
+    name: '{{ ghcr_registry }}/{{ app_name }}:v{{ tag }}'
+    source: pull
+
+- name: Search API - Push image
+  community.docker.docker_image:
+    name: '{{ ghcr_registry }}/{{ app_name }}:v{{ tag }}'
+    repository: '{{ quay_registry }}/{{ app_name }}:{{ tag }}'
+    push: true
+    source: local

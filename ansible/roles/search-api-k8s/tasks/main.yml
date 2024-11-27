@@ -1,29 +1,28 @@
+- name: Images tasks
+  ansible.builtin.include_tasks:
+    file: 'images.yml'
+    apply:
+      tags: searchapi.images
+  tags: searchapi.images
+
 - name: Secrets tasks
-  include_tasks:
+  ansible.builtin.include_tasks:
     file: 'secrets.yml'
     apply:
-      tags: Secrets
-  tags: Secrets
+      tags: searchapi.secrets
+  tags: searchapi.secrets
 
-- name: Image tasks
-  include_tasks:
-    file: 'image.yml'
+- name: Routes tasks
+  ansible.builtin.include_tasks:
+    file: 'routes.yml'
     apply:
-      tags: image
-  tags: image
-
-- name: Route tasks
-  include_tasks:
-    file: 'route.yml'
-    apply:
-      tags: route
-  tags: route
+      tags: searchapi.routes
+  tags: searchapi.routes
 
 - name: App tasks
-  include_tasks:
+  ansible.builtin.include_tasks:
     file: 'app.yml'
     apply:
-      tags: app
+      tags: searchapi.app
   tags:
-    - app
-    - app.restart
+    - searchapi.app
