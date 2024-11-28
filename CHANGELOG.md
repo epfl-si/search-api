@@ -1,5 +1,21 @@
 # CHANGELOG
 
+### v1.0.0 / 2024-11-28
+
+- Migrate to OpenShift 4
+- Add memorystore package
+- Add express-session package
+- Add Ansible in VS Code
+- Init passport-tequila
+- Remove starting v in image tag
+- Update Trivy to 0.57.1
+- Bump body-parser and express
+- Bump path-to-regexp and express
+- Bump send and express
+- Bump serve-static and express
+- Bump axios from 1.6.0 to 1.7.4
+- Bump cookie, express and express-session
+
 ### v0.9.4 / 2024-07-08
 
 - Boost ranking for people with multiple names
