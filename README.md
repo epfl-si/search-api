@@ -157,7 +157,7 @@ Only allowed via EPFL intranet or VPN.
 
 ### Endpoint
 
-`GET /api/graphsearch` [**Deprecated**]
+[**Deprecated**] `GET /api/graphsearch`
 
 ### Parameters
 
