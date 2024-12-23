@@ -6,10 +6,15 @@ all:
       openshift_namespace: svc0012p-search-engine
       ansible_python_interpreter: '{{searchapisible_suitcase_dir}}/bin/python3'
   vars:
+    routes_availability: public
     hostnames:
       - search-backend.epfl.ch
       - search-2012.epfl.ch
       - search-api.epfl.ch
-    routes_availability: public
+
+    haproxy_tag: 3.0.7-alpine
+    haproxy_image: 'haproxy:{{ haproxy_tag }}'
+    haproxy_config: '{{ lookup("file", "/keybase/team/epfl_search/api/prod/haproxy.cfg") }}'
+
     secrets: '{{ lookup("file", "/keybase/team/epfl_search/api/prod/secrets.yml") | from_yaml }}'
     tag: 1.0.0
