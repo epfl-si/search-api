@@ -1,0 +1,317 @@
+{
+  "query": { "q": "ph", "types": ["any"], "limit": 1000 },
+  "result_count": 1000,
+  "items": [
+    {
+      "url": "https://graphsearch.epfl.ch/category/physics",
+      "depth": 2,
+      "path": [
+        {
+          "url": "https://graphsearch.epfl.ch/category/academic-disciplines",
+          "id": "academic-disciplines",
+          "external_url": {
+            "en": "https://en.wikipedia.org/wiki/Academic_discipline",
+            "fr": "https://fr.wikipedia.org/wiki/Discipline_(spécialité)"
+          },
+          "created": "2023-09-13T14:09:05.000Z",
+          "updated": null,
+          "subtype": { "en": null, "fr": null },
+          "short_code": null,
+          "type": "category",
+          "name": {
+            "en": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Academic disciplines"
+            },
+            "fr": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Discipline (spécialité)"
+            }
+          },
+          "description_short": {
+            "en": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "An academic discipline or academic field is a subdivision of knowledge that is taught and researched at the college or university level."
+            },
+            "fr": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Une discipline désigne une branche du savoir développée par une communauté de spécialistes adhérant aux mêmes pratiques de recherche."
+            }
+          },
+          "description_medium": {
+            "en": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "An academic discipline or academic field is a subdivision of knowledge that is taught and researched at the college or university level. Disciplines are defined (in part) and recognized by the academic journals in which research is published, and the learned societies and academic departments or faculties within colleges and universities to which their practitioners belong. Academic disciplines are conventionally divided into the humanities, including language, art and cultural studies, and the scientific disciplines, such as physics, chemistry, and biology; the social sciences are sometimes considered a third category."
+            },
+            "fr": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Une discipline désigne une branche du savoir développée par une communauté de spécialistes adhérant aux mêmes pratiques de recherche. On parle ainsi de discipline scientifique ou de discipline littéraire. Un certain nombre de disciplines sont entre les deux genres. En sciences, les membres d'une discipline forment une communauté scientifique et adhèrent aux mêmes critères de démarcation assujettis à la réfutabilité."
+            }
+          },
+          "description_long": {
+            "en": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "An academic discipline or academic field is a subdivision of knowledge that is taught and researched at the college or university level. Disciplines are defined (in part) and recognized by the academic journals in which research is published, and the learned societies and academic departments or faculties within colleges and universities to which their practitioners belong. Academic disciplines are conventionally divided into the humanities, including language, art and cultural studies, and the scientific disciplines, such as physics, chemistry, and biology; the social sciences are sometimes considered a third category.\nIndividuals associated with academic disciplines are commonly referred to as experts or specialists. Others, who may have studied liberal arts or systems theory rather than concentrating in a specific academic discipline, are classified as generalists.\nWhile academic disciplines in and of themselves are more or less focused practices, scholarly approaches such as multidisciplinarity/interdisciplinarity, transdisciplinarity, and cross-disciplinarity integrate aspects from multiple academic disciplines, therefore addressing any problems that may arise from narrow concentration within specialized fields of study. For example, professionals may encounter trouble communicating across academic disciplines because of differences in language, specified concepts, or methodology.\nSome researchers believe that academic disciplines may, in the future, be replaced by what is known as Mode 2 or \"post-academic science\", which involves the acquisition of cross-disciplinary knowledge through the collaboration of specialists from various academic disciplines.\nIt is also known as a field of study, field of inquiry, research field and branch of knowledge. The different terms are used in different countries and fields.\nThe University of Paris in 1231 consisted of four faculties: Theology, Medicine, Canon Law and Arts. Educational institutions originally used the term \"discipline\" to catalog and archive the new and expanding body of information produced by the scholarly community."
+            },
+            "fr": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Une discipline désigne une branche du savoir développée par une communauté de spécialistes adhérant aux mêmes pratiques de recherche.\nOn parle ainsi de discipline scientifique ou de discipline littéraire. Un certain nombre de disciplines sont entre les deux genres.\nEn sciences, les membres d'une discipline forment une communauté scientifique et adhèrent aux mêmes critères de démarcation assujettis à la réfutabilité.\nUne discipline est définie par l’ensemble des référentiels qu’elle utilise pour étudier un ensemble d’objets (dans la matrice ci-dessous, les pratiques sociales et individuelles sont des exemples d'objets).\nPar exemple la sociologie va étudier telle dimension des pratiques sociales, la psychologie telle autre dimension des mêmes pratiques sociales dont le champ n'est donc pas « réservé ». L'anthropologie va étudier telle dimension des pratiques individuelles et la psychanalyse telles autres dimensions.\nRaymond Aron définit la sociologie comme « ce que font les sociologues ». Baudouin Jurdant souligne que « depuis l'invention de l'expression « économie politique » par Antoine de Montchrestien en 1615, on en trouve pratiquement une définition par auteur. »\nAu début de la création d’une discipline, les chercheurs qui la créent doivent faire un effort important de définition afin d’obtenir la reconnaissance par les organismes idoines (selon les pays, CNU, CNRS, etc.). Puis la discipline va étendre ses champs d’intervention avec des arbitrages vis-à-vis des disciplines voisines.\nOn peut parler de discipline du chercheur au sens où le chercheur, afin de produire un discours positif qui enrichisse la noosphère, doit discipliner :\nSa capacité à construire des dispositifs pour la recherche ;\nL’usage de sa perception ;\nLa traduction de sa perception en discours, schémas, etc.\nOn emploiera plutôt le synonyme de « pratique rationnelle de la recherche ».\nJurdant, Baudouin, 1999, Le désir de scientificité, Alliage Numéro 41-42\nDiscipline scientifique\nProblème de la démarcation\nSciences\nSciences humaines\nLa peste et la stratégie disciplinaire\nSandoz, R."
+            }
+          }
+        },
+        {
+          "url": "https://graphsearch.epfl.ch/category/natural-sciences",
+          "id": "natural-sciences",
+          "external_url": {
+            "en": "https://en.wikipedia.org/wiki/Natural_science",
+            "fr": "https://fr.wikipedia.org/wiki/Science_de_la_nature"
+          },
+          "created": "2023-09-13T14:09:05.000Z",
+          "updated": null,
+          "subtype": { "en": null, "fr": null },
+          "short_code": null,
+          "type": "category",
+          "name": {
+            "en": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Natural sciences"
+            },
+            "fr": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Science de la nature"
+            }
+          },
+          "description_short": {
+            "en": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Natural science is one of the branches of science concerned with the description, understanding and prediction of natural phenomena, based on empirical evidence from observation and experimentation."
+            },
+            "fr": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Les sciences de la nature, ou sciences naturelles, ont pour objet le monde naturel. Il s'agit de termes surtout utilisés dans le domaine de l'enseignement scolaire."
+            }
+          },
+          "description_medium": {
+            "en": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Natural science is one of the branches of science concerned with the description, understanding and prediction of natural phenomena, based on empirical evidence from observation and experimentation. Mechanisms such as peer review and repeatability of findings are used to try to ensure the validity of scientific advances. Natural science can be divided into two main branches: life science and physical science. Life science is alternatively known as biology, and physical science is subdivided into branches: physics, chemistry, earth science, and astronomy."
+            },
+            "fr": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Les sciences de la nature, ou sciences naturelles, ont pour objet le monde naturel. Il s'agit de termes surtout utilisés dans le domaine de l'enseignement scolaire. Les termes « sciences de la nature », « sciences naturelles » et « histoire naturelle » sont en réalité équivalents. La nuance sémantique qui les différencie consiste en ce que « sciences de la nature » et « sciences naturelles » sont des termes qui mettent l'accent sur un ensemble de sciences, chacune spécialisée, alors que le terme « histoire naturelle », le plus ancien des trois, est toujours exprimé au singulier en signifiant ainsi davantage l'unicité des sciences qui étudient la nature plutôt que leur diversité en tant que telle."
+            }
+          },
+          "description_long": {
+            "en": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Natural science is one of the branches of science concerned with the description, understanding and prediction of natural phenomena, based on empirical evidence from observation and experimentation. Mechanisms such as peer review and repeatability of findings are used to try to ensure the validity of scientific advances.\nNatural science can be divided into two main branches: life science and physical science. Life science is alternatively known as biology, and physical science is subdivided into branches: physics, chemistry, earth science, and astronomy. These branches of natural science may be further divided into more specialized branches (also known as fields). As empirical sciences, natural sciences use tools from the formal sciences, such as mathematics and logic, converting information about nature into measurements which can be explained as clear statements of the \"laws of nature\".\nModern natural science succeeded more classical approaches to natural philosophy, usually traced to Taoist traditions in Asia and to ancient Greece in Europe. Galileo, Descartes, Bacon, and Newton debated the benefits of using approaches which were more mathematical and more experimental in a methodical way. Still, philosophical perspectives, conjectures, and presuppositions, often overlooked, remain necessary in natural science. Systematic data collection, including discovery science, succeeded natural history, which emerged in the 16th century by describing and classifying plants, animals, minerals, and so on. Today, \"natural history\" suggests observational descriptions aimed at popular audiences.\nPhilosophy of science\nPhilosophers of science have suggested several criteria, including Karl Popper's controversial falsifiability criterion, to help them differentiate scientific endeavors from non-scientific ones. Validity, accuracy, and quality control, such as peer review and repeatability of findings, are amongst the most respected criteria in today's global scientific community."
+            },
+            "fr": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Les sciences de la nature, ou sciences naturelles, ont pour objet le monde naturel. Il s'agit de termes surtout utilisés dans le domaine de l'enseignement scolaire. Les termes « sciences de la nature », « sciences naturelles » et « histoire naturelle » sont en réalité équivalents. La nuance sémantique qui les différencie consiste en ce que « sciences de la nature » et « sciences naturelles » sont des termes qui mettent l'accent sur un ensemble de sciences, chacune spécialisée, alors que le terme « histoire naturelle », le plus ancien des trois, est toujours exprimé au singulier en signifiant ainsi davantage l'unicité des sciences qui étudient la nature plutôt que leur diversité en tant que telle.\nListe par ordre alphabétique, non exhaustive :\nDans l'enseignement en France :\nl'appellation « sciences naturelles » désigne généralement l'ensemble des disciplines scientifiques portant sur l'étude de la nature au sens écologique ou environnemental du terme. C'est-à-dire de « l'ensemble formé par les sciences de la vie et celles de l'écosystème ayant permis l'éclosion de la vie ». Elle peut regrouper les sciences de la vie et les sciences de la Terre : dans l'enseignement secondaire l'enseignement de la biologie et de la géologie constituait les sciences naturelles avec un CAPES, ainsi qu'une agrégation de sciences naturelles, pour cette dernière, la séparation fut institutionnellement établie en France en 1958, avec l'apparition des options « sciences de la Terre » et « sciences biologiques » . De nos jours, un assortiment de sciences comprenant la zoologie la botanique certaines sciences de la Terre est enseigné dans les classes de l'enseignement primaire sous l'appellation « sciences naturelles » ;\nles « sciences de la nature » englobe, en français, un plus vaste ensemble de sciences, avec notamment la physique et la chimie ; ce terme s'oppose parfois aux sciences \"abstraites\" que constituent les mathématiques ;\nle terme « histoire naturelle », comme synonyme de sciences naturelles, a été peu, ou jamais, utilisé dans l'enseignement scolaire en France."
+            }
+          }
+        },
+        {
+          "url": "https://graphsearch.epfl.ch/category/physics",
+          "id": "physics",
+          "external_url": {
+            "en": "https://en.wikipedia.org/wiki/Physics",
+            "fr": "https://fr.wikipedia.org/wiki/Physique"
+          },
+          "created": "2023-09-13T14:09:05.000Z",
+          "updated": null,
+          "subtype": { "en": null, "fr": null },
+          "short_code": null,
+          "type": "category",
+          "name": {
+            "en": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Physics"
+            },
+            "fr": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Physique"
+            }
+          },
+          "description_short": {
+            "en": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Physics is the natural science of matter, involving the study of matter, its fundamental constituents, its motion and behavior through space and time, and the related entities of energy and force."
+            },
+            "fr": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "La physique est la science qui essaie de comprendre, de modéliser et d'expliquer les phénomènes naturels de l'Univers."
+            }
+          },
+          "description_medium": {
+            "en": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Physics is the natural science of matter, involving the study of matter, its fundamental constituents, its motion and behavior through space and time, and the related entities of energy and force. Physics is one of the most fundamental scientific disciplines, with its main goal being to understand how the universe behaves. A scientist who specializes in the field of physics is called a physicist. Physics is one of the oldest academic disciplines and, through its inclusion of astronomy, perhaps the oldest."
+            },
+            "fr": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "La physique est la science qui essaie de comprendre, de modéliser et d'expliquer les phénomènes naturels de l'Univers. Elle correspond à l'étude du monde qui nous entoure sous toutes ses formes, des lois de ses variations et de leur évolution. La physique développe des représentations du monde expérimentalement vérifiables dans un domaine de définition donné. Elle produit plusieurs lectures du monde, chacune n'étant considérée comme précise que jusqu'à un certain point."
+            }
+          },
+          "description_long": {
+            "en": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "Physics is the natural science of matter, involving the study of matter, its fundamental constituents, its motion and behavior through space and time, and the related entities of energy and force. Physics is one of the most fundamental scientific disciplines, with its main goal being to understand how the universe behaves. A scientist who specializes in the field of physics is called a physicist.\nPhysics is one of the oldest academic disciplines and, through its inclusion of astronomy, perhaps the oldest. Over much of the past two millennia, physics, chemistry, biology, and certain branches of mathematics were a part of natural philosophy, but during the Scientific Revolution in the 17th century these natural sciences emerged as unique research endeavors in their own right. Physics intersects with many interdisciplinary areas of research, such as biophysics and quantum chemistry, and the boundaries of physics are not rigidly defined. New ideas in physics often explain the fundamental mechanisms studied by other sciences and suggest new avenues of research in these and other academic disciplines such as mathematics and philosophy.\nAdvances in physics often enable new technologies. For example, advances in the understanding of electromagnetism, solid-state physics, and nuclear physics led directly to the development of new products that have dramatically transformed modern-day society, such as television, computers, domestic appliances, and nuclear weapons; advances in thermodynamics led to the development of industrialization; and advances in mechanics inspired the development of calculus.\nHistory of physics\nThe word \"physics\" originates from physikḗ (epistḗmē), meaning \"knowledge of nature\".\nHistory of astronomy\nAstronomy is one of the oldest natural sciences. Early civilizations dating back before 3000 BCE, such as the Sumerians, ancient Egyptians, and the Indus Valley Civilisation, had a predictive knowledge and a basic awareness of the motions of the Sun, Moon, and stars. The stars and planets, believed to represent gods, were often worshipped."
+            },
+            "fr": {
+              "is_auto_generated": false,
+              "is_auto_corrected": false,
+              "is_auto_translated": false,
+              "is_translated_from": null,
+              "value": "La physique est la science qui essaie de comprendre, de modéliser et d'expliquer les phénomènes naturels de l'Univers. Elle correspond à l'étude du monde qui nous entoure sous toutes ses formes, des lois de ses variations et de leur évolution.\nLa physique développe des représentations du monde expérimentalement vérifiables dans un domaine de définition donné. Elle produit plusieurs lectures du monde, chacune n'étant considérée comme précise que jusqu'à un certain point. La modélisation des systèmes physiques peut inclure ou non les processus chimiques et biologiques.\nLa physique telle que conceptualisée par Isaac Newton, aujourd’hui dénommée physique classique, butait sur l'explication de phénomènes naturels comme le rayonnement du corps noir (catastrophe ultraviolette) ou les anomalies de l’orbite de la planète Mercure, ce qui posait un réel problème aux physiciens. Les tentatives effectuées pour comprendre et modéliser les phénomènes nouveaux auxquels on accédait à la fin du révisèrent en profondeur le modèle newtonien pour donner naissance à deux nouveaux ensembles de théories physiques. Il existe donc aujourd'hui trois ensembles de théories physiques établies, chacun valide dans le domaine d’applications qui lui est propre (bien que certains physiciens estiment que les branches de la physique ne s'incluent pas nécessairement dans l'un de ces ensembles) :\nla physique classique (milieux solides, liquides et gazeux), toujours d'actualité, s’applique, par exemple, à la construction des immeubles, des centrales électriques et des avions. Elle utilise les anciennes notions de temps, d'espace, de matière et d'énergie telles que définies par Newton ;\nla physique quantique (monde microscopique des particules et des champs) s’applique, par exemple, à la technologie utilisée pour la production des composants électroniques (la diode à effet tunnel par exemple) ou aux lasers. Elle se fonde sur de nouvelles définitions de l'énergie et de la matière, mais conserve les anciennes notions de temps et d'espace de la physique classique."
+            }
+          }
+        }
+      ],
+      "id": "physics",
+      "external_url": {
+        "en": "https://en.wikipedia.org/wiki/Physics",
+        "fr": "https://fr.wikipedia.org/wiki/Physique"
+      },
+      "created": "2023-09-13T14:09:05.000Z",
+      "updated": null,
+      "subtype": { "en": null, "fr": null },
+      "short_code": null,
+      "type": "category",
+      "name": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "Physics"
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "Physique"
+        }
+      },
+      "description_short": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "Physics is the natural science of matter, involving the study of matter, its fundamental constituents, its motion and behavior through space and time, and the related entities of energy and force."
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "La physique est la science qui essaie de comprendre, de modéliser et d'expliquer les phénomènes naturels de l'Univers."
+        }
+      },
+      "description_medium": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "Physics is the natural science of matter, involving the study of matter, its fundamental constituents, its motion and behavior through space and time, and the related entities of energy and force. Physics is one of the most fundamental scientific disciplines, with its main goal being to understand how the universe behaves. A scientist who specializes in the field of physics is called a physicist. Physics is one of the oldest academic disciplines and, through its inclusion of astronomy, perhaps the oldest."
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "La physique est la science qui essaie de comprendre, de modéliser et d'expliquer les phénomènes naturels de l'Univers. Elle correspond à l'étude du monde qui nous entoure sous toutes ses formes, des lois de ses variations et de leur évolution. La physique développe des représentations du monde expérimentalement vérifiables dans un domaine de définition donné. Elle produit plusieurs lectures du monde, chacune n'étant considérée comme précise que jusqu'à un certain point."
+        }
+      },
+      "description_long": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "Physics is the natural science of matter, involving the study of matter, its fundamental constituents, its motion and behavior through space and time, and the related entities of energy and force. Physics is one of the most fundamental scientific disciplines, with its main goal being to understand how the universe behaves. A scientist who specializes in the field of physics is called a physicist.\nPhysics is one of the oldest academic disciplines and, through its inclusion of astronomy, perhaps the oldest. Over much of the past two millennia, physics, chemistry, biology, and certain branches of mathematics were a part of natural philosophy, but during the Scientific Revolution in the 17th century these natural sciences emerged as unique research endeavors in their own right. Physics intersects with many interdisciplinary areas of research, such as biophysics and quantum chemistry, and the boundaries of physics are not rigidly defined. New ideas in physics often explain the fundamental mechanisms studied by other sciences and suggest new avenues of research in these and other academic disciplines such as mathematics and philosophy.\nAdvances in physics often enable new technologies. For example, advances in the understanding of electromagnetism, solid-state physics, and nuclear physics led directly to the development of new products that have dramatically transformed modern-day society, such as television, computers, domestic appliances, and nuclear weapons; advances in thermodynamics led to the development of industrialization; and advances in mechanics inspired the development of calculus.\nHistory of physics\nThe word \"physics\" originates from physikḗ (epistḗmē), meaning \"knowledge of nature\".\nHistory of astronomy\nAstronomy is one of the oldest natural sciences. Early civilizations dating back before 3000 BCE, such as the Sumerians, ancient Egyptians, and the Indus Valley Civilisation, had a predictive knowledge and a basic awareness of the motions of the Sun, Moon, and stars. The stars and planets, believed to represent gods, were often worshipped."
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "La physique est la science qui essaie de comprendre, de modéliser et d'expliquer les phénomènes naturels de l'Univers. Elle correspond à l'étude du monde qui nous entoure sous toutes ses formes, des lois de ses variations et de leur évolution.\nLa physique développe des représentations du monde expérimentalement vérifiables dans un domaine de définition donné. Elle produit plusieurs lectures du monde, chacune n'étant considérée comme précise que jusqu'à un certain point. La modélisation des systèmes physiques peut inclure ou non les processus chimiques et biologiques.\nLa physique telle que conceptualisée par Isaac Newton, aujourd’hui dénommée physique classique, butait sur l'explication de phénomènes naturels comme le rayonnement du corps noir (catastrophe ultraviolette) ou les anomalies de l’orbite de la planète Mercure, ce qui posait un réel problème aux physiciens. Les tentatives effectuées pour comprendre et modéliser les phénomènes nouveaux auxquels on accédait à la fin du révisèrent en profondeur le modèle newtonien pour donner naissance à deux nouveaux ensembles de théories physiques. Il existe donc aujourd'hui trois ensembles de théories physiques établies, chacun valide dans le domaine d’applications qui lui est propre (bien que certains physiciens estiment que les branches de la physique ne s'incluent pas nécessairement dans l'un de ces ensembles) :\nla physique classique (milieux solides, liquides et gazeux), toujours d'actualité, s’applique, par exemple, à la construction des immeubles, des centrales électriques et des avions. Elle utilise les anciennes notions de temps, d'espace, de matière et d'énergie telles que définies par Newton ;\nla physique quantique (monde microscopique des particules et des champs) s’applique, par exemple, à la technologie utilisée pour la production des composants électroniques (la diode à effet tunnel par exemple) ou aux lasers. Elle se fonde sur de nouvelles définitions de l'énergie et de la matière, mais conserve les anciennes notions de temps et d'espace de la physique classique."
+        }
+      }
+    }
+  ]
+}

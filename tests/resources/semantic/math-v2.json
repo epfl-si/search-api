@@ -1,0 +1,83 @@
+{
+  "query": { "q": "math", "types": ["any"], "limit": 10 },
+  "result_count": 10,
+  "items": [
+    {
+      "url": "https://graphsearch.epfl.ch/concept/26691",
+      "id": "26691",
+      "external_url": {
+        "en": "https://en.wikipedia.org/wiki/Set_(mathematics)",
+        "fr": "https://fr.wikipedia.org/wiki/Ensemble"
+      },
+      "created": "2023-09-13T14:09:05.000Z",
+      "updated": null,
+      "subtype": { "en": "Concept", "fr": null },
+      "short_code": null,
+      "type": "concept",
+      "name": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "Set (mathematics)"
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "Ensemble"
+        }
+      },
+      "description_short": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "A set is the mathematical model for a collection of different things; a set contains elements or members, which can be mathematical objects of any kind: numbers, symbols, points in space, lines, other geometrical shapes, variables, or even other sets."
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "vignette|Ensemble de polygones dans un diagramme d'Euler En mathématiques, un ensemble désigne intuitivement un rassemblement d’objets distincts (les éléments de l'ensemble), « une multitude qui peut être comprise comme une totalité » pour paraphraser Georg Cantor qui est à l'origine de la théorie des ensembles."
+        }
+      },
+      "description_medium": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "A set is the mathematical model for a collection of different things; a set contains elements or members, which can be mathematical objects of any kind: numbers, symbols, points in space, lines, other geometrical shapes, variables, or even other sets. The set with no element is the empty set; a set with a single element is a singleton. A set may have a finite number of elements or be an infinite set. Two sets are equal if they have precisely the same elements. Sets are ubiquitous in modern mathematics."
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "vignette|Ensemble de polygones dans un diagramme d'Euler En mathématiques, un ensemble désigne intuitivement un rassemblement d’objets distincts (les éléments de l'ensemble), « une multitude qui peut être comprise comme une totalité » pour paraphraser Georg Cantor qui est à l'origine de la théorie des ensembles. Dans une approche axiomatique, la théorie des ensembles est une théorie de l'appartenance (un élément d'un ensemble est dit « appartenir » à cet ensemble)."
+        }
+      },
+      "description_long": {
+        "en": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "A set is the mathematical model for a collection of different things; a set contains elements or members, which can be mathematical objects of any kind: numbers, symbols, points in space, lines, other geometrical shapes, variables, or even other sets. The set with no element is the empty set; a set with a single element is a singleton. A set may have a finite number of elements or be an infinite set. Two sets are equal if they have precisely the same elements.\nSets are ubiquitous in modern mathematics. Indeed, set theory, more specifically Zermelo–Fraenkel set theory, has been the standard way to provide rigorous foundations for all branches of mathematics since the first half of the 20th century.\nSet theory\nThe concept of a set emerged in mathematics at the end of the 19th century. The German word for set, Menge, was coined by Bernard Bolzano in his work Paradoxes of the Infinite. Georg Cantor, one of the founders of set theory, gave the following definition at the beginning of his Beiträge zur Begründung der transfiniten Mengenlehre:\nA set is a gathering together into a whole of definite, distinct objects of our perception or our thought—which are called elements of the set.\nBertrand Russell introduced the distinction between a set and a class (a set is a class, but some classes, such as the class of all sets, are not sets; see Russell's paradox):\nWhen mathematicians deal with what they call a manifold, aggregate, Menge, ensemble, or some equivalent name, it is common, especially where the number of terms involved is finite, to regard the object in question (which is in fact a class) as defined by the enumeration of its terms, and as consisting possibly of a single term, which in that case is the class.\nNaive set theory\nThe foremost property of a set is that it can have elements, also called members. Two sets are equal when they have the same elements. More precisely, sets A and B are equal if every element of A is an element of B, and every element of B is an element of A; this property is called the extensionality of sets."
+        },
+        "fr": {
+          "is_auto_generated": false,
+          "is_auto_corrected": false,
+          "is_auto_translated": false,
+          "is_translated_from": null,
+          "value": "vignette|Ensemble de polygones dans un diagramme d'Euler\nEn mathématiques, un ensemble désigne intuitivement un rassemblement d’objets distincts (les éléments de l'ensemble), « une multitude qui peut être comprise comme une totalité » pour paraphraser Georg Cantor qui est à l'origine de la théorie des ensembles.\nDans une approche axiomatique, la théorie des ensembles est une théorie de l'appartenance (un élément d'un ensemble est dit « appartenir » à cet ensemble). Le mot ensemble désigne alors un objet du domaine de cette théorie, et les propriétés des ensembles sont régies par les axiomes de celle-ci. La théorie des ensembles est utilisée pour fonder les mathématiques, et dans cette approche tout objet mathématique est in fine un ensemble.\nMais la notion d'ensemble est aussi une notion de base qui intervient dans à peu près tous les domaines des mathématiques.\nLe mathématicien Georg Cantor, énonçait :\n« Par ensemble, nous entendons tout rassemblement M en une totalité d’objets m de notre intuition ou de notre pensée, déterminés et bien différenciés (qui seront appelés les éléments de M). »\n Ceci était particulièrement novateur, s'agissant d'ensembles éventuellement infinis (ce sont ces derniers qui intéressaient Cantor).\nCe qui est en jeu au premier chef dans la notion d'ensemble, c'est la relation d’appartenance : un élément appartient à un ensemble. Ce sont les propriétés de cette relation que Zermelo, puis d'autres, ont axiomatisées en théorie des ensembles. Il est assez remarquable que l'on puisse s'en contenter pour une théorie qui peut potentiellement formaliser les mathématiques. Mais ce n'était pas l'intention de Cantor, et il n'avait pas non plus axiomatisé sa théorie.\nL'objet de cet article est de donner une approche intuitive de la notion d'ensemble, telle qu'elle est indiquée dans l'article théorie naïve des ensembles.\nUn ensemble peut être vu comme une sorte de sac virtuel entourant ses éléments, ce que modélisent bien les diagrammes de Venn."
+        }
+      }
+    }
+  ]
+}
