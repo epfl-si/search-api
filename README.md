@@ -181,8 +181,8 @@ See [Confluence][confluence-url].
 
 See [Contributing](CONTRIBUTING.md).
 
-[github-actions-image-test]: https://github.com/epfl-si/search-api/workflows/Test/badge.svg?branch=main
-[github-actions-image-build]: https://github.com/epfl-si/search-api/workflows/Build/badge.svg?branch=main
+[github-actions-image-test]: https://github.com/epfl-si/search-api/actions/workflows/test.yml/badge.svg?branch=main
+[github-actions-image-build]: https://github.com/epfl-si/search-api/actions/workflows/build.yml/badge.svg?branch=main
 [github-actions-url]: https://github.com/epfl-si/search-api/actions
 [codecov-image]: https://codecov.io/gh/epfl-si/search-api/branch/main/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/epfl-si/search-api
