@@ -19,6 +19,15 @@
       tags: searchapi.routes
   tags: searchapi.routes
 
+- name: HAProxy tasks
+  ansible.builtin.include_tasks:
+    file: 'haproxy.yml'
+    apply:
+      tags: searchapi.haproxy
+  tags:
+    - searchapi.haproxy
+    - searchapi.haproxy.restart
+
 - name: App tasks
   ansible.builtin.include_tasks:
     file: 'app.yml'

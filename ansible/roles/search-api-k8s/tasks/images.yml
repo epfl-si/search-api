@@ -1,11 +1,25 @@
-- name: Search API - Pull image
+- name: Search API - Pull app image
   community.docker.docker_image:
     name: '{{ ghcr_registry }}/{{ app_name }}:{{ tag }}'
     source: pull
 
-- name: Search API - Push image
+- name: Search API - Push app image
   community.docker.docker_image:
     name: '{{ ghcr_registry }}/{{ app_name }}:{{ tag }}'
     repository: '{{ quay_registry }}/{{ app_name }}:{{ tag }}'
     push: true
+    source: local
+
+- name: Search API - Pull haproxy image
+  community.docker.docker_image:
+    name: '{{ haproxy_image }}'
+    force_source: true
+    source: pull
+
+- name: Search API - Push haproxy image
+  community.docker.docker_image:
+    name: '{{ haproxy_image }}'
+    repository: '{{ quay_registry }}/{{ haproxy_image }}'
+    push: true
+    force_tag: true
     source: local

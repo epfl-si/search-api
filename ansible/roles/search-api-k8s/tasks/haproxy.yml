@@ -1,0 +1,85 @@
+- name: Search API - HAProxy ServiceAccount
+  kubernetes.core.k8s:
+    definition:
+      apiVersion: v1
+      kind: ServiceAccount
+      metadata:
+        name: '{{ app_name }}-haproxy-service-account'
+        namespace: '{{ openshift_namespace }}'
+      imagePullSecrets:
+        - name: '{{ app_name }}-pull-secret'
+
+- name: Search API - HAProxy ConfigMap
+  kubernetes.core.k8s:
+    definition:
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: '{{ app_name }}-haproxy-config'
+        namespace: '{{ openshift_namespace }}'
+      data:
+        haproxy.cfg: |
+          {{ haproxy_config }}
+  register: _haproxy_configmap
+
+- name: Search API - HAProxy Deployment
+  kubernetes.core.k8s:
+    definition:
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: '{{ app_name }}-haproxy'
+        namespace: '{{ openshift_namespace }}'
+        labels:
+          app: '{{ app_name }}'
+          team: '{{ team }}'
+          version: '{{ haproxy_tag }}'
+      spec:
+        replicas: 1
+        selector:
+          matchLabels:
+            app: '{{ app_name }}-haproxy'
+        template:
+          metadata:
+            labels:
+              app: '{{ app_name }}-haproxy'
+              team: '{{ team }}'
+              version: '{{ haproxy_tag }}'
+          spec:
+            serviceAccountName: '{{ app_name }}-haproxy-service-account'
+            containers:
+              - name: haproxy
+                image: '{{ quay_registry }}/{{ haproxy_image }}'
+                resources:
+                  requests:
+                    cpu: '50m'
+                    memory: '32Mi'
+                  limits:
+                    cpu: '100m'
+                    memory: '128Mi'
+                volumeMounts:
+                  - name: haproxy-config-volume
+                    mountPath: /usr/local/etc/haproxy
+            volumes:
+              - name: haproxy-config-volume
+                configMap:
+                  name: '{{ app_name }}-haproxy-config'
+
+- name: Search API - HAProxy Restart
+  when: >-
+    ('searchapi.haproxy.restart' in ansible_run_tags)
+    or
+    ( (_haproxy_configmap | default({})) is changed )
+  kubernetes.core.k8s:
+    state: patched
+    kind: Deployment
+    definition:
+      metadata:
+        name: '{{ app_name }}-haproxy'
+        namespace: '{{ openshift_namespace }}'
+      spec:
+        template:
+          metadata:
+            annotations:
+              last-restart: '{{ ansible_date_time.iso8601 }}'
+  tags: searchapi.haproxy.restart

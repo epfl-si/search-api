@@ -40,8 +40,8 @@ npm run test:watch
 # Development
 make start
 
-# Set up access Cadi DB staging (for Unit tab)
-ssh -f kis@test-search01.epfl.ch -L 33306:db-cadi-staging.epfl.ch:3306 -N
+# Set up access to Cadi DB (for People/Unit tabs)
+oc port-forward deployments/search-api-haproxy 33306:3306
 
 # Production
 make up
