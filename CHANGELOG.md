@@ -1,5 +1,15 @@
 # CHANGELOG
 
+### v1.1.0 / 2025-01-27
+
+- Add Graph Search v2
+- Add jump server to Cadi DB
+- Update CodeQL Action to v3
+- Bump path-to-regexp and express
+- Bump micromatch to 4.0.8
+- Bump cross-spawn to 7.0.6
+- Fix status badges
+
 ### v1.0.0 / 2024-11-28
 
 - Migrate to OpenShift 4
