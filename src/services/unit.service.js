@@ -92,6 +92,7 @@ async function getUnit (acro, lang, isInternal) {
                 `AND ${visibleConditionByCmplType} ` +
                 `AND ${visibleConditionByHierarchy}`;
   const values = [acro];
+  let cosec = [];
 
   const results = await cadidbService.sendQuery(query, values, 'getUnit');
   if (results.length !== 1) {
@@ -136,8 +137,9 @@ async function getUnit (acro, lang, isInternal) {
   if (dict.has_accreds) {
     const unitPersons = await apimdService
       .getPersonsByUnit(dict.id_unite, lang);
-    if (unitPersons.length > 0) {
-      unitFullDetails.people = unitPersons;
+    cosec = unitPersons[1];
+    if (unitPersons[0].length > 0) {
+      unitFullDetails.people = unitPersons[0];
     }
   } else {
     const subunits = await getSubunits(dict.id_unite, lang);
@@ -166,6 +168,21 @@ async function getUnit (acro, lang, isInternal) {
       unitFullDetails.adminData['fmt-list'] =
         `https://search-backend.epfl.ch/api/unit/csv?q=${dict.sigle}` +
         `&hl=${lang}`;
+    }
+    if (cosec.length > 0) {
+      const ldapCosecPerson = await peopleService.getPersonBySciper(
+        cosec[0]
+      );
+      const cosecPerson = ldapUtil.ldap2api(ldapCosecPerson, '', lang);
+      if (cosecPerson.length > 0) {
+        unitFullDetails.cosec = {
+          sciper: cosecPerson[0].sciper,
+          profile: cosecPerson[0].profile,
+          email: cosecPerson[0].email ? cosecPerson[0].email : '',
+          name: cosecPerson[0].name,
+          firstname: cosecPerson[0].firstname
+        };
+      }
     }
   }
 

@@ -75,6 +75,9 @@ async function getPersonsByUnit (unitId, lang) {
     .filter(a => a.authid === 1 && a.value.includes('y'))
     .map(a => a.persid.toString());
   const people = [];
+  const cosec = data.cosec.authorizations
+    .filter(a => a.authid === 97 && a.value.includes('y'))
+    .map(a => a.persid.toString());
 
   data.persons.forEach((person) => {
     if (authorizedScipers.includes(person.id)) {
@@ -102,10 +105,10 @@ async function getPersonsByUnit (unitId, lang) {
       people.push(p);
     }
   });
-  return people.sort((a, b) =>
+  return [people.sort((a, b) =>
     a.name.localeCompare(b.name) ||
     a.firstname.localeCompare(b.firstname)
-  );
+  ), cosec];
 }
 
 async function getUnits (query) {
