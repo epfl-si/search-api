@@ -187,5 +187,12 @@
     "details": "https://units.epfl.ch/#/unites/11301",
     "accreds": "https://accred.epfl.ch/#/catalog/units/11301",
     "fmt-list": "https://search-backend.epfl.ch/api/unit/csv?q=MANDALORE&hl=fr"
+  },
+  "cosec": {
+    "email": "paz.vizsla@epfl.ch",
+    "firstname": "Paz",
+    "name": "Vizsla",
+    "profile": "paz.vizsla",
+    "sciper": "670004"
   }
 }

@@ -19,6 +19,15 @@
       "value": "y:U10000"
     }
   ],
+  "cosec": {
+    "authorizations": [
+      {
+        "authid": 97,
+        "persid": 670006,
+        "value": "y:U10000"
+      }
+    ]
+  },
   "persons": [
     {
       "display": "Bo-Katan Kryze",
