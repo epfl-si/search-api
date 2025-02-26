@@ -31,9 +31,16 @@
         name: '{{ app_name }}-haproxy'
         namespace: '{{ openshift_namespace }}'
         labels:
-          app: '{{ app_name }}'
           team: '{{ team }}'
-          version: '{{ haproxy_tag }}'
+          app.kubernetes.io/component: 'backend'
+          app.kubernetes.io/managed-by: 'ansible'
+          app.kubernetes.io/name: '{{ app_name }}-haproxy'
+          app.kubernetes.io/part-of: 'tools'
+          app.kubernetes.io/version: '{{ haproxy_tag }}'
+          app.openshift.io/runtime: 'haproxy'
+        annotations:
+          app.openshift.io/vcs-uri: 'https://github.com/epfl-si/search-api/'
+          app.openshift.io/vcs-ref: 'v{{ tag }}'
       spec:
         replicas: 1
         selector:
@@ -43,8 +50,6 @@
           metadata:
             labels:
               app: '{{ app_name }}-haproxy'
-              team: '{{ team }}'
-              version: '{{ haproxy_tag }}'
           spec:
             serviceAccountName: '{{ app_name }}-haproxy-service-account'
             containers:
