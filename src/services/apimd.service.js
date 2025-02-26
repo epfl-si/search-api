@@ -174,7 +174,7 @@ async function getCosecDetails (sciperList, unitId, lang) {
   response.data.persons.forEach((person) => {
     const p = {
       sciper: person.id,
-      profile: ldapUtils.getProfile(person.profile, person.id),
+      profile: ldapUtils.getProfile(person.email, person.id),
       email: person.email ? person.email : '',
       name: person.lastnameusual ? person.lastnameusual : person.lastname,
       firstname: person.firstnameusual
