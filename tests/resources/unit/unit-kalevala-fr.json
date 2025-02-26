@@ -56,6 +56,9 @@
     "firstname": "Bo-Katan",
     "name": "Kryze",
     "profile": "670006",
-    "sciper": "670006"
+    "sciper": "670006",
+    "officeList": ["Castle Kryze"],
+    "phoneList": ["+41210054323"],
+    "role": "Correspondante de sécurité (COSEC)"
   }
 }

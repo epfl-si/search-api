@@ -13,6 +13,23 @@ const axiosConfig = {
   timeout: 10000
 };
 
+const roles = {
+  cosec: {
+    M: {
+      fr: 'Correspondant de sécurité (COSEC)',
+      en: 'Safety Delegate (COSEC)'
+    },
+    F: {
+      fr: 'Correspondante de sécurité (COSEC)',
+      en: 'Safety Delegate (COSEC)'
+    },
+    X: {
+      fr: 'Correspondant/Correspondante de sécurité (COSEC)',
+      en: 'Safety Delegate (COSEC)'
+    }
+  }
+};
+
 function getPosition (accred, gender, lang) {
   const position = accred.origin === 's'
     ? {
@@ -66,19 +83,12 @@ function getOfficeList (person, unitId) {
   }
 }
 
-async function getPersonsByUnit (unitId, lang) {
-  const url = '/v1/epfl-search/unit/' + unitId;
-  const response = await axios.get(`${apimdConfig.baseURL}${url}`, axiosConfig);
-  const data = response.data;
+function md2api (data, unitId, lang) {
   // authid 1 → botweb (Appear in the unit's web directory)
   const authorizedScipers = data.authorizations
     .filter(a => a.authid === 1 && a.value.includes('y'))
     .map(a => a.persid.toString());
   const people = [];
-  const cosec = data.cosec.authorizations
-    .filter(a => a.authid === 97 && a.value.includes('y'))
-    .map(a => a.persid.toString());
-
   data.persons.forEach((person) => {
     if (authorizedScipers.includes(person.id)) {
       const p = {
@@ -105,13 +115,30 @@ async function getPersonsByUnit (unitId, lang) {
       people.push(p);
     }
   });
+  return people;
+}
+
+async function getPersonsByUnitRaw (unitId) {
+  const url = '/v1/epfl-search/unit/' + unitId;
+  return await axios.get(`${apimdConfig.baseURL}${url}`, axiosConfig);
+}
+
+async function getPersonsByUnit (unitId, lang) {
+  const response = await getPersonsByUnitRaw(unitId);
+  const people = md2api(response.data, unitId, lang);
+
+  // authid 97 → cosec (Safety Delegate (COSEC))
+  const cosec = response.data.cosec.authorizations
+    .filter(a => a.authid === 97 && a.value.includes('y'))
+    .map(a => a.persid.toString());
+
   return [people.sort((a, b) =>
     a.name.localeCompare(b.name) ||
     a.firstname.localeCompare(b.firstname)
   ), cosec];
 }
 
-async function getUnits (query) {
+async function getUnitsRaw (query) {
   const route = '/v1/units';
   const config = structuredClone(axiosConfig);
   config.params = {
@@ -121,7 +148,7 @@ async function getUnits (query) {
   return await axios.get(`${apimdConfig.baseURL}${route}`, config);
 }
 
-async function getRooms (query) {
+async function getRoomsRaw (query) {
   const route = '/v1/rooms';
   const config = structuredClone(axiosConfig);
   config.params = {
@@ -131,7 +158,7 @@ async function getRooms (query) {
   return await axios.get(`${apimdConfig.baseURL}${route}`, config);
 }
 
-async function getPersonsBySciper (sciperList) {
+async function getPersonsBySciperRaw (sciperList) {
   const route = '/v1/persons';
   const config = structuredClone(axiosConfig);
   config.params = {
@@ -140,9 +167,33 @@ async function getPersonsBySciper (sciperList) {
   return await axios.get(`${apimdConfig.baseURL}${route}`, config);
 }
 
+async function getCosecDetails (sciperList, unitId, lang) {
+  const response = await getPersonsBySciperRaw(sciperList);
+  const people = [];
+
+  response.data.persons.forEach((person) => {
+    const p = {
+      sciper: person.id,
+      profile: ldapUtils.getProfile(person.profile, person.id),
+      email: person.email ? person.email : '',
+      name: person.lastnameusual ? person.lastnameusual : person.lastname,
+      firstname: person.firstnameusual
+        ? person.firstnameusual
+        : person.firstname,
+      phoneList: getPhoneList(person, unitId),
+      officeList: getOfficeList(person, unitId),
+      role: roles.cosec[person.gender][lang]
+    };
+    people.push(p);
+  });
+  return people;
+};
+
 module.exports = {
-  getPersonsBySciper,
+  getCosecDetails,
+  getPersonsBySciperRaw,
   getPersonsByUnit,
-  getRooms,
-  getUnits
+  getPersonsByUnitRaw,
+  getRoomsRaw,
+  getUnitsRaw
 };

@@ -12,7 +12,7 @@ async function checkRoom (query) {
   if (!/^[A-Z].*[0-9]/i.test(room)) {
     return false;
   }
-  const results = await apimdService.getRooms(query);
+  const results = await apimdService.getRoomsRaw(query);
   return results.data.rooms.length > 0;
 }
 
@@ -34,7 +34,9 @@ async function buildHashUnit () {
 }
 
 async function buildHashPhoneRoom (apiResults) {
-  const persons = await apimdService.getPersonsBySciper(listSciper(apiResults));
+  const persons = await apimdService.getPersonsBySciperRaw(
+    listSciper(apiResults)
+  );
 
   const phoneHash = {};
   const roomHash = {};

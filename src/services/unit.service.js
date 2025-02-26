@@ -170,18 +170,13 @@ async function getUnit (acro, lang, isInternal) {
         `&hl=${lang}`;
     }
     if (cosec.length > 0) {
-      const ldapCosecPerson = await peopleService.getPersonBySciper(
-        cosec[0]
+      const cosecPersons = await apimdService.getCosecDetails(
+        cosec,
+        dict.id_unite,
+        lang
       );
-      const cosecPerson = ldapUtil.ldap2api(ldapCosecPerson, '', lang);
-      if (cosecPerson.length > 0) {
-        unitFullDetails.cosec = {
-          sciper: cosecPerson[0].sciper,
-          profile: cosecPerson[0].profile,
-          email: cosecPerson[0].email ? cosecPerson[0].email : '',
-          name: cosecPerson[0].name,
-          firstname: cosecPerson[0].firstname
-        };
+      if (cosecPersons.length > 0) {
+        unitFullDetails.cosec = cosecPersons[0];
       }
     }
   }
@@ -297,7 +292,7 @@ function sortSuggestions (array, q) {
 }
 
 async function getSuggestions (query) {
-  const results = await apimdService.getUnits(query);
+  const results = await apimdService.getUnitsRaw(query);
   const units = results.data.units;
   const suggestions = [];
   for (const unit of units) {
