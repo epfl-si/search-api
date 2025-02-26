@@ -30,7 +30,6 @@ describe('Test API Semantic Sarch ("/api/graphsearch")', () => {
 
   test('It should get an error without argument', async () => {
     const response = await request(app).get('/api/graphsearch/v2');
-    console.log(response.text);
     expect(response.statusCode).toBe(400);
     expect(response.text).toMatch('Oops, something went wrong');
     expect(testOutput.length).toBe(1);
