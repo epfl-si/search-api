@@ -60,7 +60,6 @@ ensure_oc4_login () {
 ensure_ansible
 
 declare -a ansible_args
-ansible_args=(-e "searchapisible_suitcase_dir=$PWD/ansible-deps-cache")
 inventory_mode="dev"
 cluster_url="https://api.ocpitsd0001.xaas.epfl.ch:6443"
 while [ "$#" -gt 0 ]; do
