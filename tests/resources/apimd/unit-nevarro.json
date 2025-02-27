@@ -1,6 +1,9 @@
 {
   "accreds": [],
   "authorizations": [],
+  "cosec": {
+    "authorizations": []
+  },
   "persons": [],
   "unit": {}
 }

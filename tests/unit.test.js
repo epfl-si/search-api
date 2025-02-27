@@ -205,7 +205,37 @@ describe('Test API Unit ("/api/unit")', () => {
     axios.get.mockResolvedValue({ data: mockApimdResponse });
 
     const jsonResult = require('./resources/unit/unit-kalevala-fr.json');
-    const response = await request(app).get('/api/unit?acro=kalevala&hl=fr');
+    const response = await request(app)
+      .get('/api/unit?acro=kalevala&hl=fr')
+      .set({ 'X-EPFL-Internal': 'TRUE' });
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
+  });
+
+  test('It should find Concordia (where COSEC doesnt exists)', async () => {
+    const mockConnection = {
+      query: jest.fn().mockImplementation((query, values, referrer) => {
+        let jsonData;
+        switch (referrer) {
+          case 'getUnit':
+            jsonData = require('./resources/cadidb/getUnit-concordia.json');
+            break;
+          case 'getUnitPath':
+            jsonData = require('./resources/cadidb/getUnitPath-concordia.json');
+        }
+        return Promise.resolve([jsonData]);
+      }),
+      release: jest.fn()
+    };
+    mysql.createPool().getConnection.mockResolvedValue(mockConnection);
+
+    const mockApimdResponse = require('./resources/apimd/unit-concordia.json');
+    axios.get.mockResolvedValue({ data: mockApimdResponse });
+
+    const jsonResult = require('./resources/unit/unit-concordia.json');
+    const response = await request(app)
+      .get('/api/unit?acro=concordia')
+      .set({ 'X-EPFL-Internal': 'TRUE' });
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
   });

@@ -188,6 +188,15 @@
       "value": "y:U10000"
     }
   ],
+  "cosec": {
+    "authorizations": [
+      {
+        "authid": 97,
+        "persid": 670003,
+        "value": "y:U10000"
+      }
+    ]
+  },
   "persons": [
     {
       "display": "Din Djarin",

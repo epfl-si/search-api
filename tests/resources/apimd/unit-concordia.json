@@ -1,0 +1,15 @@
+{
+  "accreds": [],
+  "authorizations": [],
+  "cosec": {
+    "authorizations": [
+      {
+        "authid": 97,
+        "persid": 700000,
+        "value": "y:U10000"
+      }
+    ]
+  },
+  "persons": [],
+  "unit": {}
+}

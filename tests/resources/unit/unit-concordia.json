@@ -1,0 +1,41 @@
+{
+  "code": 11501,
+  "acronym": "CONCORDIA",
+  "name": "Concordia était une lune de la planète Mandalore. La Death Watch a utilisé les mines abandonnées de Concordia comme cachettes secrètes.",
+  "unitPath": "EPFL SO TV-4 CONCORDIA",
+  "path": [
+    {
+      "acronym": "EPFL",
+      "name": "Ecole polytechnique fédérale de Lausanne"
+    },
+    {
+      "acronym": "SO",
+      "name": "Spin-off"
+    },
+    {
+      "acronym": "TV-4",
+      "name": "Série TV 4"
+    },
+    {
+      "acronym": "CONCORDIA",
+      "name": "Concordia était une lune de la planète Mandalore. La Death Watch a utilisé les mines abandonnées de Concordia comme cachettes secrètes."
+    }
+  ],
+  "terminal": "1",
+  "ghost": null,
+  "url": null,
+  "address": null,
+  "head": {
+    "sciper": "670006",
+    "name": "Kryze",
+    "firstname": "Bo-Katan",
+    "email": "",
+    "profile": "670006"
+  },
+  "adminData": {
+    "accreds": "https://accred.epfl.ch/#/catalog/units/11501",
+    "details": "https://units.epfl.ch/#/unites/11501",
+    "fmt-list": "https://search-backend.epfl.ch/api/unit/csv?q=CONCORDIA&hl=fr",
+    "mailing-list": "https://cadiwww.epfl.ch/listes?unite=CONCORDIA"
+  }
+}

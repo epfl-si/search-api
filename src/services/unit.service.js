@@ -92,6 +92,7 @@ async function getUnit (acro, lang, isInternal) {
                 `AND ${visibleConditionByCmplType} ` +
                 `AND ${visibleConditionByHierarchy}`;
   const values = [acro];
+  let cosec = [];
 
   const results = await cadidbService.sendQuery(query, values, 'getUnit');
   if (results.length !== 1) {
@@ -136,8 +137,9 @@ async function getUnit (acro, lang, isInternal) {
   if (dict.has_accreds) {
     const unitPersons = await apimdService
       .getPersonsByUnit(dict.id_unite, lang);
-    if (unitPersons.length > 0) {
-      unitFullDetails.people = unitPersons;
+    cosec = unitPersons[1];
+    if (unitPersons[0].length > 0) {
+      unitFullDetails.people = unitPersons[0];
     }
   } else {
     const subunits = await getSubunits(dict.id_unite, lang);
@@ -166,6 +168,16 @@ async function getUnit (acro, lang, isInternal) {
       unitFullDetails.adminData['fmt-list'] =
         `https://search-backend.epfl.ch/api/unit/csv?q=${dict.sigle}` +
         `&hl=${lang}`;
+    }
+    if (cosec.length > 0) {
+      const cosecPersons = await apimdService.getCosecDetails(
+        cosec,
+        dict.id_unite,
+        lang
+      );
+      if (cosecPersons.length > 0) {
+        unitFullDetails.cosec = cosecPersons[0];
+      }
     }
   }
 
@@ -280,7 +292,7 @@ function sortSuggestions (array, q) {
 }
 
 async function getSuggestions (query) {
-  const results = await apimdService.getUnits(query);
+  const results = await apimdService.getUnitsRaw(query);
   const units = results.data.units;
   const suggestions = [];
   for (const unit of units) {
