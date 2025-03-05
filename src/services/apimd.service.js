@@ -17,15 +17,15 @@ const roles = {
   cosec: {
     M: {
       fr: 'Correspondant de sécurité (COSEC)',
-      en: 'Safety Delegate (COSEC)'
+      en: 'Safety Correspondent (COSEC)'
     },
     F: {
       fr: 'Correspondante de sécurité (COSEC)',
-      en: 'Safety Delegate (COSEC)'
+      en: 'Safety Correspondent (COSEC)'
     },
     X: {
       fr: 'Correspondant/Correspondante de sécurité (COSEC)',
-      en: 'Safety Delegate (COSEC)'
+      en: 'Safety Correspondent (COSEC)'
     }
   }
 };
