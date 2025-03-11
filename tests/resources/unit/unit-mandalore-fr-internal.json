@@ -187,5 +187,15 @@
     "details": "https://units.epfl.ch/#/unites/11301",
     "accreds": "https://accred.epfl.ch/#/catalog/units/11301",
     "fmt-list": "https://search-backend.epfl.ch/api/unit/csv?q=MANDALORE&hl=fr"
+  },
+  "cosec": {
+    "email": "din.djarin@epfl.ch",
+    "firstname": "Din",
+    "name": "Djarin",
+    "officeList": ["Sundari 231", "Bounty Hunter Lane"],
+    "phoneList": ["+41210054321", "+41210054324"],
+    "profile": "din.djarin",
+    "sciper": "670003",
+    "role": "Correspondant de sécurité (COSEC)"
   }
 }
