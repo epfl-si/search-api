@@ -127,7 +127,7 @@ async function getPersonsByUnit (unitId, lang) {
   const response = await getPersonsByUnitRaw(unitId);
   const people = md2api(response.data, unitId, lang);
 
-  // authid 97 → cosec (Safety Delegate (COSEC))
+  // authid 97 → cosec (Safety Correspondent (COSEC))
   const cosec = response.data.cosec.authorizations
     .filter(a => a.authid === 97 && a.value.includes('y'))
     .map(a => a.persid.toString());
