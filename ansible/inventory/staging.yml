@@ -15,4 +15,4 @@ all:
     haproxy_config: '{{ lookup("file", "/keybase/team/epfl_search/api/staging/haproxy.cfg") }}'
 
     secrets: '{{ lookup("file", "/keybase/team/epfl_search/api/staging/secrets.yml") | from_yaml }}'
-    tag: 1.1.0
+    tag: 1.2.0

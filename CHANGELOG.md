@@ -1,5 +1,13 @@
 # CHANGELOG
 
+### v1.2.0 / 2025-03-12
+
+- Add safety correspondents (COSEC)
+- Add labels and annotations for Topology view
+- Update Elements to 5.2.0
+- Simplify `ansible_python_interpreter`
+- Remove unnecessary log
+
 ### v1.1.0 / 2025-01-27
 
 - Add Graph Search v2
