@@ -176,7 +176,7 @@ async function getUnit (acro, lang, isInternal) {
         lang
       );
       if (cosecPersons.length > 0) {
-        unitFullDetails.cosec = cosecPersons[0];
+        unitFullDetails.cosec = cosecPersons;
       }
     }
   }

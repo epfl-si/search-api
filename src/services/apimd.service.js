@@ -186,7 +186,10 @@ async function getCosecDetails (sciperList, unitId, lang) {
     };
     people.push(p);
   });
-  return people;
+  return people.sort((a, b) =>
+    a.name.localeCompare(b.name) ||
+    a.firstname.localeCompare(b.firstname)
+  );
 };
 
 module.exports = {
