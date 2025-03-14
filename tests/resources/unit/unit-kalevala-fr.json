@@ -51,14 +51,16 @@
     "fmt-list": "https://search-backend.epfl.ch/api/unit/csv?q=KALEVALA&hl=fr",
     "mailing-list": "https://cadiwww.epfl.ch/listes?unite=KALEVALA"
   },
-  "cosec": {
-    "email": "",
-    "firstname": "Bo-Katan",
-    "name": "Kryze",
-    "profile": "670006",
-    "sciper": "670006",
-    "officeList": ["Castle Kryze"],
-    "phoneList": ["+41210054323"],
-    "role": "Correspondante de sécurité (COSEC)"
-  }
+  "cosec": [
+    {
+      "email": "",
+      "firstname": "Bo-Katan",
+      "name": "Kryze",
+      "profile": "670006",
+      "sciper": "670006",
+      "officeList": ["Castle Kryze"],
+      "phoneList": ["+41210054323"],
+      "role": "Correspondante de sécurité (COSEC)"
+    }
+  ]
 }
