@@ -25,3 +25,4 @@ services:
       - SEARCH_API_MD_PASSWORD=${SEARCH_API_MD_PASSWORD}
     ports:
       - '5555:5555'
+      - '5556:5556'
