@@ -4,8 +4,6 @@ const express = require('express');
 const metricsApp = express();
 
 // Log
-metricsApp.use(
-  morgan('combined', { skip: (req, res) => process.env.NODE_ENV === 'test' })
-);
+metricsApp.use(morgan('combined'));
 
 module.exports = metricsApp;
