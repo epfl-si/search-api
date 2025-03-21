@@ -18,6 +18,6 @@ RUN \
 
 COPY --chown=node:node src ./
 
-EXPOSE 5555
+EXPOSE 5555 5556
 
 CMD [ "dumb-init", "node", "/usr/src/app/server.js" ]

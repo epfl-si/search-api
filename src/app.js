@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const express = require('express');
 const passport = require('passport');
 const compression = require('compression');
+const promBundle = require('express-prom-bundle');
 
 const TequilaStrategy = require('passport-tequila').Strategy;
 
@@ -16,6 +17,15 @@ const legacyPeopleRouter = require('./routes/legacy.people.route');
 const unitRouter = require('./routes/unit.route');
 const semanticRouter = require('./routes/semantic.route');
 const addressRouter = require('./routes/address.route');
+
+const metricsApp = require('./metrics');
+
+const metricsMiddleware = promBundle({
+  buckets: [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10],
+  includePath: true,
+  autoregister: false,
+  metricsApp
+});
 
 // Use the TequilaStrategy within Passport.
 const tequila = new TequilaStrategy({
@@ -38,6 +48,8 @@ app.use(compression());
 app.use(
   morgan('combined', { skip: (req, res) => process.env.NODE_ENV === 'test' })
 );
+
+app.use(metricsMiddleware);
 
 app.use(cors({ origin: '*' }));
 
