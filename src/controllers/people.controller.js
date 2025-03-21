@@ -4,7 +4,7 @@ const apimdService = require('../services/apimd.service');
 const peopleService = require('../services/people.service');
 
 function removeSpecialChars (q) {
-  return q.replace(/[()]/g, '');
+  return q.trim().replace(/[()]/g, '');
 }
 
 async function checkRoom (query) {
