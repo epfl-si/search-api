@@ -1,5 +1,14 @@
 # CHANGELOG
 
+### v1.3.0 / 2025-03-24
+
+- Add prom-client package
+- Add express-prom-bundle package
+- Get Prometheus Metrics
+- Enable multiple COSEC
+- Fix whitespace for people filter
+- Bump axios from 1.7.4 to 1.8.2
+
 ### v1.2.0 / 2025-03-12
 
 - Add safety correspondents (COSEC)
