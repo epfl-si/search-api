@@ -1,0 +1,61 @@
+- name: Search API - PodMonitor
+  kubernetes.core.k8s:
+    definition:
+      apiVersion: monitoring.coreos.com/v1
+      kind: PodMonitor
+      metadata:
+        name: expressjs-exporter
+        namespace: '{{ openshift_namespace }}'
+      spec:
+        podMetricsEndpoints:
+          - targetPort: 5556
+        jobLabel: '{{ app_name }}'
+        selector:
+          matchLabels:
+            app: '{{ app_name }}'
+
+- name: Search API - GrafanaFolder
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      kind: GrafanaFolder
+      apiVersion: grafana.integreatly.org/v1beta1
+      metadata:
+        name: search
+        namespace: '{{ openshift_namespace }}'
+      spec:
+        allowCrossNamespaceImport: true
+        instanceSelector:
+          matchLabels:
+            dashboards: '{{ grafana_dashboard_instance }}'
+        title: Search
+
+- name: Search API - ConfigMap Grafana dashboard api
+  kubernetes.core.k8s:
+    definition:
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: '{{ app_name }}-grafana-dashboard-api'
+        namespace: '{{ openshift_namespace }}'
+      data:
+        json: '{{ grafana_dashboard_api }}'
+
+- name: Search API - GrafanaDashboard
+  kubernetes.core.k8s:
+    definition:
+      apiVersion: grafana.integreatly.org/v1beta1
+      kind: GrafanaDashboard
+      metadata:
+        name: '{{ app_name }}'
+        namespace: '{{ openshift_namespace }}'
+      spec:
+        resyncPeriod: 30s
+        allowCrossNamespaceImport: true
+        instanceSelector:
+          matchLabels:
+            dashboards: '{{ grafana_dashboard_instance }}'
+        folder: Search
+        configMapRef:
+          name: '{{ app_name }}-grafana-dashboard-api'
+          key: json
