@@ -73,6 +73,9 @@
             containers:
               - name: '{{ app_name }}'
                 image: '{{ quay_registry }}/{{ app_name }}:{{ tag }}'
+                ports:
+                  - containerPort: 5555
+                  - containerPort: 5556
                 env:
                   - name: SEARCH_API_ENABLE_CSE
                     value: '{{ secrets.SEARCH_API_ENABLE_CSE | string }}'

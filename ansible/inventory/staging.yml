@@ -14,5 +14,10 @@ all:
     haproxy_image: 'haproxy:{{ haproxy_tag }}'
     haproxy_config: '{{ lookup("file", "/keybase/team/epfl_search/api/staging/haproxy.cfg") }}'
 
+    grafana_dashboard_instance: grafana-test
+    grafana_dashboard_api: >-
+      {{ lookup("template",
+                "/keybase/team/epfl_search/api/staging/grafana-dashboard-api.json") }}
+
     secrets: '{{ lookup("file", "/keybase/team/epfl_search/api/staging/secrets.yml") | from_yaml }}'
     tag: 1.3.0

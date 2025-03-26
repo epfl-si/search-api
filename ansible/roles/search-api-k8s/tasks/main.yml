@@ -35,3 +35,11 @@
       tags: searchapi.app
   tags:
     - searchapi.app
+
+- name: Monitoring tasks
+  ansible.builtin.include_tasks:
+    file: 'monitoring.yml'
+    apply:
+      tags: searchapi.monitoring
+  tags:
+    - searchapi.monitoring
