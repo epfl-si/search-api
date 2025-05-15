@@ -1,5 +1,12 @@
 # CHANGELOG
 
+### v1.4.0 / 2025-05-15
+
+- Add Grafana dashboard for API
+- Fix subunits without name in Cadi DB
+- Migrate to ESLint 9.x
+- Bump formidable from 3.5.1 to 3.5.4
+
 ### v1.3.0 / 2025-03-24
 
 - Add prom-client package
