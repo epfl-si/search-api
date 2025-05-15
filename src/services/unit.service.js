@@ -217,6 +217,7 @@ async function getSubunits (unitId, lang) {
   const query = 'SELECT sigle, libelle, libelle_en ' +
                 'FROM Unites_v2 ' +
                 'WHERE id_parent = ? ' +
+                'AND (libelle IS NOT NULL OR libelle_en IS NOT NULL) ' +
                 `AND ${visibleConditionByCmplType}` +
                 `AND ${visibleConditionByHierarchy}`;
   const values = [unitId];
