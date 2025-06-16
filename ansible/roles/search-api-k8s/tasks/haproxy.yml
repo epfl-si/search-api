@@ -56,12 +56,11 @@
               - name: haproxy
                 image: '{{ quay_registry }}/{{ haproxy_image }}'
                 resources:
-                  requests:
-                    cpu: '50m'
-                    memory: '32Mi'
                   limits:
-                    cpu: '100m'
-                    memory: '128Mi'
+                    memory: 64Mi
+                  requests:
+                    cpu: 10m
+                    memory: 64Mi
                 volumeMounts:
                   - name: haproxy-config-volume
                     mountPath: /usr/local/etc/haproxy
