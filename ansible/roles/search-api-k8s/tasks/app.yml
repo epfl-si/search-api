@@ -128,11 +128,10 @@
                         key: SEARCH_API_MD_PASSWORD
                 resources:
                   limits:
-                    cpu: 500m
-                    memory: 512Mi
+                    memory: 256Mi
                   requests:
-                    cpu: 100m
-                    memory: 128Mi
+                    cpu: 10m
+                    memory: 256Mi
                 livenessProbe:
                   httpGet:
                     path: /healthz
