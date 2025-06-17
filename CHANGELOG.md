@@ -1,6 +1,6 @@
 # CHANGELOG
 
-### v1.4.0 / 2025-06-17
+### v1.4.1 / 2025-06-17
 
 - Tweak cpu and memory
 - Update googleapis to 150.0.1
