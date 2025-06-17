@@ -41,7 +41,7 @@
     "express-prom-bundle": "^8.0.0",
     "express-session": "^1.18.1",
     "googleapis": "^150.0.1",
-    "helmet": "^7.0.0",
+    "helmet": "^8.1.0",
     "ldapjs": "^3.0.2",
     "memorystore": "^1.6.7",
     "morgan": "^1.10.0",
