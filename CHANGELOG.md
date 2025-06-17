@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### v1.4.0 / 2025-06-17
+
+- Tweak cpu and memory
+- Update googleapis to 150.0.1
+
 ### v1.4.0 / 2025-05-15
 
 - Add Grafana dashboard for API
