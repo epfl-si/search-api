@@ -3,7 +3,7 @@
 [![Test Status][github-actions-image-test]][github-actions-url]
 [![Build Status][github-actions-image-build]][github-actions-url]
 [![Coverage Status][codecov-image]][codecov-url]
-[![Node.js](https://img.shields.io/badge/Node.js-20.x-3c873a.svg)][node20-url]
+[![Node.js](https://img.shields.io/badge/Node.js-22.x-3c873a.svg)][node22-url]
 
 ## Google Custom Search
 
@@ -205,7 +205,7 @@ See [Contributing](CONTRIBUTING.md).
 [codecov-image]: https://codecov.io/gh/epfl-si/search-api/branch/main/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/epfl-si/search-api
 [confluence-url]: https://confluence.epfl.ch:8443/pages/viewpage.action?pageId=221185381
-[node20-url]: https://nodejs.org/en/blog/announcements/v20-release-announce
+[node22-url]: https://nodejs.org/en/blog/announcements/v22-release-announce
 [cse-1]: http://127.0.0.1:5555/api/cse?q=math
 [cse-2]: http://127.0.0.1:5555/api/cse?q=math&hl=fr&searchSite=actu.epfl.ch
 [cse-3]: http://127.0.0.1:5555/api/cse?q=math&hl=en&sort=date&searchType=image
