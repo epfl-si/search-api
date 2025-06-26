@@ -157,24 +157,6 @@ Only allowed via EPFL intranet or VPN.
 
 ### Endpoint
 
-[**Deprecated**] `GET /api/graphsearch`
-
-### Parameters
-
-| Name      | Type     | Comments                                                                         |
-| --------- | -------- | -------------------------------------------------------------------------------- |
-| `q`       | `String` | Query                                                                            |
-| `doctype` | `String` | Values : `concept`, `course`, `lecture`, `mooc`, `person`, `publication`, `unit` |
-| `limit`   | `Number` | Sets the number of entries on a page. Default is 10. Max is 100.                 |
-
-### Examples
-
-- [/api/graphsearch?q=math&limit=20][graphsearch-1]
-- [/api/graphsearch?q=vetterli&doctype=person][graphsearch-2]
-- [/api/graphsearch?q=lts&doctype=unit][graphsearch-3]
-
-### Endpoint
-
 `GET /api/graphsearch/v2`
 
 ### Parameters
@@ -220,9 +202,6 @@ See [Contributing](CONTRIBUTING.md).
 [unit-4]: http://127.0.0.1:5555/api/unit?acro=vpo
 [unit-csv-1]: http://127.0.0.1:5555/api/unit/csv?q=isas-fsd&hl=en
 [unit-suggestions-1]: http://127.0.0.1:5555/api/unit/suggestions?q=isas&hl=en
-[graphsearch-1]: http://127.0.0.1:5555/api/graphsearch?q=math&limit=20
-[graphsearch-2]: http://127.0.0.1:5555/api/graphsearch?q=vetterli&doctype=person
-[graphsearch-3]: http://127.0.0.1:5555/api/graphsearch?q=lts&doctype=unit
 [graphsearch-4]: http://127.0.0.1:5555/api/graphsearch/v2?q=math&limit=20
 [graphsearch-5]: http://127.0.0.1:5555/api/graphsearch/v2?q=vetterli&doctype=person
 [graphsearch-6]: http://127.0.0.1:5555/api/graphsearch/v2?q=lts&doctype=unit
