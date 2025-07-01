@@ -1,5 +1,16 @@
 # CHANGELOG
 
+### v2.0.0 / 2025-07-01
+
+- Remove Graph Search v1
+- Upgrade to Node.js 22
+- Update expressjs to 5.1.0
+- Update jest to 30.0.0
+- Update helmet to 8.1.0
+- Update eslint-plugin-jest to 29.0.1
+- Bump brace-expansion
+- Fix engines
+
 ### v1.4.1 / 2025-06-17
 
 - Tweak cpu and memory

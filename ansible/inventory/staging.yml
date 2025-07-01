@@ -20,4 +20,4 @@ all:
                 "/keybase/team/epfl_search/api/staging/grafana-dashboard-api.json") }}
 
     secrets: '{{ lookup("file", "/keybase/team/epfl_search/api/staging/secrets.yml") | from_yaml }}'
-    tag: 1.4.1
+    tag: 2.0.0
