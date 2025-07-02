@@ -4,6 +4,10 @@ process.env.SEARCH_API_ENABLE_ADDRESS = 'True';
 process.env.SEARCH_API_ENABLE_UNIT = 'True';
 process.env.SEARCH_API_ENABLE_GRAPHSEARCH = 'True';
 
+process.env.SEARCH_API_SESSION_SECRET = 'foobar';
+process.env.SEARCH_API_SEARCH_URL = 'http://localhost';
+process.env.SEARCH_API_X_EPFL_INTERNAL = 'False';
+
 process.env.SEARCH_API_CSE_API_KEY = 'foo';
 process.env.SEARCH_API_CSE_CX = 'bar';
 
