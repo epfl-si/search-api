@@ -92,6 +92,10 @@
                       secretKeyRef:
                         name: '{{ app_name }}-auth-secrets'
                         key: SEARCH_API_SESSION_SECRET
+                  - name: SEARCH_API_SEARCH_URL
+                    value: '{{ secrets.SEARCH_API_SEARCH_URL }}'
+                  - name: SEARCH_API_X_EPFL_INTERNAL
+                    value: '{{ secrets.SEARCH_API_X_EPFL_INTERNAL | string }}'
                   - name: SEARCH_API_CSE_API_KEY
                     valueFrom:
                       secretKeyRef:
