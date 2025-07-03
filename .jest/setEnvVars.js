@@ -23,3 +23,7 @@ process.env.SEARCH_API_LDAP_ROOTS_FILTER = '';
 process.env.SEARCH_API_MD_BASE_URL = 'base_url';
 process.env.SEARCH_API_MD_USER = 'user';
 process.env.SEARCH_API_MD_PASSWORD = 'password';
+
+process.env.SEARCH_API_ELASTIC_SEARCH_URL = 'base_url';
+process.env.SEARCH_API_ELASTIC_RO_USERNAME = 'user';
+process.env.SEARCH_API_ELASTIC_RO_PASSWORD = 'password';
