@@ -6,17 +6,22 @@ const express = require('express');
 const passport = require('passport');
 const compression = require('compression');
 const promBundle = require('express-prom-bundle');
+const expressSession = require('express-session');
+const MemoryStore = require('memorystore')(expressSession);
 
-const TequilaStrategy = require('passport-tequila').Strategy;
-
+const tequila = require('./configs/tequila.config');
 const configApi = require('./configs/api.config');
+const authConfig = require('./configs/auth.config');
 
+const authRouter = require('./routes/auth.route');
 const cseRouter = require('./routes/cse.route');
 const peopleRouter = require('./routes/people.route');
 const legacyPeopleRouter = require('./routes/legacy.people.route');
 const unitRouter = require('./routes/unit.route');
 const semanticRouter = require('./routes/semantic.route');
 const addressRouter = require('./routes/address.route');
+
+const authMiddleware = require('./middlewares/auth.middleware');
 
 const metricsApp = require('./metrics');
 
@@ -27,12 +32,16 @@ const metricsMiddleware = promBundle({
   metricsApp
 });
 
-// Use the TequilaStrategy within Passport.
-const tequila = new TequilaStrategy({
-  service: 'Search engine',
-  request: ['displayname']
+// To support persistent login sessions, Passport needs to be able to
+// serialize users into and deserialize users out of the session.
+/* istanbul ignore next */
+passport.serializeUser(function (user, done) {
+  done(null, user);
 });
-passport.use(tequila);
+/* istanbul ignore next */
+passport.deserializeUser(function (obj, done) {
+  done(null, obj);
+});
 
 const app = express();
 
@@ -51,12 +60,51 @@ app.use(
 
 app.use(metricsMiddleware);
 
-app.use(cors({ origin: '*' }));
-
 // Security
 app.use(helmet.frameguard());
 app.use(helmet.noSniff());
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
+
+app.use(expressSession({
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    maxAge: 86400000
+  },
+  store: new MemoryStore({
+    checkPeriod: 86400000 // Prune expired entries every 24h
+  }),
+  name: 'search',
+  secret: authConfig.secret,
+  resave: false,
+  saveUninitialized: false
+}));
+
+passport.use(tequila);
+
+// Initialize Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(authMiddleware.setUserInfo);
+
+const dynamicCorsOptions = function (req, callback) {
+  let corsOptions;
+  if (req.path.startsWith('/auth/')) {
+    corsOptions = {
+      origin: authConfig.searchUrl,
+      credentials: true
+    };
+  } else {
+    corsOptions = { origin: '*' };
+  }
+  callback(null, corsOptions);
+};
+
+app.use(cors(dynamicCorsOptions));
+
+// Auth
+app.use('/auth', authRouter);
 
 // Google CSE
 if (configApi.enableCse) {
