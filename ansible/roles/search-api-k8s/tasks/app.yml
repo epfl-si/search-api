@@ -87,6 +87,11 @@
                     value: '{{ secrets.SEARCH_API_ENABLE_UNIT | string }}'
                   - name: SEARCH_API_ENABLE_GRAPHSEARCH
                     value: '{{ secrets.SEARCH_API_ENABLE_GRAPHSEARCH | string }}'
+                  - name: SEARCH_API_SESSION_SECRET
+                    valueFrom:
+                      secretKeyRef:
+                        name: '{{ app_name }}-auth-secrets'
+                        key: SEARCH_API_SESSION_SECRET
                   - name: SEARCH_API_CSE_API_KEY
                     valueFrom:
                       secretKeyRef:
