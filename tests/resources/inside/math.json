@@ -1,0 +1,191 @@
+{
+  "took": 22,
+  "timed_out": false,
+  "_shards": { "total": 1, "successful": 1, "skipped": 0, "failed": 0 },
+  "hits": {
+    "total": { "value": 163, "relation": "eq" },
+    "max_score": 19.475586,
+    "hits": [
+      {
+        "_index": "inside",
+        "_id": "1",
+        "_score": 19.475586,
+        "_source": {
+          "title": "Math 1",
+          "attachment": {
+            "content_type": "application/pdf",
+            "language": "fr",
+            "content": "Math 1",
+            "content_length": 10148
+          },
+          "url": "https://foobar/math-1"
+        },
+        "highlight": {
+          "attachment.content": ["Math 1"]
+        }
+      },
+      {
+        "_index": "inside",
+        "_id": "2",
+        "_score": 19.475586,
+        "_source": {
+          "title": "Math 2",
+          "attachment": {
+            "content_type": "application/pdf",
+            "language": "fr",
+            "content": "Math 2",
+            "content_length": 10148
+          },
+          "url": "https://foobar/math-2"
+        },
+        "highlight": {
+          "attachment.content": ["Math 1"]
+        }
+      },
+      {
+        "_index": "inside",
+        "_id": "3",
+        "_score": 19.475586,
+        "_source": {
+          "title": "Math 3",
+          "attachment": {
+            "content_type": "application/pdf",
+            "language": "fr",
+            "content": "Math 3",
+            "content_length": 10148
+          },
+          "url": "https://foobar/math-3"
+        },
+        "highlight": {
+          "attachment.content": ["Math 3"]
+        }
+      },
+      {
+        "_index": "inside",
+        "_id": "4",
+        "_score": 19.475586,
+        "_source": {
+          "title": "Math 4",
+          "attachment": {
+            "content_type": "application/pdf",
+            "language": "fr",
+            "content": "Math 4",
+            "content_length": 10148
+          },
+          "url": "https://foobar/math-4"
+        },
+        "highlight": {
+          "attachment.content": ["Math 4"]
+        }
+      },
+      {
+        "_index": "inside",
+        "_id": "5",
+        "_score": 19.475586,
+        "_source": {
+          "title": "Math 5",
+          "attachment": {
+            "content_type": "application/pdf",
+            "language": "fr",
+            "content": "Math 5",
+            "content_length": 10148
+          },
+          "url": "https://foobar/math-5"
+        },
+        "highlight": {
+          "attachment.content": ["Math 5"]
+        }
+      },
+      {
+        "_index": "inside",
+        "_id": "6",
+        "_score": 19.475586,
+        "_source": {
+          "title": "Math 6",
+          "attachment": {
+            "content_type": "application/pdf",
+            "language": "fr",
+            "content": "Math 6",
+            "content_length": 10148
+          },
+          "url": "https://foobar/math-6"
+        },
+        "highlight": {
+          "attachment.content": ["Math 6"]
+        }
+      },
+      {
+        "_index": "inside",
+        "_id": "7",
+        "_score": 19.475586,
+        "_source": {
+          "title": "Math 7",
+          "attachment": {
+            "content_type": "application/pdf",
+            "language": "fr",
+            "content": "Math 7",
+            "content_length": 10148
+          },
+          "url": "https://foobar/math-7"
+        },
+        "highlight": {
+          "attachment.content": ["Math 7"]
+        }
+      },
+      {
+        "_index": "inside",
+        "_id": "8",
+        "_score": 19.475586,
+        "_source": {
+          "title": "Math 8",
+          "attachment": {
+            "content_type": "application/pdf",
+            "language": "fr",
+            "content": "Math 8",
+            "content_length": 10148
+          },
+          "url": "https://foobar/math-8"
+        },
+        "highlight": {
+          "attachment.content": ["Math 8"]
+        }
+      },
+      {
+        "_index": "inside",
+        "_id": "9",
+        "_score": 19.475586,
+        "_source": {
+          "title": "Math 9",
+          "attachment": {
+            "content_type": "application/pdf",
+            "language": "fr",
+            "content": "Math 9",
+            "content_length": 10148
+          },
+          "url": "https://foobar/math-9"
+        },
+        "highlight": {
+          "attachment.content": ["Math 9"]
+        }
+      },
+      {
+        "_index": "inside",
+        "_id": "10",
+        "_score": 19.475586,
+        "_source": {
+          "title": "Math 10",
+          "attachment": {
+            "content_type": "application/pdf",
+            "language": "fr",
+            "content": "Math 10",
+            "content_length": 10148
+          },
+          "url": "https://foobar/math-10"
+        },
+        "highlight": {
+          "attachment.content": ["Math 10"]
+        }
+      }
+    ]
+  }
+}
