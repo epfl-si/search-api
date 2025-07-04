@@ -20,6 +20,7 @@ const legacyPeopleRouter = require('./routes/legacy.people.route');
 const unitRouter = require('./routes/unit.route');
 const semanticRouter = require('./routes/semantic.route');
 const addressRouter = require('./routes/address.route');
+const insideRouter = require('./routes/inside.route');
 
 const authMiddleware = require('./middlewares/auth.middleware');
 
@@ -90,7 +91,7 @@ app.use(authMiddleware.setUserInfo);
 
 const dynamicCorsOptions = function (req, callback) {
   let corsOptions;
-  if (req.path.startsWith('/auth/')) {
+  if (req.path.startsWith('/auth/') || req.path.startsWith('/api/inside')) {
     corsOptions = {
       origin: authConfig.searchUrl,
       credentials: true
@@ -131,6 +132,8 @@ if (configApi.enableUnit) {
 if (configApi.enableGraphsearch) {
   app.use('/api/graphsearch', semanticRouter);
 }
+
+app.use('/api/inside', insideRouter);
 
 // Robots.txt
 app.get('/robots.txt', function (req, res) {

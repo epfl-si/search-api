@@ -135,6 +135,18 @@
                       secretKeyRef:
                         name: search-api-md-secrets
                         key: SEARCH_API_MD_PASSWORD
+                  - name: SEARCH_API_ELASTIC_SEARCH_URL
+                    value: '{{ secrets.SEARCH_API_ELASTIC_SEARCH_URL }}'
+                  - name: SEARCH_API_ELASTIC_RO_USERNAME
+                    valueFrom:
+                      secretKeyRef:
+                        name: '{{ app_name }}-inside-secrets'
+                        key: SEARCH_API_ELASTIC_RO_USERNAME
+                  - name: SEARCH_API_ELASTIC_RO_PASSWORD
+                    valueFrom:
+                      secretKeyRef:
+                        name: '{{ app_name }}-inside-secrets'
+                        key: SEARCH_API_ELASTIC_RO_PASSWORD
                 resources:
                   limits:
                     memory: 256Mi
