@@ -1,5 +1,15 @@
 # CHANGELOG
 
+### v2.1.0 / 2025-07-01
+
+- Add Inside API
+- Add auth
+- Add auth config
+- Add tequila config
+- Add inside config
+- Add nocache package
+- Fix eslint problems for .jest config
+
 ### v2.0.0 / 2025-07-01
 
 - Remove Graph Search v1
