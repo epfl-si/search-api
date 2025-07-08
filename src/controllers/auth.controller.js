@@ -5,6 +5,9 @@ function check (req, res) {
     login: res.locals.authenticated,
     internal: res.locals.internal
   };
+  if (res.locals.user?.sciper) {
+    status.user = res.locals.user;
+  }
   return res.json(status);
 }
 
