@@ -1,6 +1,10 @@
 # CHANGELOG
 
-### v2.1.0 / 2025-07-01
+### v2.2.0 / 2025-07-09
+
+- Add user infos
+
+### v2.1.0 / 2025-07-07
 
 - Add Inside API
 - Add auth
