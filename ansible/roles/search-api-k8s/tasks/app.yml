@@ -48,6 +48,7 @@
         annotations:
           app.openshift.io/vcs-uri: 'https://github.com/epfl-si/search-api/'
           app.openshift.io/vcs-ref: 'v{{ tag }}'
+          app.openshift.io/connects-to: 'search-inside-elastic'
       spec:
         replicas: 2
         strategy:
