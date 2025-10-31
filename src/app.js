@@ -10,7 +10,6 @@ const promBundle = require('express-prom-bundle');
 const expressSession = require('express-session');
 const MemoryStore = require('memorystore')(expressSession);
 
-// const tequila = require('./configs/tequila.config');
 const createOidcStrategy = require('./configs/oidc.config');
 
 const configApi = require('./configs/api.config');
