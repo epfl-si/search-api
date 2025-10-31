@@ -3,13 +3,16 @@ const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const compression = require('compression');
 const promBundle = require('express-prom-bundle');
 const expressSession = require('express-session');
 const MemoryStore = require('memorystore')(expressSession);
 
-const tequila = require('./configs/tequila.config');
+// const tequila = require('./configs/tequila.config');
+const createOidcStrategy = require('./configs/oidc.config');
+
 const configApi = require('./configs/api.config');
 const authConfig = require('./configs/auth.config');
 
@@ -66,10 +69,12 @@ app.use(helmet.frameguard());
 app.use(helmet.noSniff());
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 
+app.use(cookieParser());
+
 app.use(expressSession({
   cookie: {
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
+    sameSite: 'lax',
     maxAge: 86400000
   },
   store: new MemoryStore({
@@ -81,11 +86,13 @@ app.use(expressSession({
   saveUninitialized: false
 }));
 
-passport.use(tequila);
-
-// Initialize Passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+(async () => {
+  const oidcStrategy = await createOidcStrategy();
+  passport.use('oidc', oidcStrategy);
+})();
 
 app.use(authMiddleware.setUserInfo);
 

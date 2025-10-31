@@ -9,10 +9,14 @@ function setUserInfo (req, res, next) {
   res.locals.authenticated = req.isAuthenticated();
   res.locals.internal = isInsideEPFL(req);
 
-  res.locals.user = {
-    displayName: req.user?.displayName,
-    sciper: req.user?.tequila.uniqueid
-  };
+  if (req.user) {
+    res.locals.user = {
+      displayName: req.user?.displayName,
+      sciper: req.user?.sciper
+    };
+  } else {
+    res.locals.user = null;
+  }
 
   next();
 }
