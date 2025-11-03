@@ -2,7 +2,7 @@ const { verify } = require('../src/configs/oidc.config');
 const validClaims = require('./resources/oidc/valid_claims.json');
 
 describe('verify', () => {
-  it('should call done with user info', () => {
+  it('It should call done with user info', () => {
     const fakeTokenset = {
       claims: () => validClaims
     };
@@ -16,7 +16,7 @@ describe('verify', () => {
     });
   });
 
-  it('should call done with error if claims() throws an error', () => {
+  it('It should call done with error if claims() throws an error', () => {
     const fakeTokenset = {
       claims: () => {
         throw new Error('mislead');
