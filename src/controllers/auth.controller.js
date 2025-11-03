@@ -1,4 +1,5 @@
 const passport = require('passport');
+const authConfig = require('../configs/auth.config');
 
 function check (req, res) {
   const status = {
@@ -27,6 +28,18 @@ function login (req, res, next) {
   passport.authenticate('oidc')(req, res, next);
 }
 
+function callback (req, res, next) {
+  passport.authenticate(
+    'oidc', { failureRedirect: '/auth/login' })(req, res, () => {
+    const redirectTo = req.cookies?.returnTo || '';
+    if (req.cookies?.returnTo) res.clearCookie('returnTo');
+    const url = redirectTo
+      ? `${authConfig.searchUrl}?${redirectTo}`
+      : authConfig.searchUrl;
+    res.redirect(url);
+  });
+}
+
 function logout (req, res, next) {
   req.logout(function (err) {
     if (err) {
@@ -42,5 +55,6 @@ function logout (req, res, next) {
 module.exports = {
   check,
   login,
+  callback,
   logout
 };
