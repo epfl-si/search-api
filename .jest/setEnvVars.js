@@ -27,3 +27,8 @@ process.env.SEARCH_API_MD_PASSWORD = 'password';
 process.env.SEARCH_API_ELASTIC_SEARCH_URL = 'base_url';
 process.env.SEARCH_API_ELASTIC_RO_USERNAME = 'user';
 process.env.SEARCH_API_ELASTIC_RO_PASSWORD = 'password';
+
+process.env.SEARCH_API_OIDC_TENANT_ID = 'tenant-id';
+process.env.SEARCH_API_OIDC_RP_CLIENT_ID = 'client-id';
+process.env.SEARCH_API_OIDC_RP_CLIENT_SECRET = 'client-secret';
+process.env.SEARCH_API_OIDC_REDIRECT_URI = 'callback-uri';
