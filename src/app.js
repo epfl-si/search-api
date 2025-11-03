@@ -10,7 +10,7 @@ const promBundle = require('express-prom-bundle');
 const expressSession = require('express-session');
 const MemoryStore = require('memorystore')(expressSession);
 
-const createOidcStrategy = require('./configs/oidc.config');
+const { createOidcStrategy } = require('./configs/oidc.config');
 
 const configApi = require('./configs/api.config');
 const authConfig = require('./configs/auth.config');

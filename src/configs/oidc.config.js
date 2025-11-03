@@ -40,4 +40,7 @@ async function createOidcStrategy () {
   return strategy;
 }
 
-module.exports = createOidcStrategy;
+module.exports = {
+  createOidcStrategy,
+  verify
+};
