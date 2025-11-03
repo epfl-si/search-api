@@ -148,6 +148,20 @@
                       secretKeyRef:
                         name: '{{ app_name }}-inside-secrets'
                         key: SEARCH_API_ELASTIC_RO_PASSWORD
+                  - name: SEARCH_API_OIDC_TENANT_ID
+                    value: '{{ secrets.entra.tenant }}'
+                  - name: SEARCH_API_OIDC_RP_CLIENT_ID
+                    valueFrom:
+                      secretKeyRef:
+                        name: '{{ app_name }}-entra-id-secrets'
+                        key: client
+                  - name: SEARCH_API_OIDC_RP_CLIENT_SECRET
+                    valueFrom:
+                      secretKeyRef:
+                        name: '{{ app_name }}-entra-id-secrets'
+                        key: secret
+                  - name: SEARCH_API_OIDC_REDIRECT_URI
+                    value: '{{ secrets.entra.redirect_uri }}'
                 resources:
                   limits:
                     memory: 256Mi
