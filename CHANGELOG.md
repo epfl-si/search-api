@@ -1,5 +1,16 @@
 # CHANGELOG
 
+### v3.0.0 / 2025-11-04
+
+- Migrate to Microsoft Entra ID
+  - Add cookie-parser package
+  - Add passport package
+  - Add openid-client package
+  - Add OIDC config
+  - Update auth
+  - Configure cookie-based session affinity routing
+  - Remove Tequila-related config and code
+
 ### v2.2.0 / 2025-07-09
 
 - Add user infos
