@@ -12,7 +12,8 @@
           team: '{{ team }}'
           route: '{{ routes_availability }}'
         annotations:
-          router.openshift.io/cookie-same-site: Strict
+          haproxy.router.openshift.io/affinity: cookie
+          router.openshift.io/cookie-same-site: Lax
           haproxy.router.openshift.io/hsts_header: max-age=15552001
       spec:
         host: '{{ item }}'

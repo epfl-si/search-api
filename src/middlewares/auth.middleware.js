@@ -11,7 +11,7 @@ function setUserInfo (req, res, next) {
 
   res.locals.user = {
     displayName: req.user?.displayName,
-    sciper: req.user?.tequila.uniqueid
+    sciper: req.user?.sciper
   };
 
   next();
