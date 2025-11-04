@@ -14,7 +14,7 @@
         annotations:
           haproxy.router.openshift.io/affinity: cookie
           router.openshift.io/cookie_name: search-api-routing
-          router.openshift.io/cookie-same-site: Strict
+          router.openshift.io/cookie-same-site: Lax
           haproxy.router.openshift.io/hsts_header: max-age=15552001
       spec:
         host: '{{ item }}'
