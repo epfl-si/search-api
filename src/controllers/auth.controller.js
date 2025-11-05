@@ -13,30 +13,20 @@ function check (req, res) {
 }
 
 function login (req, res, next) {
-  const params = new URLSearchParams({
+  req.session.redirect = new URLSearchParams({
     q: req.query.q || '',
     filter: req.query.filter || '',
     type: req.query.type || '',
     sort: req.query.sort || ''
   }).toString();
-  res.cookie('returnTo', params, {
-    httpOnly: true,
-    sameSite: 'lax',
-    secure: process.env.NODE_ENV === 'production',
-    maxAge: 300000
-  });
   passport.authenticate('oidc')(req, res, next);
 }
 
-function callback (req, res, next) {
+function callback (req, res) {
+  const params = req.session.redirect;
   passport.authenticate(
     'oidc', { failureRedirect: '/auth/login' })(req, res, () => {
-    const redirectTo = req.cookies?.returnTo || '';
-    if (req.cookies?.returnTo) res.clearCookie('returnTo');
-    const url = redirectTo
-      ? `${authConfig.searchUrl}?${redirectTo}`
-      : authConfig.searchUrl;
-    res.redirect(url);
+    res.redirect(`${authConfig.searchUrl}?${params}`);
   });
 }
 
