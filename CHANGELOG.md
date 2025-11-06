@@ -1,5 +1,11 @@
 # CHANGELOG
 
+### v3.0.1 / 2025-11-06
+
+- Save redirect parameters into session
+- Bump axios from 1.8.2 to 1.12.0
+- Bump on-headers, compression, express-session and morgan
+
 ### v3.0.0 / 2025-11-04
 
 - Migrate to Microsoft Entra ID
@@ -10,6 +16,9 @@
   - Update auth
   - Configure cookie-based session affinity routing
   - Remove Tequila-related config and code
+- Tweak ldap timeout
+- Update Topology annotations
+- Refactor isInternal check for unit api
 
 ### v2.2.0 / 2025-07-09
 
