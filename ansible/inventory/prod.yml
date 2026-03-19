@@ -12,10 +12,6 @@ all:
       - search-2012.epfl.ch
       - search-api.epfl.ch
 
-    haproxy_tag: 3.0.7-alpine
-    haproxy_image: 'haproxy:{{ haproxy_tag }}'
-    haproxy_config: '{{ lookup("file", "/keybase/team/epfl_search/api/prod/haproxy.cfg") }}'
-
     grafana_dashboard_instance: grafana-prod
     grafana_dashboard_api: >-
       {{ lookup("template",
