@@ -10,10 +10,6 @@ all:
     hostnames:
       - staging-search-api.epfl.ch
 
-    haproxy_tag: 3.0.7-alpine
-    haproxy_image: 'haproxy:{{ haproxy_tag }}'
-    haproxy_config: '{{ lookup("file", "/keybase/team/epfl_search/api/staging/haproxy.cfg") }}'
-
     grafana_dashboard_instance: grafana-test
     grafana_dashboard_api: >-
       {{ lookup("template",
