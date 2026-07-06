@@ -1,5 +1,35 @@
 # CHANGELOG
 
+### v3.0.2 / 2026-07-06
+
+- Transform various Unicode characters into ASCII equivalents
+- Remove jump server to DB
+- Update aquasecurity/trivy-action to v0.35.0
+- Update codecov/codecov-action to v5
+- Update github/codeql-action/upload-sarif to v4
+- Update docker/login-action to v3
+- Update actions/setup-node to v6
+- Update actions/checkout to v6
+- Update Elements to 5.7.0
+- Update ejs to 4.0.1
+- Bump qs from 6.15.0 to 6.15.2
+- Bump axios from 1.15.0 to 1.16.0
+- Bump axios from 1.13.5 to 1.15.0
+- Bump follow-redirects from 1.15.11 to 1.16.0
+- Bump lodash from 4.17.23 to 4.18.1
+- Bump brace-expansion from 1.1.12 to 1.1.14
+- Bump path-to-regexp from 8.2.0 to 8.4.0
+- Bump picomatch from 2.3.1 to 2.3.2
+- Bump flatted from 3.3.3 to 3.4.2
+- Bump minimatch
+- Bump jws from 4.0.0 to 4.0.1
+- Bump qs from 6.14.0 to 6.14.2
+- Bump express from 5.1.0 to 5.2.0
+- Bump axios from 1.12.0 to 1.13.5
+- Bump lodash from 4.17.21 to 4.17.23
+- Bump glob from 10.4.5 to 10.5.0
+- Bump js-yaml from 3.14.1 to 3.14.2
+
 ### v3.0.1 / 2025-11-06
 
 - Save redirect parameters into session
