@@ -33,17 +33,27 @@ function permutations (arr) {
 };
 
 /**
- * Remove accents/diacritics in a string
+ * Transliterate a string to close ASCII equivalents.
  *
  * @example
  * const helper = require('../utils/helper.util');
- * helper.removeAccents('jérôme');  // => 'jerome'
+ * helper.toAscii('jérôme');  // => 'jerome'
  *
  * @param {string} s A string
- * @returns {string} Return the string without accents/diacritics.
+ * @returns {string} Return the transliterated ASCII string.
  */
-function removeAccents (s) {
-  return s.normalize('NFD').replace(/\p{Diacritic}/gu, '');
+function toAscii (s) {
+  return s.normalize('NFD').replace(/\p{Diacritic}/gu, '')
+    .replace(/ø/g, 'o').replace(/Ø/g, 'O')
+    .replace(/ł/g, 'l').replace(/Ł/g, 'L')
+    .replace(/đ/g, 'd').replace(/Đ/g, 'D')
+    .replace(/ð/g, 'd').replace(/Ð/g, 'D')
+    .replace(/ħ/g, 'h').replace(/Ħ/g, 'H')
+    .replace(/ŋ/g, 'n').replace(/Ŋ/g, 'N')
+    .replace(/þ/g, 'th').replace(/Þ/g, 'Th')
+    .replace(/æ/g, 'ae').replace(/Æ/g, 'Ae')
+    .replace(/œ/g, 'oe').replace(/Œ/g, 'Oe')
+    .replace(/ß/g, 'ss');
 }
 
 /**
@@ -82,7 +92,7 @@ function validateEnv (key) {
 
 module.exports = {
   permutations,
-  removeAccents,
+  toAscii,
   setBool,
   validateEnv
 };
