@@ -46,11 +46,11 @@ function sortAccreds (obj) {
 function score (a, q) {
   let points = 0;
   const attributes = ['name', 'firstname'];
-  const terms = util.removeAccents(q).split(/\s+/);
+  const terms = util.toAscii(q).split(/\s+/);
   for (let term of terms) {
     term = term.toLowerCase();
     for (const attr of attributes) {
-      const name = util.removeAccents(a[attr]).toLowerCase();
+      const name = util.toAscii(a[attr]).toLowerCase();
       const subnames = name.split(/\s+/);
       if (name === term && attr === 'name') {
         points += 100;
