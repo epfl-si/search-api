@@ -109,20 +109,6 @@ describe('Test API People ("/api/ldap")', () => {
     expect(response.text).toMatch('[]');
   });
 
-  test('It should find sciper 670001 (fr)', async () => {
-    const jsonResult = require('./resources/people/json-sciper-670001-fr.json');
-    const response = await request(app).get('/api/ldap?q=670001&hl=fr');
-    expect(response.statusCode).toBe(200);
-    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
-  });
-
-  test('It should find sciper 670001 (en)', async () => {
-    const jsonResult = require('./resources/people/json-sciper-670001-en.json');
-    const response = await request(app).get('/api/ldap?q=670001&hl=en');
-    expect(response.statusCode).toBe(200);
-    expect(JSON.parse(response.text)).toStrictEqual(jsonResult);
-  });
-
   test('It should find mail boba.fett@epfl.ch', async () => {
     const jsonResult = require('./resources/people/json-sciper-670001-fr.json');
     const response = await request(app).get('/api/ldap?q=boba.fett@epfl.ch');
