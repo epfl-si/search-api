@@ -30,12 +30,8 @@
       "email": null,
       "firstname": "Bo-Katan",
       "name": "Kryze",
-      "officeList": [
-        "Castle Kryze"
-      ],
-      "phoneList": [
-        "+41210054323"
-      ],
+      "officeList": ["Castle Kryze"],
+      "phoneList": ["+41210054323"],
       "position": "Princesse",
       "profile": "",
       "rank": 0
@@ -59,12 +55,8 @@
       "firstname": "Bo-Katan",
       "name": "Kryze",
       "profile": "",
-      "officeList": [
-        "Castle Kryze"
-      ],
-      "phoneList": [
-        "+41210054323"
-      ],
+      "officeList": ["Castle Kryze"],
+      "phoneList": ["+41210054323"],
       "role": "Correspondante de sécurité (COSEC)"
     }
   ]
