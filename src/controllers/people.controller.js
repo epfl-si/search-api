@@ -116,6 +116,7 @@ async function get (req, res) {
             accred.phoneList = phoneHash[person.sciper][code] || [];
             accred.officeList = roomHash[person.sciper][code] || [];
           }
+          delete person.sciper;
         }
       }
       appCache.set(req.originalUrl, apiResults);
@@ -147,7 +148,7 @@ async function getCsv (req, res) {
       const apiResults = await search(q, req.query.hl);
       if (apiResults.length) {
         for (const person of apiResults) {
-          csv += [person.sciper, person.firstname, person.name].join(': ');
+          csv += [person.firstname, person.name].join(': ');
           csv += '\n';
         }
       }

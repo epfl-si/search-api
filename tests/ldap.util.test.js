@@ -22,10 +22,10 @@ describe('Test LDAP utilities', () => {
   });
 
   test('It should get the profile', () => {
-    let profile = ldapUtil.getProfile('boba.fett@sw.ch', '670001');
-    expect(profile).toEqual('670001');
+    let profile = ldapUtil.getProfile('boba.fett@sw.ch');
+    expect(profile).toEqual('');
 
-    profile = ldapUtil.getProfile('boba.fett@epfl.ch', '670001');
+    profile = ldapUtil.getProfile('boba.fett@epfl.ch');
     expect(profile).toEqual('boba.fett');
   });
 

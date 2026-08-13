@@ -184,15 +184,14 @@ function getCorrectName (firstnames, names, displayName) {
  *
  * @example
  * const ldapUtil = require('../utils/ldap.util');
- * ldapUtil.getProfile('boba.fett@star.ch', '670001');  // => '670001'
- * ldapUtil.getProfile('boba.fett@epfl.ch', '670001');  // => 'boba.fett'
+ * ldapUtil.getProfile('boba.fett@star.ch');  // => ''
+ * ldapUtil.getProfile('boba.fett@epfl.ch');  // => 'boba.fett'
  *
  * @param {string} mail A valid email address.
- * @param {string} sciper 6-digit unique EPFL identification number.
- * @returns {string} firstname.name if person has epfl mail, sciper otherwise.
+ * @returns {string} firstname.name if person has epfl mail, '' otherwise.
  */
-function getProfile (mail, sciper) {
-  return /.+\..+@epfl\.ch/.test(mail) ? mail.replace('@epfl.ch', '') : sciper;
+function getProfile (mail) {
+  return /.+\..+@epfl\.ch/.test(mail) ? mail.replace('@epfl.ch', '') : '';
 }
 
 /**
@@ -247,7 +246,7 @@ function ldap2api (ldapResults, q, hl) {
     person.name = correctName[1];
     delete person.displayName;
     person.accreds = sortAccreds(listAccreds);
-    person.profile = getProfile(person.email, sciper);
+    person.profile = getProfile(person.email);
     list.push(person);
   }
   return sortPersons(list, q);
