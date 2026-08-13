@@ -69,9 +69,7 @@ async function buildHashPhoneRoom (apiResults) {
 
 async function search (query, lang) {
   let ldapResults = [];
-  if (/^[0-9]{6}$/.test(query)) {
-    ldapResults = await peopleService.getPersonBySciper(query);
-  } else if (/^\+?[0-9 ]+$/.test(query)) {
+  if (/^\+?[0-9 ]+$/.test(query)) {
     ldapResults = await peopleService.getPersonByPhone(query);
   } else if (/^[^@]+@[^@]+$/.test(query)) {
     ldapResults = await peopleService.getPersonByEmail(query);
