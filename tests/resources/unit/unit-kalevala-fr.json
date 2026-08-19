@@ -33,17 +33,15 @@
       "officeList": ["Castle Kryze"],
       "phoneList": ["+41210054323"],
       "position": "Princesse",
-      "profile": "670006",
-      "rank": 0,
-      "sciper": "670006"
+      "profile": "",
+      "rank": 0
     }
   ],
   "head": {
-    "sciper": "670006",
     "name": "Kryze",
     "firstname": "Bo-Katan",
     "email": "",
-    "profile": "670006"
+    "profile": ""
   },
   "adminData": {
     "accreds": "https://accred.epfl.ch/#/catalog/units/11401",
@@ -56,8 +54,7 @@
       "email": "",
       "firstname": "Bo-Katan",
       "name": "Kryze",
-      "profile": "670006",
-      "sciper": "670006",
+      "profile": "",
       "officeList": ["Castle Kryze"],
       "phoneList": ["+41210054323"],
       "role": "Correspondante de sécurité (COSEC)"

@@ -117,7 +117,6 @@ async function getUnit (acro, lang, isInternal) {
   unitFullDetails.address = address.length > 0 ? address : null;
   if (dict.resp_sciper) {
     unitFullDetails.head = {
-      sciper: dict.resp_sciper,
       name: dict.resp_nom_usuel || dict.resp_nom,
       firstname: dict.resp_prenom_usuel || dict.resp_prenom
     };
@@ -139,7 +138,10 @@ async function getUnit (acro, lang, isInternal) {
       .getPersonsByUnit(dict.id_unite, lang);
     cosec = unitPersons[1];
     if (unitPersons[0].length > 0) {
-      unitFullDetails.people = unitPersons[0];
+      unitFullDetails.people = unitPersons[0].map((person) => {
+        delete person.sciper;
+        return person;
+      });
     }
   } else {
     const subunits = await getSubunits(dict.id_unite, lang);
@@ -176,7 +178,10 @@ async function getUnit (acro, lang, isInternal) {
         lang
       );
       if (cosecPersons.length > 0) {
-        unitFullDetails.cosec = cosecPersons;
+        unitFullDetails.cosec = cosecPersons.map((person) => {
+          delete person.sciper;
+          return person;
+        });
       }
     }
   }
@@ -246,9 +251,9 @@ async function getCsv (acro, lang) {
 
   const data = [];
   const header = lang === 'en'
-    ? ['Name', 'First name', 'Sciper', 'email', 'Unit', 'Unit path',
+    ? ['Name', 'First name', 'email', 'Unit', 'Unit path',
         'Position', 'Office(s)', 'Phone(s)', 'Address']
-    : ['Nom', 'Prénom', 'Sciper', 'email', 'Unité', "Chemin de l'unité",
+    : ['Nom', 'Prénom', 'email', 'Unité', "Chemin de l'unité",
         'Fonction', 'Bureau(x)', 'Téléphone(s)', 'Adresse'];
 
   data.push(header);
@@ -257,7 +262,6 @@ async function getCsv (acro, lang) {
     data.push([
       person.name,
       person.firstname,
-      person.sciper,
       person.email ? person.email : '',
       unitAcro,
       unitPath,

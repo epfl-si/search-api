@@ -1,6 +1,5 @@
 [
   {
-    "sciper": "670003",
     "rank": 0,
     "name": "Djarin",
     "firstname": "Din",
@@ -21,7 +20,6 @@
     "profile": "din.djarin"
   },
   {
-    "sciper": "670001",
     "rank": 0,
     "name": "Fett",
     "firstname": "Boba",
@@ -53,7 +51,6 @@
     "profile": "boba.fett"
   },
   {
-    "sciper": "670002",
     "rank": 0,
     "name": "Fett",
     "firstname": "Jango",
@@ -74,7 +71,6 @@
     "profile": "jango.fett"
   },
   {
-    "sciper": "670004",
     "rank": 0,
     "name": "Vizsla",
     "firstname": "Paz",

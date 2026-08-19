@@ -31,7 +31,6 @@
     "CH-1015 Lausanne"
   ],
   "head": {
-    "sciper": "670003",
     "name": "Djarin",
     "firstname": "Din",
     "email": "din.djarin@epfl.ch",
@@ -46,8 +45,7 @@
       "phoneList": ["+41210054321", "+41210054324"],
       "position": "Bounty hunter",
       "profile": "din.djarin",
-      "rank": 0,
-      "sciper": "670003"
+      "rank": 0
     },
     {
       "email": "mara.drayde@epfl.ch",
@@ -57,8 +55,7 @@
       "phoneList": [],
       "position": "Tech Engineer",
       "profile": "mara.drayde",
-      "rank": 0,
-      "sciper": "670015"
+      "rank": 0
     },
     {
       "email": "lyra.korr@epfl.ch",
@@ -68,8 +65,7 @@
       "phoneList": [],
       "position": "Drone Engineer",
       "profile": "lyra.korr",
-      "rank": 0,
-      "sciper": "670017"
+      "rank": 0
     },
     {
       "email": "kara.ordo@epfl.ch",
@@ -79,8 +75,7 @@
       "phoneList": [],
       "position": "Student",
       "profile": "kara.ordo",
-      "rank": 0,
-      "sciper": "670008"
+      "rank": 0
     },
     {
       "email": "aria.sol@epfl.ch",
@@ -90,8 +85,7 @@
       "phoneList": [],
       "position": "Analyste de données",
       "profile": "aria.sol",
-      "rank": 0,
-      "sciper": "670018"
+      "rank": 0
     },
     {
       "email": "hera.sunrider@epfl.ch",
@@ -101,8 +95,7 @@
       "phoneList": [],
       "position": "UI/UX Designer",
       "profile": "hera.sunrider",
-      "rank": 0,
-      "sciper": "670020"
+      "rank": 0
     },
     {
       "email": "rex.trin@epfl.ch",
@@ -112,8 +105,7 @@
       "phoneList": [],
       "position": "AI Researcher",
       "profile": "rex.trin",
-      "rank": 0,
-      "sciper": "670016"
+      "rank": 0
     },
     {
       "email": "bryn.vek@epfl.ch",
@@ -123,8 +115,7 @@
       "phoneList": [],
       "position": "Midwife",
       "profile": "bryn.vek",
-      "rank": 0,
-      "sciper": "670014"
+      "rank": 0
     },
     {
       "email": "quin.vex@epfl.ch",
@@ -134,8 +125,7 @@
       "phoneList": [],
       "position": "Dentiste",
       "profile": "quin.vex",
-      "rank": 0,
-      "sciper": "670019"
+      "rank": 0
     },
     {
       "email": "paz.vizsla@epfl.ch",
@@ -145,8 +135,7 @@
       "phoneList": [],
       "position": "Heavy infantry",
       "profile": "paz.vizsla",
-      "rank": 0,
-      "sciper": "670004"
+      "rank": 0
     },
     {
       "email": "kaden.voss@epfl.ch",
@@ -156,8 +145,7 @@
       "phoneList": [],
       "position": "Student",
       "profile": "kaden.voss",
-      "rank": 0,
-      "sciper": "670010"
+      "rank": 0
     },
     {
       "email": "renn.voss@epfl.ch",
@@ -167,8 +155,7 @@
       "phoneList": [],
       "position": "Student",
       "profile": "renn.voss",
-      "rank": 0,
-      "sciper": "670013"
+      "rank": 0
     },
     {
       "email": null,
@@ -177,9 +164,8 @@
       "officeList": [],
       "phoneList": [],
       "position": null,
-      "profile": "670009",
-      "rank": 0,
-      "sciper": "670009"
+      "profile": "",
+      "rank": 0
     }
   ]
 }

@@ -69,9 +69,7 @@ async function buildHashPhoneRoom (apiResults) {
 
 async function search (query, lang) {
   let ldapResults = [];
-  if (/^[0-9]{6}$/.test(query)) {
-    ldapResults = await peopleService.getPersonBySciper(query);
-  } else if (/^\+?[0-9 ]+$/.test(query)) {
+  if (/^\+?[0-9 ]+$/.test(query)) {
     ldapResults = await peopleService.getPersonByPhone(query);
   } else if (/^[^@]+@[^@]+$/.test(query)) {
     ldapResults = await peopleService.getPersonByEmail(query);
@@ -116,6 +114,7 @@ async function get (req, res) {
             accred.phoneList = phoneHash[person.sciper][code] || [];
             accred.officeList = roomHash[person.sciper][code] || [];
           }
+          delete person.sciper;
         }
       }
       appCache.set(req.originalUrl, apiResults);
@@ -147,7 +146,7 @@ async function getCsv (req, res) {
       const apiResults = await search(q, req.query.hl);
       if (apiResults.length) {
         for (const person of apiResults) {
-          csv += [person.sciper, person.firstname, person.name].join(': ');
+          csv += [person.firstname, person.name].join(': ');
           csv += '\n';
         }
       }
