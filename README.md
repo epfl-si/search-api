@@ -43,8 +43,9 @@
 
 ### Examples
 
-- [/api/ldap?q=278890][ldap-1]
-- [/api/ldap?q=nicolas.borboen@epfl.ch&hl=en][ldap-2]
+- [/api/ldap?q=INN][ldap-1]
+- [/api/ldap?q=boba.fett@epfl.ch&hl=en][ldap-2]
+- [/api/ldap?q=Fett&hl=fr][ldap-3]
 
 ## People (CSV Export)
 
@@ -78,7 +79,7 @@
 ### Examples
 
 - [/api/ldap/suggestions?q=math][ldap-suggestions-1]
-- [/api/ldap/suggestions?q=william&limit=3][ldap-suggestions-2]
+- [/api/ldap/suggestions?q=boba&limit=3][ldap-suggestions-2]
 
 ## Address
 
@@ -94,7 +95,7 @@
 
 ### Examples
 
-- [/api/address?q=278890][address-1]
+- [/api/address?q=000001][address-1]
 
 ## Unit
 
@@ -114,8 +115,7 @@
 
 - [/api/unit?q=fsd][unit-1]
 - [/api/unit?q=vpo&hl=en][unit-2]
-- [/api/unit?q=13030][unit-3]
-- [/api/unit?acro=vpo][unit-4]
+- [/api/unit?acro=vpo][unit-3]
 
 ## Unit (CSV Export)
 
@@ -170,12 +170,12 @@ Only allowed via EPFL intranet or VPN.
 ### Examples
 
 - [/api/graphsearch/v2?q=math&limit=20][graphsearch-4]
-- [/api/graphsearch/v2?q=vetterli&doctype=person][graphsearch-5]
+- [/api/graphsearch/v2?q=boba&doctype=person][graphsearch-5]
 - [/api/graphsearch/v2?q=lts&doctype=unit][graphsearch-6]
 
 ## Documentation
 
-See [Confluence][confluence-url].
+See [SiDoc][sidoc-url].
 
 ## Contributing
 
@@ -186,23 +186,23 @@ See [Contributing](CONTRIBUTING.md).
 [github-actions-url]: https://github.com/epfl-si/search-api/actions
 [codecov-image]: https://codecov.io/gh/epfl-si/search-api/branch/main/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/epfl-si/search-api
-[confluence-url]: https://confluence.epfl.ch:8443/pages/viewpage.action?pageId=221185381
+[sidoc-url]: https://sidoc.epfl.ch/doc/service-search-Xk4m2bDqZ4
 [node22-url]: https://nodejs.org/en/blog/announcements/v22-release-announce
 [cse-1]: http://127.0.0.1:5555/api/cse?q=math
 [cse-2]: http://127.0.0.1:5555/api/cse?q=math&hl=fr&searchSite=actu.epfl.ch
 [cse-3]: http://127.0.0.1:5555/api/cse?q=math&hl=en&sort=date&searchType=image
-[ldap-1]: http://127.0.0.1:5555/api/ldap?q=278890
-[ldap-2]: http://127.0.0.1:5555/api/ldap?q=nicolas.borboen@epfl.ch&hl=en
+[ldap-1]: http://127.0.0.1:5555/api/ldap?q=INN
+[ldap-2]: http://127.0.0.1:5555/api/ldap?q=boba.fett@epfl.ch&hl=en
+[ldap-3]: http://127.0.0.1:5555/api/ldap?q=Fett&hl=fr
 [ldap-csv]: http://127.0.0.1:5555/api/ldap?q=jango
 [ldap-suggestions-1]: http://127.0.0.1:5555/api/ldap/suggestions?q=math
-[ldap-suggestions-2]: http://127.0.0.1:5555/api/ldap/suggestions?q=william&limit=3
+[ldap-suggestions-2]: http://127.0.0.1:5555/api/ldap/suggestions?q=boba&limit=3
 [unit-1]: http://127.0.0.1:5555/api/unit?q=fsd
 [unit-2]: http://127.0.0.1:5555/api/unit?q=vpo&hl=en
-[unit-3]: http://127.0.0.1:5555/api/unit?q=13030
-[unit-4]: http://127.0.0.1:5555/api/unit?acro=vpo
+[unit-3]: http://127.0.0.1:5555/api/unit?acro=vpo
 [unit-csv-1]: http://127.0.0.1:5555/api/unit/csv?q=isas-fsd&hl=en
 [unit-suggestions-1]: http://127.0.0.1:5555/api/unit/suggestions?q=isas&hl=en
 [graphsearch-4]: http://127.0.0.1:5555/api/graphsearch/v2?q=math&limit=20
-[graphsearch-5]: http://127.0.0.1:5555/api/graphsearch/v2?q=vetterli&doctype=person
+[graphsearch-5]: http://127.0.0.1:5555/api/graphsearch/v2?q=boba&doctype=person
 [graphsearch-6]: http://127.0.0.1:5555/api/graphsearch/v2?q=lts&doctype=unit
-[address-1]: http://127.0.0.1:5555/api/address?q=278890
+[address-1]: http://127.0.0.1:5555/api/address?q=000001
